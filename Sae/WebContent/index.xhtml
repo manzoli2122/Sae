@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/resources/templates/#{sessionControl.decorator}/decorator.xhtml">
+
+	<ui:define name="head" ></ui:define>
+	
+    <ui:define name="title"><h:outputText value="#{msgs['title.home']}" /></ui:define>
+    
+    <ui:define name="description"><h:outputText value="#{msgs['descr.home']}" /></ui:define>
+
+	
+    <ui:define name="body">
+    	
+    	
+    	<h:form>
+    		<p:commandButton  action="#{installSystemControl.begin()}" rendered="#{not sessionControl.systemInstalled}" value="#{msgs['menu.installSystem.install']}"  />
+		</h:form>
+			
+			
+			
+    </ui:define>
+</ui:composition>

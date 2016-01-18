@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="Sae">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/jboss/datasources/Sae</jta-data-source>
+		<class>br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport</class>
+		<class>sae.core.domain.Administrador</class>
+		<class>sae.core.domain.Egresso</class>
+		<class>sae.core.domain.Curso</class>
+		<class>sae.core.domain.Assunto_Interesse</class>
+		<class>sae.core.domain.Historico_Egresso</class>
+		<class>sae.core.domain.Escolaridade</class>
+		<class>sae.publico.domain.Depoimento</class>
+		<class>sae.publico.domain.Sugestao</class>
+		<class>sae.core.domain.Seminario</class>
+		<class>sae.core.domain.SaeConfiguracao</class>
+		<class>sae.core.domain.CursoRealizado</class>
+		
+		<properties>
+			
+		    <property name="hibernate.hbm2ddl.auto" value="update" />
+		    <!-- property name="hibernate.show_sql" value="true" /--> 
+		    <property name="hibernate.format_sql" value="true" />
+		    <!-- property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+		    <property name="hibernate.ejb.entitymanager_factory_name" value="Salao"/ -->
+		    
+		</properties>
+	</persistence-unit>
+	
+	
+	
+	
+	<persistence-unit name="saeLogin">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport</class>
+		<class>sae.core.domain.Administrador</class>
+		<class>sae.core.domain.Egresso</class>
+		<class>sae.core.domain.Curso</class>
+		<class>sae.core.domain.Assunto_Interesse</class>
+		<class>sae.core.domain.Historico_Egresso</class>
+		<class>sae.core.domain.Escolaridade</class>
+		<class>sae.publico.domain.Depoimento</class>
+		<class>sae.publico.domain.Sugestao</class>
+		<class>sae.core.domain.Seminario</class>
+		<class>sae.core.domain.SaeConfiguracao</class>
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sae" />
+			<property name="javax.persistence.jdbc.user" value="sae" />
+			<property name="javax.persistence.jdbc.password" value="sae" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		    <property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+	
+	
+	
+</persistence>
