@@ -45,7 +45,9 @@ public class InstallSystemControl extends JSFController{
 	public String saveAdmin() {
 		try {
 			admin.setSenha("123");
+			
 			manageAdministradorService.create(admin);
+			
 		}
 		catch (Exception e) {
 			addGlobalI18nMessage("msgs", FacesMessage.SEVERITY_FATAL, "installSystem.error.installFailed.summary", "installSystem.error.installFailed.detail");

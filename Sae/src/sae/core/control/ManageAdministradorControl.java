@@ -1,5 +1,8 @@
 package sae.core.control;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.convert.Converter;
@@ -18,6 +21,9 @@ public class ManageAdministradorControl extends CrudController<Administrador>{
 
 	
 	private static final long serialVersionUID = 1L;
+	
+	private static final Logger logger = Logger.getLogger(ManageAdministradorControl.class.getCanonicalName());
+	
 	
 	@EJB
 	private ManageAdministradorService manageAdministradorService;
@@ -52,4 +58,31 @@ public class ManageAdministradorControl extends CrudController<Administrador>{
 	public Converter getAdministradorConverter() {
 		return manageAdministradorService.getAdministradorConverter();
 	}
+	
+	
+	@Override
+	public String save() {
+		try{
+			super.save();
+			manageAdministradorService.sendEmailCadastro(selectedEntity);
+			return list();
+		}
+		catch(Exception e){
+			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+		}
+	}
+	
+	@Override
+	public String delete() {
+		try{
+			return super.delete();
+			
+		}
+		catch(Exception e){
+			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+		}
+	}
+	
+	
+	
 }

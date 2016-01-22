@@ -83,8 +83,8 @@ public class SessionServiceBean implements SessionService{
 	public Egresso getEgresso() { return egresso; }  
 	
 	
-	@Override
- 	public void getCurrentUser(){	
+	
+ 	public void getCurrentUser1(){	
 		Principal principal = sessionC.getCallerPrincipal();
 		if(principal != null){
 			if(admin==null){
@@ -115,6 +115,39 @@ public class SessionServiceBean implements SessionService{
 		
 		
 	}
+	
+ 	@Override
+	public void getCurrentUser(){		
+		if((admin==null) &&  (egresso == null)){
+			
+			Principal principal = sessionC.getCallerPrincipal();
+			if(principal != null){
+			
+				try { 
+					admin = administradorDAO.retrieveByEmail(principal.getName());
+					logger.log(Level.INFO, "ADMIN DECOREITO ");
+					return;
+				} 
+				catch (PersistentObjectNotFoundException | MultiplePersistentObjectsFoundException e) {
+					admin = null ;
+					logger.log(Level.INFO, "ADMIN SEM DECOREITO ");
+				}
+			
+				try { 
+					egresso = egressoDAO.retrieveByEmail(principal.getName());
+					logger.log(Level.INFO, "EGRESSO DECOREITO ");
+					return;
+				} 
+				catch (PersistentObjectNotFoundException | MultiplePersistentObjectsFoundException e) {
+					egresso = null ;
+					logger.log(Level.INFO, "EGRESSO SEM DECOREITO ");
+				}
+			}
+		}
+	}
+	
+	
+	
 	
 
 	@Override

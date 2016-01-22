@@ -6,13 +6,13 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2015-12-22T14:27:04.137-0200")
+@Generated(value="Dali", date="2016-01-20T14:10:52.072-0200")
 @StaticMetamodel(Administrador.class)
 public class Administrador_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Administrador, String> nome;
 	public static volatile SingularAttribute<Administrador, String> email;
-	public static volatile SingularAttribute<Administrador, String> cpf;
 	public static volatile SingularAttribute<Administrador, String> senha;
 	public static volatile SingularAttribute<Administrador, String> matricula;
 	public static volatile SetAttribute<Administrador, Curso> cursosCoordenados;
+	public static volatile SingularAttribute<Administrador, String> cpf;
 }

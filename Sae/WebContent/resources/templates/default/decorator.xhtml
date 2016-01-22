@@ -261,6 +261,10 @@
 						<p:commandLink  action="#{manageSeminarioControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageSeminario.title']}"  />
 					</li>
 					
+					<li>
+						<p:commandLink  action="#{manageCursoRealizadoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageCursoRealizado.title']}"  />
+					</li>
+					
 					<li><a href="#{facesContext.externalContext.requestContextPath}/login.faces"><i class="fa fa-home"></i> Login</a></li>
 			
 					

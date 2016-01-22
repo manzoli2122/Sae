@@ -45,7 +45,25 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	@Override
 	protected void initFilters() {
 		addFilter(new LikeFilter("manageEgresso.filter.byName", "nome", getI18nMessage(bundleName, "manageEgresso.text.filter.byName")));
+	}
+	
+	
+	
+	@Override
+	public String save() {
+		try {
+			return super.save();
+		} catch (Exception e) {
+			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+		}
 		
 	}
+	
+	
+	
+	
+	
+	
+	
 
 }

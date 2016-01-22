@@ -8,4 +8,6 @@ import sae.core.domain.Egresso;
 @Local
 public interface ManageEgressoService  extends CrudService<Egresso>{
 
+	void sendEmailCadastro(Egresso entity);
+
 }

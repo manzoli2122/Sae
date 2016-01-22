@@ -27,7 +27,8 @@
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:smtpServerAddress" />
 							<ui:param name="label" value="#{msgs['core.installSystem.field.config.smtpServerAddress']}" />
-							<p:inputText id="smtpServerAddress" pt:class="form-control" pt:placeholder="#{msgs['core.installSystem.field.config.smtpServerAddress']}" value="#{installSystemControl.config.smtpServerAddress}" size="35" required="true">
+							<p:inputText id="smtpServerAddress" pt:class="form-control" value="#{installSystemControl.config.smtpServerAddress}"
+										 pt:placeholder="#{msgs['core.installSystem.field.config.smtpServerAddress']}" required="true">
 							</p:inputText>
 						</ui:decorate>
 					</h:panelGroup>
@@ -36,7 +37,9 @@
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:smtpServerPort" />
 							<ui:param name="label" value="#{msgs['core.installSystem.field.config.smtpServerPort']}" />
-							<p:inputText id="smtpServerPort" pt:class="form-control" pt:placeholder="#{msgs['core.installSystem.field.config.smtpServerPort']}" value="#{installSystemControl.config.smtpServerPort}" size="35" required="true">
+							<p:inputText id="smtpServerPort" pt:class="form-control"
+										 pt:placeholder="#{msgs['core.installSystem.field.config.smtpServerPort']}" 
+										 value="#{installSystemControl.config.smtpServerPort}"  required="true">
 								<p:ajax event="blur" update="smtpServerPortField" />
 							</p:inputText>
 						</ui:decorate>
@@ -46,7 +49,9 @@
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:smtpUsername" />
 							<ui:param name="label" value="#{msgs['core.installSystem.field.config.smtpUsername']}" />
-							<p:inputText id="smtpUsername" pt:class="form-control" pt:placeholder="#{msgs['core.installSystem.field.config.smtpUsername']}" value="#{installSystemControl.config.smtpUsername}" size="35" required="true">
+							<p:inputText id="smtpUsername" pt:class="form-control" 
+										 pt:placeholder="#{msgs['core.installSystem.field.config.smtpUsername']}" 
+										 value="#{installSystemControl.config.smtpUsername}" required="true">
 								<p:ajax event="blur" update="smtpUsernameField" />
 							</p:inputText>
 						</ui:decorate>
@@ -56,13 +61,16 @@
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:smtpPassword" />
 							<ui:param name="label" pt:class="form-control" value="#{msgs['core.installSystem.field.config.smtpPassword']}" />
-							<p:password id="smtpPassword" pt:placeholder="#{msgs['core.installSystem.field.config.smtpPassword']}" value="#{installSystemControl.config.smtpPassword}" size="35" required="true" feedback="false" />
+							<p:password id="smtpPassword" pt:placeholder="#{msgs['core.installSystem.field.config.smtpPassword']}" 
+										value="#{installSystemControl.config.smtpPassword}"  required="true" feedback="false" />
 						</ui:decorate>
 					</h:panelGroup>
 					
 					
 					<ui:decorate template="/resources/templates/default/formbutton.xhtml">
-						<p:commandButton pt:class="pull-left btn btn-default "  action="#{installSystemControl.saveSmtpConfig}" value="#{msgs['crud.button.save']}"  onclick="waitDialog.show()" oncomplete="waitDialog.hide()" update="form" />
+						<p:commandButton pt:class="pull-left btn btn-default" action="#{installSystemControl.saveSmtpConfig}" 
+										 value="#{msgs['crud.button.save']}"  onclick="waitDialog.show()" oncomplete="waitDialog.hide()" 
+										 update="form" />
 					</ui:decorate>
 				</h:form>
 			</ui:decorate>

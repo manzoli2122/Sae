@@ -27,7 +27,8 @@
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:nome" />
 							<ui:param name="label" value="#{msgs['crud.text.name']}" />
-							<p:inputText id="nome" pt:class="form-control" pt:placeholder="#{msgs['crud.text.name']}" value="#{installSystemControl.admin.nome}"  required="true">
+							<p:inputText id="nome" pt:class="form-control" pt:placeholder="#{msgs['crud.text.name']}" 
+										 value="#{installSystemControl.admin.nome}"  required="true">
 								<p:ajax event="blur" update="nomeField" />
 							</p:inputText>
 						</ui:decorate>
@@ -37,7 +38,8 @@
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:email" />
 							<ui:param name="label" value="#{msgs['crud.text.email']}" />
-							<p:inputText id="email" pt:class="form-control" pt:type="email" pt:placeholder="#{msgs['crud.text.email']}" value="#{installSystemControl.admin.email}"  required="true">
+							<p:inputText id="email" pt:class="form-control" pt:type="email" pt:placeholder="#{msgs['crud.text.email']}" 
+										 value="#{installSystemControl.admin.email}"  required="true">
 								<p:ajax event="blur" update="emailField" />
 							</p:inputText>
 						</ui:decorate>
@@ -48,7 +50,8 @@
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:matricula" />
 							<ui:param name="label" value="#{msgs['crud.text.matricula']}" />
-							<p:inputText id="matricula" pt:class="form-control" pt:type="number" pt:placeholder="#{msgs['crud.text.matricula']}" value="#{installSystemControl.admin.matricula}" size="35" required="true">
+							<p:inputText id="matricula" pt:class="form-control" pt:type="number" required="true"
+										 pt:placeholder="#{msgs['crud.text.matricula']}" value="#{installSystemControl.admin.matricula}" >
 								<p:ajax event="blur" update="matriculaField" />
 							</p:inputText>
 						</ui:decorate>
@@ -56,14 +59,12 @@
 					
 					
 					
-					
 					<h:panelGroup id="cpfField">
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:cpf" />
 							<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
-							<p:inputText id="cpf" pt:class="form-control" pt:placeholder="#{msgs['crud.text.cpf']}" value="#{installSystemControl.admin.cpf}" size="35" required="true">
-								<p:ajax event="blur" update="cpfField" />
-							</p:inputText>
+							<p:inputMask id="cpf" pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
+										 required="true" value="#{installSystemControl.admin.cpf}"/>
 						</ui:decorate>
 					</h:panelGroup>
 					
@@ -71,7 +72,8 @@
 									
 					
 					<ui:decorate template="/resources/templates/default/formbutton.xhtml">
-						<p:commandButton pt:class="pull-right btn btn-info "  action="#{installSystemControl.saveAdmin()}" value="#{msgs['crud.button.save']}"  update="form" />
+						<p:commandButton pt:class="pull-right btn btn-info "  action="#{installSystemControl.saveAdmin()}" 
+										 value="#{msgs['crud.button.save']}"  update="form" />
 					</ui:decorate>
 				</h:form>
 			</ui:decorate>

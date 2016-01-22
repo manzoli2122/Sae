@@ -2,10 +2,15 @@ package sae.core.domain;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Set;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
 
 import br.ufes.inf.nemo.util.TextUtils;
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
@@ -32,11 +37,15 @@ public class Administrador extends PersistentObjectSupport implements Comparable
 	
 	/** EMAIL DO ADMINISTRADOR */
 	@NotNull 
+	@Email
+	@Column(unique=true)
 	private String email;
 
 	/** CPF DO ADMINISTRADOR */
 	@NotNull 
-	private String cpf;
+	@CPF
+	@Column(unique=true)
+	private  String  cpf;
 	
 	/** SENHA DO ADMINISTRADOR */
 	@NotNull 
@@ -44,6 +53,7 @@ public class Administrador extends PersistentObjectSupport implements Comparable
 	
 	/** MATRICULA DO ADMINISTRADOR */
 	@NotNull 
+	@Column(unique=true)
 	private String matricula;
 	
 	/** CURSO QUE O ADMINISTRADOR COORDENA*/

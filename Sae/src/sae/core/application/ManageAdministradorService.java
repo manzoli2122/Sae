@@ -12,4 +12,7 @@ public interface ManageAdministradorService extends CrudService<Administrador> {
 
 	Converter getAdministradorConverter();
 
+
+	void sendEmailCadastro(Administrador entity);
+
 }

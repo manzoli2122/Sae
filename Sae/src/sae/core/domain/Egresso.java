@@ -3,11 +3,15 @@ package sae.core.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 
@@ -35,6 +39,8 @@ public class Egresso extends PersistentObjectSupport implements Comparable<Egres
 	
 	/** EMAIL DO EGRESSO*/
 	@NotNull 
+	@Email
+	@Column(unique=true)
 	private String email;
 	
 	/** SENHA DO EGRESSO */
@@ -43,10 +49,13 @@ public class Egresso extends PersistentObjectSupport implements Comparable<Egres
 
 	/** CPF DO EGRESSO */
 	@NotNull 
+	@CPF
+	@Column(unique=true)
 	private String cpf;
 	
 	/** IDENTIDADE DO EGRESSO */
 	@NotNull 
+	@Column(unique=true)
 	private String identidade;
 	
 	/** SEXO DO EGRESSO */
