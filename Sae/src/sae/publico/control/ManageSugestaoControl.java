@@ -6,34 +6,35 @@ import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
-import sae.publico.application.ManageDepoimentoService;
-import sae.publico.domain.Depoimento;
+import sae.publico.application.ManageSugestaoService;
+import sae.publico.domain.Sugestao;
 
 @Named
 @SessionScoped
-public class ManageDepoimentoControl extends CrudController<Depoimento>{
+public class ManageSugestaoControl extends CrudController<Sugestao> {
 
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private ManageDepoimentoService  manageDepoimentoService ;
-	
+	private ManageSugestaoService  manageSugestaoService ;
 	
 	
 	/*   CONSTRUTOR DA CLASSE */
-	public ManageDepoimentoControl(){
-		 viewPath = "/core/manageDepoimento/";
+	public ManageSugestaoControl(){
+		 viewPath = "/public/manageSugestao/";
 	     bundleName = "msgs";
 	}
 	
+	
+	
 	@Override
-	protected CrudService<Depoimento> getCrudService() {
-		return manageDepoimentoService;
+	protected CrudService<Sugestao> getCrudService() {
+		return manageSugestaoService;
 	}
 
 	@Override
-	protected Depoimento createNewEntity() {
-		return new Depoimento();
+	protected Sugestao createNewEntity() {
+		return new Sugestao();
 	}
 
 	@Override

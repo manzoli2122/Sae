@@ -2,8 +2,11 @@ package sae.core.application;
 
 import java.security.NoSuchAlgorithmException;
 
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.faces.convert.Converter;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
@@ -11,14 +14,15 @@ import org.apache.commons.mail.MultiPartEmail;
 
 import br.ufes.inf.nemo.util.TextUtils;
 import br.ufes.inf.nemo.util.ejb3.application.CrudException;
-import br.ufes.inf.nemo.util.ejb3.application.CrudServiceBean;
+import br.ufes.inf.nemo.util.ejb3.controller.PersistentObjectConverterFromId;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
-import sae.core.domain.Administrador;
 import sae.core.domain.Egresso;
 import sae.core.domain.SaeConfiguracao;
 import sae.core.persistence.EgressoDAO;
 
 @Stateless
+@DeclareRoles({"Admin", "egresso"})
+@RolesAllowed({ "Admin" })
 public class ManageEgressoServiceBean  extends CrudServiceBean<Egresso> implements ManageEgressoService{
 
 	private static final long serialVersionUID = 1L;
@@ -28,6 +32,20 @@ public class ManageEgressoServiceBean  extends CrudServiceBean<Egresso> implemen
 	
 	@EJB    	
 	private CoreInformacao coreInformacao;
+	
+	private PersistentObjectConverterFromId<Egresso> egressoConverter;
+	
+	
+	
+	
+	
+	@Override
+	public Converter getEgressoConverter() {
+		if (egressoConverter == null) 
+			egressoConverter = new PersistentObjectConverterFromId<Egresso>(egressoDAO);
+		return egressoConverter;
+	}
+	
 	
 	
 	@Override

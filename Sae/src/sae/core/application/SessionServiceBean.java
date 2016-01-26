@@ -80,7 +80,10 @@ public class SessionServiceBean implements SessionService{
 	public Administrador getAdmin() { return admin; }  
 	
 	@Override
-	public Egresso getEgresso() { return egresso; }  
+	public Egresso getEgresso() {
+		getCurrentUser();
+		return egresso; 
+	}  
 	
 	
 	
@@ -117,9 +120,10 @@ public class SessionServiceBean implements SessionService{
 	}
 	
  	@Override
-	public void getCurrentUser(){		
+	public void getCurrentUser(){	
+ 		logger.log(Level.INFO, "GET CORRENTE USUARIO ");
 		if((admin==null) &&  (egresso == null)){
-			
+			logger.log(Level.INFO, "PESQUISANDO USUARIO ");
 			Principal principal = sessionC.getCallerPrincipal();
 			if(principal != null){
 			

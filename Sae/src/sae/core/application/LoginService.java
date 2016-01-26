@@ -9,6 +9,8 @@ import sae.core.domain.Egresso_;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.security.acl.Group;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -133,16 +135,16 @@ public class LoginService  implements LoginModule {
 	    }
 	}
 
-	protected void getUser() throws LoginException {
-		logger.log(Level.INFO, "LOGIN SQL IDENTY = {0}",identity.getName());
+	
+	
+	
+	
+	protected void getAdmin() throws LoginException {
+		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("saeLogin");
-		
 		EntityManager em = emf.createEntityManager();
-		
 		EntityTransaction tx = em.getTransaction();
-		
 		tx.begin();
-		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Administrador> cq = cb.createQuery(Administrador.class);
 		Root<Administrador> root = cq.from(Administrador.class);
@@ -156,23 +158,50 @@ public class LoginService  implements LoginModule {
 			logger.log(Level.INFO, "USUARIO NAO CADASTRADO COMO ADMINISTRADOR)");
 		}
 		
-		if(admin==null){
-			CriteriaQuery<Egresso> cqe = cb.createQuery(Egresso.class);
-			Root<Egresso> roote = cqe.from(Egresso.class);
-			cq.where(  cb.equal(roote.get(Egresso_.email), identity.getName()));
-			
-			try{
-				egresso = em.createQuery(cqe).getSingleResult();
-				logger.log(Level.INFO, "USUARIO CADASTRADO COMO EGRESSO");
-			}
-			catch (Exception e) {
-				logger.log(Level.INFO, "USUARIO NAO CADASTRADO )");
-				throw new LoginException();
-			}
+		tx.commit();
+		em.close();
+		emf.close();
+		
+	}
+	
+	
+	
+	protected void getEgresso() throws LoginException {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("saeLogin");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Egresso> cq = cb.createQuery(Egresso.class);
+		
+		Root<Egresso> root = cq.from(Egresso.class);
+		cq.where(  cb.equal(root.get(Egresso_.email), identity.getName()));
+		
+		try{
+			egresso = em.createQuery(cq).getSingleResult();
+			logger.log(Level.INFO, "USUARIO CADASTRADO COMO EGRESSO");
+		}
+		catch (Exception e) {
+			logger.log(Level.INFO, "USUARIO NAO CADASTRADO )");
+			throw new LoginException();
 		}
 		tx.commit();
 		em.close();
 		emf.close();
+	}
+	
+	
+	
+	protected void getUser() throws LoginException {
+		logger.log(Level.INFO, "LOGIN SQL IDENTY = {0}",identity.getName());
+		
+		getAdmin();
+		
+		if(admin==null){
+			getEgresso();
+		}
 		
 	}
 

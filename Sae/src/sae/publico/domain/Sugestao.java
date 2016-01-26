@@ -41,6 +41,21 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	
 	
 	
+	public String getConteudo() { return conteudo; 	}
+	public void setConteudo(String conteudo) { 	this.conteudo = conteudo; }
+
+	public String getResposta() { return resposta; }
+	public void setResposta(String resposta) { this.resposta = resposta; }
+
+	public Date getData_envio() { return data_envio; }
+	public void setData_envio(Date data_envio) { this.data_envio = data_envio; }
+
+	public Egresso getAutor() { return autor; 	}
+	public void setAutor(Egresso autor) { this.autor = autor; }
+
+	public Curso getCurso() { 	return curso; }
+	public void setCurso(Curso curso) { this.curso = curso; }
+
 	@Override
 	public int compareTo(Sugestao  o) { return super.compareTo(o); }
 	

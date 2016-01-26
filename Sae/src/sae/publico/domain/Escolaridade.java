@@ -1,12 +1,11 @@
-package sae.core.domain;
-
-import java.util.Date;
+package sae.publico.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
+import sae.core.domain.Egresso;
 
 
 /**
@@ -43,7 +42,7 @@ public class Escolaridade extends PersistentObjectSupport implements Comparable<
 	
 	/** ANO DE TERMINO DO CURSO */
 	@NotNull
-	private Date ano;
+	private int ano;
 	
 	/** TITULO DO CURSO */
 	@NotNull
@@ -65,13 +64,7 @@ public class Escolaridade extends PersistentObjectSupport implements Comparable<
 		if (o.titulo == null) return -1;		
 		cmp = titulo.compareTo(o.titulo);
 		if (cmp != 0 ) return cmp;
-			
-		
-		if (ano == null)	return 1;
-		if (o.ano == null) return -1;		
-		cmp = ano.compareTo(o.ano);
-		if (cmp != 0 ) return cmp;
-		
+				
 		return super.compareTo(o);
 		
 	}
@@ -97,8 +90,8 @@ public class Escolaridade extends PersistentObjectSupport implements Comparable<
 	public String getInstituicao() {  return instituicao; }
 	public void setInstituicao(String instituicao) {  this.instituicao = instituicao; }
 
-	public Date getAno() { 	return ano; }
-	public void setAno(Date ano) { 	this.ano = ano; }
+	public int getAno() { 	return ano; }
+	public void setAno(int ano) { 	this.ano = ano; }
 
 	public Titulo_Escolaridade getTitulo() { return titulo; }
 	public void setTitulo(Titulo_Escolaridade titulo) { this.titulo = titulo; }

@@ -1,11 +1,7 @@
 package sae.core.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
@@ -23,12 +19,10 @@ public class CursoRealizado extends PersistentObjectSupport implements Comparabl
 	
 	
 	@NotNull 
-	@Temporal(TemporalType.DATE)
-	private Date anoInicio;
+	private int anoInicio;
 	
 	@NotNull 
-	@Temporal(TemporalType.DATE)
-	private Date anoTermino;
+	private int anoTermino;
 	
 	@NotNull
 	@ManyToOne
@@ -54,11 +48,11 @@ public class CursoRealizado extends PersistentObjectSupport implements Comparabl
 	public String getMatricula() { return matricula;}
 	public void setMatricula(String matricula) { this.matricula = matricula; }
 
-	public Date getAnoInicio() {	return anoInicio; }
-	public void setAnoInicio(Date anoInicio) {	this.anoInicio = anoInicio;	}
+	public int getAnoInicio() {	return anoInicio; }
+	public void setAnoInicio(int anoInicio) {	this.anoInicio = anoInicio;	}
 
-	public Date getAnoTermino() {	return anoTermino;	}
-	public void setAnoTermino(Date anoTermino) { this.anoTermino = anoTermino;	}
+	public int getAnoTermino() {	return anoTermino;	}
+	public void setAnoTermino(int anoTermino) { this.anoTermino = anoTermino;	}
 
 	public Curso getCurso() { return curso;	}
 	public void setCurso(Curso curso) {	this.curso = curso;	}

@@ -245,29 +245,14 @@
 					
 					
 					<li>
-						<p:commandLink  action="#{manageAdministradorControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageAdministrador.title']}"  />
+						<p:commandLink  action="#{manageSugestaoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageSugestao.title']}"  />
 					</li>
 					<li>
-						<p:commandLink action="#{manageCursoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageCurso.title']}"  />
-					</li>
-					<li>
-						<p:commandLink  action="#{manageAssunto_InteresseControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageAssunto_Interesse.title']}"  />
-					</li>
-					<li>
-						<p:commandLink action="#{manageEgressoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageEgresso.title']}"  />
-					</li>
-					<li>
-						<p:commandLink  action="#{manageSeminarioControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageSeminario.title']}"  />
+						<p:commandLink action="#{manageEscolaridadeControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageEscolaridade.title']}"  />
 					</li>
 					
 					
 					
-					
-					<li class="treeview"><a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-						<ul class="treeview-menu">
-							<li><a href="#">Link in level 2</a></li>
-							<li><a href="#">Link in level 2</a></li>
-						</ul></li>
 				</ul>
 				<!-- /.sidebar-menu -->
 			</section>

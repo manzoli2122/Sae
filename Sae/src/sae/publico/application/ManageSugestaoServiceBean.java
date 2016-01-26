@@ -7,28 +7,27 @@ import javax.ejb.Stateless;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.application.CrudServiceBean;
-import sae.publico.domain.Depoimento;
-import sae.publico.persistence.DepoimentoDAO;
+import sae.publico.domain.Sugestao;
+import sae.publico.persistence.SugestaoDAO;
 
 @Stateless
 @DeclareRoles({"Admin", "egresso"})
 @RolesAllowed({ "egresso", "Admin" })
-public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> implements ManageDepoimentoService{
+public class ManageSugestaoServiceBean extends CrudServiceBean<Sugestao> implements ManageSugestaoService{
 
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private DepoimentoDAO depoimentoDAO;
-	
+	private SugestaoDAO sugestaoDAO;
 	
 	@Override
-	public BaseDAO<Depoimento> getDAO() {
-		return depoimentoDAO;
+	public BaseDAO<Sugestao> getDAO() {
+		return sugestaoDAO;
 	}
 
 	@Override
-	protected Depoimento createNewEntity() {
-		return new Depoimento();
+	protected Sugestao createNewEntity() {
+		return new Sugestao();
 	}
 
 }

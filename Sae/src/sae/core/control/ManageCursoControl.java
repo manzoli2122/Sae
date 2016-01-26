@@ -2,6 +2,7 @@ package sae.core.control;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.convert.Converter;
 import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
@@ -19,6 +20,11 @@ public class ManageCursoControl extends CrudController<Curso> {
 	@EJB
 	private ManageCursoService manageCursoService;
 
+	
+	
+	public Converter getCursoConverter() {
+		return manageCursoService.getCursoConverter();
+	}
 	
 	/*   CONSTRUTOR DA CLASSE */
 	public ManageCursoControl(){

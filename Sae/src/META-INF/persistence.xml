@@ -9,7 +9,7 @@
 		<class>sae.core.domain.Curso</class>
 		<class>sae.core.domain.Assunto_Interesse</class>
 		<class>sae.core.domain.Historico_Egresso</class>
-		<class>sae.core.domain.Escolaridade</class>
+		<class>sae.publico.domain.Escolaridade</class>
 		<class>sae.publico.domain.Depoimento</class>
 		<class>sae.publico.domain.Sugestao</class>
 		<class>sae.core.domain.Seminario</class>
