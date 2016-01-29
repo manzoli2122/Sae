@@ -2,6 +2,7 @@ package sae.core.application;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -14,8 +15,12 @@ import javax.servlet.http.HttpSession;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.MultiplePersistentObjectsFoundException;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.PersistentObjectNotFoundException;
 import sae.core.domain.Administrador;
+import sae.core.domain.Curso;
+import sae.core.domain.CursoRealizado;
+import sae.core.domain.Curso_;
 import sae.core.domain.Egresso;
 import sae.core.persistence.AdministradorDAO;
+import sae.core.persistence.CursoRealizadoDAO;
 import sae.core.persistence.EgressoDAO;
 
 @SessionScoped
@@ -44,11 +49,36 @@ public class SessionServiceBean implements SessionService{
 	@EJB        
 	private EgressoDAO egressoDAO;
 	
+	
+	@EJB        
+	private CursoRealizadoDAO cursoRealizadoDAO;
+	
+	
+	
+	
 	private String decorator;
 	
 	private Administrador admin;
 	
 	private Egresso egresso;
+	
+	
+	
+	
+	@Override
+	public List<CursoRealizado> getCursoRealizado() {
+		
+		return cursoRealizadoDAO.retrieveMyCursos(egresso);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	@Override

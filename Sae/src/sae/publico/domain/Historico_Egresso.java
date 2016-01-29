@@ -1,4 +1,4 @@
-package sae.core.domain;
+package sae.publico.domain;
 
 import java.util.Date;
 
@@ -9,6 +9,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
+import sae.core.domain.Egresso;
+import sae.core.domain.Faixa_Salarial;
 
 
 

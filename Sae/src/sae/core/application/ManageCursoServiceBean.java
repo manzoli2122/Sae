@@ -1,6 +1,7 @@
 package sae.core.application;
 
 import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -29,6 +30,7 @@ public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements Ma
 	
 	
 	@Override
+	@PermitAll
 	public Converter getCursoConverter() {
 		if (cursoConverter == null) 
 			cursoConverter = new PersistentObjectConverterFromId<Curso>(cursoDAO);

@@ -22,7 +22,7 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	
 	/*   CONSTRUTOR DA CLASSE */
 	public ManageDepoimentoControl(){
-		 viewPath = "/core/manageDepoimento/";
+		 viewPath = "/public/manageDepoimento/";
 	     bundleName = "msgs";
 	}
 	

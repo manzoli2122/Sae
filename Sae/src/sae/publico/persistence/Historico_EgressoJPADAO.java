@@ -1,14 +1,14 @@
-package sae.core.persistence;
-
+package sae.publico.persistence;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
-import sae.core.domain.Curso;
+import sae.publico.domain.Historico_Egresso;
 
 @Stateless
-public class CursoJPADAO extends BaseJPADAO<Curso> implements CursoDAO {
+public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> implements Historico_EgressoDAO{
 
 	private static final long serialVersionUID = 1L;
 
@@ -17,15 +17,13 @@ public class CursoJPADAO extends BaseJPADAO<Curso> implements CursoDAO {
 	
 	
 	@Override
-	public Class<Curso> getDomainClass() {
-		return Curso.class;
+	public Class<Historico_Egresso> getDomainClass() {
+		return Historico_Egresso.class;
 	}
 
 	@Override
 	protected EntityManager getEntityManager() {
 		return entityManager;
 	}
-	
-	
-	
+
 }

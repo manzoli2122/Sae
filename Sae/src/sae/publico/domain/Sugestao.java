@@ -3,6 +3,7 @@ package sae.publico.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
@@ -21,7 +22,6 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	private String conteudo;
 	
 	/* NOME DO USUARIO */
-	@NotNull
 	private String resposta;	
 	
 	/* NOME DO USUARIO */
@@ -30,10 +30,12 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	
 	/* NOME DO USUARIO */
 	@NotNull
+	@ManyToOne
 	private Egresso autor;
 	
 	/* NOME DO USUARIO */
 	@NotNull
+	@ManyToOne
 	private Curso curso;
 	
 	

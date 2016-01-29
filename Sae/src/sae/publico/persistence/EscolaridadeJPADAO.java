@@ -1,8 +1,6 @@
 package sae.publico.persistence;
 
 import java.util.List;
-import java.util.logging.Level;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,7 +9,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
-import sae.core.domain.Administrador_;
 import sae.core.domain.Egresso;
 import sae.publico.domain.Escolaridade;
 import sae.publico.domain.Escolaridade_;

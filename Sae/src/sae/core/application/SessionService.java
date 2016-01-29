@@ -1,10 +1,12 @@
 package sae.core.application;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.Local;
 
 import sae.core.domain.Administrador;
+import sae.core.domain.CursoRealizado;
 import sae.core.domain.Egresso;
 
 @Local
@@ -23,5 +25,7 @@ public interface SessionService extends Serializable{
 	Administrador getAdmin();
 
 	Egresso getEgresso();
+
+	List<CursoRealizado> getCursoRealizado();
 
 }

@@ -7,29 +7,28 @@ import javax.ejb.Stateless;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.application.CrudServiceBean;
-import sae.publico.domain.Sugestao;
-import sae.publico.persistence.SugestaoDAO;
+import sae.publico.domain.Historico_Egresso;
+import sae.publico.persistence.Historico_EgressoDAO;
 
 @Stateless
 @DeclareRoles({"Admin", "egresso"})
 @RolesAllowed({ "egresso", "Admin" })
-public class ManageSugestaoServiceBean extends CrudServiceBean<Sugestao> implements ManageSugestaoService{
+public class ManageHistoricoServiceBean extends CrudServiceBean<Historico_Egresso> implements ManageHistoricoService{
 
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private SugestaoDAO sugestaoDAO;
+	private Historico_EgressoDAO historico_EgressoDAO;
 	
-
 	
 	@Override
-	public BaseDAO<Sugestao> getDAO() {
-		return sugestaoDAO;
+	public BaseDAO<Historico_Egresso> getDAO() {
+		return historico_EgressoDAO;
 	}
 
 	@Override
-	protected Sugestao createNewEntity() {
-		return new Sugestao();
+	protected Historico_Egresso createNewEntity() {
+		return new Historico_Egresso();
 	}
 
 }
