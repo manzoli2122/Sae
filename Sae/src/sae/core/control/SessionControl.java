@@ -1,5 +1,7 @@
 package sae.core.control;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -7,6 +9,7 @@ import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.controller.JSFController;
 import sae.core.application.SessionService;
 import sae.core.domain.Administrador;
+import sae.core.domain.CursoRealizado;
 import sae.core.domain.Egresso;
 
 @Named
@@ -19,6 +22,10 @@ public class SessionControl extends JSFController{
 	@EJB
 	private SessionService sessionService;
 
+	public List<CursoRealizado> getCursoRealizado() {
+		return sessionService.getCursoRealizado();
+	}
+	
 	
 	
 	public String getDecorator() { return sessionService.getDecorator(); }

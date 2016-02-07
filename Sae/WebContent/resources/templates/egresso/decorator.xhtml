@@ -19,6 +19,8 @@
 	<title><h:outputText value="SAE :: " /> <ui:insert name="title" /></title>
 	<ui:insert name="head" />
 </h:head>
+
+
 <h:body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 
@@ -139,11 +141,6 @@
 						
 						
 						
-						
-						
-						
-						
-						
 						<!-- FIXME: hidden - User Account Menu -->
 						<h:panelGroup rendered="#{sessionControl.loggedIn}">
 						<li class="dropdown user user-menu">
@@ -252,6 +249,10 @@
 					</li>
 					<li>
 						<p:commandLink action="#{manageDepoimentoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageDepoimento.title']}"  />
+					</li>
+					
+					<li>
+						<p:commandLink action="#{manageHistoricoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageHistorico.title']}"  />
 					</li>
 					
 					

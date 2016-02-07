@@ -1,11 +1,14 @@
 package sae.publico.control;
 
+import java.util.Date;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
+import sae.core.application.SessionService;
 import sae.publico.application.ManageDepoimentoService;
 import sae.publico.domain.Depoimento;
 
@@ -18,6 +21,8 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	@EJB
 	private ManageDepoimentoService  manageDepoimentoService ;
 	
+	@EJB
+	private SessionService sessionService;
 	
 	
 	/*   CONSTRUTOR DA CLASSE */
@@ -33,7 +38,11 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 
 	@Override
 	protected Depoimento createNewEntity() {
-		return new Depoimento();
+		Depoimento depoimento = new Depoimento();
+		depoimento.setData_envio(new Date());
+		depoimento.setAutor(sessionService.getEgresso());
+		depoimento.setAnonimo(false);
+		return depoimento;
 	}
 
 	@Override

@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 import sae.core.domain.Egresso;
-import sae.core.domain.Faixa_Salarial;
 
 
 
@@ -52,7 +51,8 @@ public class Historico_Egresso  extends PersistentObjectSupport implements Compa
 	@NotNull
 	private Faixa_Salarial faixa_salarial;
 	
-	
+	@NotNull
+	private Area_Atuacao  area_atuacao ;
 	
 	
 	@Override
@@ -92,6 +92,9 @@ public class Historico_Egresso  extends PersistentObjectSupport implements Compa
 
 	public Faixa_Salarial getFaixa_salarial() { return faixa_salarial; }
 	public void setFaixa_salarial(Faixa_Salarial faixa_salarial) { this.faixa_salarial = faixa_salarial;}
+
+	public Area_Atuacao getArea_atuacao() { return area_atuacao; }
+	public void setArea_atuacao(Area_Atuacao area_atuacao) { this.area_atuacao = area_atuacao; }
 		
 	
 }

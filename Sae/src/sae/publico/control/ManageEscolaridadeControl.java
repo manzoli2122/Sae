@@ -1,6 +1,5 @@
 package sae.publico.control;
 
-import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;

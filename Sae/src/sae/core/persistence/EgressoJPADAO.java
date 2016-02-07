@@ -54,8 +54,7 @@ public class EgressoJPADAO extends BaseJPADAO<Egresso> implements EgressoDAO{
 		}
 		catch (NonUniqueResultException e) {
 			throw new MultiplePersistentObjectsFoundException(e, getDomainClass(), email);
-		}
-		
+		}	
 	}
 
 }

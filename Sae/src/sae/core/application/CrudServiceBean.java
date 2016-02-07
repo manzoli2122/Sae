@@ -16,7 +16,7 @@ import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject;
 
 
 @Stateless
-@DeclareRoles({"Admin", "egresso" , "cliente"})
+@DeclareRoles({"Admin", "egresso" , "guest"})
 @RolesAllowed({"Admin" , "egresso"})
 public abstract class CrudServiceBean<T extends PersistentObject>  implements CrudService<T>{
 

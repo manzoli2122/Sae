@@ -1,5 +1,7 @@
 package sae.core.application;
 
+import java.util.List;
+
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
@@ -14,8 +16,10 @@ import sae.core.persistence.CursoDAO;
 
 
 @Stateless
-@DeclareRoles({"Admin", "egresso"})
+@DeclareRoles({"Admin", "egresso" , "guest"})
 @RolesAllowed({ "Admin" })
+
+//DefaultUnauthenticatedPrincipal
 public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements ManageCursoService{
 
 	
@@ -37,6 +41,18 @@ public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements Ma
 		return cursoConverter;
 	}
 	
+	@Override
+	@PermitAll
+	public long count() {
+		return super.count();
+	}
+	
+	
+	@Override
+	@PermitAll
+	public List<Curso> list(int... interval) {
+		return super.list(interval);
+	}
 	
 	
 	@Override

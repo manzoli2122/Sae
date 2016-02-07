@@ -42,7 +42,7 @@
 									  converter="#{manageCursoControl.cursoConverter}"  required="true" 
 									  disabled="#{manageSugestaoControl.readOnly}">
 						<f:selectItem itemLabel="Selecione o Curso" itemValue="" />
-						<f:selectItems value="#{manageSugestaoControl.cursoRealizado}" var="curso" itemLabel="#{curso.curso.nome}" itemValue="#{curso.curso}" />
+						<f:selectItems value="#{sessionControl.cursoRealizado}" var="curso" itemLabel="#{curso.curso.nome}" itemValue="#{curso.curso}" />
 						<p:ajax update="cursoField" />
 					</h:selectOneMenu>	
 				</ui:decorate>
