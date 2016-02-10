@@ -4,7 +4,6 @@ import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import br.ufes.inf.nemo.util.ejb3.application.CrudServiceBean;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.domain.Assunto_Interesse;
 import sae.core.persistence.Assunto_InteresseDAO;
