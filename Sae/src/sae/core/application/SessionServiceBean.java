@@ -15,9 +15,7 @@ import javax.servlet.http.HttpSession;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.MultiplePersistentObjectsFoundException;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.PersistentObjectNotFoundException;
 import sae.core.domain.Administrador;
-import sae.core.domain.Curso;
 import sae.core.domain.CursoRealizado;
-import sae.core.domain.Curso_;
 import sae.core.domain.Egresso;
 import sae.core.persistence.AdministradorDAO;
 import sae.core.persistence.CursoRealizadoDAO;
@@ -27,8 +25,10 @@ import sae.core.persistence.EgressoDAO;
 @Stateful
 public class SessionServiceBean implements SessionService{
 
-	
 	private static final long serialVersionUID = 1L;
+	
+	private static final Logger logger = Logger.getLogger(SessionServiceBean.class.getCanonicalName());
+	
 	
 	private static final String DEFAULT_DECORATOR_NAME = "default";
 	
@@ -36,7 +36,6 @@ public class SessionServiceBean implements SessionService{
 	
 	private static final String EGRESSO_DECORATOR_NAME = "egresso";
 
-	private static final Logger logger = Logger.getLogger(SessionServiceBean.class.getCanonicalName());
 	
 	@Resource 	private SessionContext sessionC;
 	
@@ -48,7 +47,6 @@ public class SessionServiceBean implements SessionService{
 	
 	@EJB        
 	private EgressoDAO egressoDAO;
-	
 	
 	@EJB        
 	private CursoRealizadoDAO cursoRealizadoDAO;
@@ -67,16 +65,8 @@ public class SessionServiceBean implements SessionService{
 	
 	@Override
 	public List<CursoRealizado> getCursoRealizado() {
-		
 		return cursoRealizadoDAO.retrieveMyCursos(egresso);
-		
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -95,6 +85,9 @@ public class SessionServiceBean implements SessionService{
 		}
 		return decorator;
 	}
+	
+	
+	
 	
 	
 	

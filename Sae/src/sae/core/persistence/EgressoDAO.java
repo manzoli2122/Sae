@@ -1,5 +1,7 @@
 package sae.core.persistence;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
@@ -12,5 +14,7 @@ public interface EgressoDAO  extends BaseDAO<Egresso>{
 
 	Egresso retrieveByEmail(String email)
 			throws PersistentObjectNotFoundException, MultiplePersistentObjectsFoundException;
+
+	List<Egresso> findByName(String name);
 
 }

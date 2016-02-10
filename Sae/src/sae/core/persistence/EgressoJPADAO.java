@@ -1,5 +1,7 @@
 package sae.core.persistence;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -12,8 +14,6 @@ import javax.persistence.criteria.Root;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.MultiplePersistentObjectsFoundException;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.PersistentObjectNotFoundException;
-import sae.core.domain.Administrador;
-import sae.core.domain.Administrador_;
 import sae.core.domain.Egresso;
 import sae.core.domain.Egresso_;
 
@@ -57,4 +57,26 @@ public class EgressoJPADAO extends BaseJPADAO<Egresso> implements EgressoDAO{
 		}	
 	}
 
+	
+	
+	
+	
+	@Override
+	public List<Egresso> findByName(String name) {
+		
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Egresso> cq = cb.createQuery(Egresso.class);
+		Root<Egresso> root = cq.from(Egresso.class);
+
+		cq.where(cb.like(cb.lower(root.get(Egresso_.nome)), name.toLowerCase() + "%"));
+		cq.orderBy(cb.asc(root.get(Egresso_.nome)));
+
+		List<Egresso> result = entityManager.createQuery(cq).getResultList();
+		return result;
+	}
+	
+	
+	
+	
+	
 }

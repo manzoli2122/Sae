@@ -1,15 +1,14 @@
 package sae.core.control;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import br.ufes.inf.nemo.util.ejb3.application.CrudException;
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.application.CrudValidationError;
@@ -17,6 +16,8 @@ import br.ufes.inf.nemo.util.ejb3.application.filters.LikeFilter;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.core.application.ManageEgressoService;
 import sae.core.domain.Egresso;
+
+
 
 @Named
 @SessionScoped
@@ -32,6 +33,18 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	
 	@EJB
 	private ManageEgressoService manageEgressoService;
+	
+	
+	private List<Egresso> lista;
+	
+	public List<Egresso> getLista() {
+		if(lista == null){
+			lista = manageEgressoService.getDAO().retrieveAll();
+		}
+		return lista; 
+	}
+
+	
 
 	
 	/*   CONSTRUTOR DA CLASSE */
@@ -71,6 +84,7 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 			prepEntity();
 			// Checks if we want to create or update the entity. Validates the operation first and stops in case of errors.
 			try {
+				//salva e continua o egresso selecionado para cadastrar cursos realizado
 				if (selectedEntity.getId() == null) {
 					getCrudService().validateCreate(selectedEntity);
 					getCrudService().create(selectedEntity);
@@ -125,7 +139,4 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	}
 	
 	
-	
-	
-
 }

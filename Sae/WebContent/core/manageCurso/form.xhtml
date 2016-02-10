@@ -65,7 +65,7 @@
 								<ui:param name="label" value="#{msgs['crud.text.coordenador']}" />
 								<h:selectOneMenu pt:class="form-control"  id="coordenador" disabled="#{manageCursoControl.readOnly}"
 												 value="#{manageCursoControl.selectedEntity.coordenador}" 
-												 converter="#{manageAdministradorControl.administradorConverter}" >
+												 converter="#{coreControl.administradorConverter}" >
 									<f:selectItem itemLabel="#{msgs['manageCursoControl.form.assunto.blankOption']}" itemValue="" />
 									<f:selectItems value="#{manageAdministradorControl.entities}" var="coordenador" 
 												   itemLabel="#{coordenador.nome}" itemValue="#{coordenador}" />
