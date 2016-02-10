@@ -86,7 +86,7 @@
 					<ui:param name="fieldName" value="form:assunto" />
 					<ui:param name="label" value="#{msgs['crud.text.assunto']}" />
 					<h:selectOneMenu pt:class="form-control"  id="assunto" value="#{manageSeminarioControl.selectedEntity.assunto_interesse}" 
-									 converter="#{manageAssunto_InteresseControl.assuntoConverter}" required="true" 
+									 converter="#{coreControl.assuntoConverter}" required="true" 
 									 disabled="#{manageSeminarioControl.readOnly}">
 						<f:selectItem itemLabel="#{msgs['manageSeminario.form.assunto.blankOption']}" itemValue="" />
 						<f:selectItems value="#{manageAssunto_InteresseControl.entities}" var="assunto" itemLabel="#{assunto.nome}" 

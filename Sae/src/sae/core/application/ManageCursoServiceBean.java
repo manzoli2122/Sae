@@ -1,68 +1,75 @@
 package sae.core.application;
 
 import java.util.List;
-
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.faces.convert.Converter;
-
-import br.ufes.inf.nemo.util.ejb3.controller.PersistentObjectConverterFromId;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.domain.Curso;
 import sae.core.persistence.CursoDAO;
 
 
+
+/**
+ * Stateless session bean implementing the "Manage Curso" use case component. See the implemented interface
+ * documentation for details.
+ * 
+ * @author Bruno Manzoli (manzoli2122@gmail.com)
+ * @see sae.core.application.ManageAdministradorService
+ */
 @Stateless
 @DeclareRoles({"Admin", "egresso" , "guest"})
 @RolesAllowed({ "Admin" })
-
-//DefaultUnauthenticatedPrincipal
 public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements ManageCursoService{
 
 	
+	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 	
-	private PersistentObjectConverterFromId<Curso> cursoConverter;
-	
+	/** The DAO for Curso objects. */
 	@EJB
 	private CursoDAO cursoDAO;
 
 	
 	
 	
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.application.CrudService#getDAO() */
 	@Override
-	@PermitAll
-	public Converter getCursoConverter() {
-		if (cursoConverter == null) 
-			cursoConverter = new PersistentObjectConverterFromId<Curso>(cursoDAO);
-		return cursoConverter;
+	public BaseDAO<Curso> getDAO() {
+		return cursoDAO;
+	}
+
+	
+	
+	/** @see sae.core.application.CrudServiceBean#createNewEntity() */
+	@Override
+	protected Curso createNewEntity() {
+		return new Curso();
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	// FALTA MEXER AQUI
 	@Override
 	@PermitAll
 	public long count() {
 		return super.count();
 	}
 	
-	
 	@Override
 	@PermitAll
 	public List<Curso> list(int... interval) {
 		return super.list(interval);
-	}
-	
-	
-	@Override
-	public BaseDAO<Curso> getDAO() {
-		return cursoDAO;
-	}
-
-	@Override
-	protected Curso createNewEntity() {
-		return new Curso();
 	}
 	
 	@Override
@@ -72,10 +79,5 @@ public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements Ma
 			super.update(entity);
 		}
 	}
-
-	
-
-	
-
 
 }

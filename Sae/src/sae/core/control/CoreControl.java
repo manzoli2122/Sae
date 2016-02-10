@@ -10,8 +10,10 @@ import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.controller.PersistentObjectConverterFromId;
 import sae.core.domain.Administrador;
 import sae.core.domain.Assunto_Interesse;
+import sae.core.domain.Curso;
 import sae.core.persistence.AdministradorDAO;
 import sae.core.persistence.Assunto_InteresseDAO;
+import sae.core.persistence.CursoDAO;
 
 
 /**
@@ -45,6 +47,11 @@ public class CoreControl  implements Serializable {
 	private Assunto_InteresseDAO assunto_InteresserDAO;
 	
 	
+	/** The DAO for Curso objects. */
+	@EJB
+	private CursoDAO cursoDAO;
+	
+	
 	
 	/** JSF Converter for Administrador objects. */
 	private PersistentObjectConverterFromId<Administrador> administradorConverter;
@@ -53,6 +60,9 @@ public class CoreControl  implements Serializable {
 	/** JSF Converter for Assunto_Interesse objects. */
 	private PersistentObjectConverterFromId<Assunto_Interesse> assuntoConverter;
 	
+	
+	/** JSF Converter for Curso objects. */
+	private PersistentObjectConverterFromId<Curso> cursoConverter;
 
 	
 	
@@ -61,9 +71,10 @@ public class CoreControl  implements Serializable {
 	/** Getter for AdministradorConverter */
 	public Converter getAdministradorConverter() {
 		// Lazily create the converter.
-		if (administradorConverter == null) 
+		if (administradorConverter == null) {
 			logger.log(Level.FINEST, "Creating a administrador converter ....... ");
 			administradorConverter = new PersistentObjectConverterFromId<Administrador>(administradorDAO);
+		}
 		return administradorConverter;
 	}
 	
@@ -71,11 +82,23 @@ public class CoreControl  implements Serializable {
 	
 	/** Getter for Assunto_InteresseConverter */
 	public Converter getAssuntoConverter() {
-		if (assuntoConverter == null) 
+		if (assuntoConverter == null) {
+			logger.log(Level.FINEST, "Creating a assunto_Interesse converter ....... ");
 			assuntoConverter = new PersistentObjectConverterFromId<Assunto_Interesse>(assunto_InteresserDAO);
+		}
 		return assuntoConverter;
 	}
 	
+	
+	
+	/** Getter for CursoConverter */
+	public Converter getCursoConverter() {
+		if (cursoConverter == null) {
+			logger.log(Level.FINEST, "Creating a curso converter ....... ");
+			cursoConverter = new PersistentObjectConverterFromId<Curso>(cursoDAO);
+		}	
+		return cursoConverter;
+	}
 	
 	
 	

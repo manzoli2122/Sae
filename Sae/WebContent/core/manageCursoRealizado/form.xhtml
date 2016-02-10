@@ -57,7 +57,7 @@
 					<ui:param name="fieldName" value="form:curso" />
 					<ui:param name="label" value="#{msgs['crud.text.curso']}" />
 					<h:selectOneMenu pt:class="form-control"  id="curso" value="#{manageCursoRealizadoControl.selectedEntity.curso}" 
-									 required="true" converter="#{manageCursoControl.cursoConverter}"  
+									 required="true" converter="#{coreControl.cursoConverter}"  
 									 disabled="#{manageCursoRealizadoControl.readOnly}">
 						<f:selectItem itemLabel="#{msgs['manageCursoRealizadoControl.form.curso.blankOption']}" itemValue="" />
 						<f:selectItems value="#{manageCursoControl.entities}" var="curso" itemLabel="#{curso.nome}" itemValue="#{curso}"/>
