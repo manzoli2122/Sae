@@ -9,7 +9,9 @@ import javax.faces.convert.Converter;
 import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.controller.PersistentObjectConverterFromId;
 import sae.core.domain.Administrador;
+import sae.core.domain.Assunto_Interesse;
 import sae.core.persistence.AdministradorDAO;
+import sae.core.persistence.Assunto_InteresseDAO;
 
 
 /**
@@ -32,13 +34,24 @@ public class CoreControl  implements Serializable {
 	private static final Logger logger = Logger.getLogger(CoreControl.class.getCanonicalName());
 	
 	
+	
 	/** The DAO for Administrador objects. */
 	@EJB    	
 	private AdministradorDAO administradorDAO;
 	
 	
+	/** The DAO for Assunto_Interesse objects. */
+	@EJB
+	private Assunto_InteresseDAO assunto_InteresserDAO;
+	
+	
+	
 	/** JSF Converter for Administrador objects. */
 	private PersistentObjectConverterFromId<Administrador> administradorConverter;
+	
+	
+	/** JSF Converter for Assunto_Interesse objects. */
+	private PersistentObjectConverterFromId<Assunto_Interesse> assuntoConverter;
 	
 
 	
@@ -52,6 +65,15 @@ public class CoreControl  implements Serializable {
 			logger.log(Level.FINEST, "Creating a administrador converter ....... ");
 			administradorConverter = new PersistentObjectConverterFromId<Administrador>(administradorDAO);
 		return administradorConverter;
+	}
+	
+	
+	
+	/** Getter for Assunto_InteresseConverter */
+	public Converter getAssuntoConverter() {
+		if (assuntoConverter == null) 
+			assuntoConverter = new PersistentObjectConverterFromId<Assunto_Interesse>(assunto_InteresserDAO);
+		return assuntoConverter;
 	}
 	
 	
