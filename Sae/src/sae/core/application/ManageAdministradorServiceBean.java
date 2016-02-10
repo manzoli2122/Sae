@@ -3,70 +3,80 @@ package sae.core.application;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.faces.convert.Converter;
-
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
-
 import br.ufes.inf.nemo.util.ejb3.application.CrudException;
-import br.ufes.inf.nemo.util.ejb3.controller.PersistentObjectConverterFromId;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.domain.Administrador;
 import sae.core.domain.SaeConfiguracao;
 import sae.core.persistence.AdministradorDAO;
 
 
+
+/**
+ * Stateless session bean implementing the "Manage Administrador" use case component. See the implemented interface
+ * documentation for details.
+ * 
+ * @author Bruno Manzoli (manzoli2122@gmail.com)
+ * @see sae.core.application.ManageAdministradorService
+ */
 @Stateless
-@DeclareRoles({"Admin", "egresso"})
+@DeclareRoles({"Admin", "egresso", "guest"})
 @RolesAllowed({ "Admin" })
 public class ManageAdministradorServiceBean extends CrudServiceBean<Administrador> implements ManageAdministradorService{
 
 	
+	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 	
+	
+	/** The logger. */
 	private static final Logger logger = Logger.getLogger(ManageAdministradorServiceBean.class.getCanonicalName());
-		
+	
+	
+	/** The DAO for Administrador objects. */
 	@EJB    	
 	private AdministradorDAO administradorDAO;
 	
+	
+	/** The information singleton for the core module. */
 	@EJB    	
 	private CoreInformacao coreInformacao;
 	
-	private PersistentObjectConverterFromId<Administrador> administradorConverter;
 	
 	
 	
-	
+	/** @see br.ufes.inf.nemo.util.ejb3.application.CrudService#getDAO() */
 	@Override
 	public BaseDAO<Administrador> getDAO() {
 		return administradorDAO;
 	}
 
+	
+	
+	/** @see sae.core.application.CrudServiceBean#createNewEntity() */
 	@Override
 	protected Administrador createNewEntity() {
 		return new Administrador();
 	}
 	
-	@Override
-	public Converter getAdministradorConverter() {
-		if (administradorConverter == null) 
-			administradorConverter = new PersistentObjectConverterFromId<Administrador>(administradorDAO);
-		return administradorConverter;
-	}
 	
+	
+	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
 	public void validateCreate(Administrador entity) throws CrudException {
-		entity.setSenha("123");
-		
+		entity.setSenha("adm123");
 	}
 	
+	
+	
+	/** @see sae.core.application.CrudServiceBean#create()  */
 	@PermitAll
 	@Override
 	public void create(Administrador entity) {
@@ -77,6 +87,7 @@ public class ManageAdministradorServiceBean extends CrudServiceBean<Administrado
 	
 	@Override
 	public void sendEmailCadastro(Administrador entity){
+		logger.log(Level.INFO, "Send Email ......");
 		
 		String emailAddress = entity.getEmail();
 		emailAddress = "manzoli2122@gmail.com";
