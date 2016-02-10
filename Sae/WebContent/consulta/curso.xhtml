@@ -28,29 +28,25 @@
 		<h:form id="form" pt:class="form-horizontal">
 		
 		
-			<div class="form-group">
-			<p:commandLink pt:class="btn btn-block btn-info btn-social" action="#{consultaControl.faixa_salarial()}" rendered="#{sessionControl.systemInstalled}" value="Faixa Salarial"  />
-			</div>
-			<div class="form-group">	
-			 <a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.faixa_salarial()}" ><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>
-			</div>
-				
+			
 			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 				<div class="form-group">	
 					<div class="col-sm-4"/>
             		<div class="col-sm-3">
-            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.faixa_salarial()}" ><i class="fa  fa-file-text"></i> <h:outputText value="Faixa Salarial"/></a>
+            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.consulta_faixa_salarial()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Faixa Salarial"/></a>
 			
                		</div>
 				</div>
 			</ui:decorate>
 			
 			
+			
+			
 			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 				<div class="form-group">	
 					<div class="col-sm-4"/>
             		<div class="col-sm-3">
-            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.Reside()}" ><i class="fa  fa-file-text"></i> <h:outputText value="Residencia"/></a>
+            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.consulta_Residencia()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Residencia"/></a>
                		</div>
 				</div>
 			</ui:decorate>

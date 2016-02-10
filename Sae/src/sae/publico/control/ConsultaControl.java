@@ -7,7 +7,11 @@ import org.primefaces.model.chart.PieChartModel;
 import sae.core.domain.Curso;
 import sae.publico.application.ConsultaService;
 import sae.publico.domain.Faixa_Salarial;
+import sae.publico.domain.Historico_Egresso;
+
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +33,9 @@ public class ConsultaControl implements Serializable {
 	
 	private Curso curso;
 	
-	private PieChartModel faixaSalarial , residencia;
+	private PieChartModel faixaSalarial , residencia ;
+	
+	private List<Historico_Egresso>  historicos;
  
 	
 	
@@ -44,22 +50,48 @@ public class ConsultaControl implements Serializable {
 	public String getViewPath() {return viewPath;	}
 	
 	
+	public String list() {
+		
+		logger.log(Level.INFO, "LIST CONSULTA ");
+		return getViewPath() + "index.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	
+	
+	
+	
+	public String selectGrafico(){
+		historicos = consultaService.consultaHistoricos(curso);
+		return getViewPath() + "curso.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	
 	
 	
 	
 	// FUNCÕES DE FAIXA SALARIAL
 	
-	public String faixa_salarial() {
+	public String consulta_faixa_salarial() {
 		
 		faixaSalarial = new PieChartModel();
+		Iterator<Historico_Egresso> iterator = historicos.iterator();
 		Faixa_Salarial[] faixas = Faixa_Salarial.values();
+		int[] valor = new int[faixas.length] ;
+		while(iterator.hasNext()){
+			Faixa_Salarial ff = iterator.next().getFaixa_salarial();
+			for(int i = 0 ; i < faixas.length ; i++ ){
+				if(  ff.equals(faixas[i])  ){
+					valor[i]++;
+					break;
+				}
+			}
+		}
 		for(int i = 0 ; i < faixas.length ; i++ ){
-			faixaSalarial.set(faixas[i].getLabel(),consultaService.countFaixaSalarial(faixas[i], curso));
+			faixaSalarial.set(faixas[i].getLabel(),valor[i]);
 		}
 		faixaSalarial.setTitle("Faixa Salarial");
 		faixaSalarial.setLegendPosition("s");
-        //pieModel1.setFill(false);
-		faixaSalarial.setShowDataLabels(true);
+        faixaSalarial.setShowDataLabels(true);
 		faixaSalarial.setDiameter(250);
 		
 		return getViewPath() + "faixa.xhtml?faces-redirect=" + getFacesRedirect();
@@ -67,17 +99,30 @@ public class ConsultaControl implements Serializable {
 	
 	public PieChartModel getFaixaSalarial() {  return faixaSalarial;   }
 	
-	 
-	 
-
-	// FUNCÕES DE
 	
-	public String Reside() {
+	
+	
+	
+	
+	
+	
+	// FUNCÕES DE RESIDENCIA
+	
+	public String consulta_Residencia() {
 		
 		residencia = new PieChartModel();
-		
-		residencia.set("Reside no ES",consultaService.countReside(true, curso));
-		residencia.set("Não Reside no ES",consultaService.countReside(false, curso));
+		Iterator<Historico_Egresso> iterator = historicos.iterator();
+		int reside = 0, naoreside = 0;
+		while(iterator.hasNext()){
+			if(  iterator.next().getReside_no_ES()  ){
+				reside++;
+			}
+			else {
+				naoreside++;
+			}
+		}
+		residencia.set("Reside no ES",reside);
+		residencia.set("Não Reside no ES",naoreside);
 		
 		residencia.setTitle("Reside no Espirito Santo");
 		residencia.setLegendPosition("s");
@@ -100,27 +145,34 @@ public class ConsultaControl implements Serializable {
 	 
 	 
 	
-	public String list() {
-		//logger.log(Level.INFO, "Listing entities...");
-
-		// Clears the selection.
-		//selectedEntity = null;
-
-		// Gets the entity count.
-		//count();
-
-		// Checks if the index of the listing should be changed and reload the page.
-		//if (firstEntityIndex < 0) goFirst();
-		//else if (lastEntityIndex > entityCount) goLast();
-		//else retrieveEntities();
-
-		// Goes to the listing.
-		logger.log(Level.INFO, "LIST CONSULTA ");
-		return getViewPath() + "index.xhtml?faces-redirect=" + getFacesRedirect();
-	}
+	
 
 	public Curso getCurso() { return curso; }
 	public void setCurso(Curso curso) { this.curso = curso; }
 	
+	public int getNumeroEgreso() { return historicos.size(); }
+	
+	
+	
+	
+	/*
+	public String faixa_salarial() {
+		long tempoInicio = System.currentTimeMillis();
+		faixaSalarial = new PieChartModel();
+		Faixa_Salarial[] faixas = Faixa_Salarial.values();
+		for(int i = 0 ; i < faixas.length ; i++ ){
+			faixaSalarial.set(faixas[i].getLabel(),consultaService.countFaixaSalarial(faixas[i], curso));
+		}
+		faixaSalarial.setTitle("Faixa Salarial");
+		faixaSalarial.setLegendPosition("s");
+        //pieModel1.setFill(false);
+		faixaSalarial.setShowDataLabels(true);
+		faixaSalarial.setDiameter(250);
+		
+		System.out.println("Tempo Total: "+(System.currentTimeMillis()-tempoInicio));
+		
+		return getViewPath() + "faixa.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	*/
 	
 }
