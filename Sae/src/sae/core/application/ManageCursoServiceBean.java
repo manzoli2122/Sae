@@ -68,6 +68,13 @@ public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements Ma
 	
 	@Override
 	@PermitAll
+	public void authorize() {
+		// TODO Auto-generated method stub
+		super.authorize();
+	}
+	
+	@Override
+	@PermitAll
 	public List<Curso> list(int... interval) {
 		return super.list(interval);
 	}
