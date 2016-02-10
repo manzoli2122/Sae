@@ -19,7 +19,7 @@
     	
     	
     	<h:form>
-    		<p:commandButton  action="#{installSystemControl.begin()}" rendered="#{not sessionControl.systemInstalled}" value="#{msgs['menu.installSystem.install']}"  />
+    		<p:commandButton  action="#{installSystemControl.begin()}" rendered="#{not coreInfo.systemInstalled}" value="#{msgs['menu.installSystem.install']}"  />
 		</h:form>
 			
 			

@@ -30,8 +30,6 @@ public class SessionControl extends JSFController{
 	
 	public String getDecorator() { return sessionService.getDecorator(); }
 	
-	public boolean isSystemInstalled(){ return sessionService.isSystemInstalled(); }
-	
 	public boolean isLoggedIn() { return sessionService.isLoggedIn();}
 	
 	public Administrador getAdmin(){ return sessionService.getAdmin(); }

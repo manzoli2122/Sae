@@ -246,23 +246,23 @@
 					
 					
 					<li>
-						<p:commandLink  action="#{manageAdministradorControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageAdministrador.title']}"  />
+						<p:commandLink  action="#{manageAdministradorControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageAdministrador.title']}"  />
 					</li>
 					<li>
-						<p:commandLink action="#{manageCursoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageCurso.title']}"  />
+						<p:commandLink action="#{manageCursoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageCurso.title']}"  />
 					</li>
 					<li>
-						<p:commandLink  action="#{manageAssunto_InteresseControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageAssunto_Interesse.title']}"  />
+						<p:commandLink  action="#{manageAssunto_InteresseControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageAssunto_Interesse.title']}"  />
 					</li>
 					<li>
-						<p:commandLink action="#{manageEgressoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageEgresso.title']}"  />
+						<p:commandLink action="#{manageEgressoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageEgresso.title']}"  />
 					</li>
 					<li>
-						<p:commandLink  action="#{manageSeminarioControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageSeminario.title']}"  />
+						<p:commandLink  action="#{manageSeminarioControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageSeminario.title']}"  />
 					</li>
 					
 					<li>
-						<p:commandLink  action="#{manageCursoRealizadoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageCursoRealizado.title']}"  />
+						<p:commandLink  action="#{manageCursoRealizadoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageCursoRealizado.title']}"  />
 					</li>
 					
 					<li><a href="#{facesContext.externalContext.requestContextPath}/login.faces"><i class="fa fa-home"></i> Login</a></li>
