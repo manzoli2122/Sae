@@ -1,6 +1,7 @@
 package sae.core.application;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.util.List;
 import java.util.logging.Level;
@@ -12,6 +13,8 @@ import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import br.ufes.inf.nemo.util.TextUtils;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.MultiplePersistentObjectsFoundException;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.PersistentObjectNotFoundException;
 import sae.core.domain.Administrador;
@@ -97,6 +100,21 @@ public class SessionServiceBean implements SessionService{
 			getCurrentUser();
 		return admin;
 	}  
+	
+	
+	
+	@Override
+	public boolean isPasswordDefault(){
+		if(admin != null){
+			try {
+				String senha = TextUtils.produceMd5Hash(coreInformacao.getDefaultSenhaAdmin());
+				if(admin.getSenha().equals(senha))
+					return true;
+			} catch (NoSuchAlgorithmException e) {}
+			
+		}
+		return false;
+	}
 	
 	
 	

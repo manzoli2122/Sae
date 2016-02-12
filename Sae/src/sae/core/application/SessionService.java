@@ -69,6 +69,9 @@ public interface SessionService extends Serializable{
 	 */
 	Egresso getEgresso();
 
+
+	boolean isPasswordDefault();
+
 	
 	
 
