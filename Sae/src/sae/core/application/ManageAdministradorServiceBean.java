@@ -70,8 +70,9 @@ public class ManageAdministradorServiceBean extends CrudServiceBean<Administrado
 	
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
+	@PermitAll
 	public void validateCreate(Administrador entity) throws CrudException {
-		entity.setSenha("adm123");
+		entity.setSenha(coreInformacao.getDefaultSenhaAdmin());
 	}
 	
 	

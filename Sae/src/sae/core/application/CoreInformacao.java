@@ -39,6 +39,9 @@ public class CoreInformacao implements Serializable {
 	private SaeConfiguracao currentConfig;
 	
 	
+	private static final String DEFAULT_SENHA_ADMIN = "adm123";
+	
+	
 	/** Indicates if the system is properly installed. */
 	private Boolean systemInstalled;
 
@@ -63,6 +66,11 @@ public class CoreInformacao implements Serializable {
 			}
 		}
 		return systemInstalled;
+	}
+
+
+	public String getDefaultSenhaAdmin() {
+		return DEFAULT_SENHA_ADMIN;
 	}
 	
 	

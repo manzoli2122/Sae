@@ -31,6 +31,29 @@ public class SessionControl extends JSFController{
 	private SessionService sessionService;
 
 	
+	private String senha;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public String formAtualizarSenha() { 
+		return "/atualizarSenha.xhtml?faces-redirect=true"; 
+	}
+	
+	
+	
+	
+	public String atualizarSenha() { 
+		sessionService.atualizarSenha(senha);
+		return "/index.xhtml?faces-redirect=true"; 
+	}
 	
 	
 	
@@ -85,6 +108,12 @@ public class SessionControl extends JSFController{
 		sessionService.logout();
 		return "login.faces?faces-redirect=true";
 	}
+
+
+
+
+	public String getSenha() { 	return senha; }
+	public void setSenha(String senha) { this.senha = senha; }
 	
 
 	

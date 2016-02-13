@@ -4,81 +4,94 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
                 template="/resources/templates/#{sessionControl.decorator}/decorator.xhtml">
 
 
-	<ui:define name="title"><h:outputText value="#{msgs['core.installSystem.title']}" /></ui:define>
+<ui:define name="title"><h:outputText value="#{msgs['core.installSystem.title.etapa1']}" /></ui:define>
+
+<ui:define name="breadcrumb">
+		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
+		<li class="active">
+			<h:outputText value="#{msgs['core.installSystem.title']}" />
+		</li>
+</ui:define>
 	
-	<ui:define name="body">
+<ui:define name="body">
 		
-		<h:panelGroup id="systemInstalled" rendered="#{coreInfo.systemInstalled}">
-			<p><h:outputText value="#{msgs['core.installSystem.text.systemAlreadyInstalled']}" /></p>
-		</h:panelGroup>
+	<h:panelGroup id="systemInstalled" rendered="#{coreInfo.systemInstalled}">
+		<p><h:outputText value="#{msgs['core.installSystem.text.systemAlreadyInstalled']}" /></p>
+	</h:panelGroup>
 
-		<h:panelGroup id="systemNotInstalled" rendered="#{! coreInfo.systemInstalled}">
+	<h:panelGroup id="systemNotInstalled" rendered="#{! coreInfo.systemInstalled}">
 			
 
-			<ui:decorate template="/resources/templates/default/form.xhtml">
-				<ui:param name="formName" value="#{msgs['core.installSystem.field.config.formulario.admin']}" />
-				<h:form id="form" pt:class="form-horizontal">
-					<p:focus />
-					
-					<h:panelGroup id="nomeField">
-						<ui:decorate template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="fieldName" value="form:nome" />
-							<ui:param name="label" value="#{msgs['crud.text.name']}" />
-							<p:inputText id="nome" pt:class="form-control" pt:placeholder="#{msgs['crud.text.name']}" 
-										 value="#{installSystemControl.admin.nome}"  required="true">
-								<p:ajax event="blur" update="nomeField" />
-							</p:inputText>
-						</ui:decorate>
-					</h:panelGroup>
-					
-					<h:panelGroup id="emailField">
-						<ui:decorate template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="fieldName" value="form:email" />
-							<ui:param name="label" value="#{msgs['crud.text.email']}" />
-							<p:inputText id="email" pt:class="form-control" pt:type="email" pt:placeholder="#{msgs['crud.text.email']}" 
-										 value="#{installSystemControl.admin.email}"  required="true">
-								<p:ajax event="blur" update="emailField" />
-							</p:inputText>
-						</ui:decorate>
-					</h:panelGroup>
-					
-					
-					<h:panelGroup id="matriculaField">
-						<ui:decorate template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="fieldName" value="form:matricula" />
-							<ui:param name="label" value="#{msgs['crud.text.matricula']}" />
-							<p:inputText id="matricula" pt:class="form-control" pt:type="number" required="true"
-										 pt:placeholder="#{msgs['crud.text.matricula']}" value="#{installSystemControl.admin.matricula}" >
-								<p:ajax event="blur" update="matriculaField" />
-							</p:inputText>
-						</ui:decorate>
-					</h:panelGroup>
-					
-					
-					
-					<h:panelGroup id="cpfField">
-						<ui:decorate template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="fieldName" value="form:cpf" />
-							<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
-							<p:inputMask id="cpf" pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
-										 required="true" value="#{installSystemControl.admin.cpf}"/>
-						</ui:decorate>
-					</h:panelGroup>
-					
-					
-									
-					
-					<ui:decorate template="/resources/templates/default/formbutton.xhtml">
-						<p:commandButton pt:class="pull-right btn btn-info "  action="#{installSystemControl.saveAdmin()}" 
-										 value="#{msgs['crud.button.save']}"  update="form" />
+		<ui:decorate template="/resources/templates/default/form.xhtml">
+			<ui:param name="formName" value="#{msgs['core.installSystem.formulario.admin']}" />
+			<h:form id="form" pt:class="form-horizontal">
+				<p:focus />
+			
+				<h:panelGroup id="nomeField">
+					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+						<ui:param name="fieldName" value="form:nome" />
+						<ui:param name="label" value="#{msgs['crud.text.name']}" />
+						<p:inputText id="nome" pt:class="form-control" pt:placeholder="#{msgs['manageAdministrador.placeholder.nome']}" 
+									 value="#{installSystemControl.admin.nome}"  required="true">
+							<p:ajax event="blur" update="nomeField" />
+						</p:inputText>
 					</ui:decorate>
-				</h:form>
-			</ui:decorate>
+				</h:panelGroup>
+					
+				<h:panelGroup id="emailField">
+					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+						<ui:param name="fieldName" value="form:email" />
+						<ui:param name="label" value="#{msgs['crud.text.email']}" />
+						<p:inputText id="email" pt:type="email" pt:placeholder="#{msgs['manageAdministrador.placeholder.email']}" 
+									 value="#{installSystemControl.admin.email}" pt:class="form-control"  required="true" >
+							<p:ajax event="blur" update="emailField" />
+						</p:inputText>
+					</ui:decorate>
+				</h:panelGroup>
+									
+				<h:panelGroup id="matriculaField">
+					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+						<ui:param name="fieldName" value="form:matricula" />
+						<ui:param name="label" value="#{msgs['crud.text.matricula']}" />
+						<p:inputText id="matricula" pt:type="number" pt:placeholder="#{msgs['manageAdministrador.placeholder.matricula']}"  
+									 pt:class="form-control" value="#{installSystemControl.admin.matricula}" required="true">
+							<p:ajax event="blur" update="matriculaField" />
+						</p:inputText>
+					</ui:decorate>
+				</h:panelGroup>
+					
+					
+					
+				<h:panelGroup id="cpfField">
+					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+						<ui:param name="fieldName" value="form:cpf" />
+						<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
+						<p:inputMask id="cpf" pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
+									 required="true" value="#{installSystemControl.admin.cpf}"/>
+					</ui:decorate>
+				</h:panelGroup>
+					
+					
+				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+					<div class="form-group">	
+						<div class="col-sm-4"/>
+            			<div class="col-sm-4">
+            				<a  class="btn btn-block btn-info btn-social" jsf:action="#{installSystemControl.saveAdmin()}" jsf:update="form">
+            					<i class="fa  fa-save"></i> 
+								<h:outputText value="#{msgs['crud.button.save']}"/>
+							</a>
+                		</div>
+					</div>
+				</ui:decorate>		
+				
+				
+			</h:form>
+		</ui:decorate>
+	</h:panelGroup>
 	
-			
-		</h:panelGroup>
-	</ui:define>
+</ui:define>
 </ui:composition>

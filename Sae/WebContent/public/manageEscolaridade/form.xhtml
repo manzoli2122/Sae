@@ -41,7 +41,7 @@
 							<ui:param name="label" value="#{msgs['crud.text.titulo']}" />
 							<h:selectOneMenu  id="titulo" pt:class="form-control" value="#{manageEscolaridadeControl.selectedEntity.titulo}"   required="true" disabled="#{manageEscolaridadeControl.readOnly}">
 									<f:selectItem itemLabel="Selecione o Titulo" itemValue="" />
-									<f:selectItems value="#{manageEscolaridadeControl.titulo_Escolaridade}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
+									<f:selectItems value="#{publicoControl.titulo_Escolaridade}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
 									<p:ajax update="tituloField" />
 							</h:selectOneMenu>	
 						</ui:decorate>

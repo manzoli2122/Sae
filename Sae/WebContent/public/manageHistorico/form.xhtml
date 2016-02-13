@@ -40,7 +40,7 @@
 					<ui:param name="label" value="#{msgs['crud.text.faixaSalarial']}" />
 					<h:selectOneMenu  id="salario" pt:class="form-control" value="#{manageHistoricoControl.selectedEntity.faixa_salarial}"   required="true" disabled="#{manageHistoricoControl.readOnly}">
 							<f:selectItem itemLabel="Selecione a faixa salarial" itemValue="" />
-							<f:selectItems value="#{manageHistoricoControl.faixa_Salarial}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
+							<f:selectItems value="#{publicoControl.faixa_Salarial}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
 							<p:ajax update="salarioField" />
 					</h:selectOneMenu>	
 				</ui:decorate>
@@ -53,7 +53,7 @@
 					<ui:param name="label" value="#{msgs['crud.text.areaAtuacao']}" />
 					<h:selectOneMenu  id="atuacao" pt:class="form-control" value="#{manageHistoricoControl.selectedEntity.area_atuacao}"   required="true" disabled="#{manageHistoricoControl.readOnly}">
 							<f:selectItem itemLabel="Selecione a faixa salarial" itemValue="" />
-							<f:selectItems value="#{manageHistoricoControl.area_Atuacao}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
+							<f:selectItems value="#{publicoControl.area_Atuacao}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
 							<p:ajax update="atuacaoField" />
 					</h:selectOneMenu>	
 				</ui:decorate>

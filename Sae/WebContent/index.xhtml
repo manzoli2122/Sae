@@ -8,21 +8,60 @@
                 xmlns:jsf="http://xmlns.jcp.org/jsf"
                 template="/resources/templates/#{sessionControl.decorator}/decorator.xhtml">
 
-	<ui:define name="head" ></ui:define>
-	
-    <ui:define name="title"><h:outputText value="#{msgs['title.home']}" /></ui:define>
+<ui:define name="title"><h:outputText value="#{msgs['title.home']}" /></ui:define>
     
-    <ui:define name="description"><h:outputText value="#{msgs['descr.home']}" /></ui:define>
-
+<ui:define name="breadcrumb">
+		<li class="active"><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
+</ui:define>
 	
-    <ui:define name="body">
+<ui:define name="body">
+    	
+     <h:panelGroup rendered="#{coreInfo.systemInstalled}">
+	    
+	    <ui:decorate template="/resources/templates/default/form.xhtml">
+			<ui:param name="formName" value="" />
+			<h:form id="form1" pt:class="form-horizontal">
+    			
+    			<div class="col-sm-1"/>
+    			<h4><h:outputText pt:class="col-sm-10"  value="#{msgs['core.message.index']}"/></h4>
+    			
+    			<div class="form-group"/>
+    			
+    			<div class="col-sm-1"/>
+    			<h4><h:outputText pt:class="col-sm-10"   value="#{msgs['core.message.index1']}"/></h4>
+    			
+			</h:form>
+		</ui:decorate>
+		
+	</h:panelGroup>	
     	
     	
-    	<h:form>
-    		<p:commandButton  action="#{installSystemControl.begin()}" rendered="#{not coreInfo.systemInstalled}" value="#{msgs['menu.installSystem.install']}"  />
-		</h:form>
+    	
+    	
+    	
+    <h:panelGroup rendered="#{not coreInfo.systemInstalled}">
+	    <ui:decorate template="/resources/templates/default/formDanger.xhtml">
+			<ui:param name="formName" value="#{msgs['core.installSystem.formulario.index']}" />
+			<h:form id="form" pt:class="form-horizontal">
+    			<div class="form-group"><h3>
+    			<h:outputText style="text-align:center;" value="#{msgs['core.installSystem.message']}"/>
+    			</h3></div>
+    			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+					<div class="form-group">	
+						<div class="col-sm-4"/>
+            			<div class="col-sm-4">
+            				<a  class="btn btn-block btn-danger btn-social" jsf:action="#{installSystemControl.begin()}">
+            					<i class="fa  fa-arrow-right"></i> 
+								<h:outputText value="#{msgs['core.installSystem.install']}"/>
+							</a>
+                		</div>
+					</div>
+				</ui:decorate>
+    
+			</h:form>
+		</ui:decorate>
+	</h:panelGroup>
 			
 			
-			
-    </ui:define>
+</ui:define>
 </ui:composition>

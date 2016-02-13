@@ -7,7 +7,6 @@ import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.publico.application.ManageEscolaridadeService;
 import sae.publico.domain.Escolaridade;
-import sae.publico.domain.Titulo_Escolaridade;
 
 @Named
 @SessionScoped
@@ -42,10 +41,6 @@ public class ManageEscolaridadeControl extends CrudController<Escolaridade>{
 		
 	}
 
-	
-	public Titulo_Escolaridade[] getTitulo_Escolaridade() {
-		return Titulo_Escolaridade.values();
-	}
 	
 		
 	@Override

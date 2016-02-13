@@ -211,6 +211,21 @@ public class SessionServiceBean implements SessionService{
 		} catch (IOException e) {} 
 		
 	}
+	
+	
+	
+	
+	
+	
+	@Override
+	public void atualizarSenha(String senha){
+		logger.log(Level.INFO, "ATUALIZANDO SENHA..... ");
+		if(admin!=null){
+			admin.setSenha(senha);
+			administradorDAO.save(admin);
+		}
+		
+	}
 
 	
 }

@@ -72,6 +72,9 @@ public interface SessionService extends Serializable{
 
 	boolean isPasswordDefault();
 
+
+	void atualizarSenha(String senha);
+
 	
 	
 

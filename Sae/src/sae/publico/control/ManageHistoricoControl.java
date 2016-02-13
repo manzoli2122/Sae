@@ -10,8 +10,6 @@ import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.core.application.SessionService;
 import sae.publico.application.ManageHistoricoService;
-import sae.publico.domain.Area_Atuacao;
-import sae.publico.domain.Faixa_Salarial;
 import sae.publico.domain.Historico_Egresso;
 
 @Named
@@ -35,13 +33,7 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 	     bundleName = "msgs";
 	}
 	
-	public Faixa_Salarial[] getFaixa_Salarial() {
-		return Faixa_Salarial.values();
-	}
 	
-	public Area_Atuacao[] getArea_Atuacao() {
-		return Area_Atuacao.values();
-	}
 	
 	
 	@Override
