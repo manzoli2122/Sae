@@ -19,10 +19,10 @@ public class CursoRealizado extends PersistentObjectSupport implements Comparabl
 	
 	
 	@NotNull 
-	private int anoInicio;
+	private String anoInicio;
 	
 	@NotNull 
-	private int anoTermino;
+	private String anoTermino;
 	
 	@NotNull
 	@ManyToOne
@@ -48,11 +48,11 @@ public class CursoRealizado extends PersistentObjectSupport implements Comparabl
 	public String getMatricula() { return matricula;}
 	public void setMatricula(String matricula) { this.matricula = matricula; }
 
-	public int getAnoInicio() {	return anoInicio; }
-	public void setAnoInicio(int anoInicio) {	this.anoInicio = anoInicio;	}
+	public String getAnoInicio() {	return anoInicio; }
+	public void setAnoInicio(String anoInicio) {	this.anoInicio = anoInicio;	}
 
-	public int getAnoTermino() {	return anoTermino;	}
-	public void setAnoTermino(int anoTermino) { this.anoTermino = anoTermino;	}
+	public String getAnoTermino() {	return anoTermino;	}
+	public void setAnoTermino(String anoTermino) { this.anoTermino = anoTermino;	}
 
 	public Curso getCurso() { return curso;	}
 	public void setCurso(Curso curso) {	this.curso = curso;	}

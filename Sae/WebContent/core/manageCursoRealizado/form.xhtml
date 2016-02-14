@@ -42,7 +42,7 @@
 					<ui:param name="label" value="#{msgs['crud.text.egresso']}" />
 					<h:selectOneMenu pt:class="form-control"  id="egresso" value="#{manageCursoRealizadoControl.selectedEntity.egresso}" 
 									 required="true" converter="#{manageEgressoControl.egressoConverter}"  
-									 disabled="#{manageCursoRealizadoControl.readOnly}">
+									 disabled="#{(manageCursoRealizadoControl.readOnly) or (manageCursoRealizadoControl.selectedEntity.id != null)}">
 						<f:selectItem itemLabel="#{msgs['manageCursoRealizadoControl.form.egresso.blankOption']}" itemValue="" />
 						<f:selectItems value="#{manageEgressoControl.lista}" var="egresso" itemLabel="#{egresso.nome}" 
 									   itemValue="#{egresso}" />
@@ -58,7 +58,7 @@
 					<ui:param name="label" value="#{msgs['crud.text.curso']}" />
 					<h:selectOneMenu pt:class="form-control"  id="curso" value="#{manageCursoRealizadoControl.selectedEntity.curso}" 
 									 required="true" converter="#{coreControl.cursoConverter}"  
-									 disabled="#{manageCursoRealizadoControl.readOnly}">
+									 disabled="#{(manageCursoRealizadoControl.readOnly) or (manageCursoRealizadoControl.selectedEntity.id != null)}">
 						<f:selectItem itemLabel="#{msgs['manageCursoRealizadoControl.form.curso.blankOption']}" itemValue="" />
 						<f:selectItems value="#{manageCursoControl.entities}" var="curso" itemLabel="#{curso.nome}" itemValue="#{curso}"/>
 						<p:ajax  update="cursoField" />
@@ -72,7 +72,7 @@
 					<ui:param name="fieldName" value="form:matricula" />
 					<ui:param name="label" value="#{msgs['crud.text.matricula']}" />
 					<p:inputText id="matricula" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" 
-								 pt:type="number" pt:placeholder="#{msgs['crud.text.matricula']}" 
+								 pt:type="number" pt:placeholder="#{msgs['manageCursoRealizado.placeholder.matricula']}" 
 								 value="#{manageCursoRealizadoControl.selectedEntity.matricula}"  required="true">
 						<p:ajax event="blur" update="matriculaField" />
 					</p:inputText>
@@ -85,7 +85,7 @@
 					<ui:param name="fieldName" value="form:inicio" />
 					<ui:param name="label" value="#{msgs['crud.text.inicio']}" />
 					<p:inputText id="inicio" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
-								 pt:placeholder="#{msgs['crud.text.inicio']}" 
+								 pt:placeholder="#{msgs['manageCursoRealizado.placeholder.inicio']}" 
 								 value="#{manageCursoRealizadoControl.selectedEntity.anoInicio}"  required="true">
 						<p:ajax event="blur" update="inicioField" />
 					</p:inputText>
@@ -98,7 +98,7 @@
 					<ui:param name="fieldName" value="form:fim" />
 					<ui:param name="label" value="#{msgs['crud.text.fim']}" />
 					<p:inputText id="fim" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
-								 pt:placeholder="#{msgs['crud.text.fim']}" value="#{manageCursoRealizadoControl.selectedEntity.anoTermino}" 
+								 pt:placeholder="#{msgs['manageCursoRealizado.placeholder.inicio']}" value="#{manageCursoRealizadoControl.selectedEntity.anoTermino}" 
 								 required="true">
 						<p:ajax event="blur" update="fimField" />
 					</p:inputText>
@@ -110,8 +110,8 @@
 				<div class="form-group">	
 	          			
 					<div class="col-sm-3"></div>
-	        		<div class="col-sm-3">
-	        			<a class="btn btn-block btn-info btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> 
+	        		<div class="col-sm-3" style="margin-bottom: 15px">
+	        			<a class="btn btn-block btn-warning btn-social" jsf:immediate="true"  jsf:action="#{manageCursoRealizadoControl.list}"><i class="fa  fa-rotate-left"></i> 
 	        				<h:outputText value="#{msgs['crud.button.back']}"/>
 	        			</a>
 	           		</div>
