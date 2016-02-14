@@ -25,6 +25,7 @@ public class InstallSystemControl extends JSFController{
 	private static final Logger logger = Logger.getLogger(InstallSystemControl.class.getCanonicalName());
 	
 	
+	/** The view path where the web pages are located. */
 	private static final String VIEW_PATH = "/installSystem/";
 	
 	
@@ -42,13 +43,30 @@ public class InstallSystemControl extends JSFController{
 	
 	private Administrador admin = new Administrador();
 
+
 	
+
+	
+	
+	
+	
+	/**
+	 * Displays the page of installation.
+	 * 
+	 * @return The view path for the INSTALAÇÃO.
+	 */
 	public String begin() {
 		logger.log(Level.INFO, "REDIRECIONADO PARA INSTALAÇÃO");
 		return VIEW_PATH + "admin.xhtml?faces-redirect=true";
 	}
 
+
 	
+	/**
+	 * Save administrator and displays the page of installation servidor email.
+	 * 
+	 * @return The view path for the installation servidor email.
+	 */	
 	public String saveAdmin() {
 		try {
 			logger.log(Level.INFO, "SAVING THE ADMINISTRADOR..........");
@@ -65,6 +83,11 @@ public class InstallSystemControl extends JSFController{
 	
 
 	
+	/**
+	 * Save servidor and displays the page of initial page.
+	 * 
+	 * @return The view path of home.
+	 */
 	public String saveSmtpConfig() {
 		try {
 			logger.log(Level.INFO, "SAVING THE CONFIGURAÇÃO..........");
@@ -78,6 +101,7 @@ public class InstallSystemControl extends JSFController{
 		return "/index.xhtml?faces-redirect=true";
 	}
 
+	
 	
 	/** Getter and Setter. */
 	public SaeConfiguracao getConfig() { return config; }

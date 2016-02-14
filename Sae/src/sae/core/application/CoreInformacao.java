@@ -36,9 +36,10 @@ public class CoreInformacao implements Serializable {
 	private SaeConfiguracaoDAO saeConfiguracaoDAO;
 	
 	
+	/** The system configuration objects */
 	private SaeConfiguracao currentConfig;
 	
-	
+	/** The default password of administrator */
 	private static final String DEFAULT_SENHA_ADMIN = "adm123";
 	
 	
@@ -49,9 +50,10 @@ public class CoreInformacao implements Serializable {
 	
 	
 	
-	
+	/** Getter for SaeConfiguracao. */
 	public SaeConfiguracao getCurrentConfig() { return currentConfig; }
 
+	
 	
 	/** Getter for systemInstalled. */
 	public Boolean getSystemInstalled() {
@@ -67,8 +69,10 @@ public class CoreInformacao implements Serializable {
 		}
 		return systemInstalled;
 	}
+	
+	
 
-
+	/** Getter for DefaultSenhaAdmin. */
 	public String getDefaultSenhaAdmin() {
 		return DEFAULT_SENHA_ADMIN;
 	}
