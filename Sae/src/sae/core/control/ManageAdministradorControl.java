@@ -115,7 +115,6 @@ public class ManageAdministradorControl extends CrudController<Administrador>{
 				}
 			}
 			
-			
 			catch (CrudException crudException) {
 				// Adds an error message to each validation error included in the exception.
 				for (CrudValidationError error : crudException) {
@@ -134,7 +133,6 @@ public class ManageAdministradorControl extends CrudController<Administrador>{
 			logger.log(Level.INFO, "EXCEPCIOMN");
 			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
 		}
-		
 	}
 	
 
@@ -149,7 +147,5 @@ public class ManageAdministradorControl extends CrudController<Administrador>{
 			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
 		}
 	}
-	
-	
-	
+		
 }

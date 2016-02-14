@@ -1,8 +1,6 @@
 package sae.core.application;
 
-import java.util.List;
 import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -28,10 +26,13 @@ public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements Ma
 	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 	
+	
 	/** The DAO for Curso objects. */
 	@EJB
 	private CursoDAO cursoDAO;
 
+	
+	
 	
 	
 	
@@ -53,32 +54,7 @@ public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements Ma
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	// FALTA MEXER AQUI
-	@Override
-	@PermitAll
-	public long count() {
-		return super.count();
-	}
-	
-	@Override
-	@PermitAll
-	public void authorize() {
-		// TODO Auto-generated method stub
-		super.authorize();
-	}
-	
-	@Override
-	@PermitAll
-	public List<Curso> list(int... interval) {
-		return super.list(interval);
-	}
-	
+	/** @see sae.core.application.CrudServiceBean#update(Curso entity) */
 	@Override
 	public void update(Curso entity) {
 		Curso oldEntity = getDAO().retrieveById(entity.getId());
