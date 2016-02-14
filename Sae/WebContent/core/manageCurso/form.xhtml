@@ -39,7 +39,7 @@
 					<ui:param name="label" value="#{msgs['crud.text.name']}" />
 					<p:inputText id="nome" pt:class="form-control" required="true"
 								 disabled="#{(manageCursoControl.readOnly) or (manageCursoControl.selectedEntity.id != null)}" 
-								 pt:placeholder="#{msgs['crud.text.name']}" value="#{manageCursoControl.selectedEntity.nome}">
+								 pt:placeholder="#{msgs['manageCurso.placeholder.nome']}" value="#{manageCursoControl.selectedEntity.nome}">
 						<p:ajax event="blur" update="nomeField" />
 					</p:inputText>
 				</ui:decorate>
@@ -51,7 +51,7 @@
 					<ui:param name="label" value="#{msgs['crud.text.codigo']}" />
 					<p:inputText id="codigo" pt:class="form-control" value="#{manageCursoControl.selectedEntity.codigo}"
 								 disabled="#{(manageCursoControl.readOnly) or (manageCursoControl.selectedEntity.id != null)}" 
-								 pt:type="number" pt:placeholder="#{msgs['crud.text.codigo']}" required="true">
+								 pt:type="number" pt:placeholder="#{msgs['manageCurso.placeholder.codigo']}" required="true">
 						<p:ajax event="blur" update="codigoField" />
 					</p:inputText>
 				</ui:decorate>
