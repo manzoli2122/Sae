@@ -76,5 +76,33 @@ public class ManageCursoControl extends CrudController<Curso> {
 		logger.log(Level.FINER, "INITIALIZING FILTER TYPES ......");
 		addFilter(new LikeFilter("manageCurso.filter.byName", "nome", getI18nMessage(bundleName, "manageCurso.text.filter.byName")));
 	}
+	
+	
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#save() */
+	@Override
+	public String save() {
+		try{
+			return super.save();
+		}
+		catch(Exception e){
+			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+		}
+	}
+	
+	
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#delete() */
+	@Override
+	public String delete() {
+		try{
+			return super.delete();
+		}
+		catch(Exception e){
+			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+		}
+	}
 
 }

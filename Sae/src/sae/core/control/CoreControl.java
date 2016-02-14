@@ -1,6 +1,7 @@
 package sae.core.control;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -64,7 +65,14 @@ public class CoreControl  implements Serializable {
 	/** JSF Converter for Curso objects. */
 	private PersistentObjectConverterFromId<Curso> cursoConverter;
 
+
 	
+	
+	
+	
+	public List<Administrador> getAdministradores(){
+		return administradorDAO.retrieveAll();
+	}
 	
 	
 	
