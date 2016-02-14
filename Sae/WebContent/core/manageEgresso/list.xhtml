@@ -12,19 +12,14 @@
 <ui:define name="title"><h:outputText value="#{msgs['manageEgresso.title']}" /></ui:define>
 <ui:define name="breadcrumb">
 	<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-	<li><a jsf:outcome="list"   jsf:onclick="#{manageEgressoControl.list()}" ><i class="fa fa-user"></i>
-		<h:outputText value="#{msgs['manageEgresso.title']}" />
-	</a> </li> 
+	<li class="active"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageEgresso.title']}"/></li> 
 </ui:define>
 	
 <ui:define name="body">
-                
-   	<!-- The listing form. -->
+    <!-- The listing form. -->
     <ui:decorate template="/resources/templates/default/form.xhtml">
-		
 		<ui:param name="formName" value="#{msgs['manageEgresso.title.box.list']}" />
-            	
-    	<h:form id="filterForm" pt:class="form-horizontal">
+        <h:form id="filterForm" pt:class="form-horizontal">
         	<h:panelGroup  id="filterBar" rendered="#{(not empty manageEgressoControl.filters)}">
             	<div class="form-group">	
 	            	<div class="col-sm-3">
@@ -64,7 +59,7 @@
             	
             	
             	
-		<h:form id="listingForm">
+		<h:form id="listingForm" style="margin-bottom: 25px">
         	<p:dataTable
 	        		 	widgetVar="listingTable"
              			rowIndexVar="rowIndex"
@@ -89,14 +84,9 @@
         		<p:column headerText="#{msgs['crud.text.name']}"  style="text-align: center;">
                 	<h:outputText value="#{entity.nome}" />
                 </p:column>
-                <p:column headerText="#{msgs['crud.text.cpf']}"  style="text-align: center;">
-                	<h:outputText  value="#{entity.cpf}" />
-                </p:column>
                 <p:column headerText="#{msgs['crud.text.email']}"  style="text-align: center;">
                 	<h:outputText  value="#{entity.email}" />
-                </p:column>
-                		
-                		
+                </p:column>	
                 <p:ajax event="rowSelect" update=":buttonsForm" />
         	</p:dataTable>
         </h:form>
@@ -106,18 +96,18 @@
         <h:form id="buttonsForm">
            	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 	    		<div class="form-group">	
-	        		<div class="col-sm-3">
+	        		<div class="col-sm-3" style="margin-bottom: 15px">
 	        			<a class="btn btn-block btn-success btn-social" jsf:action="#{manageEgressoControl.create}">
 	        				<i class="fa fa-user-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/>
 	        			</a>
 	           		</div>
-	           		<div class="col-sm-3" jsf:rendered="#{manageEgressoControl.selectedEntity != null}">
+	           		<div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageEgressoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-info btn-social" jsf:action="#{manageEgressoControl.retrieve}" 
 	        			    jsf:disabled="#{manageEgressoControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> 
 	        			    <h:outputText value="#{msgs['crud.button.retrieve']}"/>
 	        			</a>
 	           		</div>
-	           		<div class="col-sm-3" jsf:rendered="#{manageEgressoControl.selectedEntity != null}">
+	           		<div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageEgressoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageEgressoControl.update}" 
 	        				jsf:disabled="#{manageEgressoControl.selectedEntity == null}"><i class="fa  fa-refresh"></i> 
 	        				<h:outputText value="#{msgs['crud.button.update']}"/>
@@ -148,7 +138,7 @@
 			    </p:dataList>
 		        <ui:decorate template="/resources/templates/default/formbutton.xhtml">
 		        	<div class="form-group">	
-		            	<div class="col-sm-3">
+		            	<div class="col-sm-3" style="margin-bottom: 15px">
 		            		<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageEgressoControl.cancelDeletion}" 
 		            			jsf:update=":trashForm :buttonsForm :listingForm"><i class="fa  fa-close"></i> 
 		            			<h:outputText value="#{msgs['crud.button.cancelDeletion']}"/>
@@ -166,6 +156,5 @@
 		</ui:decorate>
 	</h:panelGroup>
 		       
-        
-	</ui:define> <!-- DEFINE BODY. -->
+</ui:define> <!-- DEFINE BODY. -->
 </ui:composition>

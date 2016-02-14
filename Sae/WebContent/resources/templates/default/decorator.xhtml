@@ -262,12 +262,14 @@
 					<li>
 						<p:commandLink action="#{manageEgressoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageEgresso.title']}"  />
 					</li>
-					<li>
-						<p:commandLink  action="#{manageSeminarioControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageSeminario.title']}"  />
-					</li>
+					
 					
 					<li>
 						<p:commandLink  action="#{manageCursoRealizadoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageCursoRealizado.title']}"  />
+					</li>
+					
+					<li>
+						<p:commandLink  action="#{manageSeminarioControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageSeminario.title']}"  />
 					</li>
 					
 					

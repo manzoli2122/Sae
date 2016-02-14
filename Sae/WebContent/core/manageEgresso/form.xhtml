@@ -29,11 +29,8 @@
 </ui:define>	
 	
 <ui:define name="body">
-				
 	<ui:decorate template="/resources/templates/default/form.xhtml">
-		
 		<ui:param name="formName" value="#{msgs['manageEgresso.title.formulario']}" />
-				
 		<h:form id="form" pt:class="form-horizontal">
 			
 			<h:panelGroup id="nomeField">
@@ -41,7 +38,7 @@
 					<ui:param name="fieldName" value="form:nome" />
 					<ui:param name="label" value="#{msgs['crud.text.name']}" />
 					<p:inputText id="nome" pt:class="form-control" disabled="#{manageEgressoControl.readOnly}" required="true"
-								 pt:placeholder="#{msgs['crud.text.name']}" value="#{manageEgressoControl.selectedEntity.nome}">
+								 pt:placeholder="#{msgs['manageEgresso.placeholder.nome']}" value="#{manageEgressoControl.selectedEntity.nome}">
 						<p:ajax event="blur" update="nomeField" />
 					</p:inputText>
 				</ui:decorate>
@@ -51,40 +48,25 @@
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:email" />
 					<ui:param name="label" value="#{msgs['crud.text.email']}" />
-					<div class="input-group">
-                    	<div class="input-group-addon">
-			            	<i class="fa fa-envelope"></i>
-			        	</div>
-						<p:inputText id="email" pt:class="form-control" disabled="#{manageEgressoControl.readOnly}" pt:type="email" 
-									 pt:placeholder="#{msgs['crud.text.email']}" value="#{manageEgressoControl.selectedEntity.email}" 
-									 required="true">
-							<p:ajax event="blur" update="emailField" />
-						</p:inputText>
-					</div>
+					<p:inputText id="email" pt:class="form-control" disabled="#{manageEgressoControl.readOnly}" pt:type="email" 
+								 pt:placeholder="#{msgs['manageEgresso.placeholder.email']}" value="#{manageEgressoControl.selectedEntity.email}" 
+								 required="true">
+						<p:ajax event="blur" update="emailField" />
+					</p:inputText>
 				</ui:decorate>
 			</h:panelGroup>
-					
-					
-					
 					
 					
 			<h:panelGroup id="nascimentoField">
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:nascimento" />
 					<ui:param name="label" value="#{msgs['crud.text.nascimento']}" />
-					<div class="input-group">
-			       		<div class="input-group-addon">
-			            	<i class="fa fa-calendar"></i>
-			        	</div>
-			            <p:inputMask id="nascimento" pt:class="form-control" mask="#{msgs['format.date.primefaces']}" required="true" 
-			            			 value="#{manageEgressoControl.selectedEntity.nascimento}" disabled="#{manageEgressoControl.readOnly}">
-							<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
-						</p:inputMask>
-					</div>
+					<p:inputMask id="nascimento" pt:class="form-control" mask="#{msgs['format.date.primefaces']}" required="true" 
+			           			 value="#{manageEgressoControl.selectedEntity.nascimento}" disabled="#{manageEgressoControl.readOnly}">
+						<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
+					</p:inputMask>
 				</ui:decorate>
 			</h:panelGroup>
-			
-			
 			
 			
 			<h:panelGroup id="cpfField">
@@ -98,13 +80,12 @@
 			</h:panelGroup>
 					
 
-					
    			<h:panelGroup id="identidadeField">
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:identidade" />
 					<ui:param name="label" value="#{msgs['crud.text.identidade']}" />
 					<p:inputText id="identidade" pt:class="form-control" disabled="#{manageEgressoControl.readOnly}" required="true"
-								 pt:placeholder="#{msgs['crud.text.identidade']}" value="#{manageEgressoControl.selectedEntity.identidade}">
+								 pt:placeholder="#{msgs['manageEgresso.placeholder.identidade']}" value="#{manageEgressoControl.selectedEntity.identidade}">
 						<p:ajax event="blur" update="identidadeField" />
 					</p:inputText>
 				</ui:decorate>
@@ -160,8 +141,8 @@
 			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 				<div class="form-group">	
 					<div class="col-sm-3"></div>
-	        		<div class="col-sm-3">
-	        			<a class="btn btn-block btn-info btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> <h:outputText value="#{msgs['crud.button.back']}"/></a>
+	        		<div class="col-sm-3" style="margin-bottom: 15px">
+	        			<a class="btn btn-block btn-warning btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> <h:outputText value="#{msgs['crud.button.back']}"/></a>
 	            	</div>
 	            	<div class="col-sm-3"/>
 					<div class="col-sm-3">
