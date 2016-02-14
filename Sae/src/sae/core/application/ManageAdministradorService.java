@@ -16,6 +16,13 @@ import sae.core.domain.Administrador;
 public interface ManageAdministradorService extends CrudService<Administrador> {
 
 	
-	void sendEmailCadastro(Administrador entity);
+	
+	/**
+	 * Step of registration process, sends a e-mail so the user can know of your register
+	 * 
+	 * @param administrador
+	 *          Administrator object to which to send the email.
+	 */
+	void sendEmailCadastro(Administrador administrador);
 
 }

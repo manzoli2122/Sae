@@ -86,6 +86,7 @@ public class ManageAdministradorServiceBean extends CrudServiceBean<Administrado
 	
 		
 	
+	/** @see sae.core.application.ManageAdministradorService#sendEmailCadastro(Administrador entity) */
 	@Override
 	public void sendEmailCadastro(Administrador entity){
 		logger.log(Level.INFO, "Send Email ......");

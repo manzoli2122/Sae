@@ -98,7 +98,7 @@
 					<ui:param name="fieldName" value="form:fim" />
 					<ui:param name="label" value="#{msgs['crud.text.fim']}" />
 					<p:inputText id="fim" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
-								 pt:placeholder="#{msgs['manageCursoRealizado.placeholder.inicio']}" value="#{manageCursoRealizadoControl.selectedEntity.anoTermino}" 
+								 pt:placeholder="#{msgs['manageCursoRealizado.placeholder.termino']}" value="#{manageCursoRealizadoControl.selectedEntity.anoTermino}" 
 								 required="true">
 						<p:ajax event="blur" update="fimField" />
 					</p:inputText>

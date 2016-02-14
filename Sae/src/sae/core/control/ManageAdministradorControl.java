@@ -28,16 +28,20 @@ import sae.core.domain.Administrador;
 @SessionScoped
 public class ManageAdministradorControl extends CrudController<Administrador>{
 
+	
 	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 	
+	
 	/** The logger. */
 	private static final Logger logger = Logger.getLogger(ManageAdministradorControl.class.getCanonicalName());
+	
 	
 	/** The "Manage Administrador" service. */
 	@EJB
 	private ManageAdministradorService manageAdministradorService;
 
+	
 	
 	
 	
