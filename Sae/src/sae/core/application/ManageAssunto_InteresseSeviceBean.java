@@ -22,6 +22,7 @@ import sae.core.persistence.Assunto_InteresseDAO;
 @RolesAllowed({ "Admin" })
 public class ManageAssunto_InteresseSeviceBean  extends CrudServiceBean<Assunto_Interesse> implements ManageAssunto_InteresseSevice{
 
+	
 	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 	
@@ -29,6 +30,11 @@ public class ManageAssunto_InteresseSeviceBean  extends CrudServiceBean<Assunto_
 	/** The DAO for Assunto_Interesse objects. */
 	@EJB
 	private Assunto_InteresseDAO assunto_InteresserDAO;
+	
+	
+	
+	
+	
 	
 	
 	

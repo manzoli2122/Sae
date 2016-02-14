@@ -26,15 +26,21 @@ import sae.core.domain.Assunto_Interesse;
 @SessionScoped
 public class ManageAssunto_InteresseControl extends CrudController<Assunto_Interesse>{
 
+	
 	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 
+	
 	/** The logger. */
 	private static final Logger logger = Logger.getLogger(ManageAssunto_InteresseControl.class.getCanonicalName());
+	
 	
 	/** The "Manage Assunto_Interesse" service. */
 	@EJB
 	private ManageAssunto_InteresseSevice manageAssunto_InteresseService;
+	
+	
+	
 	
 	
 	
