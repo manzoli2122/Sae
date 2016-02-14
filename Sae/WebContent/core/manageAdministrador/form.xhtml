@@ -38,7 +38,7 @@
 						<ui:param name="fieldName" value="form:nome" />
 						<ui:param name="label" value="#{msgs['crud.text.name']}" />
 						<p:inputText id="nome" pt:class="form-control" disabled="#{manageAdministradorControl.readOnly}" 
-									 pt:placeholder="#{msgs['crud.text.name']}" 
+									 pt:placeholder="#{msgs['manageAdministrador.placeholder.nome']}" 
 									 value="#{manageAdministradorControl.selectedEntity.nome}"  required="true">
 							<p:ajax event="blur" update="nomeField" />
 						</p:inputText>
@@ -50,7 +50,7 @@
 						<ui:param name="fieldName" value="form:email" />
 						<ui:param name="label" value="#{msgs['crud.text.email']}" />
 						<h:inputText id="email" pt:class="form-control" disabled="#{manageAdministradorControl.readOnly}" 
-									 pt:type="email" pt:placeholder="#{msgs['crud.text.email']}" 
+									 pt:type="email" pt:placeholder="#{msgs['manageAdministrador.placeholder.email']}" 
 									 value="#{manageAdministradorControl.selectedEntity.email}"  required="true">
 							<p:ajax event="blur" update="emailField" />
 						</h:inputText>
@@ -61,9 +61,9 @@
 					<ui:decorate template="/resources/templates/default/formfield.xhtml">
 						<ui:param name="fieldName" value="form:matricula" />
 						<ui:param name="label" value="#{msgs['crud.text.matricula']}" />
-						<p:inputText id="matricula" pt:class="form-control" pt:type="number" pt:placeholder="#{msgs['crud.text.matricula']}" 
-									 disabled="#{manageAdministradorControl.readOnly or (manageAdministradorControl.selectedEntity.id!=null)}" 
-									 value="#{manageAdministradorControl.selectedEntity.matricula}" required="true">
+						<p:inputText id="matricula" required="true" pt:placeholder="#{msgs['manageAdministrador.placeholder.matricula']}" 
+									disabled="#{manageAdministradorControl.readOnly or (manageAdministradorControl.selectedEntity.id!=null)}" 
+								 	value="#{manageAdministradorControl.selectedEntity.matricula}" pt:class="form-control"  pt:type="number">
 							<p:ajax event="blur" update="matriculaField" />
 						</p:inputText>
 					</ui:decorate>
@@ -74,27 +74,19 @@
 						<ui:param name="fieldName" value="form:cpf" />
 						<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
 						<p:inputMask id="cpf"  pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
-									 required="true" value="#{manageAdministradorControl.selectedEntity.cpf}"   
-									 disabled="#{manageAdministradorControl.readOnly or (manageAdministradorControl.selectedEntity.id != null)}"/>
+							 	required="true" value="#{manageAdministradorControl.selectedEntity.cpf}"   
+								disabled="#{manageAdministradorControl.readOnly or (manageAdministradorControl.selectedEntity.id != null)}"/>
 					</ui:decorate>
 				</h:panelGroup>
 					
-				<h:panelGroup id="passwordField" rendered="false">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
-						<ui:param name="fieldName" value="form:password" />
-						<ui:param name="label" value="#{msgs['crud.text.password']}" />
-						<p:password id="password" pt:class="form-control" pt:placeholder="#{msgs['crud.text.password']}" 
-									value="#{manageAdministradorControl.selectedEntity.senha}" size="35" required="true" 
-									feedback="false" />
-					</ui:decorate>
-				</h:panelGroup>
-					
+				
 					
 				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-3"/>
-            			<div class="col-sm-3">
-            				<a class="btn btn-block btn-info btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> 
+            			<div class="col-sm-3" style="margin-bottom: 15px">
+            				<a class="btn btn-block btn-warning btn-social" jsf:immediate="true"  jsf:action="#{manageAdministradorControl.list}">
+            					<i class="fa fa-rotate-left"></i> 
             					<h:outputText value="#{msgs['crud.button.back']}"/>
             				</a>
                 		</div>

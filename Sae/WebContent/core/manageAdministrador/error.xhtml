@@ -9,23 +9,13 @@
 
 
 <ui:define name="title">
-	<h:outputText value="#{msgs['manageAdministrador.title.create']}" 
-				  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id == null)}" />
-   	<h:outputText value="#{msgs['manageAdministrador.title.update']}" 
-   				  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id != null)}" />
-    <h:outputText value="#{msgs['manageAdministrador.title.retrieve']}" rendered="#{manageAdministradorControl.readOnly}" />
+	<h:outputText value="#{msgs['manageAdministrador.title.error']}"/>
 </ui:define>
 
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 		<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageAdministrador.title']}" /></a> </li> 
-		<li class="active">
-			<h:outputText value="#{msgs['manageAdministrador.title.create']}" 
-						  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id == null)}" />
-   			<h:outputText value="#{msgs['manageAdministrador.title.update']}" 
-   						  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id != null)}" />
-       		<h:outputText value="#{msgs['manageAdministrador.title.retrieve']}" rendered="#{manageAdministradorControl.readOnly}" />
-		</li>
+		<li class="active">	<h:outputText value="#{msgs['manageAdministrador.title.error']}"/></li>
 </ui:define>	
 	
 <ui:define name="body">
@@ -34,13 +24,13 @@
 		<h:form id="form" pt:class="form-horizontal">
 
 				<h:panelGroup id="nomeField">
-						<h:outputText id="nome" pt:class="form-control" value="Não foi possível salvar o Administrador" />
+						<h:outputText id="nome"  value="#{msgs['manageAdministrador.message.error']}" />
 				</h:panelGroup>
 				
 				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-4"/>
-            			<div class="col-sm-3">
+            			<div class="col-sm-4">
             				<a class="btn btn-block btn-danger btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> 
             					<h:outputText value="#{msgs['crud.button.back']}"/>
             				</a>
