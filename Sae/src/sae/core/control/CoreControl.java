@@ -12,9 +12,11 @@ import br.ufes.inf.nemo.util.ejb3.controller.PersistentObjectConverterFromId;
 import sae.core.domain.Administrador;
 import sae.core.domain.Assunto_Interesse;
 import sae.core.domain.Curso;
+import sae.core.domain.Egresso;
 import sae.core.persistence.AdministradorDAO;
 import sae.core.persistence.Assunto_InteresseDAO;
 import sae.core.persistence.CursoDAO;
+import sae.core.persistence.EgressoDAO;
 
 
 /**
@@ -53,6 +55,13 @@ public class CoreControl  implements Serializable {
 	private CursoDAO cursoDAO;
 	
 	
+	/** The DAO for Egresso objects. */
+	@EJB
+	private EgressoDAO egressoDAO;
+	
+	
+	
+	
 	
 	/** JSF Converter for Administrador objects. */
 	private PersistentObjectConverterFromId<Administrador> administradorConverter;
@@ -65,13 +74,19 @@ public class CoreControl  implements Serializable {
 	/** JSF Converter for Curso objects. */
 	private PersistentObjectConverterFromId<Curso> cursoConverter;
 
-
+	
+	/** JSF Converter for Egresso objects. */
+	private PersistentObjectConverterFromId<Egresso> egressoConverter;
 	
 	
 	
 	
 	public List<Administrador> getAdministradores(){
 		return administradorDAO.retrieveAll();
+	}
+	
+	public List<Egresso> getEgressos(){
+		return egressoDAO.retrieveAll();
 	}
 	
 	
@@ -107,7 +122,15 @@ public class CoreControl  implements Serializable {
 		}	
 		return cursoConverter;
 	}
+
 	
+	
+	/** Getter for EgressoConverter */
+	public Converter getEgressoConverter() {
+		if (egressoConverter == null) 
+			egressoConverter = new PersistentObjectConverterFromId<Egresso>(egressoDAO);
+		return egressoConverter;
+	}
 	
 	
 }

@@ -1,12 +1,10 @@
 package sae.core.control;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.application.CrudException;
@@ -18,32 +16,38 @@ import sae.core.application.ManageEgressoService;
 import sae.core.domain.Egresso;
 
 
-
+/**
+ * Controller class responsible for mediating the communication between user interface and application service for the
+ * use case "Manage Egresso".
+ * 
+ * This use case is a CRUD and, thus, the controller also uses the mini CRUD framework for EJB3.
+ * 
+ * @author Bruno Manzoli (manzoli2122@gmail.com)
+ */
 @Named
 @SessionScoped
 public class ManageEgressoControl extends CrudController<Egresso>{
 
 	
+	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 	
+	
+	/** The logger. */
 	private static final Logger logger = Logger.getLogger(CrudController.class.getCanonicalName());
 
 	@Inject
 	private ManageCursoRealizadoControl manageCursoRealizadoControl;
 	
+	
+	/** The "Manage Egresso" service. */
 	@EJB
 	private ManageEgressoService manageEgressoService;
 	
-	
-	private List<Egresso> lista;
-	
-	public List<Egresso> getLista() {
-		if(lista == null){
-			lista = manageEgressoService.getDAO().retrieveAll();
-		}
-		return lista; 
-	}
 
+	
+	
+	
 	
 
 	
@@ -53,9 +57,6 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	     bundleName = "msgs";
 	}
 	
-	public Converter getEgressoConverter() {
-		return manageEgressoService.getEgressoConverter();
-	}
 	
 	@Override
 	protected CrudService<Egresso> getCrudService() {
@@ -130,8 +131,7 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	@Override
 	public String delete() {
 		try{
-			return super.delete();
-			
+			return super.delete();	
 		}
 		catch(Exception e){
 			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();

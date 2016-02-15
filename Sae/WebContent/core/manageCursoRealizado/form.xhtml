@@ -41,10 +41,10 @@
 					<ui:param name="fieldName" value="form:egresso" />
 					<ui:param name="label" value="#{msgs['crud.text.egresso']}" />
 					<h:selectOneMenu pt:class="form-control"  id="egresso" value="#{manageCursoRealizadoControl.selectedEntity.egresso}" 
-									 required="true" converter="#{manageEgressoControl.egressoConverter}"  
+									 required="true" converter="#{coreControl.egressoConverter}"  
 									 disabled="#{(manageCursoRealizadoControl.readOnly) or (manageCursoRealizadoControl.selectedEntity.id != null)}">
 						<f:selectItem itemLabel="#{msgs['manageCursoRealizadoControl.form.egresso.blankOption']}" itemValue="" />
-						<f:selectItems value="#{manageEgressoControl.lista}" var="egresso" itemLabel="#{egresso.nome}" 
+						<f:selectItems value="#{coreControl.egressos}" var="egresso" itemLabel="#{egresso.nome}" 
 									   itemValue="#{egresso}" />
 						<p:ajax  update="egressoField" />
 					</h:selectOneMenu>
