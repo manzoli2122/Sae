@@ -1,6 +1,7 @@
 package sae.publico.control;
 
 import java.io.Serializable;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -35,6 +36,7 @@ public class publicoControl implements Serializable{
 	}
 	
 	public Titulo_Escolaridade[] getTitulo_Escolaridade() {
+		logger.log(Level.INFO, "return Titulo_Escolaridade values...");
 		return Titulo_Escolaridade.values();
 	}
 	

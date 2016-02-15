@@ -9,8 +9,6 @@ import sae.core.domain.Egresso_;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.security.acl.Group;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -46,9 +44,9 @@ public class LoginService  implements LoginModule {
 	
 	private Subject subject;
 	private CallbackHandler callbackHandler; 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unused" })
 	private Map sharedState; 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unused" })
 	private Map options;
 	private boolean loginOk;
 	private Principal identity;

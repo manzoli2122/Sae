@@ -51,18 +51,23 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	
 
 	
-	/*   CONSTRUTOR DA CLASSE */
+	/**   CONSTRUTOR DA CLASSE */
 	public ManageEgressoControl(){
 		 viewPath = "/core/manageEgresso/";
 	     bundleName = "msgs";
 	}
 	
 	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<Egresso> getCrudService() {
 		return manageEgressoService;
 	}
 
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#createNewEntity() */
 	@Override
 	protected Egresso createNewEntity() {
 		Egresso egresso = new Egresso();
@@ -70,6 +75,9 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 		return egresso;
 	}
 
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#initFilters() */
 	@Override
 	protected void initFilters() {
 		addFilter(new LikeFilter("manageEgresso.filter.byName", "nome", getI18nMessage(bundleName, "manageEgresso.text.filter.byName")));
@@ -77,6 +85,12 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	
 	
 	
+	/**  
+	 * Saves (create or update) the entity based on the data sent from the form.
+	 * Send email in the case create
+	 * 
+	 * @return The view path of the listing if no problems occurred. Otherwise, return error page.
+	 */
 	@Override
 	public String save() {
 		
@@ -128,6 +142,8 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	}
 	
 	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#delete() */
 	@Override
 	public String delete() {
 		try{

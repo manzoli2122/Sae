@@ -35,7 +35,7 @@
 					<h:selectOneMenu pt:class="form-control"  id="curso" value="#{consultaControl.curso}" 
 									 required="true" converter="#{coreControl.cursoConverter}">
 						<f:selectItem itemLabel="#{msgs['consultaControl.form.curso.blankOption']}" itemValue="" />
-						<f:selectItems value="#{manageCursoControl.entities}" var="curso" itemLabel="#{curso.nome}" itemValue="#{curso}"/>
+						<f:selectItems value="#{coreControl.cursos}" var="curso" itemLabel="#{curso.nome}" itemValue="#{curso}"/>
 						<p:ajax  update="cursoField" />
 					</h:selectOneMenu>
 				</ui:decorate>

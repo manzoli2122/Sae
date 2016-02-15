@@ -89,6 +89,10 @@ public class CoreControl  implements Serializable {
 		return egressoDAO.retrieveAll();
 	}
 	
+	public List<Curso> getCursos(){
+		return cursoDAO.retrieveAll();
+	}
+	
 	
 	
 	/** Getter for AdministradorConverter */
