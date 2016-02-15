@@ -1,6 +1,8 @@
 package sae.publico.control;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -12,12 +14,30 @@ import sae.core.application.SessionService;
 import sae.publico.application.ManageSugestaoService;
 import sae.publico.domain.Sugestao;
 
+
+
+/**
+ * Controller class responsible for mediating the communication between user interface and application service for the
+ * use case "Manage Sugestao".
+ * 
+ * This use case is a CRUD and, thus, the controller also uses the mini CRUD framework for EJB3.
+ * 
+ * @author Bruno Manzoli (manzoli2122@gmail.com)
+ */
 @Named
 @SessionScoped
 public class ManageSugestaoControl extends CrudController<Sugestao> {
 
+	
+	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
 	
+	
+	/** The logger. */
+	private static final Logger logger = Logger.getLogger(ManageSugestaoControl.class.getCanonicalName());
+	
+	
+	/** The "Manage Sugestao" service. */
 	@EJB
 	private ManageSugestaoService  manageSugestaoService ;
 	
@@ -26,7 +46,12 @@ public class ManageSugestaoControl extends CrudController<Sugestao> {
 	
 	
 	
-	/*   CONSTRUTOR DA CLASSE */
+	
+	
+	
+	
+	
+	/**   CONSTRUTOR DA CLASSE */
 	public ManageSugestaoControl(){
 		 viewPath = "/public/manageSugestao/";
 	     bundleName = "msgs";
@@ -34,20 +59,54 @@ public class ManageSugestaoControl extends CrudController<Sugestao> {
 	
 	
 	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<Sugestao> getCrudService() {
 		return manageSugestaoService;
 	}
 
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#createNewEntity() */
 	@Override
 	protected Sugestao createNewEntity() {
+		logger.log(Level.FINER, "INITIALIZING AN EMPTY Sugestao  ......");
 		Sugestao sugestao = new Sugestao();
 		sugestao.setData_envio(new Date());
 		sugestao.setAutor(sessionService.getEgresso());
 		return sugestao;
 	}
 
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#initFilters() */
 	@Override
 	protected void initFilters() {	}
+
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#delete() */
+	@Override
+	public String delete() {
+		try{
+			return super.delete();
+		}
+		catch(Exception e){
+			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+		}
+	}
+	
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#save() */
+	@Override
+	public String save() {
+		try{
+			return super.save();
+		}
+		catch(Exception e){
+			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+		}
+	}
 
 }
