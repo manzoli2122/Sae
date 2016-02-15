@@ -89,7 +89,7 @@ public class ManageCursoRealizadoControl extends CrudController<CursoRealizado> 
 		if (manageEgressoControl.getSelectedEntity()!=null){
 			selectedEntity.setEgresso(manageEgressoControl.getSelectedEntity());
 		}
-		return manageEgressoControl.getViewPath() + "form.xhtml?faces-redirect=" + getFacesRedirect();
+		return getViewPath() + "form.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 
 }
