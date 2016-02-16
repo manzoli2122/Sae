@@ -1,5 +1,6 @@
 package sae.publico.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 
@@ -15,6 +17,7 @@ import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
 import sae.core.domain.Curso;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.CursoRealizado_;
+import sae.core.domain.Egresso;
 import sae.publico.domain.Faixa_Salarial;
 import sae.publico.domain.Historico_Egresso;
 import sae.publico.domain.Historico_Egresso_;
@@ -38,6 +41,13 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		return entityManager;
 	}
 
+	
+	@Override
+	protected List<Order> getOrderList(CriteriaBuilder cb, Root<Historico_Egresso> root) {
+		List<Order> orderList = new ArrayList<Order>();
+		orderList.add(cb.asc(root.get(Historico_Egresso_.data_envio)));
+		return orderList;
+	}
 	
 	
 	
@@ -171,6 +181,29 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		
 		cq.select(root);	
 		return  em.createQuery(cq).getResultList();
+	}
+
+	
+	
+	@Override
+	public List<Historico_Egresso> retrieveAllMine(Egresso egresso) {
+		// Using the entity manager, create a criteria query to retrieve all objects of the domain class.
+				EntityManager em = getEntityManager();
+				CriteriaBuilder cb = em.getCriteriaBuilder();
+				CriteriaQuery<Historico_Egresso> cq = cb.createQuery(getDomainClass());
+				Root<Historico_Egresso> root = cq.from(getDomainClass());
+				
+				cq.where(  cb.equal(root.get(Historico_Egresso_.egresso), egresso));
+				
+				cq.select(root);
+
+				// Applies ordering.
+				applyOrdering(cb, root, cq);
+
+				// Return the list of objects.
+				List<Historico_Egresso> result = em.createQuery(cq).getResultList();
+				return result;
+				//return super.retrieveAll();
 	}
 	
 }

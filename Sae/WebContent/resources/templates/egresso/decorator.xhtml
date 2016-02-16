@@ -236,23 +236,26 @@
 
 				<!-- Sidebar Menu -->
 				<ul class="sidebar-menu">
+					
 					<li class="header"><h:outputText value="#{msgs['title.navigation']}" /></li>
-					<!-- Optionally, you can add icons to the links -->
 					
 					
+					<li><a href="#{facesContext.externalContext.requestContextPath}/consulta/index.faces"><i class="fa fa-home"></i> Consulta</a></li>
+					
+					<li class="header"><h:outputText value="Navegação Egresso" /></li>
 					
 					<li>
-						<p:commandLink  action="#{manageSugestaoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageSugestao.title']}"  />
+						<p:commandLink  action="#{manageSugestaoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageSugestao.title']}"  />
 					</li>
 					<li>
-						<p:commandLink action="#{manageEscolaridadeControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageEscolaridade.title']}"  />
+						<p:commandLink action="#{manageEscolaridadeControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageEscolaridade.title']}"  />
 					</li>
 					<li>
-						<p:commandLink action="#{manageDepoimentoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageDepoimento.title']}"  />
+						<p:commandLink action="#{manageDepoimentoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageDepoimento.title']}"  />
 					</li>
 					
 					<li>
-						<p:commandLink action="#{manageHistoricoControl.list()}" rendered="#{sessionControl.systemInstalled}" value="#{msgs['manageHistorico.title']}"  />
+						<p:commandLink action="#{manageHistoricoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageHistorico.title']}"  />
 					</li>
 					
 					

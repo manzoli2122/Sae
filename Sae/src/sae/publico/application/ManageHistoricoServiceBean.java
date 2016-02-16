@@ -1,12 +1,16 @@
 package sae.publico.application;
 
+import java.util.List;
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import br.ufes.inf.nemo.util.ejb3.application.CrudException;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.application.CrudServiceBean;
+import sae.core.application.SessionService;
+import sae.core.domain.Egresso;
 import sae.publico.domain.Historico_Egresso;
 import sae.publico.persistence.Historico_EgressoDAO;
 
@@ -34,6 +38,9 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<Historico_Egress
 	private Historico_EgressoDAO historico_EgressoDAO;
 	
 	
+	@EJB
+	private SessionService sessionService;
+	
 	
 	
 	
@@ -53,4 +60,22 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<Historico_Egress
 		return new Historico_Egresso();
 	}
 
+	
+	
+	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
+	@Override
+	public void validateCreate(Historico_Egresso entity) throws CrudException {
+		Egresso egresso = sessionService.getEgresso();
+		if(egresso != null)
+		entity.setEgresso(egresso);
+		
+	}
+	
+	
+	
+	
+	@Override
+	public List<Historico_Egresso>	retrieveAllMine() {
+		return historico_EgressoDAO.retrieveAllMine(sessionService.getEgresso());
+	}
 }

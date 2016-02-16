@@ -48,17 +48,21 @@
             	
             	
             	
-        <h:form id="listingForm" style="margin-bottom: 25px">
+        <h:form id="listingForm">
         	<p:dataTable
 	    			 	widgetVar="listingTable"
            			    rowIndexVar="rowIndex"
                			tableStyleClass="table table-bordered table-striped"
                    		value="#{manageHistoricoControl.lazyEntities}" 
                    		var="entity" 
-                   		rows="#{manageHistoricoControl.entityCount}" 
+                   		rows="#{manageHistoricoControl.maxDataTableRowsPerPage}" 
+                        rowsPerPageTemplate="#{manageHistoricoControl.halfMaxDataTableRowsPerPage},#{manageHistoricoControl.maxDataTableRowsPerPage},#{manageHistoricoControl.doubleMaxDataTableRowsPerPage}"
+                        paginator="true" 
                         lazy="true" 
                         selection="#{manageHistoricoControl.selectedEntity}" 
                         selectionMode="single" 
+                        paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+                        paginatorPosition="bottom" 
                         loadingMessage="#{msgs['text.ajax.loading']}" 
                         emptyMessage="#{manageHistoricoControl.filtering ? msgs['manageHistorico.text.noEntitiesFiltered'] : msgs['manageHistorico.text.noEntities']}">
 												
@@ -66,10 +70,8 @@
                 	<h:outputText value="#{entity.egresso.nome}" />
                 </p:column>
                 
-                <p:column headerText="#{msgs['manageHistorico.title.dataEnvio']}" style="text-align: center; width:35%;">
-                	<h:outputText  value="#{entity.data_envio}" >
-                		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
-                	</h:outputText>
+                <p:column headerText="#{msgs['crud.text.matricula']}" style="text-align: center;">
+                	<h:outputText  value="#{entity.data_envio}" />
                 </p:column>
                 <p:ajax event="rowSelect" update=":buttonsForm" />
         	</p:dataTable>
@@ -80,13 +82,13 @@
         <h:form id="buttonsForm">
            	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 	    		<div class="form-group">	
-	       			<div class="col-sm-3" style="margin-bottom: 15px">
+	       			<div class="col-sm-3">
 	       				<a class="btn btn-block btn-success btn-social" jsf:action="#{manageHistoricoControl.create}"><i class="fa fa-user-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/></a>
 	                </div>
-	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
+	                <div class="col-sm-3" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-info btn-social" jsf:action="#{manageHistoricoControl.retrieve}" jsf:disabled="#{manageHistoricoControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>
 	                </div>
-	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
+	                <div class="col-sm-3" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageHistoricoControl.update}" jsf:disabled="#{manageHistoricoControl.selectedEntity == null}"><i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/></a>
 	                </div>
 	                <div class="col-sm-3" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
@@ -107,13 +109,11 @@
 			<h:form id="trashForm" >
 				<h3><h:outputText  value="#{msgs['crud.text.trashHeader']}" /></h3>
 				<p:dataList value="#{manageHistoricoControl.trashCan}" var="entity" type="ordered">
-				   	<h:outputText  value="#{entity.data_envio}" >
-                		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
-                	</h:outputText>
+				   	#{entity.data_envio} 
 				</p:dataList>
 			    <ui:decorate template="/resources/templates/default/formbutton.xhtml">
 			    	<div class="form-group">	
-			        	<div class="col-sm-3" style="margin-bottom: 15px">
+			        	<div class="col-sm-3">
 			            	<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageHistoricoControl.cancelDeletion}" jsf:update=":trashForm :buttonsForm :listingForm"><i class="fa  fa-close"></i> <h:outputText value="#{msgs['crud.button.cancelDeletion']}"/></a>
 		                </div>
 				        <div class="col-sm-3">

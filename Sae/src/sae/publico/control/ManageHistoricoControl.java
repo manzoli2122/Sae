@@ -10,7 +10,6 @@ import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
-import sae.core.application.SessionService;
 import sae.publico.application.ManageHistoricoService;
 import sae.publico.domain.Historico_Egresso;
 
@@ -42,11 +41,6 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 	private ManageHistoricoService  manageHistoricoService ;
 	
 	
-	@EJB
-	private SessionService sessionService;
-	
-	
-	
 	
 	
 	
@@ -73,7 +67,6 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 		logger.log(Level.FINER, "INITIALIZING AN EMPTY Historico_Egresso ......");
 		Historico_Egresso historico = new Historico_Egresso();
 		historico.setData_envio(new Date());
-		historico.setEgresso(sessionService.getEgresso());
 		historico.setAtua_na_area(true);
 		return historico;
 	}
@@ -84,6 +77,16 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 	@Override
 	protected void initFilters() {	
 	}
+	
+	
+	
+	@Override
+	protected void retrieveEntities() {		
+		if (lastEntityIndex > entityCount) lastEntityIndex = (int) entityCount;
+		entities = manageHistoricoService.retrieveAllMine();
+		lastEntityIndex = firstEntityIndex + entities.size();		
+	}
+	
 
 	
 
