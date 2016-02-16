@@ -62,8 +62,8 @@
                         loadingMessage="#{msgs['text.ajax.loading']}" 
                         emptyMessage="#{manageHistoricoControl.filtering ? msgs['manageHistorico.text.noEntitiesFiltered'] : msgs['manageHistorico.text.noEntities']}">
 												
-        		<p:column headerText="#{msgs['crud.text.name']}"  style="text-align: center;">
-                	<h:outputText value="#{entity.egresso.nome}" />
+        		<p:column headerText="#{msgs['crud.text.areaAtuacao']}"  style="text-align: center;">
+                	<h:outputText value="#{entity.area_atuacao.label}" />
                 </p:column>
                 
                 <p:column headerText="#{msgs['manageHistorico.title.dataEnvio']}" style="text-align: center; width:35%;">

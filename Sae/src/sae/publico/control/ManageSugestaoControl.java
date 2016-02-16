@@ -10,7 +10,6 @@ import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
-import sae.core.application.SessionService;
 import sae.publico.application.ManageSugestaoService;
 import sae.publico.domain.Sugestao;
 
@@ -41,8 +40,7 @@ public class ManageSugestaoControl extends CrudController<Sugestao> {
 	@EJB
 	private ManageSugestaoService  manageSugestaoService ;
 	
-	@EJB
-	private SessionService sessionService;
+	
 	
 	
 	
@@ -73,7 +71,6 @@ public class ManageSugestaoControl extends CrudController<Sugestao> {
 		logger.log(Level.FINER, "INITIALIZING AN EMPTY Sugestao  ......");
 		Sugestao sugestao = new Sugestao();
 		sugestao.setData_envio(new Date());
-		sugestao.setAutor(sessionService.getEgresso());
 		return sugestao;
 	}
 
@@ -83,6 +80,17 @@ public class ManageSugestaoControl extends CrudController<Sugestao> {
 	@Override
 	protected void initFilters() {	}
 
+	
+	
+	
+	@Override
+	protected void retrieveEntities() {		
+		if (lastEntityIndex > entityCount) lastEntityIndex = (int) entityCount;
+		entities = manageSugestaoService.retrieveAllMine();
+		lastEntityIndex = firstEntityIndex + entities.size();		
+	}
+	
+	
 	
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#delete() */

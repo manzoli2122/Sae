@@ -1,11 +1,20 @@
 package sae.publico.persistence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Root;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
+import sae.core.domain.Egresso;
 import sae.publico.domain.Sugestao;
+import sae.publico.domain.Sugestao_;
 
 @Stateless
 public class SugestaoJPADAO extends BaseJPADAO<Sugestao> implements SugestaoDAO{
@@ -24,4 +33,37 @@ public class SugestaoJPADAO extends BaseJPADAO<Sugestao> implements SugestaoDAO{
 	protected EntityManager getEntityManager() {
 		return entityManager;
 	}
+	
+	
+	@Override
+	protected List<Order> getOrderList(CriteriaBuilder cb, Root<Sugestao> root) {
+		List<Order> orderList = new ArrayList<Order>();
+		orderList.add(cb.asc(root.get(Sugestao_.data_envio)));
+		return orderList;
+	}
+
+	@Override
+	public List<Sugestao> retrieveAllMine(Egresso autor) {
+		EntityManager em = getEntityManager();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Sugestao> cq = cb.createQuery(getDomainClass());
+		Root<Sugestao> root = cq.from(getDomainClass());
+		
+		cq.where(  cb.equal(root.get(Sugestao_.autor), autor));
+		
+		cq.select(root);
+
+		// Applies ordering.
+		applyOrdering(cb, root, cq);
+
+		// Return the list of objects.
+		List<Sugestao> result = em.createQuery(cq).getResultList();
+		return result;
+		//return super.retrieveAll();
+	}
+	
+	
+	
+	
+	
 }

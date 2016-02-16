@@ -1,5 +1,7 @@
 package sae.publico.application;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
@@ -17,5 +19,7 @@ import sae.publico.domain.Sugestao;
  */
 @Local
 public interface ManageSugestaoService extends CrudService<Sugestao> {
+
+	List<Sugestao> retrieveAllMine();
 
 }

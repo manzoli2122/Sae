@@ -10,7 +10,6 @@ import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
-import sae.core.application.SessionService;
 import sae.publico.application.ManageDepoimentoService;
 import sae.publico.domain.Depoimento;
 
@@ -42,11 +41,6 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	private ManageDepoimentoService  manageDepoimentoService ;
 	
 	
-	@EJB
-	private SessionService sessionService;
-	
-	
-	
 	
 	
 	
@@ -73,7 +67,6 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 		logger.log(Level.FINER, "INITIALIZING AN EMPTY Depoimento ......");
 		Depoimento depoimento = new Depoimento();
 		depoimento.setData_envio(new Date());
-		depoimento.setAutor(sessionService.getEgresso());
 		depoimento.setAnonimo(false);
 		return depoimento;
 	}
@@ -85,6 +78,16 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	protected void initFilters() {
 	}
 
+	
+	
+	
+	@Override
+	protected void retrieveEntities() {		
+		if (lastEntityIndex > entityCount) lastEntityIndex = (int) entityCount;
+		entities = manageDepoimentoService.retrieveAllMine();
+		lastEntityIndex = firstEntityIndex + entities.size();		
+	}
+	
 	
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#delete() */

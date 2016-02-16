@@ -69,8 +69,8 @@
 				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-3"/>
-            			<div class="col-sm-3">
-            				<a class="btn btn-block btn-info btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> 
+            			<div class="col-sm-3" style="margin-bottom: 15px">
+            				<a class="btn btn-block btn-warning btn-social" jsf:immediate="true" jsf:action="#{manageSugestaoControl.list}"><i class="fa  fa-rotate-left"></i> 
             					<h:outputText value="#{msgs['crud.button.back']}"/>
             				</a>
                 		</div>

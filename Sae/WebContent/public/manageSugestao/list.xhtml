@@ -12,7 +12,7 @@
 <ui:define name="title"><h:outputText value="#{msgs['manageSugestao.title']}" /></ui:define>
 <ui:define name="breadcrumb">
 	<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-	<li><a jsf:outcome="list"   jsf:onclick="#{manageSugestaoControl.list()}" ><i class="fa fa-user"></i><h:outputText value="#{msgs['manageSugestao.title']}" /></a> </li> 
+	<li class="active"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageSugestao.title']}" /></li> 
 </ui:define>
 	
 <ui:define name="body">
@@ -50,32 +50,27 @@
             	
             	
             	
-        <h:form id="listingForm">
+        <h:form id="listingForm" style="margin-bottom: 25px">
         	<p:dataTable
 	    			 	widgetVar="listingTable"
            			    rowIndexVar="rowIndex"
                			tableStyleClass="table table-bordered table-striped"
                    		value="#{manageSugestaoControl.lazyEntities}" 
                    		var="entity" 
-                   		rows="#{manageSugestaoControl.maxDataTableRowsPerPage}" 
-                        rowsPerPageTemplate="#{manageSugestaoControl.halfMaxDataTableRowsPerPage},#{manageSugestaoControl.maxDataTableRowsPerPage},#{manageSugestaoControl.doubleMaxDataTableRowsPerPage}"
-                        paginator="true" 
+                   		rows="#{manageSugestaoControl.entityCount}" 
                         lazy="true" 
                         selection="#{manageSugestaoControl.selectedEntity}" 
                         selectionMode="single" 
-                        paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-                        paginatorPosition="bottom" 
                         loadingMessage="#{msgs['text.ajax.loading']}" 
                         emptyMessage="#{manageSugestaoControl.filtering ? msgs['manageSugestao.text.noEntitiesFiltered'] : msgs['manageSugestao.text.noEntities']}">
 												
-        		<p:column headerText="#{msgs['crud.text.name']}"  style="text-align: center;">
-                	<h:outputText value="#{entity.autor.nome}" />
-                </p:column>
-                <p:column headerText="#{msgs['crud.text.cpf']}"  style="text-align: center;">
+                <p:column headerText="#{msgs['crud.text.curso']}"  style="text-align: center;">
                 	<h:outputText  value="#{entity.curso.nome}" />
                 </p:column>
-                <p:column headerText="#{msgs['crud.text.matricula']}" style="text-align: center;">
-                	<h:outputText  value="#{entity.data_envio}" />
+                <p:column headerText="#{msgs['manageSugestao.title.dataEnvio']}" style="text-align: center; width:35%;">
+                	<h:outputText  value="#{entity.data_envio}" >
+                		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
+                	</h:outputText>
                 </p:column>
                 <p:ajax event="rowSelect" update=":buttonsForm" />
         	</p:dataTable>
@@ -86,16 +81,16 @@
         <h:form id="buttonsForm">
            	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 	    		<div class="form-group">	
-	       			<div class="col-sm-3">
+	       			<div class="col-sm-3" style="margin-bottom: 15px">
 	       				<a class="btn btn-block btn-success btn-social" jsf:action="#{manageSugestaoControl.create}"><i class="fa fa-user-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/></a>
 	                </div>
-	                <div class="col-sm-3" jsf:rendered="#{manageSugestaoControl.selectedEntity != null}">
+	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageSugestaoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-info btn-social" jsf:action="#{manageSugestaoControl.retrieve}" jsf:disabled="#{manageSugestaoControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>
 	                </div>
-	                <div class="col-sm-3" jsf:rendered="#{manageSugestaoControl.selectedEntity != null}">
+	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageSugestaoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageSugestaoControl.update}" jsf:disabled="#{manageSugestaoControl.selectedEntity == null}"><i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/></a>
 	                </div>
-	                <div class="col-sm-3" jsf:rendered="#{manageSugestaoControl.selectedEntity != null}">
+	                <div class="col-sm-3"  jsf:rendered="#{manageSugestaoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-danger btn-social" jsf:action="#{manageSugestaoControl.trash}" jsf:disabled="#{manageSugestaoControl.selectedEntity == null}" jsf:process="@this" jsf:update=":trashForm"><i class="fa  fa-trash-o"></i> <h:outputText value="#{msgs['crud.button.delete']}"/></a>
 	                </div>
 	              </div>
@@ -113,11 +108,14 @@
 			<h:form id="trashForm" >
 				<h3><h:outputText  value="#{msgs['crud.text.trashHeader']}" /></h3>
 				<p:dataList value="#{manageSugestaoControl.trashCan}" var="entity" type="ordered">
-				   	#{entity.autor} 
+				   	#{entity.curso.nome} 
+				   	<h:outputText  value="#{entity.data_envio}" >
+                		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
+                	</h:outputText>
 				</p:dataList>
 			    <ui:decorate template="/resources/templates/default/formbutton.xhtml">
 			    	<div class="form-group">	
-			        	<div class="col-sm-3">
+			        	<div class="col-sm-3" style="margin-bottom: 15px">
 			            	<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageSugestaoControl.cancelDeletion}" jsf:update=":trashForm :buttonsForm :listingForm"><i class="fa  fa-close"></i> <h:outputText value="#{msgs['crud.button.cancelDeletion']}"/></a>
 		                </div>
 				        <div class="col-sm-3">
