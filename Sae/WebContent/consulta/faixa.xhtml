@@ -6,34 +6,47 @@
                template="/resources/templates/grafico/decorator.xhtml">
                 
     <ui:define name="body">
-      	<ui:decorate template="/resources/templates/default/form.xhtml">
-			<ui:param name="formName" value="Faixa Salarial" />
       	
-		      	<h:form>
-			      	<p:chart type="pie" model="#{consultaControl.faixaSalarial}"  style="height:500px" responsive="true" />
-			    </h:form>
-			    
-			    
-			    <h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroEgreso}"/>
-			    
-	     </ui:decorate>
-	     
-	     
-	     
-	     
-	     <ui:decorate template="/resources/templates/default/form.xhtml">
-			<ui:param name="formName" value="Faixa Salarial / Residencia" />
+      	 <div class="row">
+      		
+      		<!-- Left col -->
+            <section class="col-lg-6 connectedSortable">
+              
+		              <ui:decorate template="/resources/templates/default/form.xhtml">
+							<ui:param name="formName" value="Faixa Salarial" />
+							  	<p:chart  type="pie" model="#{consultaControl.faixaSalarial}"  style="height:500px" responsive="true" />
+							<h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroEgreso}"/>	    
+					  </ui:decorate>
+					  
+					  
+					  <ui:decorate template="/resources/templates/default/form.xhtml">
+							<ui:param name="formName" value="Faixa Salarial" />
+							  	<p:chart  type="pie" model="#{consultaControl.faixa_Professor}"  style="height:500px" responsive="true" />
+							<h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroFaixaProfessor}"/>	    
+					  </ui:decorate>
+		           
+            </section><!-- /.Left col -->
+            
+            
+            
+            <!-- right col -->
+            <section class="col-lg-6 connectedSortable">
+
+				<ui:decorate template="/resources/templates/default/form.xhtml">
+					<ui:param name="formName" value="Faixa Salarial" />
+				    <p:chart type="pie" model="#{consultaControl.faixa_Resisdencia}"  style="height:500px" responsive="true" />
+					<h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroFaixaResidencial}"/>   
+			     </ui:decorate>
+			     
+			     <ui:decorate template="/resources/templates/default/form.xhtml">
+					<ui:param name="formName" value="Faixa Salarial" />
+			      	<p:chart  type="pie" model="#{consultaControl.faixa_Empreendedor}"  style="height:500px" responsive="true" />
+				    <h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroFaixaEmpreendedor}"/>
+			 	</ui:decorate>
+			     
+            </section><!-- right col -->
+          
+          </div><!-- /.row (main row) -->
       	
-		      	<h:form>
-			      	<p:chart type="pie" model="#{consultaControl.faixa_Resisdencia}"  style="height:500px" responsive="true" />
-			    </h:form>
-			    
-			    
-			    <h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroEgreso}"/>
-			    
-	     </ui:decorate>
-	     
-	     
-	     
     </ui:define>       
 </ui:composition>

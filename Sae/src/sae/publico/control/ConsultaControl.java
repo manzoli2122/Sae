@@ -6,6 +6,7 @@ import javax.inject.Named;
 import org.primefaces.model.chart.PieChartModel;
 import sae.core.domain.Curso;
 import sae.publico.application.ConsultaService;
+import sae.publico.domain.Area_Atuacao;
 import sae.publico.domain.Faixa_Salarial;
 import sae.publico.domain.Historico_Egresso;
 
@@ -33,10 +34,15 @@ public class ConsultaControl implements Serializable {
 	
 	private Curso curso;
 	
-	private PieChartModel faixaSalarial , residencia , faixa_residencia ;
+	private PieChartModel grafico_sexo, areaAtuacao, faixaSalarial , residencia , faixa_residencia, faixa_empreendedor , faixa_professor ;
 	
 	private List<Historico_Egresso>  historicos;
  
+	private int numeroFaixaResidencial, numeroFaixaEmpreendedor , numeroFaixaProfessor;
+	
+	
+	
+	
 	
 	
 	/*   CONSTRUTOR DA CLASSE */
@@ -45,13 +51,17 @@ public class ConsultaControl implements Serializable {
 	     bundleName = "msgs";
 	}
 	
+	
+	
 	public boolean getFacesRedirect() { return true; }
+	
+	
 	
 	public String getViewPath() {return viewPath;	}
 	
 	
+	
 	public String list() {
-		
 		logger.log(Level.INFO, "LIST CONSULTA ");
 		return getViewPath() + "index.xhtml?faces-redirect=" + getFacesRedirect();
 	}
@@ -68,31 +78,97 @@ public class ConsultaControl implements Serializable {
 	
 	public String consulta_faixa_residencia() {
 			
-		faixa_residencia = new PieChartModel();
 		Iterator<Historico_Egresso> iterator = historicos.iterator();
 		Faixa_Salarial[] faixas = Faixa_Salarial.values();
+		
+		
+		
 		int[] valor = new int[faixas.length] ;
+		int[] valor_empreendedor = new int[faixas.length] ;
+		int[] valor_professor = new int[faixas.length] ;
+		
+		
+		
+		faixa_residencia = new PieChartModel();
+		faixa_empreendedor = new PieChartModel();
+		faixa_professor = new PieChartModel();
+		
+		
+		
+		numeroFaixaResidencial=0;
+		numeroFaixaEmpreendedor=0;
+		numeroFaixaProfessor=0;
+		
+		
 		
 		while(iterator.hasNext()){
+			
 			Historico_Egresso hh = iterator.next();
-			if(hh.getReside_no_ES()){
-				Faixa_Salarial ff = hh.getFaixa_salarial();
-				
+			Faixa_Salarial ff = hh.getFaixa_salarial();
+			
+			if(hh.getArea_atuacao().equals(Area_Atuacao.professor)){
 				for(int i = 0 ; i < faixas.length ; i++ ){
 					if(  ff.equals(faixas[i])  ){
-						valor[i]++;
+						valor_professor[i]++;
+						numeroFaixaProfessor++;
 						break;
 					}
 				}
 			}
+			
+			
+			if(hh.getArea_atuacao().equals(Area_Atuacao.empreendedor)){
+				for(int i = 0 ; i < faixas.length ; i++ ){
+					if(  ff.equals(faixas[i])  ){
+						valor_empreendedor[i]++;
+						numeroFaixaEmpreendedor++;
+						break;
+					}
+				}
+			}
+			
+			
+			if(hh.getReside_no_ES()){
+				for(int i = 0 ; i < faixas.length ; i++ ){
+					if(  ff.equals(faixas[i])  ){
+						valor[i]++;
+						numeroFaixaResidencial++;
+						break;
+					}
+				}
+			}
+			
+			
+			
+			
 		}
 		
 		for(int i = 0 ; i < faixas.length ; i++ ){
 			faixa_residencia.set(faixas[i].getLabel(),valor[i]);
+			faixa_empreendedor.set(faixas[i].getLabel(),valor_empreendedor[i]);
+			faixa_professor.set(faixas[i].getLabel(),valor_professor[i]);
 		}
-		faixa_residencia.setTitle("Faixa Salarial / Residencia");
+		
+		
+		faixa_professor.setTitle("Egressos Professores");
+		faixa_professor.setLegendPosition("s");
+		faixa_professor.setShowDataLabels(true);
+		faixa_professor.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
+	    faixa_professor.setDiameter(250);
+		
+		
+		
+		faixa_empreendedor.setTitle("Egressos Empreendedores");
+		faixa_empreendedor.setLegendPosition("s");
+		faixa_empreendedor.setShowDataLabels(true);
+		faixa_empreendedor.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
+	    faixa_empreendedor.setDiameter(250);
+		
+		
+		faixa_residencia.setTitle("Egressos Residente no Espirito Santo");
 		faixa_residencia.setLegendPosition("s");
 		faixa_residencia.setShowDataLabels(true);
+		faixa_residencia.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
 	    //faixaSalarial.setDataFormat("value percent");
 		faixa_residencia.setDiameter(250);
 			
@@ -100,6 +176,8 @@ public class ConsultaControl implements Serializable {
 	}
 		
 	public PieChartModel getFaixa_Resisdencia() {  return faixa_residencia;   }
+	public PieChartModel getFaixa_Empreendedor() {  return faixa_empreendedor;   }
+	public PieChartModel getFaixa_Professor() {  return faixa_professor;   }
 		
 		
 	
@@ -128,16 +206,23 @@ public class ConsultaControl implements Serializable {
 		for(int i = 0 ; i < faixas.length ; i++ ){
 			faixaSalarial.set(faixas[i].getLabel(),valor[i]);
 		}
-		faixaSalarial.setTitle("Faixa Salarial");
+		faixaSalarial.setTitle("Todos os Egressos");
 		faixaSalarial.setLegendPosition("s");
         faixaSalarial.setShowDataLabels(true);
         //faixaSalarial.setDataFormat("value percent");
 		faixaSalarial.setDiameter(250);
+		//faixaSalarial.setSeriesColors("c95939,E7982F,E4F20A,0AC9F2,2C0AF2,178504");
+		faixaSalarial.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
+		
 		consulta_faixa_residencia();
 		return getViewPath() + "faixa.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
 	public PieChartModel getFaixaSalarial() {  return faixaSalarial;   }
+	
+	
+	
+	
 	
 	
 	
@@ -180,6 +265,89 @@ public class ConsultaControl implements Serializable {
 	 
 	 
 	 
+	
+	
+	
+	
+public String consulta_Area_Atuacao() {
+		
+		areaAtuacao = new PieChartModel();
+		Iterator<Historico_Egresso> iterator = historicos.iterator();
+		
+		Area_Atuacao[] areas = Area_Atuacao.values();
+		
+		int[] valor = new int[areas.length] ;
+		
+		while(iterator.hasNext()){
+			Area_Atuacao aa = iterator.next().getArea_atuacao();
+			for(int i = 0 ; i < areas.length ; i++ ){
+				if(  aa.equals(areas[i])  ){
+					valor[i]++;
+					break;
+				}
+			}
+		}
+		for(int i = 0 ; i < areas.length ; i++ ){
+			areaAtuacao.set(areas[i].getLabel(),valor[i]);
+		}
+		areaAtuacao.setTitle("Todos os Egressos");
+		areaAtuacao.setLegendPosition("s");
+		areaAtuacao.setShowDataLabels(true);
+        areaAtuacao.setDiameter(250);
+        //areaAtuacao.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
+        areaAtuacao.setSeriesColors("dd6542,E7982F,0AC9F2,7a86db,6a9660");
+		
+		return getViewPath() + "atuacao.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	public PieChartModel getAreaAtuacao() {  return areaAtuacao;   }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+public String consulta_Sexo() {
+		
+		grafico_sexo = new PieChartModel();
+		Iterator<Historico_Egresso> iterator = historicos.iterator();
+		
+		int feminino = 0 ;
+		
+		while(iterator.hasNext()){
+			Character ss = iterator.next().getEgresso().getSexo();
+			if(  ss.equals('F')  ){
+				feminino++;
+			}
+			
+		}
+		
+		grafico_sexo.set("Feminino", feminino);
+		grafico_sexo.set("Masculino", (historicos.size()-feminino));
+		
+		
+		grafico_sexo.setTitle("Todos os Egressos");
+		grafico_sexo.setLegendPosition("s");
+		grafico_sexo.setShowDataLabels(true);
+		grafico_sexo.setDiameter(250);
+        grafico_sexo.setSeriesColors("dd6542,7a86db");
+		
+		return getViewPath() + "sexo.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	public PieChartModel getGrafico_sexo() {  return grafico_sexo;   }
+	
+	
 	 
 	 
 	 
@@ -191,6 +359,13 @@ public class ConsultaControl implements Serializable {
 	public void setCurso(Curso curso) { this.curso = curso; }
 	
 	public int getNumeroEgreso() { return historicos.size(); }
+
+	public int getNumeroFaixaResidencial() { return numeroFaixaResidencial; }
+
+	public int getNumeroFaixaEmpreendedor() { return numeroFaixaEmpreendedor; }
+	
+	public int getNumeroFaixaProfessor() { return numeroFaixaProfessor; }
+
 	
 	
 	

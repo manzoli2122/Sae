@@ -31,16 +31,24 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 	private EntityManager entityManager;
 	
 	
+	
+	
+	
+	
+	
 	@Override
 	public Class<Historico_Egresso> getDomainClass() {
 		return Historico_Egresso.class;
 	}
 
+	
+	
 	@Override
 	protected EntityManager getEntityManager() {
 		return entityManager;
 	}
 
+	
 	
 	@Override
 	protected List<Order> getOrderList(CriteriaBuilder cb, Root<Historico_Egresso> root) {
@@ -98,7 +106,6 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 	
 	
 	
-	
 	@Override
 	public long contReside(Boolean mora, Curso curso){
 		
@@ -144,6 +151,8 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		
 	}
 
+	
+	
 	@Override
 	public List<Historico_Egresso> consultaHistorico(Curso curso) {
 		
