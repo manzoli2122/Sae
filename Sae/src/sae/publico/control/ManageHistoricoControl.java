@@ -67,7 +67,6 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 		logger.log(Level.FINER, "INITIALIZING AN EMPTY Historico_Egresso ......");
 		Historico_Egresso historico = new Historico_Egresso();
 		historico.setData_envio(new Date());
-		historico.setAtua_na_area(true);
 		return historico;
 	}
 
