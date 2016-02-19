@@ -12,8 +12,6 @@ import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
-import sae.core.domain.Administrador;
-import sae.core.domain.Administrador_;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.CursoRealizado_;
 import sae.core.domain.Egresso;
@@ -43,7 +41,6 @@ public class CursoRealizadoJPADAO extends BaseJPADAO<CursoRealizado> implements 
 	protected List<Order> getOrderList(CriteriaBuilder cb, Root<CursoRealizado> root) {
 		List<Order> orderList = new ArrayList<Order>();
 		orderList.add(cb.asc(root.get(CursoRealizado_.curso.getName())));
-		//orderList.add(cb.asc(root.get(CursoRealizado_.egresso.getName())));
 		return orderList;
 	}
 	
