@@ -38,11 +38,11 @@
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:curso" />
 					<ui:param name="label" value="#{msgs['crud.text.curso']}" />
-					<h:selectOneMenu  id="curso" pt:class="form-control" value="#{manageSugestaoControl.selectedEntity.curso}"  
+					<h:selectOneMenu  id="curso" pt:class="form-control" value="#{manageSugestaoControl.selectedEntity.cursoRealizado}"  
 									  converter="#{coreControl.cursoConverter}"  required="true" 
 									  disabled="#{manageSugestaoControl.readOnly}">
 						<f:selectItem itemLabel="Selecione o Curso" itemValue="" />
-						<f:selectItems value="#{sessionControl.cursoRealizado}" var="curso" itemLabel="#{curso.curso.nome}" itemValue="#{curso.curso}" />
+						<f:selectItems value="#{sessionControl.cursoRealizado}" var="curso" itemLabel="#{curso.curso.nome}" itemValue="#{curso}" />
 						<p:ajax update="cursoField" />
 					</h:selectOneMenu>	
 				</ui:decorate>

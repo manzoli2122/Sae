@@ -50,7 +50,7 @@
 			<h:panelGroup id="atuacaoField" >
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:atuacao" />
-					<ui:param name="label" value="#{msgs['crud.text.areaAtuacao']}" />
+					<ui:param name="label" value="#{msgs['manageHistorico.form.areaAtuacao']}" />
 					<h:selectOneMenu  id="atuacao" pt:class="form-control" value="#{manageHistoricoControl.selectedEntity.area_atuacao}"   required="true" disabled="#{manageHistoricoControl.readOnly}">
 							<f:selectItem itemLabel="Selecione a faixa salarial" itemValue="" />
 							<f:selectItems value="#{publicoControl.area_Atuacao}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
@@ -58,6 +58,30 @@
 					</h:selectOneMenu>	
 				</ui:decorate>
 			</h:panelGroup>	
+			
+			
+			
+			<h:panelGroup id="atuaAreaField">
+				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:param name="fieldName" value="form:atuaArea" />
+					<ui:param name="label" value="#{msgs['manageHistorico.form.atuaArea']}" />
+					<h:selectOneMenu required="true" pt:class="form-control" id="atuaArea" value="#{manageHistoricoControl.selectedEntity.atua_na_area}" 
+									 disabled="#{manageHistoricoControl.readOnly}" >
+						<f:selectItem itemLabel="#{msgs['manageHistorico.form.atuaArea.blankOption']}" itemValue="" />
+						<f:selectItems value="#{publicoControl.area_Formacao}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
+							
+						<p:ajax event="change" update="atuaAreaField" />
+					</h:selectOneMenu>
+				</ui:decorate>
+			</h:panelGroup>
+			
+			
+			
+						
+			
+			
+			
+			
 			
 			
 			<h:panelGroup id="resideField" >
@@ -73,6 +97,14 @@
 					</h:selectOneMenu>	
 				</ui:decorate>
 			</h:panelGroup>	
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 					

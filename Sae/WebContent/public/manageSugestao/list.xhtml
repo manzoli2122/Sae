@@ -65,7 +65,7 @@
                         emptyMessage="#{manageSugestaoControl.filtering ? msgs['manageSugestao.text.noEntitiesFiltered'] : msgs['manageSugestao.text.noEntities']}">
 												
                 <p:column headerText="#{msgs['crud.text.curso']}"  style="text-align: center;">
-                	<h:outputText  value="#{entity.curso.nome}" />
+                	<h:outputText  value="#{entity.cursoRealizado.curso.nome}" />
                 </p:column>
                 <p:column headerText="#{msgs['manageSugestao.title.dataEnvio']}" style="text-align: center; width:35%;">
                 	<h:outputText  value="#{entity.data_envio}" >
@@ -108,7 +108,7 @@
 			<h:form id="trashForm" >
 				<h3><h:outputText  value="#{msgs['crud.text.trashHeader']}" /></h3>
 				<p:dataList value="#{manageSugestaoControl.trashCan}" var="entity" type="ordered">
-				   	#{entity.curso.nome} 
+				   	#{entity.cursoRealizado.curso.nome} 
 				   	<h:outputText  value="#{entity.data_envio}" >
                 		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
                 	</h:outputText>
