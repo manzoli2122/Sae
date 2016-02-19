@@ -8,6 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 import sae.publico.domain.Area_Atuacao;
+import sae.publico.domain.Area_Formacao;
 import sae.publico.domain.Faixa_Salarial;
 import sae.publico.domain.Titulo_Escolaridade;
 
@@ -33,6 +34,11 @@ public class publicoControl implements Serializable{
 	
 	public Area_Atuacao[] getArea_Atuacao() {
 		return Area_Atuacao.values();
+	}
+	
+	
+	public Area_Formacao[] getArea_Formacao() {
+		return Area_Formacao.values();
 	}
 	
 	public Titulo_Escolaridade[] getTitulo_Escolaridade() {

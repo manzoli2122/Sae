@@ -27,32 +27,48 @@ import sae.core.domain.Egresso;
 @Entity
 public class Historico_Egresso  extends PersistentObjectSupport implements Comparable<Historico_Egresso> {
 
+	
 	private static final long serialVersionUID = 1L;
+	
 	
 	/** EGRESSO DO HISTORICO */
 	@NotNull
 	@ManyToOne
 	private Egresso egresso;
 		
+	
 	/** DATA DE ENVIO DO HSTORICO */
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date data_envio;
 	
-	/** SE O EGREESO ATUA NA AREA DE INFORMATICA */
-	@NotNull
-	private Boolean atua_na_area;
-	
-	/** SE O EGREESO RESIDE NO ES */
-	@NotNull
-	private Boolean reside_no_ES;
 	
 	/** FAIXA SALARIAL DO EGREESO */
 	@NotNull
 	private Faixa_Salarial faixa_salarial;
 	
+	
 	@NotNull
 	private Area_Atuacao  area_atuacao ;
+	
+	
+	/** SE O EGREESO RESIDE NO ES */
+	@NotNull
+	private Boolean reside_no_ES;
+	
+	
+	
+	
+	
+	
+	
+	/** SE O EGREESO ATUA NA AREA DE INFORMATICA */
+	@NotNull
+	private Area_Formacao atua_na_area;
+	
+	
+	
+	
 	
 	
 	@Override
@@ -84,8 +100,8 @@ public class Historico_Egresso  extends PersistentObjectSupport implements Compa
 	public Date getData_envio() { return data_envio; }
 	public void setData_envio(Date data_envio) { this.data_envio = data_envio; }
 
-	public Boolean getAtua_na_area() { return atua_na_area; }
-	public void setAtua_na_area(Boolean atua_na_area) { this.atua_na_area = atua_na_area; }
+	public Area_Formacao getAtua_na_area() { return atua_na_area; }
+	public void setAtua_na_area(Area_Formacao atua_na_area) { this.atua_na_area = atua_na_area; }
 
 	public Boolean getReside_no_ES() { return reside_no_ES; }
 	public void setReside_no_ES(Boolean reside_no_ES) { this.reside_no_ES = reside_no_ES; }

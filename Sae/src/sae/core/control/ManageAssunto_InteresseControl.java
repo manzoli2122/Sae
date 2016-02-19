@@ -75,8 +75,8 @@ public class ManageAssunto_InteresseControl extends CrudController<Assunto_Inter
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#initFilters() */
 	@Override
 	protected void initFilters() {
-		logger.log(Level.FINER, "INITIALIZING FILTER TYPES ......");
-		addFilter(new LikeFilter("manageAssunto_Interesse.filter.byName", "nome", getI18nMessage(bundleName, "manageAssunto_Interesse.text.filter.byName")));
+		//logger.log(Level.FINER, "INITIALIZING FILTER TYPES ......");
+		//addFilter(new LikeFilter("manageAssunto_Interesse.filter.byName", "nome", getI18nMessage(bundleName, "manageAssunto_Interesse.text.filter.byName")));
 	}
 	
 }

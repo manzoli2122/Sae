@@ -1,0 +1,38 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+               template="/resources/templates/grafico/decorator.xhtml">
+                
+    <ui:define name="body">
+      	
+      	 <div class="row">
+      		
+      		<!-- Left col -->
+            <section class="col-lg-6 connectedSortable">
+              
+		              <ui:decorate template="/resources/templates/default/form.xhtml">
+							<ui:param name="formName" value="Atua na Area de Formação" />
+							  	<p:chart  type="pie" model="#{consultaControl.grafico_AreaFormacao}"  style="height:500px" responsive="true" />
+							<h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroEgreso}"/>	    
+					  </ui:decorate>
+					  
+					  
+					  
+		           
+            </section><!-- /.Left col -->
+            
+            
+            
+            <!-- right col -->
+            <section class="col-lg-6 connectedSortable">
+
+				
+			    
+            </section><!-- right col -->
+          
+          </div><!-- /.row (main row) -->
+      	
+    </ui:define>       
+</ui:composition>

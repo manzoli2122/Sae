@@ -7,6 +7,7 @@ import org.primefaces.model.chart.PieChartModel;
 import sae.core.domain.Curso;
 import sae.publico.application.ConsultaService;
 import sae.publico.domain.Area_Atuacao;
+import sae.publico.domain.Area_Formacao;
 import sae.publico.domain.Faixa_Salarial;
 import sae.publico.domain.Historico_Egresso;
 
@@ -34,7 +35,9 @@ public class ConsultaControl implements Serializable {
 	
 	private Curso curso;
 	
-	private PieChartModel grafico_sexo, areaAtuacao, faixaSalarial , residencia , faixa_residencia, faixa_empreendedor , faixa_professor ;
+	private PieChartModel grafico_sexo, grafico_areaAtuacao, grafico_faixaSalarial , residencia , faixa_residencia, faixa_empreendedor , faixa_professor ;
+	
+	private PieChartModel grafico_areaFormacao;
 	
 	private List<Historico_Egresso>  historicos;
  
@@ -190,7 +193,7 @@ public class ConsultaControl implements Serializable {
 	
 	public String consulta_faixa_salarial() {
 		
-		faixaSalarial = new PieChartModel();
+		grafico_faixaSalarial = new PieChartModel();
 		Iterator<Historico_Egresso> iterator = historicos.iterator();
 		Faixa_Salarial[] faixas = Faixa_Salarial.values();
 		int[] valor = new int[faixas.length] ;
@@ -204,21 +207,21 @@ public class ConsultaControl implements Serializable {
 			}
 		}
 		for(int i = 0 ; i < faixas.length ; i++ ){
-			faixaSalarial.set(faixas[i].getLabel(),valor[i]);
+			grafico_faixaSalarial.set(faixas[i].getLabel(),valor[i]);
 		}
-		faixaSalarial.setTitle("Todos os Egressos");
-		faixaSalarial.setLegendPosition("s");
-        faixaSalarial.setShowDataLabels(true);
+		grafico_faixaSalarial.setTitle("Todos os Egressos");
+		grafico_faixaSalarial.setLegendPosition("s");
+		grafico_faixaSalarial.setShowDataLabels(true);
         //faixaSalarial.setDataFormat("value percent");
-		faixaSalarial.setDiameter(250);
+		grafico_faixaSalarial.setDiameter(250);
 		//faixaSalarial.setSeriesColors("c95939,E7982F,E4F20A,0AC9F2,2C0AF2,178504");
-		faixaSalarial.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
+		grafico_faixaSalarial.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
 		
 		consulta_faixa_residencia();
 		return getViewPath() + "faixa.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
-	public PieChartModel getFaixaSalarial() {  return faixaSalarial;   }
+	public PieChartModel getGrafico_FaixaSalarial() {  return grafico_faixaSalarial;   }
 	
 	
 	
@@ -269,9 +272,9 @@ public class ConsultaControl implements Serializable {
 	
 	
 	
-public String consulta_Area_Atuacao() {
+	public String consulta_Area_Atuacao() {
 		
-		areaAtuacao = new PieChartModel();
+		grafico_areaAtuacao = new PieChartModel();
 		Iterator<Historico_Egresso> iterator = historicos.iterator();
 		
 		Area_Atuacao[] areas = Area_Atuacao.values();
@@ -288,19 +291,19 @@ public String consulta_Area_Atuacao() {
 			}
 		}
 		for(int i = 0 ; i < areas.length ; i++ ){
-			areaAtuacao.set(areas[i].getLabel(),valor[i]);
+			grafico_areaAtuacao.set(areas[i].getLabel(),valor[i]);
 		}
-		areaAtuacao.setTitle("Todos os Egressos");
-		areaAtuacao.setLegendPosition("s");
-		areaAtuacao.setShowDataLabels(true);
-        areaAtuacao.setDiameter(250);
+		grafico_areaAtuacao.setTitle("Todos os Egressos");
+		grafico_areaAtuacao.setLegendPosition("s");
+		grafico_areaAtuacao.setShowDataLabels(true);
+		grafico_areaAtuacao.setDiameter(250);
         //areaAtuacao.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
-        areaAtuacao.setSeriesColors("dd6542,E7982F,0AC9F2,7a86db,6a9660");
+		grafico_areaAtuacao.setSeriesColors("dd6542,E7982F,0AC9F2,7a86db,6a9660");
 		
 		return getViewPath() + "atuacao.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
-	public PieChartModel getAreaAtuacao() {  return areaAtuacao;   }
+	public PieChartModel getGrafico_AreaAtuacao() {  return grafico_areaAtuacao;   }
 	
 	
 	
@@ -317,7 +320,7 @@ public String consulta_Area_Atuacao() {
 	
 	
 	
-public String consulta_Sexo() {
+	public String consulta_Sexo() {
 		
 		grafico_sexo = new PieChartModel();
 		Iterator<Historico_Egresso> iterator = historicos.iterator();
@@ -349,6 +352,53 @@ public String consulta_Sexo() {
 	
 	
 	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+public String consulta_Area_Formacao() {
+		grafico_areaFormacao = new PieChartModel();
+		Iterator<Historico_Egresso> iterator = historicos.iterator();
+		Area_Formacao[] areas = Area_Formacao.values();
+		int[] valor = new int[areas.length] ;
+		while(iterator.hasNext()){
+			Area_Formacao aa = iterator.next().getAtua_na_area();
+			for(int i = 0 ; i < areas.length ; i++ ){
+				if(  aa.equals(areas[i])  ){
+					valor[i]++;
+					break;
+				}
+			}
+		}
+		for(int i = 0 ; i < areas.length ; i++ ){
+			grafico_areaFormacao.set(areas[i].getLabel(),valor[i]);
+		}
+		grafico_areaFormacao.setTitle("Todos os Egressos");
+		grafico_areaFormacao.setLegendPosition("s");
+		grafico_areaFormacao.setShowDataLabels(true);
+		grafico_areaFormacao.setDiameter(250);
+        //areaAtuacao.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
+		grafico_areaFormacao.setSeriesColors("6a9660,0AC9F2,dd6542");
+		
+		return getViewPath() + "formacao.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	public PieChartModel getGrafico_AreaFormacao() {  return grafico_areaFormacao;   }
+	
+	
+	
+	
+	
 	 
 	 
 	 
@@ -367,27 +417,5 @@ public String consulta_Sexo() {
 	public int getNumeroFaixaProfessor() { return numeroFaixaProfessor; }
 
 	
-	
-	
-	
-	/*
-	public String faixa_salarial() {
-		long tempoInicio = System.currentTimeMillis();
-		faixaSalarial = new PieChartModel();
-		Faixa_Salarial[] faixas = Faixa_Salarial.values();
-		for(int i = 0 ; i < faixas.length ; i++ ){
-			faixaSalarial.set(faixas[i].getLabel(),consultaService.countFaixaSalarial(faixas[i], curso));
-		}
-		faixaSalarial.setTitle("Faixa Salarial");
-		faixaSalarial.setLegendPosition("s");
-        //pieModel1.setFill(false);
-		faixaSalarial.setShowDataLabels(true);
-		faixaSalarial.setDiameter(250);
-		
-		System.out.println("Tempo Total: "+(System.currentTimeMillis()-tempoInicio));
-		
-		return getViewPath() + "faixa.xhtml?faces-redirect=" + getFacesRedirect();
-	}
-	*/
 	
 }
