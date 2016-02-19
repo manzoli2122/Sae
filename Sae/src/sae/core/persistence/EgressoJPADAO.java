@@ -1,5 +1,6 @@
 package sae.core.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,6 +10,7 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
@@ -36,6 +38,20 @@ public class EgressoJPADAO extends BaseJPADAO<Egresso> implements EgressoDAO{
 	protected EntityManager getEntityManager() {
 		return entityManager;
 	}
+	
+	
+	
+	@Override
+	protected List<Order> getOrderList(CriteriaBuilder cb, Root<Egresso> root) {
+		List<Order> orderList = new ArrayList<Order>();
+		orderList.add(cb.asc(root.get(Egresso_.nome)));
+		return orderList;
+	}
+	
+	
+	
+	
+	
 	
 	@Override
 	public Egresso retrieveByEmail(String email) throws PersistentObjectNotFoundException, MultiplePersistentObjectsFoundException{
