@@ -52,7 +52,7 @@
 							<ui:param name="fieldName" value="form:instituicao" />
 							<ui:param name="label" value="#{msgs['crud.text.instituicao']}" />
 							<p:inputText id="instituicao" pt:class="form-control" value="#{manageEscolaridadeControl.selectedEntity.instituicao}"
-										 disabled="#{(manageEscolaridadeControl.readOnly) or (manageEscolaridadeControl.selectedEntity.id != null)}" 
+										 disabled="#{(manageEscolaridadeControl.readOnly)}" 
 										 pt:placeholder="#{msgs['manageEscolaridade.placeholder.instituicao']}" required="true">
 								<p:ajax event="blur" update="instituicaoField" />
 							</p:inputText>
@@ -65,7 +65,7 @@
 							<ui:param name="fieldName" value="form:estado" />
 							<ui:param name="label" value="#{msgs['crud.text.estado']}" />
 							<p:inputText id="estado" pt:class="form-control" value="#{manageEscolaridadeControl.selectedEntity.estado}"
-										 disabled="#{(manageEscolaridadeControl.readOnly) or (manageEscolaridadeControl.selectedEntity.id != null)}" 
+										 disabled="#{(manageEscolaridadeControl.readOnly)}" 
 										 pt:placeholder="#{msgs['manageEscolaridade.placeholder.estado']}" required="true">
 								<p:ajax event="blur" update="estadoField" />
 							</p:inputText>
@@ -78,7 +78,7 @@
 							<ui:param name="fieldName" value="form:pais" />
 							<ui:param name="label" value="#{msgs['crud.text.pais']}" />
 							<p:inputText id="pais" pt:class="form-control" value="#{manageEscolaridadeControl.selectedEntity.pais}"
-										 disabled="#{(manageEscolaridadeControl.readOnly) or (manageEscolaridadeControl.selectedEntity.id != null)}" 
+										 disabled="#{(manageEscolaridadeControl.readOnly)}" 
 										 pt:placeholder="#{msgs['manageEscolaridade.placeholder.pais']}" required="true">
 								<p:ajax event="blur" update="paisField" />
 							</p:inputText>

@@ -4,6 +4,7 @@ import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.domain.CursoRealizado;
 import sae.core.persistence.CursoRealizadoDAO;
@@ -34,6 +35,9 @@ public class ManageCursoRealizadoServiceBean extends CrudServiceBean<CursoRealiz
 	
 	
 	
+	
+	
+	
 	/** @see br.ufes.inf.nemo.util.ejb3.application.CrudService#getDAO() */
 	@Override
 	public BaseDAO<CursoRealizado> getDAO() {
@@ -49,6 +53,6 @@ public class ManageCursoRealizadoServiceBean extends CrudServiceBean<CursoRealiz
 		return new CursoRealizado();
 	}
 	
-	
+
 
 }
