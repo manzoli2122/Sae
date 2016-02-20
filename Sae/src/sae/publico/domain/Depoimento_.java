@@ -8,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import sae.core.domain.Curso;
 import sae.core.domain.Egresso;
 
-@Generated(value="Dali", date="2016-02-20T08:25:56.440-0200")
+@Generated(value="Dali", date="2016-02-20T08:52:42.331-0200")
 @StaticMetamodel(Depoimento.class)
 public class Depoimento_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Depoimento, String> conteudo;
@@ -16,5 +16,5 @@ public class Depoimento_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Depoimento, Egresso> autor;
 	public static volatile SingularAttribute<Depoimento, Curso> curso;
 	public static volatile SingularAttribute<Depoimento, Boolean> anonimo;
-	public static volatile SingularAttribute<Depoimento, Character> status;
+	public static volatile SingularAttribute<Depoimento, StatusDepoimento> status;
 }

@@ -12,6 +12,7 @@ import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.publico.application.ManageDepoimentoService;
 import sae.publico.domain.Depoimento;
+import sae.publico.domain.StatusDepoimento;
 
 
 
@@ -68,7 +69,7 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 		Depoimento depoimento = new Depoimento();
 		depoimento.setData_envio(new Date());
 		depoimento.setAnonimo(false);
-		depoimento.setStatus('P');
+		depoimento.setStatus(StatusDepoimento.P);
 		return depoimento;
 	}
 

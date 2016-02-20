@@ -67,13 +67,13 @@
                 <p:column headerText="#{msgs['crud.text.curso']}"  style="text-align: center;">
                 	<h:outputText  value="#{entity.curso.nome}" />
                 </p:column>
-                <p:column headerText="#{msgs['manageDepoimento.title.dataEnvio']}" style="text-align: center; width:35%;">
+                <p:column headerText="#{msgs['manageDepoimento.title.dataEnvio']}" style="text-align: center; width:32%;">
                 	<h:outputText  value="#{entity.data_envio}" >
                 		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
                 	</h:outputText>
                 </p:column>
-                <p:column headerText="#{msgs['crud.text.status']}"  style="text-align: center; width:20%;">
-                	<h:outputText  value="#{entity.status}" />
+                <p:column headerText="#{msgs['crud.text.status']}"  style="text-align: center; width:30%;">
+                	<h:outputText  value="#{entity.status.label}" />
                 </p:column>
                 <p:ajax event="rowSelect" update=":buttonsForm" />
         	</p:dataTable>
