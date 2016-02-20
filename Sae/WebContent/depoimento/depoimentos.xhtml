@@ -9,11 +9,12 @@
       	
       	 <div class="row">
       	
-		      	 <p:dataScroller value="#{publicoControl.getDepoimentos(consultaControl.curso)}" var="car" chunkSize="10">
+		      	 <p:dataScroller value="#{publicoControl.getDepoimentos(consultaControl.curso)}" var="car" chunkSize="5">
 			        
 					            <ui:decorate template="/resources/templates/default/form.xhtml">
-										<ui:param name="formName" value="Depoimento" />
-										<h:outputText value="#{car.conteudo}"/>	   
+										<ui:param name="formName" value="#{car.anonimo ?  msgs['crud.text.anonimo'] : car.autor}" />
+										
+										<h3><h:outputText value="#{car.conteudo}"/>	</h3>
 										
 										<div class="box-footer">
 											<h:outputText value="#{car.data_envio}">
@@ -24,7 +25,6 @@
 						
 			    </p:dataScroller>
 	      	
-	          
          </div><!-- /.row-->
       	
     </ui:define>       

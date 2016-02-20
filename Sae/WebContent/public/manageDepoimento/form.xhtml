@@ -54,8 +54,8 @@
 					<ui:decorate template="/resources/templates/default/formfield.xhtml">
 						<ui:param name="fieldName" value="form:conteudo" />
 						<ui:param name="label" value="#{msgs['crud.text.conteudo']}" />
-						<p:inputTextarea id="conteudo" pt:class="form-control" disabled="#{manageDepoimentoControl.readOnly}" 
-									 pt:placeholder="#{msgs['crud.text.conteudo']}" 
+						<p:inputTextarea maxlength="999" id="conteudo" pt:class="form-control" disabled="#{manageDepoimentoControl.readOnly}" 
+									 pt:placeholder="#{msgs['manageDepoimento.placeholder.conteudo']}" 
 									 value="#{manageDepoimentoControl.selectedEntity.conteudo}"  required="true">
 							<p:ajax event="blur" update="conteudoField" />
 						</p:inputTextarea>
