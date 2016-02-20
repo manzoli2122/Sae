@@ -2,11 +2,11 @@ package sae.publico.domain;
 
 public enum Titulo_Escolaridade {
 
-	Superior("Superior"),
-	Especializacao("Especializacao"),
-	Mestrado("Mestrado"),
-	Doutorado("Doutorado"),
-	Pos_Doutorado("Pos Doutorado");
+	A_Superior("Superior"),
+	B_Especializacao("Especializacao"),
+	C_Mestrado("Mestrado"),
+	D_Doutorado("Doutorado"),
+	E_Pos_Doutorado("Pos Doutorado");
 	
 	
 	private final String label;

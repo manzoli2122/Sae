@@ -77,6 +77,12 @@ public class ConsultaControl implements Serializable {
 	}
 	
 	
+	public String selectDepoimento(){
+		//historicos = consultaService.consultaHistoricos(curso);
+		return "/depoimento/" + "depoimentos.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	
 	// FUNCÕES DE FAIXA SALARIAL
 	
 	public String consulta_faixa_residencia() {
@@ -266,10 +272,6 @@ public class ConsultaControl implements Serializable {
 	 
 	 
 	 
-	 
-	 
-	
-	
 	
 	
 	public String consulta_Area_Atuacao() {
@@ -304,14 +306,6 @@ public class ConsultaControl implements Serializable {
 	}
 	
 	public PieChartModel getGrafico_AreaAtuacao() {  return grafico_areaAtuacao;   }
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -358,15 +352,7 @@ public class ConsultaControl implements Serializable {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-public String consulta_Area_Formacao() {
+	public String consulta_Area_Formacao() {
 		grafico_areaFormacao = new PieChartModel();
 		Iterator<Historico_Egresso> iterator = historicos.iterator();
 		Area_Formacao[] areas = Area_Formacao.values();
@@ -397,10 +383,6 @@ public String consulta_Area_Formacao() {
 	
 	
 	
-	
-	
-	 
-	 
 	 
 	
 	

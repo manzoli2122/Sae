@@ -65,7 +65,7 @@
                         		emptyMessage="#{manageEscolaridadeControl.filtering ? msgs['manageEscolaridade.text.noEntitiesFiltered'] : msgs['manageEscolaridade.text.noEntities']}">
 												
         				<p:column headerText="#{msgs['crud.text.titulo']}"  style="text-align: center;">
-                			<h:outputText value="#{entity.titulo}" />
+                			<h:outputText value="#{entity.titulo.label}" />
                 		</p:column>
                 		<p:column headerText="#{msgs['crud.text.instituicao']}"  style="text-align: center;">
                 			<h:outputText  value="#{entity.instituicao}" />
@@ -110,7 +110,7 @@
 			            <h:form id="trashForm" >
 				            <h3><h:outputText  value="#{msgs['crud.text.trashHeader']}" /></h3>
 				            <p:dataList value="#{manageEscolaridadeControl.trashCan}" var="entity" type="ordered">
-				            	#{entity.titulo} 
+				            	#{entity.titulo.label} 
 				            </p:dataList>
 			                <ui:decorate template="/resources/templates/default/formbutton.xhtml">
 			        				<div class="form-group">	

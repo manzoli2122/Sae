@@ -37,7 +37,7 @@ public class EscolaridadeJPADAO extends BaseJPADAO<Escolaridade> implements Esco
 	@Override
 	protected List<Order> getOrderList(CriteriaBuilder cb, Root<Escolaridade> root) {
 		List<Order> orderList = new ArrayList<Order>();
-		orderList.add(cb.asc(root.get(Escolaridade_.ano)));
+		orderList.add(cb.asc(root.get(Escolaridade_.titulo)));
 		return orderList;
 	}
 	
