@@ -1,5 +1,6 @@
 package sae.publico.control;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,6 +112,30 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 		catch(Exception e){
 			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
 		}
+	}
+	
+	
+	
+	public boolean isAlteravel(){
+		
+		Date hoje = new Date();
+		if(selectedEntity!=null){
+			
+			Calendar dInicial = Calendar.getInstance(); 
+	        dInicial.setTime(selectedEntity.getData_envio());
+	        Calendar dFinal = Calendar.getInstance();
+	        dFinal.setTime( hoje);
+	        
+	        int MILLIS_IN_DAY = 86400000;
+	        int dif =  (int) ((dFinal.getTimeInMillis() - dInicial.getTimeInMillis()) / MILLIS_IN_DAY);
+	        
+	        logger.log(Level.INFO, "dias dif === {0}.....", dif);
+	        
+			if(dif > 10){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	

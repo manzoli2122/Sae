@@ -75,7 +75,9 @@
         	</p:dataTable>
         </h:form>
         		
-        		
+        <p:commandLink >
+        </p:commandLink>
+        
         <!-- Buttons shown below the listing. -->
         <h:form id="buttonsForm">
            	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
@@ -86,11 +88,11 @@
 	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-info btn-social" jsf:action="#{manageHistoricoControl.retrieve}" jsf:disabled="#{manageHistoricoControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>
 	                </div>
-	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
-	        			<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageHistoricoControl.update}" jsf:disabled="#{manageHistoricoControl.selectedEntity == null}"><i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/></a>
+	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{(manageHistoricoControl.selectedEntity != null) and (manageHistoricoControl.alteravel)}">
+	        			<a class="btn btn-block btn-warning btn-social"  jsf:action="#{manageHistoricoControl.update}" jsf:disabled="#{(manageHistoricoControl.selectedEntity == null) }"><i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/></a>
 	                </div>
-	                <div class="col-sm-3" jsf:rendered="#{manageHistoricoControl.selectedEntity != null}">
-	        			<a class="btn btn-block btn-danger btn-social" jsf:action="#{manageHistoricoControl.trash}" jsf:disabled="#{manageHistoricoControl.selectedEntity == null}" jsf:process="@this" jsf:update=":trashForm"><i class="fa  fa-trash-o"></i> <h:outputText value="#{msgs['crud.button.delete']}"/></a>
+	                <div class="col-sm-3" jsf:rendered="#{(manageHistoricoControl.selectedEntity != null) and (manageHistoricoControl.alteravel)}">
+	        			<a class="btn btn-block btn-danger btn-social" jsf:action="#{manageHistoricoControl.trash}" jsf:disabled="#{!manageHistoricoControl.alteravel}" jsf:process="@this" jsf:update=":trashForm"><i class="fa  fa-trash-o"></i> <h:outputText value="#{msgs['crud.button.delete']}"/></a>
 	                </div>
 	              </div>
 	     	</ui:decorate>

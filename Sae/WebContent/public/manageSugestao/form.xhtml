@@ -38,11 +38,11 @@
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:curso" />
 					<ui:param name="label" value="#{msgs['crud.text.curso']}" />
-					<h:selectOneMenu  id="curso" pt:class="form-control" value="#{manageSugestaoControl.selectedEntity.cursoRealizado}"  
+					<h:selectOneMenu  id="curso" pt:class="form-control" value="#{manageSugestaoControl.selectedEntity.curso}"  
 									  converter="#{coreControl.cursoConverter}"  required="true" 
 									  disabled="#{manageSugestaoControl.readOnly}">
 						<f:selectItem itemLabel="Selecione o Curso" itemValue="" />
-						<f:selectItems value="#{sessionControl.cursoRealizado}" var="curso" itemLabel="#{curso.curso.nome}" itemValue="#{curso}" />
+						<f:selectItems value="#{sessionControl.cursoRealizado}" var="curso" itemLabel="#{curso.curso.nome}" itemValue="#{curso.curso}" />
 						<p:ajax update="cursoField" />
 					</h:selectOneMenu>	
 				</ui:decorate>
@@ -61,6 +61,19 @@
 					</ui:decorate>
 				</h:panelGroup>
 					
+					
+				<h:panelGroup id="respostaField">
+					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+						<ui:param name="fieldName" value="form:resposta" />
+						<ui:param name="label" value="#{msgs['crud.text.resposta']}" />
+						<p:inputTextarea id="resposta" pt:class="form-control" disabled="true" 
+									 pt:placeholder="#{msgs['crud.text.resposta']}" 
+									 value="#{manageSugestaoControl.selectedEntity.resposta}" >
+							<p:ajax event="blur" update="respostaField" />
+						</p:inputTextarea>
+					</ui:decorate>
+				</h:panelGroup>
+				
 				
 					
 			
