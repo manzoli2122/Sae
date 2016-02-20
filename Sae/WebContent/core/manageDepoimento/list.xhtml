@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/resources/templates/#{sessionControl.decorator}/decorator.xhtml">
+
+<ui:define name="title"><h:outputText value="#{msgs['manageDepoimento.title']}" /></ui:define>
+<ui:define name="breadcrumb">
+	<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
+	<li class="active"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageDepoimento.title']}" /></li> 
+</ui:define>
+	
+<ui:define name="body">
+                
+   	<!-- The listing form. -->
+    <ui:decorate template="/resources/templates/default/form.xhtml">
+		
+		<ui:param name="formName" value="#{msgs['manageDepoimento.title.box.list']}" />
+           	
+      		
+            	
+        <h:form id="listingForm" style="margin-bottom: 25px">
+        	<p:dataTable
+	    			 	widgetVar="listingTable"
+           			    rowIndexVar="rowIndex"
+               			tableStyleClass="table table-bordered table-striped"
+                   		value="#{manageDepoimentoControl.pedentesEntities}" 
+                   		var="entity" 
+                   		rows="#{manageDepoimentoControl.entityCount}" 
+                        lazy="true" 
+                        selection="#{manageDepoimentoControl.selectedEntity}" 
+                        selectionMode="single" 
+                        loadingMessage="#{msgs['text.ajax.loading']}" 
+                        emptyMessage="#{manageDepoimentoControl.filtering ? msgs['manageDepoimento.text.noEntitiesFiltered'] : msgs['manageDepoimento.text.noEntities']}">
+												
+                <p:column headerText="#{msgs['crud.text.curso']}"  style="text-align: center;">
+                	<h:outputText  value="#{entity.curso.nome}" />
+                </p:column>
+                <p:column headerText="#{msgs['manageDepoimento.title.dataEnvio']}" style="text-align: center; width:32%;">
+                	<h:outputText  value="#{entity.data_envio}" >
+                		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
+                	</h:outputText>
+                </p:column>
+                <p:column headerText="#{msgs['crud.text.status']}"  style="text-align: center; width:30%;">
+                	<h:outputText  value="#{entity.status.label}" />
+                </p:column>
+                <p:ajax event="rowSelect" update=":buttonsForm" />
+        	</p:dataTable>
+        </h:form>
+        
+        		
+        		
+        <!-- Buttons shown below the listing. -->
+        <h:form id="buttonsForm">
+           	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+	    		<div class="form-group">	
+	       			
+	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageDepoimentoControl.selectedEntity != null}">
+	        			<a class="btn btn-block btn-info btn-social" jsf:action="#{manageDepoimentoControl.retrieveAnalisar()}" jsf:disabled="#{manageDepoimentoControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>
+	                </div>
+	                <div class="col-sm-3"  jsf:rendered="#{manageDepoimentoControl.selectedEntity != null}">
+	        			<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageDepoimentoControl.update}" jsf:disabled="#{manageDepoimentoControl.selectedEntity == null}"><i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/></a>
+	                </div>
+	                
+	              </div>
+	     	</ui:decorate>
+       	</h:form>
+       		
+	</ui:decorate> <!-- DEFINE FORM. -->
+        
+        
+       
+    
+        
+</ui:define> <!-- DEFINE BODY. -->
+</ui:composition>

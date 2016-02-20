@@ -87,5 +87,12 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	
 	
 	
+	@Override
+	public List<Depoimento>	retrieveAllAnalisar() {
+		return depoimentoDAO.retrieveAllAnalisar(sessionService.getAdmin());
+	}
+	
+	
+	
 
 }

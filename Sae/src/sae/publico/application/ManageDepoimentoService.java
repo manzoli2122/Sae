@@ -21,4 +21,6 @@ public interface ManageDepoimentoService extends CrudService<Depoimento> {
 
 	List<Depoimento> retrieveAllMine();
 
+	List<Depoimento> retrieveAllAnalisar();
+
 }

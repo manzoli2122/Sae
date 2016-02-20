@@ -1,6 +1,8 @@
 package sae.publico.control;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -8,8 +10,12 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
+
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
+import br.ufes.inf.nemo.util.ejb3.controller.PrimefacesLazyEntityDataModel;
 import sae.publico.application.ManageDepoimentoService;
 import sae.publico.domain.Depoimento;
 import sae.publico.domain.StatusDepoimento;
@@ -51,6 +57,103 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 		 viewPath = "/public/manageDepoimento/";
 	     bundleName = "msgs";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/** Primefaces lazy data model for use with a lazy p:dataTable component. */
+	private LazyDataModel<Depoimento> pedentesEntities;
+	
+	/**
+	 * Getter for lazyEntities.
+	 * 
+	 * @return Primefaces lazy data model for use with a lazy p:dataTable component.
+	 */
+	public LazyDataModel<Depoimento> getPedentesEntities() {
+		if (pedentesEntities == null) {
+			count();
+			pedentesEntities = new PrimefacesLazyEntityDataModel<Depoimento>(getListingService().getDAO()) {
+				/** Serialization id. */
+				private static final long serialVersionUID = 1117380513193004406L;
+
+				@Override
+				public List<Depoimento> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
+					firstEntityIndex = first;
+					lastEntityIndex = first + pageSize;
+					retrievepedentesEntities() ;
+					return entities;
+				}
+			};
+			pedentesEntities.setRowCount((int) entityCount);
+		}
+		return pedentesEntities;
+	}
+	
+	
+	
+	protected void retrievepedentesEntities() {		
+		if (lastEntityIndex > entityCount) lastEntityIndex = (int) entityCount;
+		entities = manageDepoimentoService.retrieveAllAnalisar();
+		lastEntityIndex = firstEntityIndex + entities.size();		
+	}
+	
+	
+	public String analisarDepoimento(){
+		list();	
+		return "/core/manageDepoimento/" + "list.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	
+	
+	public String retrieveAnalisar() {
+		logger.log(Level.INFO, "Displaying form for entity retrieval");
+
+		// Sets the data as read-only.
+		readOnly = true;
+
+		// Retrieves the existing entity that was selected, if not already done by the JSF component.
+		if (selectedEntity == null) return null;
+		else {
+			// Asks the CRUD service to fetch any lazy collection that possibly exists.
+			selectedEntity = getCrudService().fetchLazy(selectedEntity);
+			checkSelectedEntity();
+		}
+
+		// Goes to the form.
+		return "/core/manageDepoimento/"  + "form.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
