@@ -63,9 +63,6 @@
 	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageDepoimentoControl.selectedEntity != null}">
 	        			<a class="btn btn-block btn-info btn-social" jsf:action="#{manageDepoimentoControl.retrieveAnalisar()}" jsf:disabled="#{manageDepoimentoControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>
 	                </div>
-	                <div class="col-sm-3"  jsf:rendered="#{manageDepoimentoControl.selectedEntity != null}">
-	        			<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageDepoimentoControl.update}" jsf:disabled="#{manageDepoimentoControl.selectedEntity == null}"><i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/></a>
-	                </div>
 	                
 	              </div>
 	     	</ui:decorate>

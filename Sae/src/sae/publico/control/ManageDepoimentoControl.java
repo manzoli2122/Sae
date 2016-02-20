@@ -111,8 +111,10 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	}
 	
 	
-	public String analisarDepoimento(){
-		list();	
+	public String analisarDepoimento(){	
+		selectedEntity = null;
+		count();
+		retrievepedentesEntities();
 		return "/core/manageDepoimento/" + "list.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
@@ -138,8 +140,18 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	
 	
 	
-	
-	
+	public String aprovar(){
+		selectedEntity.setStatus(StatusDepoimento.A);	
+		save();
+		
+		return analisarDepoimento();
+	}
+
+	public String desaprovar(){
+		selectedEntity.setStatus(StatusDepoimento.D);
+		save();
+		return analisarDepoimento();
+	}
 	
 	
 	
