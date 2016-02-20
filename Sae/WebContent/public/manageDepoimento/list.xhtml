@@ -72,9 +72,13 @@
                 		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
                 	</h:outputText>
                 </p:column>
+                <p:column headerText="#{msgs['crud.text.status']}"  style="text-align: center; width:20%;">
+                	<h:outputText  value="#{entity.status}" />
+                </p:column>
                 <p:ajax event="rowSelect" update=":buttonsForm" />
         	</p:dataTable>
         </h:form>
+        
         		
         		
         <!-- Buttons shown below the listing. -->

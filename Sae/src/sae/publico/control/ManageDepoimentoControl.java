@@ -68,6 +68,7 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 		Depoimento depoimento = new Depoimento();
 		depoimento.setData_envio(new Date());
 		depoimento.setAnonimo(false);
+		depoimento.setStatus('P');
 		return depoimento;
 	}
 

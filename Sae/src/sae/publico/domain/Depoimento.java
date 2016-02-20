@@ -39,7 +39,8 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	@NotNull
 	private Boolean anonimo;
 	
-	
+	@NotNull
+	private Character status;
 	
 	
 	
@@ -64,10 +65,15 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	public Boolean getAnonimo() { 	return anonimo; }
 	public void setAnonimo(Boolean anonimo) { this.anonimo = anonimo; }
 	
+	public Character getStatus() {return status;}
+	public void setStatus(Character status) {this.status = status;}
+	
+	
 
 	@Override
 	public int compareTo(Depoimento  o) { return super.compareTo(o); }
 	
 	@Override
 	public String toString() { return conteudo; }
+	
 }
