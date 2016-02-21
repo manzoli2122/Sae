@@ -6,17 +6,26 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Subquery;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
 import sae.core.domain.Administrador;
 import sae.core.domain.Curso;
+import sae.core.domain.CursoRealizado;
+import sae.core.domain.CursoRealizado_;
+import sae.core.domain.Curso_;
 import sae.core.domain.Egresso;
 import sae.publico.domain.Depoimento;
 import sae.publico.domain.Depoimento_;
+import sae.publico.domain.Historico_Egresso;
+import sae.publico.domain.Historico_Egresso_;
+import sae.publico.domain.StatusDepoimento;
 
 
 
@@ -80,7 +89,11 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		CriteriaQuery<Depoimento> cq = cb.createQuery(getDomainClass());
 		Root<Depoimento> root = cq.from(getDomainClass());
 		
-		cq.where(  cb.equal(root.get(Depoimento_.curso), curso));
+		cq.where(  
+						cb.equal(root.get(Depoimento_.curso), curso),
+						cb.equal(root.get(Depoimento_.status), StatusDepoimento.A)
+						
+				);
 		
 		cq.select(root);
 
@@ -97,18 +110,28 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 	
 	@Override
 	public List<Depoimento> retrieveAllAnalisar(Administrador admin) {
+		
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
+		
 		CriteriaQuery<Depoimento> cq = cb.createQuery(getDomainClass());
 		Root<Depoimento> root = cq.from(getDomainClass());
 		
+		// SUBQUERYH
+		Subquery<Curso> subqueryH = cq.subquery(Curso.class);
+		Root<Curso> subrootH = subqueryH.from(Curso.class);
+		subqueryH.where(
+							cb.equal(subrootH.get(Curso_.coordenador),admin),
+							cb.equal(subrootH,root.get(Depoimento_.curso))
+							
+					  );
+		subqueryH.select(subrootH);
 		
-		
-		
-		
-		
-		
-		//cq.where(  cb.equal(root.get(Depoimento_.curso), curso));
+		cq.where(
+					cb.equal(root.get(Depoimento_.status), StatusDepoimento.P),
+					cb.exists(  subqueryH  )
+					
+				);
 		
 		cq.select(root);
 
@@ -118,7 +141,7 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		// Return the list of objects.
 		List<Depoimento> result = em.createQuery(cq).getResultList();
 		return result;
-		//return super.retrieveAll();
+
 	}
 	
 

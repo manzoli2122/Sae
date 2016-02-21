@@ -78,7 +78,7 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	private LazyDataModel<Depoimento> pedentesEntities;
 	
 	/**
-	 * Getter for lazyEntities.
+	 * Getter 
 	 * 
 	 * @return Primefaces lazy data model for use with a lazy p:dataTable component.
 	 */
@@ -184,7 +184,6 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 		Depoimento depoimento = new Depoimento();
 		depoimento.setData_envio(new Date());
 		depoimento.setAnonimo(false);
-		depoimento.setStatus(StatusDepoimento.P);
 		return depoimento;
 	}
 
