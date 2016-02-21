@@ -16,18 +16,16 @@
 	
     <ui:define name="body">
     	   	
-    	<h:outputText value="senha nao alterada ainda" rendered="#{sessionControl.passwordDefault}" />
     	
-    	
-    	<ui:decorate template="/resources/templates/default/form.xhtml" >
-			<ui:param name="formName" value="" />
+    	<ui:decorate template="/resources/templates/default/formDanger.xhtml" >
+			<ui:param name="formName" value="Senha Não alterada ainda" />
 			<h:form id="form" pt:class="form-horizontal" rendered="#{sessionControl.passwordDefault}">
 		
 	    		<ui:decorate template="/resources/templates/default/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-4"/>
 	            		<div class="col-sm-3">
-	            			<a class="btn btn-block btn-info btn-social" jsf:action="#{sessionControl.formAtualizarSenha()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Atualizar senha"/></a>
+	            			<a class="btn btn-block btn-danger btn-social" jsf:action="#{sessionControl.formAtualizarSenha()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Atualizar senha"/></a>
 	               		</div>
 					</div>
 				</ui:decorate>
