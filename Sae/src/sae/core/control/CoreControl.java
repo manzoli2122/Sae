@@ -10,7 +10,7 @@ import javax.faces.convert.Converter;
 import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.controller.PersistentObjectConverterFromId;
 import sae.core.domain.Administrador;
-import sae.core.domain.Assunto_Interesse;
+import sae.core.domain.AssuntoInteresse;
 import sae.core.domain.Curso;
 import sae.core.domain.Egresso;
 import sae.core.persistence.AdministradorDAO;
@@ -68,7 +68,7 @@ public class CoreControl  implements Serializable {
 	
 	
 	/** JSF Converter for Assunto_Interesse objects. */
-	private PersistentObjectConverterFromId<Assunto_Interesse> assuntoConverter;
+	private PersistentObjectConverterFromId<AssuntoInteresse> assuntoConverter;
 	
 	
 	/** JSF Converter for Curso objects. */
@@ -111,7 +111,7 @@ public class CoreControl  implements Serializable {
 	public Converter getAssuntoConverter() {
 		if (assuntoConverter == null) {
 			logger.log(Level.FINEST, "Creating a assunto_Interesse converter ....... ");
-			assuntoConverter = new PersistentObjectConverterFromId<Assunto_Interesse>(assunto_InteresserDAO);
+			assuntoConverter = new PersistentObjectConverterFromId<AssuntoInteresse>(assunto_InteresserDAO);
 		}
 		return assuntoConverter;
 	}

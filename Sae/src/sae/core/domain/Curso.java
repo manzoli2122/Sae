@@ -25,12 +25,13 @@ public class Curso  extends  PersistentObjectSupport implements Comparable<Curso
 	
 	/** NOME DO CURSO */
 	@NotNull
-	@Size(max = 100)
+	@Size(max = 60)
 	private String nome;
 	
 	
 	/** CODIGO DO CURSO */
 	@NotNull
+	@Size(max = 8)
 	private String codigo;
 	
 

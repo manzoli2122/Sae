@@ -30,48 +30,68 @@ import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 @Entity
 public class Egresso extends PersistentObjectSupport implements Comparable<Egresso> {
 
+	
 	private static final long serialVersionUID = 1L;
+	
 	
 	/** NOME DO EGRESSO */
 	@NotNull
-	@Size(max = 50)
+	@Size(max = 60)
 	private String nome;
+	
 	
 	/** EMAIL DO EGRESSO*/
 	@NotNull 
 	@Email
+	@Size(max = 60)
 	@Column(unique=true)
 	private String email;
 	
-	/** SENHA DO EGRESSO */
-	@NotNull 
-	private String senha;
-
+	
 	/** CPF DO EGRESSO */
 	@NotNull 
 	@CPF
+	@Size(max = 14)
 	@Column(unique=true)
 	private String cpf;
+	
+	
+	/** SENHA DO EGRESSO */
+	@NotNull 
+	@Size(max = 10)
+	private String senha;
+	
+	
+	/** DATA DE NASCIMENTO DO EGRESSO */
+	@NotNull 
+	@Temporal(TemporalType.DATE)
+	private Date nascimento;
+	
 	
 	/** IDENTIDADE DO EGRESSO */
 	@NotNull 
 	@Column(unique=true)
 	private String identidade;
 	
+	
 	/** SEXO DO EGRESSO */
 	@NotNull 
 	private Character sexo;
 	
-	/** NATURALIDADE DO EGRESSO */
-	private String naturalidade;
 	
 	/** NACIONALIDADE DO EGRESSO */
+	@Size(max = 60)
 	private String nacionalidade;
 	
-	/** DATA DE NASCIMENTO DO EGRESSO */
-	@NotNull 
-	@Temporal(TemporalType.DATE)
-	private Date nascimento;
+	
+	/** NATURALIDADE DO EGRESSO */
+	@Size(max = 60)
+	private String naturalidade;
+	
+	
+	
+	
+	
 	
 	
 	@Override

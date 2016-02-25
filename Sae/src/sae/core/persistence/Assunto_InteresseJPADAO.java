@@ -5,10 +5,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
-import sae.core.domain.Assunto_Interesse;
+import sae.core.domain.AssuntoInteresse;
 
 @Stateless
-public class Assunto_InteresseJPADAO extends BaseJPADAO<Assunto_Interesse> implements Assunto_InteresseDAO{
+public class Assunto_InteresseJPADAO extends BaseJPADAO<AssuntoInteresse> implements Assunto_InteresseDAO{
 
 	
 	private static final long serialVersionUID = 1L;
@@ -17,8 +17,8 @@ public class Assunto_InteresseJPADAO extends BaseJPADAO<Assunto_Interesse> imple
 	private EntityManager entityManager;
 
 	@Override
-	public Class<Assunto_Interesse> getDomainClass() {
-		return Assunto_Interesse.class;
+	public Class<AssuntoInteresse> getDomainClass() {
+		return AssuntoInteresse.class;
 	}
 
 	@Override

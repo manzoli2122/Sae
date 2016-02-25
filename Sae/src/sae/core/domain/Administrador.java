@@ -32,23 +32,26 @@ public class Administrador extends PersistentObjectSupport implements Comparable
 	
 	/** NOME DO ADMINISTRADOR */
 	@NotNull
-	@Size(max = 100)
+	@Size(max = 60)
 	private String nome;
 	
 	/** EMAIL DO ADMINISTRADOR */
 	@NotNull 
 	@Email
+	@Size(max = 60)
 	@Column(unique=true)
 	private String email;
 
 	/** CPF DO ADMINISTRADOR */
 	@NotNull 
 	@CPF
+	@Size(max = 14)
 	@Column(unique=true)
 	private  String  cpf;
 	
 	/** SENHA DO ADMINISTRADOR */
 	@NotNull 
+	@Size(max = 10)
 	private String senha;
 	
 	/** MATRICULA DO ADMINISTRADOR */

@@ -16,20 +16,22 @@ import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
  * @author BRUNO MANZOLI (manzoli2122@gmail.com)
  */
 @Entity
-public class Assunto_Interesse extends PersistentObjectSupport implements Comparable<Assunto_Interesse> {
+public class AssuntoInteresse extends PersistentObjectSupport implements Comparable<AssuntoInteresse> {
 
+	
 	private static final long serialVersionUID = 1L;
+	
 	
 	/** NOME DO ASSUNTO DE INTERESSE */
 	@NotNull
-	@Size(max = 50)
+	@Size(max = 60)
 	private String nome;
 	
 	
 
 	
 	@Override
-	public int compareTo(Assunto_Interesse o) { 
+	public int compareTo(AssuntoInteresse o) { 
 		if (nome == null)	return 1;
 		if (o.nome == null) return -1;
 		
@@ -38,6 +40,7 @@ public class Assunto_Interesse extends PersistentObjectSupport implements Compar
 		
 		return super.compareTo(o); 
 	}
+	
 	
 	@Override
 	public String toString() { return nome; }

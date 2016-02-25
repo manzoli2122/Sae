@@ -3,6 +3,7 @@ package sae.core.domain;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 
@@ -15,13 +16,16 @@ public class CursoRealizado extends PersistentObjectSupport implements Comparabl
 	
 	/** MATRICULA*/
 	@NotNull 
+	@Size(max = 10)
 	private String matricula;
 	
 	
 	@NotNull 
+	@Size(max = 4)
 	private String anoInicio;
 	
 	@NotNull 
+	@Size(max = 4)
 	private String anoTermino;
 	
 	@NotNull

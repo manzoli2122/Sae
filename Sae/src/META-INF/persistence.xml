@@ -7,7 +7,7 @@
 		<class>sae.core.domain.Administrador</class>
 		<class>sae.core.domain.Egresso</class>
 		<class>sae.core.domain.Curso</class>
-		<class>sae.core.domain.Assunto_Interesse</class>
+		<class>sae.core.domain.AssuntoInteresse</class>
 		<class>sae.publico.domain.Historico_Egresso</class>
 		<class>sae.publico.domain.Escolaridade</class>
 		<class>sae.publico.domain.Depoimento</class>

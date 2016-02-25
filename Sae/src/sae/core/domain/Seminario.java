@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 
@@ -26,26 +27,41 @@ import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 @Entity
 public class Seminario  extends PersistentObjectSupport implements Comparable<Seminario>{
 
+	
 	private static final long serialVersionUID = 1L;
 	
+	
 	/** PALESTRANTE DO SEMINARIO */
+	@Size(max = 60)
 	private String palestrante;
+	
 	
 	/** DATA DO SEMINARIO */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_hora;
 	
-	/** ASSUNTO DO SEMINARIO*/
-	@NotNull
-	@ManyToOne
-	private Assunto_Interesse assunto_interesse;
+	
+	/** LOCAL ONDE SERÁ REALIZADO O SEMINARIO */
+	@Size(max = 60)
+	private String local;
+
 	
 	/** TITULO DO SEMINARIO */
 	@NotNull
+	@Size(max = 60)
 	private String titulo;
 	
-	/** LOCAL ONDE SERÁ REALIZADO O SEMINARIO */
-	private String local;
+	
+	/** ASSUNTO DO SEMINARIO*/
+	@NotNull
+	@ManyToOne
+	private AssuntoInteresse assunto_interesse;
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -64,8 +80,8 @@ public class Seminario  extends PersistentObjectSupport implements Comparable<Se
 	public Date getData_hora() { return data_hora; }
 	public void setData_hora(Date data_hora) { this.data_hora = data_hora; }
 
-	public Assunto_Interesse getAssunto_interesse() { return assunto_interesse; }
-	public void setAssunto_interesse(Assunto_Interesse assunto_interesse) {this.assunto_interesse = assunto_interesse;}
+	public AssuntoInteresse getAssunto_interesse() { return assunto_interesse; }
+	public void setAssunto_interesse(AssuntoInteresse assunto_interesse) {this.assunto_interesse = assunto_interesse;}
 
 	public String getTitulo() { return titulo; }
 	public void setTitulo(String titulo) { this.titulo = titulo; }

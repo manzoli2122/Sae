@@ -141,15 +141,14 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	
 	
 	public String aprovar(){
-		selectedEntity.setStatus(StatusDepoimento.A);	
-		save();
-		
+		selectedEntity.setStatus(StatusDepoimento.A);
+		getCrudService().update(selectedEntity);
 		return analisarDepoimento();
 	}
 
 	public String desaprovar(){
 		selectedEntity.setStatus(StatusDepoimento.D);
-		save();
+		getCrudService().update(selectedEntity);
 		return analisarDepoimento();
 	}
 	

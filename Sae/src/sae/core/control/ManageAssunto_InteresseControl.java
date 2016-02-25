@@ -10,7 +10,7 @@ import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.application.filters.LikeFilter;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.core.application.ManageAssunto_InteresseSevice;
-import sae.core.domain.Assunto_Interesse;
+import sae.core.domain.AssuntoInteresse;
 
 
 
@@ -24,7 +24,7 @@ import sae.core.domain.Assunto_Interesse;
  */
 @Named
 @SessionScoped
-public class ManageAssunto_InteresseControl extends CrudController<Assunto_Interesse>{
+public class ManageAssunto_InteresseControl extends CrudController<AssuntoInteresse>{
 
 	
 	/** Serialization id. */
@@ -55,7 +55,7 @@ public class ManageAssunto_InteresseControl extends CrudController<Assunto_Inter
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
-	protected CrudService<Assunto_Interesse> getCrudService() {
+	protected CrudService<AssuntoInteresse> getCrudService() {
 		return manageAssunto_InteresseService;
 	}
 
@@ -64,9 +64,9 @@ public class ManageAssunto_InteresseControl extends CrudController<Assunto_Inter
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#createNewEntity() */
 	@Override
-	protected Assunto_Interesse createNewEntity() {
+	protected AssuntoInteresse createNewEntity() {
 		logger.log(Level.FINER, "INITIALIZING AN EMPTY Assunto_Interesse ......");
-		return new Assunto_Interesse();
+		return new AssuntoInteresse();
 	}
 
 	

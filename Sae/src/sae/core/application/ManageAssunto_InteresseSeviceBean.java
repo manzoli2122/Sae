@@ -5,7 +5,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
-import sae.core.domain.Assunto_Interesse;
+import sae.core.domain.AssuntoInteresse;
 import sae.core.persistence.Assunto_InteresseDAO;
 
 
@@ -20,7 +20,7 @@ import sae.core.persistence.Assunto_InteresseDAO;
 @Stateless
 @DeclareRoles({"Admin", "egresso", "guest"})
 @RolesAllowed({ "Admin" })
-public class ManageAssunto_InteresseSeviceBean  extends CrudServiceBean<Assunto_Interesse> implements ManageAssunto_InteresseSevice{
+public class ManageAssunto_InteresseSeviceBean  extends CrudServiceBean<AssuntoInteresse> implements ManageAssunto_InteresseSevice{
 
 	
 	/** Serialization id. */
@@ -40,7 +40,7 @@ public class ManageAssunto_InteresseSeviceBean  extends CrudServiceBean<Assunto_
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.application.CrudService#getDAO() */
 	@Override
-	public BaseDAO<Assunto_Interesse> getDAO() {
+	public BaseDAO<AssuntoInteresse> getDAO() {
 		return assunto_InteresserDAO;
 	}
 
@@ -48,8 +48,8 @@ public class ManageAssunto_InteresseSeviceBean  extends CrudServiceBean<Assunto_
 	
 	/** @see sae.core.application.CrudServiceBean#createNewEntity() */
 	@Override
-	protected Assunto_Interesse createNewEntity() {
-		return new Assunto_Interesse();
+	protected AssuntoInteresse createNewEntity() {
+		return new AssuntoInteresse();
 	}
 
 }
