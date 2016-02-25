@@ -17,6 +17,13 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	
 	private static final long serialVersionUID = 1L;
 	
+
+	
+	/* NOME DO USUARIO */
+	@NotNull
+	private Date data_envio;
+	
+	
 	/* NOME DO USUARIO */
 	@NotNull
 	@Column(length=1000)
@@ -25,21 +32,24 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	
 	/* NOME DO USUARIO */
 	@NotNull
-	private Date data_envio;
+	private Boolean anonimo;
+	
+	
+	
+	
+	
 	
 	/* NOME DO USUARIO */
 	@NotNull
 	@ManyToOne
 	private Egresso autor;
 	
+	
 	/* NOME DO USUARIO */
 	@NotNull
 	@ManyToOne
 	private Curso curso;
 	
-	/* NOME DO USUARIO */
-	@NotNull
-	private Boolean anonimo;
 	
 	@NotNull
 	private StatusDepoimento_Enum status;

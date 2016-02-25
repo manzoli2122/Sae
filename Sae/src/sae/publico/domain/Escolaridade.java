@@ -3,6 +3,7 @@ package sae.publico.domain;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 import sae.core.domain.Egresso;
@@ -21,32 +22,44 @@ import sae.core.domain.Egresso;
 @Entity
 public class Escolaridade extends PersistentObjectSupport implements Comparable<Escolaridade>{
 
+	
 	private static final long serialVersionUID = 1L;
+	
 	
 	/** EGRESSO DA ESCOLARIDADE */
 	@NotNull
 	@ManyToOne
 	private Egresso egresso;
 	
-	/** ESTADO ONDE FOI REALIZADO O CURSO */
-	@NotNull
-	private String estado;
-	
-	/** PAIS ONDE FOI REALIZADO O CURSO */
-	@NotNull
-	private String pais;
-	
-	/** INSTITUICAO ONDE FOI REALIZADO O CURSO*/
-	@NotNull
-	private String instituicao;
-	
-	/** ANO DE TERMINO DO CURSO */
-	@NotNull
-	private String ano;
 	
 	/** TITULO DO CURSO */
 	@NotNull
 	private Titulo_Escolaridade_Enum titulo;
+	
+	
+	/** ESTADO ONDE FOI REALIZADO O CURSO */
+	@NotNull
+	@Size(max = 60)
+	private String estado;
+	
+	
+	/** PAIS ONDE FOI REALIZADO O CURSO */
+	@NotNull
+	@Size(max = 60)
+	private String pais;
+	
+	
+	/** INSTITUICAO ONDE FOI REALIZADO O CURSO*/
+	@NotNull
+	@Size(max = 60)
+	private String instituicao;
+	
+	/** ANO DE TERMINO DO CURSO */
+	@NotNull
+	@Size(max = 4)
+	private String ano;
+	
+	
 	
 	
 	

@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import sae.core.domain.Egresso;
 
-@Generated(value="Dali", date="2016-02-16T10:59:37.272-0200")
+@Generated(value="Dali", date="2016-02-25T15:20:28.437-0300")
 @StaticMetamodel(Escolaridade.class)
 public class Escolaridade_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Escolaridade, Egresso> egresso;
