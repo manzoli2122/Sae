@@ -7,9 +7,8 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
-import br.ufes.inf.nemo.util.ejb3.application.filters.LikeFilter;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
-import sae.core.application.ManageAssunto_InteresseSevice;
+import sae.core.application.ManageAssuntoInteresseSevice;
 import sae.core.domain.AssuntoInteresse;
 
 
@@ -24,7 +23,7 @@ import sae.core.domain.AssuntoInteresse;
  */
 @Named
 @SessionScoped
-public class ManageAssunto_InteresseControl extends CrudController<AssuntoInteresse>{
+public class ManageAssuntoInteresseControl extends CrudController<AssuntoInteresse>{
 
 	
 	/** Serialization id. */
@@ -32,12 +31,12 @@ public class ManageAssunto_InteresseControl extends CrudController<AssuntoIntere
 
 	
 	/** The logger. */
-	private static final Logger logger = Logger.getLogger(ManageAssunto_InteresseControl.class.getCanonicalName());
+	private static final Logger logger = Logger.getLogger(ManageAssuntoInteresseControl.class.getCanonicalName());
 	
 	
 	/** The "Manage Assunto_Interesse" service. */
 	@EJB
-	private ManageAssunto_InteresseSevice manageAssunto_InteresseService;
+	private ManageAssuntoInteresseSevice manageAssuntoInteresseService;
 	
 	
 	
@@ -46,8 +45,8 @@ public class ManageAssunto_InteresseControl extends CrudController<AssuntoIntere
 	
 	
 	/**   CONSTRUTOR DA CLASSE  */
-	public ManageAssunto_InteresseControl(){
-		 viewPath = "/core/manageAssunto_Interesse/";
+	public ManageAssuntoInteresseControl(){
+		 viewPath = "/core/manageAssuntoInteresse/";
 	     bundleName = "msgs";
 	}
 	
@@ -56,7 +55,7 @@ public class ManageAssunto_InteresseControl extends CrudController<AssuntoIntere
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<AssuntoInteresse> getCrudService() {
-		return manageAssunto_InteresseService;
+		return manageAssuntoInteresseService;
 	}
 
 	

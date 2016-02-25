@@ -14,6 +14,6 @@ import sae.core.domain.AssuntoInteresse;
  * @see br.ufes.inf.nemo.util.ejb3.application.CrudService
  */
 @Local
-public interface ManageAssunto_InteresseSevice extends CrudService<AssuntoInteresse>{
+public interface ManageAssuntoInteresseSevice extends CrudService<AssuntoInteresse>{
 
 }

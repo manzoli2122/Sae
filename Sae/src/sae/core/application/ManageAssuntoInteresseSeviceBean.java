@@ -20,7 +20,7 @@ import sae.core.persistence.Assunto_InteresseDAO;
 @Stateless
 @DeclareRoles({"Admin", "egresso", "guest"})
 @RolesAllowed({ "Admin" })
-public class ManageAssunto_InteresseSeviceBean  extends CrudServiceBean<AssuntoInteresse> implements ManageAssunto_InteresseSevice{
+public class ManageAssuntoInteresseSeviceBean  extends CrudServiceBean<AssuntoInteresse> implements ManageAssuntoInteresseSevice{
 
 	
 	/** Serialization id. */
