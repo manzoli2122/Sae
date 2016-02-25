@@ -14,7 +14,7 @@ import sae.core.domain.AssuntoInteresse;
 import sae.core.domain.Curso;
 import sae.core.domain.Egresso;
 import sae.core.persistence.AdministradorDAO;
-import sae.core.persistence.Assunto_InteresseDAO;
+import sae.core.persistence.AssuntoInteresseDAO;
 import sae.core.persistence.CursoDAO;
 import sae.core.persistence.EgressoDAO;
 
@@ -47,7 +47,7 @@ public class CoreControl  implements Serializable {
 	
 	/** The DAO for Assunto_Interesse objects. */
 	@EJB
-	private Assunto_InteresseDAO assunto_InteresserDAO;
+	private AssuntoInteresseDAO assunto_InteresserDAO;
 	
 	
 	/** The DAO for Curso objects. */

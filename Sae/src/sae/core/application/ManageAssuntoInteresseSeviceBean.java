@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.domain.AssuntoInteresse;
-import sae.core.persistence.Assunto_InteresseDAO;
+import sae.core.persistence.AssuntoInteresseDAO;
 
 
 
@@ -29,7 +29,7 @@ public class ManageAssuntoInteresseSeviceBean  extends CrudServiceBean<AssuntoIn
 	
 	/** The DAO for Assunto_Interesse objects. */
 	@EJB
-	private Assunto_InteresseDAO assunto_InteresserDAO;
+	private AssuntoInteresseDAO assunto_InteresserDAO;
 	
 	
 	

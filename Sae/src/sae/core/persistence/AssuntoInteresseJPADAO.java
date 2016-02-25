@@ -8,7 +8,7 @@ import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
 import sae.core.domain.AssuntoInteresse;
 
 @Stateless
-public class Assunto_InteresseJPADAO extends BaseJPADAO<AssuntoInteresse> implements Assunto_InteresseDAO{
+public class AssuntoInteresseJPADAO extends BaseJPADAO<AssuntoInteresse> implements AssuntoInteresseDAO{
 
 	
 	private static final long serialVersionUID = 1L;
