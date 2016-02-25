@@ -28,12 +28,15 @@ import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 @Entity
 public class Administrador extends PersistentObjectSupport implements Comparable<Administrador> {
 
+	
 	private static final long serialVersionUID = 1L;
+	
 	
 	/** NOME DO ADMINISTRADOR */
 	@NotNull
 	@Size(max = 60)
 	private String nome;
+	
 	
 	/** EMAIL DO ADMINISTRADOR */
 	@NotNull 
@@ -42,6 +45,7 @@ public class Administrador extends PersistentObjectSupport implements Comparable
 	@Column(unique=true)
 	private String email;
 
+	
 	/** CPF DO ADMINISTRADOR */
 	@NotNull 
 	@CPF
@@ -49,15 +53,18 @@ public class Administrador extends PersistentObjectSupport implements Comparable
 	@Column(unique=true)
 	private  String  cpf;
 	
-	/** SENHA DO ADMINISTRADOR */
+	
+	/** SENHA DO ADMINISTRADOR  (32 pelo md5)*/
 	@NotNull 
-	@Size(max = 10)
+	@Size(max = 32)
 	private String senha;
+	
 	
 	/** MATRICULA DO ADMINISTRADOR */
 	@NotNull 
 	@Column(unique=true)
 	private String matricula;
+	
 	
 	/** CURSO QUE O ADMINISTRADOR COORDENA*/
 	@OneToMany(mappedBy="coordenador")
