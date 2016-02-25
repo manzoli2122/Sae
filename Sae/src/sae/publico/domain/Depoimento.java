@@ -42,7 +42,7 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	private Boolean anonimo;
 	
 	@NotNull
-	private StatusDepoimento status;
+	private StatusDepoimento_Enum status;
 	
 	
 	
@@ -67,8 +67,8 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	public Boolean getAnonimo() { 	return anonimo; }
 	public void setAnonimo(Boolean anonimo) { this.anonimo = anonimo; }
 	
-	public StatusDepoimento getStatus() {return status;}
-	public void setStatus(StatusDepoimento status) {this.status = status;}
+	public StatusDepoimento_Enum getStatus() {return status;}
+	public void setStatus(StatusDepoimento_Enum status) {this.status = status;}
 	
 	
 

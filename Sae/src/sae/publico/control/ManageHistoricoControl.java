@@ -12,7 +12,7 @@ import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.publico.application.ManageHistoricoService;
-import sae.publico.domain.Historico_Egresso;
+import sae.publico.domain.HistoricoEgresso;
 
 
 
@@ -26,7 +26,7 @@ import sae.publico.domain.Historico_Egresso;
  */
 @Named
 @SessionScoped
-public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
+public class ManageHistoricoControl  extends CrudController<HistoricoEgresso>{
 
 	
 	/** Serialization id. */
@@ -56,7 +56,7 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
-	protected CrudService<Historico_Egresso> getCrudService() {
+	protected CrudService<HistoricoEgresso> getCrudService() {
 		return manageHistoricoService;
 	}
 
@@ -64,9 +64,9 @@ public class ManageHistoricoControl  extends CrudController<Historico_Egresso>{
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#createNewEntity() */
 	@Override
-	protected Historico_Egresso createNewEntity() {
+	protected HistoricoEgresso createNewEntity() {
 		logger.log(Level.FINER, "INITIALIZING AN EMPTY Historico_Egresso ......");
-		Historico_Egresso historico = new Historico_Egresso();
+		HistoricoEgresso historico = new HistoricoEgresso();
 		historico.setData_envio(new Date());
 		return historico;
 	}

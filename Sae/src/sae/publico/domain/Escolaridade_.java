@@ -14,5 +14,5 @@ public class Escolaridade_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Escolaridade, String> pais;
 	public static volatile SingularAttribute<Escolaridade, String> instituicao;
 	public static volatile SingularAttribute<Escolaridade, String> ano;
-	public static volatile SingularAttribute<Escolaridade, Titulo_Escolaridade> titulo;
+	public static volatile SingularAttribute<Escolaridade, Titulo_Escolaridade_Enum> titulo;
 }

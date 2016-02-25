@@ -11,7 +11,7 @@ import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.application.CrudServiceBean;
 import sae.core.application.SessionService;
 import sae.core.domain.Egresso;
-import sae.publico.domain.Historico_Egresso;
+import sae.publico.domain.HistoricoEgresso;
 import sae.publico.persistence.Historico_EgressoDAO;
 
 
@@ -26,7 +26,7 @@ import sae.publico.persistence.Historico_EgressoDAO;
 @Stateless
 @DeclareRoles({"Admin", "egresso", "guest"})
 @RolesAllowed({ "egresso", "Admin" })
-public class ManageHistoricoServiceBean extends CrudServiceBean<Historico_Egresso> implements ManageHistoricoService{
+public class ManageHistoricoServiceBean extends CrudServiceBean<HistoricoEgresso> implements ManageHistoricoService{
 
 	
 	/** Serialization id. */
@@ -48,7 +48,7 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<Historico_Egress
 	
 	/** @see br.ufes.inf.nemo.util.ejb3.application.CrudService#getDAO() */
 	@Override
-	public BaseDAO<Historico_Egresso> getDAO() {
+	public BaseDAO<HistoricoEgresso> getDAO() {
 		return historico_EgressoDAO;
 	}
 
@@ -56,15 +56,15 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<Historico_Egress
 	
 	/** @see sae.core.application.CrudServiceBean#createNewEntity() */
 	@Override
-	protected Historico_Egresso createNewEntity() {
-		return new Historico_Egresso();
+	protected HistoricoEgresso createNewEntity() {
+		return new HistoricoEgresso();
 	}
 
 	
 	
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
-	public void validateCreate(Historico_Egresso entity) throws CrudException {
+	public void validateCreate(HistoricoEgresso entity) throws CrudException {
 		Egresso egresso = sessionService.getEgresso();
 		if(egresso != null)
 		entity.setEgresso(egresso);
@@ -75,7 +75,7 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<Historico_Egress
 	
 	
 	@Override
-	public List<Historico_Egresso>	retrieveAllMine() {
+	public List<HistoricoEgresso>	retrieveAllMine() {
 		return historico_EgressoDAO.retrieveAllMine(sessionService.getEgresso());
 	}
 }

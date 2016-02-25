@@ -6,10 +6,10 @@ import javax.inject.Named;
 import org.primefaces.model.chart.PieChartModel;
 import sae.core.domain.Curso;
 import sae.publico.application.ConsultaService;
-import sae.publico.domain.Area_Atuacao;
-import sae.publico.domain.Area_Formacao;
-import sae.publico.domain.Faixa_Salarial;
-import sae.publico.domain.Historico_Egresso;
+import sae.publico.domain.Area_Atuacao_Enum;
+import sae.publico.domain.Area_Formacao_Enum;
+import sae.publico.domain.Faixa_Salarial_Enum;
+import sae.publico.domain.HistoricoEgresso;
 
 import java.io.Serializable;
 import java.util.Iterator;
@@ -39,7 +39,7 @@ public class ConsultaControl implements Serializable {
 	
 	private PieChartModel grafico_areaFormacao;
 	
-	private List<Historico_Egresso>  historicos;
+	private List<HistoricoEgresso>  historicos;
  
 	private int numeroFaixaResidencial, numeroFaixaEmpreendedor , numeroFaixaProfessor;
 	
@@ -87,8 +87,8 @@ public class ConsultaControl implements Serializable {
 	
 	public String consulta_faixa_residencia() {
 			
-		Iterator<Historico_Egresso> iterator = historicos.iterator();
-		Faixa_Salarial[] faixas = Faixa_Salarial.values();
+		Iterator<HistoricoEgresso> iterator = historicos.iterator();
+		Faixa_Salarial_Enum[] faixas = Faixa_Salarial_Enum.values();
 		
 		
 		
@@ -112,10 +112,10 @@ public class ConsultaControl implements Serializable {
 		
 		while(iterator.hasNext()){
 			
-			Historico_Egresso hh = iterator.next();
-			Faixa_Salarial ff = hh.getFaixa_salarial();
+			HistoricoEgresso hh = iterator.next();
+			Faixa_Salarial_Enum ff = hh.getFaixa_salarial();
 			
-			if(hh.getArea_atuacao().equals(Area_Atuacao.professor)){
+			if(hh.getArea_atuacao().equals(Area_Atuacao_Enum.PROFESSOR)){
 				for(int i = 0 ; i < faixas.length ; i++ ){
 					if(  ff.equals(faixas[i])  ){
 						valor_professor[i]++;
@@ -126,7 +126,7 @@ public class ConsultaControl implements Serializable {
 			}
 			
 			
-			if(hh.getArea_atuacao().equals(Area_Atuacao.empreendedor)){
+			if(hh.getArea_atuacao().equals(Area_Atuacao_Enum.EMPREENDEDOR)){
 				for(int i = 0 ; i < faixas.length ; i++ ){
 					if(  ff.equals(faixas[i])  ){
 						valor_empreendedor[i]++;
@@ -200,11 +200,11 @@ public class ConsultaControl implements Serializable {
 	public String consulta_faixa_salarial() {
 		
 		grafico_faixaSalarial = new PieChartModel();
-		Iterator<Historico_Egresso> iterator = historicos.iterator();
-		Faixa_Salarial[] faixas = Faixa_Salarial.values();
+		Iterator<HistoricoEgresso> iterator = historicos.iterator();
+		Faixa_Salarial_Enum[] faixas = Faixa_Salarial_Enum.values();
 		int[] valor = new int[faixas.length] ;
 		while(iterator.hasNext()){
-			Faixa_Salarial ff = iterator.next().getFaixa_salarial();
+			Faixa_Salarial_Enum ff = iterator.next().getFaixa_salarial();
 			for(int i = 0 ; i < faixas.length ; i++ ){
 				if(  ff.equals(faixas[i])  ){
 					valor[i]++;
@@ -245,7 +245,7 @@ public class ConsultaControl implements Serializable {
 	public String consulta_Residencia() {
 		
 		residencia = new PieChartModel();
-		Iterator<Historico_Egresso> iterator = historicos.iterator();
+		Iterator<HistoricoEgresso> iterator = historicos.iterator();
 		int reside = 0, naoreside = 0;
 		while(iterator.hasNext()){
 			if(  iterator.next().getReside_no_ES()  ){
@@ -277,14 +277,14 @@ public class ConsultaControl implements Serializable {
 	public String consulta_Area_Atuacao() {
 		
 		grafico_areaAtuacao = new PieChartModel();
-		Iterator<Historico_Egresso> iterator = historicos.iterator();
+		Iterator<HistoricoEgresso> iterator = historicos.iterator();
 		
-		Area_Atuacao[] areas = Area_Atuacao.values();
+		Area_Atuacao_Enum[] areas = Area_Atuacao_Enum.values();
 		
 		int[] valor = new int[areas.length] ;
 		
 		while(iterator.hasNext()){
-			Area_Atuacao aa = iterator.next().getArea_atuacao();
+			Area_Atuacao_Enum aa = iterator.next().getArea_atuacao();
 			for(int i = 0 ; i < areas.length ; i++ ){
 				if(  aa.equals(areas[i])  ){
 					valor[i]++;
@@ -317,7 +317,7 @@ public class ConsultaControl implements Serializable {
 	public String consulta_Sexo() {
 		
 		grafico_sexo = new PieChartModel();
-		Iterator<Historico_Egresso> iterator = historicos.iterator();
+		Iterator<HistoricoEgresso> iterator = historicos.iterator();
 		
 		int feminino = 0 ;
 		
@@ -354,11 +354,11 @@ public class ConsultaControl implements Serializable {
 	
 	public String consulta_Area_Formacao() {
 		grafico_areaFormacao = new PieChartModel();
-		Iterator<Historico_Egresso> iterator = historicos.iterator();
-		Area_Formacao[] areas = Area_Formacao.values();
+		Iterator<HistoricoEgresso> iterator = historicos.iterator();
+		Area_Formacao_Enum[] areas = Area_Formacao_Enum.values();
 		int[] valor = new int[areas.length] ;
 		while(iterator.hasNext()){
-			Area_Formacao aa = iterator.next().getAtua_na_area();
+			Area_Formacao_Enum aa = iterator.next().getAtua_na_area();
 			for(int i = 0 ; i < areas.length ; i++ ){
 				if(  aa.equals(areas[i])  ){
 					valor[i]++;

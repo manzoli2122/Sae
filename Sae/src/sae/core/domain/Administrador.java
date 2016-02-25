@@ -63,6 +63,7 @@ public class Administrador extends PersistentObjectSupport implements Comparable
 	/** MATRICULA DO ADMINISTRADOR */
 	@NotNull 
 	@Column(unique=true)
+	@Size(max = 20)
 	private String matricula;
 	
 	

@@ -8,7 +8,7 @@
 		<class>sae.core.domain.Egresso</class>
 		<class>sae.core.domain.Curso</class>
 		<class>sae.core.domain.AssuntoInteresse</class>
-		<class>sae.publico.domain.Historico_Egresso</class>
+		<class>sae.publico.domain.HistoricoEgresso</class>
 		<class>sae.publico.domain.Escolaridade</class>
 		<class>sae.publico.domain.Depoimento</class>
 		<class>sae.publico.domain.Sugestao</class>
@@ -37,7 +37,7 @@
 		<class>sae.core.domain.Egresso</class>
 		<class>sae.core.domain.Curso</class>
 		<class>sae.core.domain.AssuntoInteresse</class>
-		<class>sae.core.domain.Historico_Egresso</class>
+		<class>sae.core.domain.HistoricoEgresso</class>
 		<class>sae.core.domain.Escolaridade</class>
 		<class>sae.publico.domain.Depoimento</class>
 		<class>sae.publico.domain.Sugestao</class>

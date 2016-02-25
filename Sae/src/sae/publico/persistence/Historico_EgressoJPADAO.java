@@ -18,12 +18,12 @@ import sae.core.domain.Curso;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.CursoRealizado_;
 import sae.core.domain.Egresso;
-import sae.publico.domain.Faixa_Salarial;
-import sae.publico.domain.Historico_Egresso;
-import sae.publico.domain.Historico_Egresso_;
+import sae.publico.domain.Faixa_Salarial_Enum;
+import sae.publico.domain.HistoricoEgresso;
+import sae.publico.domain.HistoricoEgresso_;
 
 @Stateless
-public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> implements Historico_EgressoDAO{
+public class Historico_EgressoJPADAO  extends BaseJPADAO<HistoricoEgresso> implements Historico_EgressoDAO{
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,8 +37,8 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 	
 	
 	@Override
-	public Class<Historico_Egresso> getDomainClass() {
-		return Historico_Egresso.class;
+	public Class<HistoricoEgresso> getDomainClass() {
+		return HistoricoEgresso.class;
 	}
 
 	
@@ -51,16 +51,16 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 	
 	
 	@Override
-	protected List<Order> getOrderList(CriteriaBuilder cb, Root<Historico_Egresso> root) {
+	protected List<Order> getOrderList(CriteriaBuilder cb, Root<HistoricoEgresso> root) {
 		List<Order> orderList = new ArrayList<Order>();
-		orderList.add(cb.asc(root.get(Historico_Egresso_.data_envio)));
+		orderList.add(cb.asc(root.get(HistoricoEgresso_.data_envio)));
 		return orderList;
 	}
 	
 	
 	
 	@Override
-	public long contFaixaSalarial(Faixa_Salarial faixa, Curso curso){
+	public long contFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso){
 		
 		
 		EntityManager em = getEntityManager();
@@ -68,14 +68,14 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		
 		
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-		Root<Historico_Egresso> root = cq.from(getDomainClass());
+		Root<HistoricoEgresso> root = cq.from(getDomainClass());
 		
 		// SUBQUERYH
-		Subquery<Historico_Egresso> subqueryH = cq.subquery(Historico_Egresso.class);
-		Root<Historico_Egresso> subrootH = subqueryH.from(Historico_Egresso.class);
+		Subquery<HistoricoEgresso> subqueryH = cq.subquery(HistoricoEgresso.class);
+		Root<HistoricoEgresso> subrootH = subqueryH.from(HistoricoEgresso.class);
 		subqueryH.where(
-							cb.equal(root.get(Historico_Egresso_.egresso),subrootH.get(Historico_Egresso_.egresso)),
-							cb.lessThan(root.get(Historico_Egresso_.data_envio), subrootH.get(Historico_Egresso_.data_envio))
+							cb.equal(root.get(HistoricoEgresso_.egresso),subrootH.get(HistoricoEgresso_.egresso)),
+							cb.lessThan(root.get(HistoricoEgresso_.data_envio), subrootH.get(HistoricoEgresso_.data_envio))
 							
 					  );
 		subqueryH.select(subrootH);
@@ -84,12 +84,12 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		Subquery<CursoRealizado> subquery = cq.subquery(CursoRealizado.class);
 		Root<CursoRealizado> subroot = subquery.from(CursoRealizado.class);
 		subquery.where(
-							cb.equal(root.get(Historico_Egresso_.egresso),subroot.get(CursoRealizado_.egresso)),
+							cb.equal(root.get(HistoricoEgresso_.egresso),subroot.get(CursoRealizado_.egresso)),
 							cb.equal(subroot.get(CursoRealizado_.curso), curso)
 					  );
 		subquery.select(subroot);
 		cq.where(
-					cb.equal(root.get(Historico_Egresso_.faixa_salarial),faixa ),
+					cb.equal(root.get(HistoricoEgresso_.faixa_salarial),faixa ),
 					cb.exists(  subquery  ),
 					cb.not(cb.exists(subqueryH))
 				);
@@ -115,14 +115,14 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		
 		
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-		Root<Historico_Egresso> root = cq.from(getDomainClass());
+		Root<HistoricoEgresso> root = cq.from(getDomainClass());
 		
 		// SUBQUERYH
-		Subquery<Historico_Egresso> subqueryH = cq.subquery(Historico_Egresso.class);
-		Root<Historico_Egresso> subrootH = subqueryH.from(Historico_Egresso.class);
+		Subquery<HistoricoEgresso> subqueryH = cq.subquery(HistoricoEgresso.class);
+		Root<HistoricoEgresso> subrootH = subqueryH.from(HistoricoEgresso.class);
 		subqueryH.where(
-							cb.equal(root.get(Historico_Egresso_.egresso),subrootH.get(Historico_Egresso_.egresso)),
-							cb.lessThan(root.get(Historico_Egresso_.data_envio), subrootH.get(Historico_Egresso_.data_envio))
+							cb.equal(root.get(HistoricoEgresso_.egresso),subrootH.get(HistoricoEgresso_.egresso)),
+							cb.lessThan(root.get(HistoricoEgresso_.data_envio), subrootH.get(HistoricoEgresso_.data_envio))
 							
 					  );
 		subqueryH.select(subrootH);
@@ -131,12 +131,12 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		Subquery<CursoRealizado> subquery = cq.subquery(CursoRealizado.class);
 		Root<CursoRealizado> subroot = subquery.from(CursoRealizado.class);
 		subquery.where(
-							cb.equal(root.get(Historico_Egresso_.egresso),subroot.get(CursoRealizado_.egresso)),
+							cb.equal(root.get(HistoricoEgresso_.egresso),subroot.get(CursoRealizado_.egresso)),
 							cb.equal(subroot.get(CursoRealizado_.curso), curso)
 					  );
 		subquery.select(subroot);
 		cq.where(
-					cb.equal(root.get(Historico_Egresso_.reside_no_ES),mora ),
+					cb.equal(root.get(HistoricoEgresso_.reside_no_ES),mora ),
 					cb.exists(  subquery  ),
 					cb.not(cb.exists(subqueryH))
 				);
@@ -154,22 +154,22 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 	
 	
 	@Override
-	public List<Historico_Egresso> consultaHistorico(Curso curso) {
+	public List<HistoricoEgresso> consultaHistorico(Curso curso) {
 		
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		
 		
-		CriteriaQuery<Historico_Egresso> cq = cb.createQuery(Historico_Egresso.class);
-		Root<Historico_Egresso> root = cq.from(getDomainClass());
+		CriteriaQuery<HistoricoEgresso> cq = cb.createQuery(HistoricoEgresso.class);
+		Root<HistoricoEgresso> root = cq.from(getDomainClass());
 		
 		
 		// SUBQUERYH
-		Subquery<Historico_Egresso> subqueryH = cq.subquery(Historico_Egresso.class);
-		Root<Historico_Egresso> subrootH = subqueryH.from(Historico_Egresso.class);
+		Subquery<HistoricoEgresso> subqueryH = cq.subquery(HistoricoEgresso.class);
+		Root<HistoricoEgresso> subrootH = subqueryH.from(HistoricoEgresso.class);
 		subqueryH.where(
-							cb.equal(root.get(Historico_Egresso_.egresso),subrootH.get(Historico_Egresso_.egresso)),
-							cb.lessThan(root.get(Historico_Egresso_.data_envio), subrootH.get(Historico_Egresso_.data_envio))
+							cb.equal(root.get(HistoricoEgresso_.egresso),subrootH.get(HistoricoEgresso_.egresso)),
+							cb.lessThan(root.get(HistoricoEgresso_.data_envio), subrootH.get(HistoricoEgresso_.data_envio))
 							
 					  );
 		subqueryH.select(subrootH);
@@ -178,7 +178,7 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 		Subquery<CursoRealizado> subquery = cq.subquery(CursoRealizado.class);
 		Root<CursoRealizado> subroot = subquery.from(CursoRealizado.class);
 		subquery.where(
-							cb.equal(root.get(Historico_Egresso_.egresso),subroot.get(CursoRealizado_.egresso)),
+							cb.equal(root.get(HistoricoEgresso_.egresso),subroot.get(CursoRealizado_.egresso)),
 							cb.equal(subroot.get(CursoRealizado_.curso), curso)
 					  );
 		subquery.select(subroot);
@@ -195,14 +195,14 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 	
 	
 	@Override
-	public List<Historico_Egresso> retrieveAllMine(Egresso egresso) {
+	public List<HistoricoEgresso> retrieveAllMine(Egresso egresso) {
 		// Using the entity manager, create a criteria query to retrieve all objects of the domain class.
 				EntityManager em = getEntityManager();
 				CriteriaBuilder cb = em.getCriteriaBuilder();
-				CriteriaQuery<Historico_Egresso> cq = cb.createQuery(getDomainClass());
-				Root<Historico_Egresso> root = cq.from(getDomainClass());
+				CriteriaQuery<HistoricoEgresso> cq = cb.createQuery(getDomainClass());
+				Root<HistoricoEgresso> root = cq.from(getDomainClass());
 				
-				cq.where(  cb.equal(root.get(Historico_Egresso_.egresso), egresso));
+				cq.where(  cb.equal(root.get(HistoricoEgresso_.egresso), egresso));
 				
 				cq.select(root);
 
@@ -210,7 +210,7 @@ public class Historico_EgressoJPADAO  extends BaseJPADAO<Historico_Egresso> impl
 				applyOrdering(cb, root, cq);
 
 				// Return the list of objects.
-				List<Historico_Egresso> result = em.createQuery(cq).getResultList();
+				List<HistoricoEgresso> result = em.createQuery(cq).getResultList();
 				return result;
 				//return super.retrieveAll();
 	}

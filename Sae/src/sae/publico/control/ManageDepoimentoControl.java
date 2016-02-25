@@ -18,7 +18,7 @@ import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import br.ufes.inf.nemo.util.ejb3.controller.PrimefacesLazyEntityDataModel;
 import sae.publico.application.ManageDepoimentoService;
 import sae.publico.domain.Depoimento;
-import sae.publico.domain.StatusDepoimento;
+import sae.publico.domain.StatusDepoimento_Enum;
 
 
 
@@ -141,13 +141,13 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	
 	
 	public String aprovar(){
-		selectedEntity.setStatus(StatusDepoimento.A);
+		selectedEntity.setStatus(StatusDepoimento_Enum.A);
 		getCrudService().update(selectedEntity);
 		return analisarDepoimento();
 	}
 
 	public String desaprovar(){
-		selectedEntity.setStatus(StatusDepoimento.D);
+		selectedEntity.setStatus(StatusDepoimento_Enum.D);
 		getCrudService().update(selectedEntity);
 		return analisarDepoimento();
 	}

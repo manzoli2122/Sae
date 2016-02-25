@@ -1,6 +1,6 @@
 package sae.publico.domain;
 
-public enum StatusDepoimento {
+public enum StatusDepoimento_Enum {
 
 	
 	P("Pendente"),
@@ -10,7 +10,7 @@ public enum StatusDepoimento {
 	
 	private final String label;
 
-	private StatusDepoimento(String label) {
+	private StatusDepoimento_Enum(String label) {
 		this.label = label;
 	}
 

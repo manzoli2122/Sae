@@ -6,8 +6,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import sae.core.domain.Curso;
-import sae.publico.domain.Faixa_Salarial;
-import sae.publico.domain.Historico_Egresso;
+import sae.publico.domain.Faixa_Salarial_Enum;
+import sae.publico.domain.HistoricoEgresso;
 import sae.publico.persistence.Historico_EgressoDAO;
 
 @Stateless
@@ -19,7 +19,7 @@ public class ConsultaServiceBean implements ConsultaService{
 	
 	
 	@Override
-	public long countFaixaSalarial(Faixa_Salarial faixa, Curso curso){
+	public long countFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso){
 		return historico_EgressoDAO.contFaixaSalarial(faixa, curso);
 	}
 	
@@ -31,7 +31,7 @@ public class ConsultaServiceBean implements ConsultaService{
 	
 	
 	@Override
-	public List<Historico_Egresso> consultaHistoricos(Curso curso){
+	public List<HistoricoEgresso> consultaHistoricos(Curso curso){
 		return historico_EgressoDAO.consultaHistorico(curso);
 	}
 	

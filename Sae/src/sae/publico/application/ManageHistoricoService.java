@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
-import sae.publico.domain.Historico_Egresso;
+import sae.publico.domain.HistoricoEgresso;
 
 
 /**
@@ -17,8 +17,8 @@ import sae.publico.domain.Historico_Egresso;
  * @see br.ufes.inf.nemo.util.ejb3.application.CrudService
  */
 @Local
-public interface ManageHistoricoService  extends CrudService<Historico_Egresso>{
+public interface ManageHistoricoService  extends CrudService<HistoricoEgresso>{
 
-	List<Historico_Egresso> retrieveAllMine();
+	List<HistoricoEgresso> retrieveAllMine();
 
 }

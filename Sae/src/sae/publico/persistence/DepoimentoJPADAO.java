@@ -23,9 +23,9 @@ import sae.core.domain.Curso_;
 import sae.core.domain.Egresso;
 import sae.publico.domain.Depoimento;
 import sae.publico.domain.Depoimento_;
-import sae.publico.domain.Historico_Egresso;
-import sae.publico.domain.Historico_Egresso_;
-import sae.publico.domain.StatusDepoimento;
+import sae.publico.domain.HistoricoEgresso;
+import sae.publico.domain.HistoricoEgresso_;
+import sae.publico.domain.StatusDepoimento_Enum;
 
 
 
@@ -91,7 +91,7 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		
 		cq.where(  
 						cb.equal(root.get(Depoimento_.curso), curso),
-						cb.equal(root.get(Depoimento_.status), StatusDepoimento.A)
+						cb.equal(root.get(Depoimento_.status), StatusDepoimento_Enum.A)
 						
 				);
 		
@@ -128,7 +128,7 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		subqueryH.select(subrootH);
 		
 		cq.where(
-					cb.equal(root.get(Depoimento_.status), StatusDepoimento.P),
+					cb.equal(root.get(Depoimento_.status), StatusDepoimento_Enum.P),
 					cb.exists(  subqueryH  )
 					
 				);

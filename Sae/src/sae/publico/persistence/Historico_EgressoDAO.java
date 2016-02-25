@@ -7,18 +7,18 @@ import javax.ejb.Local;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.domain.Curso;
 import sae.core.domain.Egresso;
-import sae.publico.domain.Faixa_Salarial;
-import sae.publico.domain.Historico_Egresso;
+import sae.publico.domain.Faixa_Salarial_Enum;
+import sae.publico.domain.HistoricoEgresso;
 
 @Local
-public interface Historico_EgressoDAO  extends BaseDAO<Historico_Egresso>{
+public interface Historico_EgressoDAO  extends BaseDAO<HistoricoEgresso>{
 
-	long contFaixaSalarial(Faixa_Salarial faixa, Curso curso);
+	long contFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso);
 
 	long contReside(Boolean mora, Curso curso);
 
-	List<Historico_Egresso> consultaHistorico(Curso curso);
+	List<HistoricoEgresso> consultaHistorico(Curso curso);
 
-	List<Historico_Egresso> retrieveAllMine(Egresso egresso);
+	List<HistoricoEgresso> retrieveAllMine(Egresso egresso);
 
 }

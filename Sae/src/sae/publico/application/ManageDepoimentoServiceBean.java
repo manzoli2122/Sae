@@ -13,7 +13,7 @@ import sae.core.application.CrudServiceBean;
 import sae.core.application.SessionService;
 import sae.core.domain.Egresso;
 import sae.publico.domain.Depoimento;
-import sae.publico.domain.StatusDepoimento;
+import sae.publico.domain.StatusDepoimento_Enum;
 import sae.publico.persistence.DepoimentoDAO;
 
 
@@ -74,7 +74,7 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 		Egresso egresso = sessionService.getEgresso();
 		if(egresso != null)
 		entity.setAutor(egresso);
-		entity.setStatus(StatusDepoimento.P);
+		entity.setStatus(StatusDepoimento_Enum.P);
 		
 	}
 	
@@ -82,7 +82,7 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	
 	@Override
 	public void validateUpdate(Depoimento entity) throws CrudException {
-		entity.setStatus(StatusDepoimento.P);
+		entity.setStatus(StatusDepoimento_Enum.P);
 		super.validateUpdate(entity);
 	}
 	
