@@ -23,7 +23,7 @@ import sae.publico.domain.HistoricoEgresso;
 import sae.publico.domain.HistoricoEgresso_;
 
 @Stateless
-public class Historico_EgressoJPADAO  extends BaseJPADAO<HistoricoEgresso> implements Historico_EgressoDAO{
+public class HistoricoEgressoJPADAO  extends BaseJPADAO<HistoricoEgresso> implements HistoricoEgressoDAO{
 
 	private static final long serialVersionUID = 1L;
 

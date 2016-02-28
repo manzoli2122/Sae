@@ -58,7 +58,7 @@ public class Egresso extends PersistentObjectSupport implements Comparable<Egres
 	
 	/** SENHA DO EGRESSO */
 	@NotNull 
-	@Size(max = 10)
+	@Size(max = 32)
 	private String senha;
 	
 	

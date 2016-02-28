@@ -93,7 +93,7 @@
                 		<div class="col-sm-3"/>
 						<div class="col-sm-3">
 							<a  class="btn btn-block btn-info btn-social" jsf:action="#{manageAdministradorControl.save}" 
-								jsf:update="form" jsf:rendered="#{!manageAdministradorControl.readOnly}"><i class="fa  fa-save"></i> 
+								jsf:update=":form :globalMessages" jsf:rendered="#{!manageAdministradorControl.readOnly}"><i class="fa  fa-save"></i> 
 								<h:outputText value="#{msgs['crud.button.save']}"/>
 							</a>
                 		</div>

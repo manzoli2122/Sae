@@ -11,7 +11,7 @@ import sae.publico.domain.Faixa_Salarial_Enum;
 import sae.publico.domain.HistoricoEgresso;
 
 @Local
-public interface Historico_EgressoDAO  extends BaseDAO<HistoricoEgresso>{
+public interface HistoricoEgressoDAO  extends BaseDAO<HistoricoEgresso>{
 
 	long contFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso);
 

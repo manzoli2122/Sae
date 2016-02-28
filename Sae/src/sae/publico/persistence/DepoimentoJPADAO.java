@@ -6,10 +6,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
@@ -17,14 +15,10 @@ import javax.persistence.criteria.Subquery;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
 import sae.core.domain.Administrador;
 import sae.core.domain.Curso;
-import sae.core.domain.CursoRealizado;
-import sae.core.domain.CursoRealizado_;
 import sae.core.domain.Curso_;
 import sae.core.domain.Egresso;
 import sae.publico.domain.Depoimento;
 import sae.publico.domain.Depoimento_;
-import sae.publico.domain.HistoricoEgresso;
-import sae.publico.domain.HistoricoEgresso_;
 import sae.publico.domain.StatusDepoimento_Enum;
 
 

@@ -12,7 +12,7 @@ import sae.core.application.CrudServiceBean;
 import sae.core.application.SessionService;
 import sae.core.domain.Egresso;
 import sae.publico.domain.HistoricoEgresso;
-import sae.publico.persistence.Historico_EgressoDAO;
+import sae.publico.persistence.HistoricoEgressoDAO;
 
 
 
@@ -35,7 +35,7 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<HistoricoEgresso
 	
 	/** The DAO for Historico_Egresso objects. */
 	@EJB
-	private Historico_EgressoDAO historico_EgressoDAO;
+	private HistoricoEgressoDAO historico_EgressoDAO;
 	
 	
 	@EJB

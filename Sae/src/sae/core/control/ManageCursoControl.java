@@ -5,7 +5,11 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
+
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.application.filters.LikeFilter;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
@@ -101,7 +105,11 @@ public class ManageCursoControl extends CrudController<Curso> {
 			return super.delete();
 		}
 		catch(Exception e){
-			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
+	         
+	        RequestContext.getCurrentInstance().showMessageInDialog(message);
+	        return null;
+			//return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
 		}
 	}
 

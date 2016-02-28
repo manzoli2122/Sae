@@ -83,7 +83,7 @@
 	                </div>
 	                <div class="col-sm-3"/>
 					<div class="col-sm-3">
-						<a class="btn btn-block btn-info btn-social" jsf:action="#{manageCursoControl.save}" jsf:update="form"
+						<a class="btn btn-block btn-info btn-social" jsf:action="#{manageCursoControl.save}" jsf:update=":form :globalMessages"
 							jsf:rendered="#{!manageCursoControl.readOnly}">
 							<i class="fa  fa-save"></i> <h:outputText value="#{msgs['crud.button.save']}"/>
 						</a>

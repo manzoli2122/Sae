@@ -8,14 +8,14 @@ import javax.ejb.Stateless;
 import sae.core.domain.Curso;
 import sae.publico.domain.Faixa_Salarial_Enum;
 import sae.publico.domain.HistoricoEgresso;
-import sae.publico.persistence.Historico_EgressoDAO;
+import sae.publico.persistence.HistoricoEgressoDAO;
 
 @Stateless
 public class ConsultaServiceBean implements ConsultaService{
 
 	
 	@EJB
-	private Historico_EgressoDAO historico_EgressoDAO;
+	private HistoricoEgressoDAO historico_EgressoDAO;
 	
 	
 	@Override

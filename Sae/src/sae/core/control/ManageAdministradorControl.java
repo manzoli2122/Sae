@@ -8,6 +8,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
+
 import br.ufes.inf.nemo.util.ejb3.application.CrudException;
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.application.CrudValidationError;
@@ -144,7 +146,13 @@ public class ManageAdministradorControl extends CrudController<Administrador>{
 			return super.delete();
 		}
 		catch(Exception e){
-			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".text.createSucceeded", summarizeSelectedEntity());
+			
+			//FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
+	         
+	        //RequestContext.getCurrentInstance().showMessageInDialog(message);
+			return null;
+			//return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
 		}
 	}
 		
