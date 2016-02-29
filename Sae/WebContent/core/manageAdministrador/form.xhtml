@@ -69,16 +69,33 @@
 					</ui:decorate>
 				</h:panelGroup>
 							
+							
 				<h:panelGroup id="cpfField">
 					<ui:decorate template="/resources/templates/default/formfield.xhtml">
 						<ui:param name="fieldName" value="form:cpf" />
 						<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
-						<p:inputMask id="cpf"  pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
+						<input id="cpf" name="cpf" class="form-control"  type="tel"  jsf:required="true"
+							 	value="#{manageAdministradorControl.selectedEntity.cpf}"   
+								jsf:disabled="#{manageAdministradorControl.readOnly or (manageAdministradorControl.selectedEntity.id != null)}" />
+							
+					</ui:decorate>
+				</h:panelGroup>
+				
+				
+							
+				
+				<h:panelGroup id="cpf1Field" rendered="false">
+					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+						<ui:param name="fieldName" value="form:cpf1" />
+						<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
+						<p:inputMask id="cpf1" pt:type="tel"  pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
 							 	required="true" value="#{manageAdministradorControl.selectedEntity.cpf}"   
 								disabled="#{manageAdministradorControl.readOnly or (manageAdministradorControl.selectedEntity.id != null)}"/>
 					</ui:decorate>
 				</h:panelGroup>
 					
+							
+				
 				
 					
 				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
@@ -101,6 +118,31 @@
 				</ui:decorate>
 		</h:form>
 	</ui:decorate>
+	
+	
+	<form id="formulario" method="post" action="" >               
+    <fieldset>
+        <legend>M&aacute;scara para inputs</legend>
+        <label for="cpf">CPF:</label>
+        <input class="meuform" type="text" id="cpf" pattern="[0-9]*"/>
+<br/><br/>                  
+                       
+      
+    </fieldset>   
+</form>
+	
+	
+	
+	
+	<script>
+    jQuery(function($){
+               $("#cpf").mask("999.999.999-99");
+               
+    });
+	</script>
+	
+	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/plugins/input-mask/jquery.inputmask.js"></script>
+	
 	
 </ui:define>
 </ui:composition>
