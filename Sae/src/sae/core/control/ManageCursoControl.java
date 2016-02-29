@@ -11,7 +11,6 @@ import javax.inject.Named;
 import org.primefaces.context.RequestContext;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
-import br.ufes.inf.nemo.util.ejb3.application.filters.LikeFilter;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.core.application.ManageCursoService;
 import sae.core.domain.Curso;
@@ -91,7 +90,9 @@ public class ManageCursoControl extends CrudController<Curso> {
 			return super.save();
 		}
 		catch(Exception e){
-			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+			selectedEntity.setId(null);
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.save" , summarizeSelectedEntity()  );
+			return null;
 		}
 	}
 	
@@ -105,11 +106,9 @@ public class ManageCursoControl extends CrudController<Curso> {
 			return super.delete();
 		}
 		catch(Exception e){
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");
-	         
-	        RequestContext.getCurrentInstance().showMessageInDialog(message);
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.delete", summarizeSelectedEntity());
+			cancelDeletion();
 	        return null;
-			//return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
 		}
 	}
 

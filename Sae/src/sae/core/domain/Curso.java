@@ -1,5 +1,6 @@
 package sae.core.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -26,12 +27,14 @@ public class Curso  extends  PersistentObjectSupport implements Comparable<Curso
 	/** NOME DO CURSO */
 	@NotNull
 	@Size(max = 60)
+	@Column(unique=true)
 	private String nome;
 	
 	
 	/** CODIGO DO CURSO */
 	@NotNull
 	@Size(max = 8)
+	@Column(unique=true)
 	private String codigo;
 	
 
