@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
@@ -77,5 +78,40 @@ public class ManageAssuntoInteresseControl extends CrudController<AssuntoInteres
 		//logger.log(Level.FINER, "INITIALIZING FILTER TYPES ......");
 		//addFilter(new LikeFilter("manageAssunto_Interesse.filter.byName", "nome", getI18nMessage(bundleName, "manageAssunto_Interesse.text.filter.byName")));
 	}
+	
+	
+	
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#save() */
+	@Override
+	public String save() {
+		try{
+			return super.save();
+		}
+		catch(Exception e){
+			selectedEntity.setId(null);
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.save" , summarizeSelectedEntity()  );
+			return null;
+		}
+	}
+	
+	
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#delete() */
+	@Override
+	public String delete() {
+		try{
+			return super.delete();
+		}
+		catch(Exception e){
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.delete", summarizeSelectedEntity());
+			cancelDeletion();
+	        return null;
+		}
+	}
+	
+	
 	
 }

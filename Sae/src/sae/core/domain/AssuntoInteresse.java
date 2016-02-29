@@ -1,5 +1,6 @@
 package sae.core.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,6 +26,7 @@ public class AssuntoInteresse extends PersistentObjectSupport implements Compara
 	/** NOME DO ASSUNTO DE INTERESSE */
 	@NotNull
 	@Size(max = 60)
+	@Column(unique=true)
 	private String nome;
 	
 	
