@@ -8,8 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
-import sae.core.domain.Curso;
-import sae.core.domain.Egresso;
+import sae.core.domain.CursoRealizado;
 
 @Entity
 public class Sugestao extends PersistentObjectSupport implements Comparable<Sugestao>{
@@ -33,21 +32,26 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	
 	
 	
-	
-	
-	
-	
 	/* NOME DO USUARIO */
+	@NotNull
+	@ManyToOne
+	private CursoRealizado cursoRealizado;
+	
+	
+	
+	/* NOME DO USUARIO 
 	@NotNull
 	@ManyToOne
 	private Egresso autor;
 	
-	/* NOME DO USUARIO */
+	
+
+	/* NOME DO USUARIO 
 	@NotNull
 	@ManyToOne
 	private Curso curso;
 	
-	
+	*/
 	
 	
 	
@@ -61,11 +65,14 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	public Date getData_envio() { return data_envio; }
 	public void setData_envio(Date data_envio) { this.data_envio = data_envio; }
 
-	public Egresso getAutor() { return autor; 	}
-	public void setAutor(Egresso autor) { this.autor = autor; }
+	//public Egresso getAutor() { return autor; 	}
+	//public void setAutor(Egresso autor) { this.autor = autor; }
 
-	public Curso getCurso() { 	return curso; }
-	public void setCurso(Curso curso) { this.curso = curso; }
+	//public Curso getCurso() { 	return curso; }
+	//public void setCurso(Curso curso) { this.curso = curso; }
+	
+	public CursoRealizado getCursoRealizado() { return cursoRealizado; 	}
+	public void setCursoRealizado(CursoRealizado cursoRealizado) { 	this.cursoRealizado = cursoRealizado; 	}
 
 	@Override
 	public int compareTo(Sugestao  o) { return super.compareTo(o); }

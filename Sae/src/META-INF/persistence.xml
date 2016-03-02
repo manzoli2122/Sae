@@ -19,7 +19,7 @@
 		<properties>
 			
 		    <property name="hibernate.hbm2ddl.auto" value="update" />
-		    <!-- property name="hibernate.show_sql" value="true" /--> 
+		    <property name="hibernate.show_sql" value="true" /> 
 		    <property name="hibernate.format_sql" value="true" />
 		    <!-- property name="hibernate.enable_lazy_load_no_trans" value="true"/>
 		    <property name="hibernate.ejb.entitymanager_factory_name" value="Salao"/ -->
@@ -43,6 +43,7 @@
 		<class>sae.publico.domain.Sugestao</class>
 		<class>sae.core.domain.Seminario</class>
 		<class>sae.core.domain.SaeConfiguracao</class>
+		<class>sae.core.domain.CursoRealizado</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sae1" />

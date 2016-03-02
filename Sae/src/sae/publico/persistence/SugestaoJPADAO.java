@@ -10,8 +10,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Subquery;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseJPADAO;
+import sae.core.domain.CursoRealizado;
+import sae.core.domain.CursoRealizado_;
 import sae.core.domain.Egresso;
 import sae.publico.domain.Sugestao;
 import sae.publico.domain.Sugestao_;
@@ -49,8 +52,21 @@ public class SugestaoJPADAO extends BaseJPADAO<Sugestao> implements SugestaoDAO{
 		CriteriaQuery<Sugestao> cq = cb.createQuery(getDomainClass());
 		Root<Sugestao> root = cq.from(getDomainClass());
 		
-		cq.where(  cb.equal(root.get(Sugestao_.autor), autor));
 		
+		
+		Subquery<CursoRealizado> subqueryH = cq.subquery(CursoRealizado.class);
+		Root<CursoRealizado> subrootH = subqueryH.from(CursoRealizado.class);
+		subqueryH.where(
+							cb.equal(subrootH.get(CursoRealizado_.egresso),autor)							
+					  );
+		
+		subqueryH.select(subrootH);
+		
+		
+		cq.where(
+					root.get(Sugestao_.cursoRealizado).in(subqueryH)										
+				);
+
 		cq.select(root);
 
 		// Applies ordering.
@@ -59,7 +75,7 @@ public class SugestaoJPADAO extends BaseJPADAO<Sugestao> implements SugestaoDAO{
 		// Return the list of objects.
 		List<Sugestao> result = em.createQuery(cq).getResultList();
 		return result;
-		//return super.retrieveAll();
+		
 	}
 	
 	

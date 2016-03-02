@@ -68,8 +68,9 @@ public class ManageSugestaoServiceBean extends CrudServiceBean<Sugestao> impleme
 	@Override
 	public void validateCreate(Sugestao entity) throws CrudException {
 		Egresso egresso = sessionService.getEgresso();
-		if(egresso != null)
-		entity.setAutor(egresso);
+		//if(egresso != null)
+//		/entity.setAutor(egresso);
+		//entity.setCurso(entity.getCursoRealizado().getCurso());
 		
 	}
 	
