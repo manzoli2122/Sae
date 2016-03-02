@@ -67,14 +67,21 @@ public class ManageSugestaoServiceBean extends CrudServiceBean<Sugestao> impleme
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
 	public void validateCreate(Sugestao entity) throws CrudException {
-		Egresso egresso = sessionService.getEgresso();
+		//Egresso egresso = sessionService.getEgresso();
 		//if(egresso != null)
-//		/entity.setAutor(egresso);
+//		entity.setAutor(egresso);
 		//entity.setCurso(entity.getCursoRealizado().getCurso());
 		
 	}
 	
 	
+	@Override
+	public void validateDelete(Sugestao entity) throws CrudException {
+		Egresso egresso = sessionService.getEgresso();
+		if(!egresso.equals(entity.getCursoRealizado().getEgresso())){
+			throw new CrudException(null, null, null);
+		}
+	}
 	
 	
 	
