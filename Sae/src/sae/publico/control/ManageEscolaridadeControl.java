@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
@@ -91,7 +92,9 @@ public class ManageEscolaridadeControl extends CrudController<Escolaridade>{
 			return super.delete();
 		}
 		catch(Exception e){
-			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.delete", summarizeSelectedEntity());
+			cancelDeletion();
+			return null;
 		}
 	}
 	
@@ -104,7 +107,8 @@ public class ManageEscolaridadeControl extends CrudController<Escolaridade>{
 			return super.save();
 		}
 		catch(Exception e){
-			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.save", summarizeSelectedEntity());
+			return null;
 		}
 	}
 	

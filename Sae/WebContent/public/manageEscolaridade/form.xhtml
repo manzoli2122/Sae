@@ -86,20 +86,32 @@
 					</h:panelGroup>
 
 					
+					<h:panelGroup id="ano1Field" rendered="false">
+						<ui:decorate template="/resources/templates/default/formfield.xhtml">
+							<ui:param name="fieldName" value="form:ano1" />
+							<ui:param name="label" value="#{msgs['crud.text.fim']}" />
+							<p:inputText id="ano1" pt:class="form-control" disabled="#{(manageEscolaridadeControl.readOnly)}" pt:type="number" 
+										 pt:placeholder="#{msgs['manageEscolaridade.placeholder.ano']}" 
+										 value="#{manageEscolaridadeControl.selectedEntity.ano}"  required="true">
+								<p:ajax event="blur" update="ano1Field" />
+							</p:inputText>
+						</ui:decorate>
+					</h:panelGroup>
+					
+					
 					<h:panelGroup id="anoField">
 						<ui:decorate template="/resources/templates/default/formfield.xhtml">
 							<ui:param name="fieldName" value="form:ano" />
 							<ui:param name="label" value="#{msgs['crud.text.fim']}" />
-							<p:inputText id="ano" pt:class="form-control" disabled="#{(manageEscolaridadeControl.readOnly)}" pt:type="number" 
-										 pt:placeholder="#{msgs['manageEscolaridade.placeholder.ano']}" 
-										 value="#{manageEscolaridadeControl.selectedEntity.ano}"  required="true">
-								<p:ajax event="blur" update="anoField" />
-							</p:inputText>
+							<input id="ano" name="ano" class="form-control"  type="tel"  jsf:required="true"
+							 	value="#{manageEscolaridadeControl.selectedEntity.ano}"   
+								jsf:disabled="#{manageEscolaridadeControl.readOnly}" />
+							
 						</ui:decorate>
 					</h:panelGroup>
 
 
-
+					
 
 					
 			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
@@ -124,5 +136,16 @@
 			</ui:decorate>
 		</h:form>
 	</ui:decorate>
+	
+	
+	<script>
+    jQuery(function($){
+               $("#ano").mask("9999");
+               
+    });
+	</script>
+	
+	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/plugins/input-mask/jquery.inputmask.js"></script>
+	
 </ui:define>
 </ui:composition>
