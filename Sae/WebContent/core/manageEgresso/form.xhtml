@@ -57,23 +57,46 @@
 			</h:panelGroup>
 					
 					
-			<h:panelGroup id="nascimentoField">
+			<h:panelGroup id="nascimentoField" rendered="false" >
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:nascimento" />
 					<ui:param name="label" value="#{msgs['crud.text.nascimento']}" />
-					<p:inputMask id="nascimento" pt:class="form-control" mask="#{msgs['format.date.primefaces']}" required="true" 
+					<p:inputMask  id="nascimento" pt:type="date" pt:class="form-control" mask="#{msgs['format.date.primefaces']}" required="true" 
 			           			 value="#{manageEgressoControl.selectedEntity.nascimento}" disabled="#{manageEgressoControl.readOnly or (manageEgressoControl.selectedEntity.id != null)}">
 						<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
 					</p:inputMask>
 				</ui:decorate>
 			</h:panelGroup>
 			
+			<h:panelGroup id="nascimento1Field" >
+				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:param name="fieldName" value="form:nascimento1" />
+					<ui:param name="label" value="#{msgs['crud.text.nascimento']}" />
+					<input name="nascimento1" id="nascimento1" pt:class="form-control" type="date"   jsf:required="true" 
+			           			 value="#{manageEgressoControl.selectedEntity.nascimento}" jsf:disabled="#{manageEgressoControl.readOnly }">
+					<f:convertDateTime type="date" pattern="#{msgs['format.date.java.html']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
+					</input>
+				</ui:decorate>
+			</h:panelGroup>
+			
 			
 			<h:panelGroup id="cpfField">
+					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+						<ui:param name="fieldName" value="form:cpf" />
+						<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
+						<input id="cpf" name="cpf" class="form-control"  type="tel"  jsf:required="true"
+							 	value="#{manageEgressoControl.selectedEntity.cpf}"   
+								jsf:disabled="#{manageEgressoControl.readOnly or (manageEgressoControl.selectedEntity.id != null)}" />
+							
+					</ui:decorate>
+				</h:panelGroup>
+				
+			
+			<h:panelGroup id="cpf1Field" rendered="false">
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
-					<ui:param name="fieldName" value="form:cpf" />
+					<ui:param name="fieldName" value="form:cpf1" />
 					<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
-					<p:inputMask id="cpf"  pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
+					<p:inputMask id="cpf1"  pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
 								 required="true" value="#{manageEgressoControl.selectedEntity.cpf}"   
 								 disabled="#{manageEgressoControl.readOnly or (manageEgressoControl.selectedEntity.id != null)}"/>
 				</ui:decorate>
@@ -84,7 +107,7 @@
 				<ui:decorate template="/resources/templates/default/formfield.xhtml">
 					<ui:param name="fieldName" value="form:identidade" />
 					<ui:param name="label" value="#{msgs['crud.text.identidade']}" />
-					<p:inputText id="identidade" pt:class="form-control" disabled="#{manageEgressoControl.readOnly}" required="true"
+					<p:inputText id="identidade" pt:class="form-control" pt:type="tel" disabled="#{manageEgressoControl.readOnly}" required="true"
 								 pt:placeholder="#{msgs['manageEgresso.placeholder.identidade']}" value="#{manageEgressoControl.selectedEntity.identidade}">
 						<p:ajax event="blur" update="identidadeField" />
 					</p:inputText>
@@ -142,7 +165,9 @@
 				<div class="form-group">	
 					<div class="col-sm-3"></div>
 	        		<div class="col-sm-3" style="margin-bottom: 15px">
-	        			<a class="btn btn-block btn-warning btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> <h:outputText value="#{msgs['crud.button.back']}"/></a>
+	        			<a class="btn btn-block btn-warning btn-social" jsf:immediate="true"  jsf:action="#{manageEgressoControl.list}">
+	        				<i class="fa  fa-rotate-left"></i> <h:outputText value="#{msgs['crud.button.back']}"/>
+	        			</a>
 	            	</div>
 	            	<div class="col-sm-3"/>
 					<div class="col-sm-3">
@@ -156,6 +181,19 @@
 		
 		</h:form>
 	</ui:decorate>
+	
+	
+	
+	<script>
+    jQuery(function($){
+               $("#cpf").mask("999.999.999-99");
+                           
+    });
+	</script>
+	
+	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/plugins/input-mask/jquery.inputmask.js"></script>
+	
+	
 	
 </ui:define>
 </ui:composition>
