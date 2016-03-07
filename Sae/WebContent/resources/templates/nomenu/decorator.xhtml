@@ -1,193 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-
-<!-- Template adapted from AdminLTE from Almsaeed Studio: https://almsaeedstudio.com. -->
-<html xmlns:f="http://java.sun.com/jsf/core" 
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
-<h:head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
-	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/font-awesome-4.4.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/ionicons-2.0.1/css/ionicons.min.css" />
-	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/AdminLTE-2.3.0/dist/css/AdminLTE.min.css" />
-	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/AdminLTE-2.3.0/dist/css/skins/skin-blue.min.css" />
-	<title><h:outputText value="SAE :: " /> <ui:insert name="title" /></title>
-	<ui:insert name="head" />
-</h:head>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/resources/templates/decorator.xhtml">
 
 
-<h:body class="hold-transition skin-blue sidebar-mini">
-	
-	<div class="wrapper">
-		<!-- Main Header -->
-		<header class="main-header">
-			<!-- Logo -->
-			<a href="#{facesContext.externalContext.requestContextPath}/index.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels --> <span class="logo-mini">[<b>M</b>]</span> <!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>SAE</b> @ Ufes</span>
-			</a>
-			
-			<!-- Header Navbar -->
-			<nav class="navbar navbar-static-top" role="navigation">
-				<!-- Sidebar toggle button-->
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"> <span class="sr-only">Toggle navigation</span>
-				</a>
-				
-				<!-- Navbar Right Menu -->
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-					
-					</ul>
-				</div>
-			</nav>
-		</header>
-	
-      
 
-		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="main-sidebar" jsf:rendered="#{coreInfo.systemInstalled}">
 
-			<section class="sidebar">   <!-- sidebar: style can be found in sidebar.less -->
-			
-				<ul class="sidebar-menu">  <!-- Sidebar Menu -->
-				
-					<li class="header"><h:outputText value="#{msgs['title.navigation']}" /></li>
-					
-					<li><a href="#{facesContext.externalContext.requestContextPath}/consulta/index.faces"><i class="fa fa-home"></i> Consulta</a></li>
-					
-					<li><a href="#{facesContext.externalContext.requestContextPath}/depoimento/index.faces"><i class="fa fa-home"></i> Depoimento</a></li>
-					
-					
-					
-					<li class="header"><h:outputText value="Area Restrita" /></li>
+	<ui:define name="sidebarMenu">
+		
+		<li class="header"><h:outputText value="Area Restrita" /></li>
 					
 					<li><a href="#{facesContext.externalContext.requestContextPath}/core/index.faces"><i class="fa fa-home"></i> Login Administrador</a></li>
 					
 					<li><a href="#{facesContext.externalContext.requestContextPath}/public/index.faces"><i class="fa fa-home"></i> Login egresso</a></li>
 						
-					
-				</ul>	
-			</section>
-		</aside>
-
-
-
-
-
-
-      	<!-- Content Wrapper. Contains page content -->
-      	<div class="content-wrapper">
-      		<!-- Content Header (Page header) -->
-			<section class="content-header">
-				<h1>
-					<ui:insert name="title" /> <small><ui:insert name="description" /></small>
-				</h1>
-				
-				<!-- FIXME: hidden -->
-				<h:panelGroup rendered="true">
-				<ol class="breadcrumb">
-					<ui:insert name="breadcrumb" />
-				</ol>
-				</h:panelGroup>
-			</section>
-
-			<!-- Main content -->
-			<section class="content">
-
-				<ui:insert name="body" />
-
-			</section>
-			<!-- /.content -->
-		</div>
-		<!-- /.content-wrapper -->
-        
-        <!-- Main Footer -->
-		<footer class="main-footer">
-			<!-- To the right -->
-			<div class="pull-right hidden-xs"><h:outputLink value="https://www.google.com/webhp"><h:outputText value="42" /><f:param name="q" value="Answer+to+the+Ultimate+Question+of+Life%2C+the+Universe%2C+and+Everything" /></h:outputLink></div>
-			<!-- Default to the left -->
-			<strong>Copyright &#169; 2015 <a href="http://nemo.inf.ufes.br">Nemo/Ufes</a>.
-			</strong> All rights reserved.
-		</footer>
-     
-      
-
-      <!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Create the tabs -->
-			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-				<li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-			</ul>
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<!-- Home tab content -->
-				<div class="tab-pane active" id="control-sidebar-home-tab">
-					<h3 class="control-sidebar-heading">Recent Activity</h3>
-					<ul class="control-sidebar-menu">
-						<li><a href="javascript::;"> <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-									<p>Will be 23 on April 24th</p>
-								</div>
-						</a></li>
-					</ul>
-					<!-- /.control-sidebar-menu -->
-
-					<h3 class="control-sidebar-heading">Tasks Progress</h3>
-					<ul class="control-sidebar-menu">
-						<li><a href="javascript::;">
-								<h4 class="control-sidebar-subheading">
-									Custom Template Design <span class="label label-danger pull-right">70%</span>
-								</h4>
-								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-								</div>
-						</a></li>
-					</ul>
-					<!-- /.control-sidebar-menu -->
-
-				</div>
-				<!-- /.tab-pane -->
-				<!-- Stats tab content -->
-				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-				<!-- /.tab-pane -->
-				<!-- Settings tab content -->
-				<div class="tab-pane" id="control-sidebar-settings-tab">
-					<form method="post">
-						<h3 class="control-sidebar-heading">General Settings</h3>
-						<div class="form-group">
-							<label class="control-sidebar-subheading"> Report panel usage <input type="checkbox" class="pull-right" checked="checked" />
-							</label>
-							<p>Some information about this general settings option</p>
-						</div>
-						<!-- /.form-group -->
-					</form>
-				</div>
-				<!-- /.tab-pane -->
-			</div>
-		</aside>
-		<!-- /.control-sidebar -->
-		<!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-		<div class="control-sidebar-bg"></div>
-	</div>
-	<!-- ./wrapper -->
-
-	<!-- jQuery 2.1.4 -->
-	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<!-- Bootstrap 3.3.5 -->
-	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/AdminLTE-2.3.0/dist/js/app.min.js"></script>
+	
+	</ui:define>
 	
 	
-	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/plugins/chartjs/Chart.min.js"></script>
 	
 	
-</h:body>
-</html>
+	
+</ui:composition>
+
+
+
+
+

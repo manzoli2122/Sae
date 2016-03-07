@@ -1,50 +1,3 @@
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-                xmlns:jsf="http://xmlns.jcp.org/jsf"
-                template="/resources/templates/#{sessionControl.decorator}/decorator.xhtml">
-
-
-<ui:define name="title">
-	<h:outputText value="#{msgs['manageAdministrador.title.error']}"/>
-</ui:define>
-
-<ui:define name="breadcrumb">
-		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-		<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageAdministrador.title']}" /></a> </li> 
-		<li class="active">	<h:outputText value="#{msgs['manageAdministrador.title.error']}"/></li>
-</ui:define>	
-	
-<ui:define name="body">
-	<ui:decorate template="/resources/templates/default/formDanger.xhtml">
-		<ui:param name="formName" value="Error" />
-		<h:form id="form" pt:class="form-horizontal">
-
-				<h:panelGroup id="nomeField">
-						<h:outputText id="nome"  value="#{msgs['manageAdministrador.message.error']}" />
-				</h:panelGroup>
-				
-				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
-					<div class="form-group">	
-						<div class="col-sm-4"/>
-            			<div class="col-sm-4">
-            				<a class="btn btn-block btn-danger btn-social" jsf:outcome="list"><i class="fa  fa-rotate-left"></i> 
-            					<h:outputText value="#{msgs['crud.button.back']}"/>
-            				</a>
-                		</div>
-					</div>
-				</ui:decorate>
-		</h:form>
-	</ui:decorate>
-	
-</ui:define>
-</ui:composition>
-
-
-
 <!DOCTYPE html>
 
 <!-- Template adapted from AdminLTE from Almsaeed Studio: https://almsaeedstudio.com. -->
@@ -68,9 +21,8 @@
 	<title><h:outputText value="SAE :: " /> <ui:insert name="title" /></title>
 	<ui:insert name="head" />
 </h:head>
-
-
 <h:body class="hold-transition skin-blue sidebar-mini">
+	
 	<div class="wrapper">
 
 		<!-- Main Header -->
@@ -190,54 +142,17 @@
 						
 						
 						
+						
+						
+						
+					
+						
 						<!-- FIXME: hidden - User Account Menu -->
 						<h:panelGroup rendered="#{sessionControl.loggedIn}">
-						<li class="dropdown user user-menu">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-								<h:outputText value="#{sessionControl.egresso.nome} - Egresso"  />
-				   				<span class="hidden-xs"></span>
-							</a>
-							
-							<ul class="dropdown-menu">
-								<li class="user-header">
-									<p>
-										Alexander Pierce - Web Developer <small>Member since Nov. 2012</small>
-									</p>
-								</li>
-								<!-- Menu Body -->
-								<li class="user-body">
-									<div class="col-xs-4 text-center">
-										<a href="#">Followers</a>
-									</div>
-									<div class="col-xs-4 text-center">
-										<a href="#">Sales</a>
-									</div>
-									<div class="col-xs-4 text-center">
-										<a href="#">Friends</a>
-									</div>
-								</li>
-								<!-- Menu Footer-->
-								<li class="user-footer">
-									<div class="pull-left">
-										<h:form>
-								    		<p:commandButton pt:class="btn btn-info btn-flat"  action="#{sessionControl.logout()}"  value="logout"  />
-										</h:form>
-									</div>
-									<div class="pull-right">
-										<h:form>
-											<a class="btn btn-info btn-flat " jsf:action="#{sessionControl.logout()}" pt:value="logout"/>
-										</h:form>
-									</div>
-								</li>
-							</ul>
-						</li>
+						
+							<ui:insert name="userAcount" />
+						
 						</h:panelGroup>
-						
-						
-						
-						
-						
-						
 						
 						
 						
@@ -249,111 +164,65 @@
 				</div>
 			</nav>
 		</header>
+		
 		<!-- Left side column. contains the logo and sidebar -->
 		<aside class="main-sidebar">
 
 			<!-- sidebar: style can be found in sidebar.less -->
 			<section class="sidebar">
 
-				<!-- FIXME: hidden - Sidebar user panel (optional) -->
-				<h:panelGroup rendered="false">
-				<div class="user-panel">
-					<div class="pull-left image">
-						<img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/AdminLTE-2.3.0/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-					</div>
-					<div class="pull-left info">
-						<p>Alexander Pierce</p>
-						<!-- Status -->
-						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-					</div>
-				</div>
-				</h:panelGroup>
-
-				<!-- FIXME: hidden - search form (Optional) -->
-				<h:panelGroup rendered="false">
-				<form action="#" method="get" class="sidebar-form">
-					<div class="input-group">
-						<input type="text" name="q" class="form-control" placeholder="Search..." /> <span class="input-group-btn">
-							<button type="submit" name="search" id="search-btn" class="btn btn-flat">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-				</h:panelGroup>
-				<!-- /.search form -->
-
 				<!-- Sidebar Menu -->
 				<ul class="sidebar-menu">
-					
 					<li class="header"><h:outputText value="#{msgs['title.navigation']}" /></li>
-					
 					
 					<li><a href="#{facesContext.externalContext.requestContextPath}/consulta/index.faces"><i class="fa fa-home"></i> Consulta</a></li>
 					
 					<li><a href="#{facesContext.externalContext.requestContextPath}/depoimento/index.faces"><i class="fa fa-home"></i> Depoimento</a></li>
 					
-					
-					<li class="header"><h:outputText value="Navegação Egresso" /></li>
-					
-					<li>
-						<p:commandLink  action="#{manageSugestaoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageSugestao.title']}"  />
-					</li>
-					<li>
-						<p:commandLink action="#{manageEscolaridadeControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageEscolaridade.title']}"  />
-					</li>
-					<li>
-						<p:commandLink action="#{manageDepoimentoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageDepoimento.title']}"  />
-					</li>
-					
-					<li>
-						<p:commandLink action="#{manageHistoricoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageHistorico.title']}"  />
-					</li>
-					
-					
+					<ui:insert name="sidebarMenu" />
 					
 				</ul>
-				<!-- /.sidebar-menu -->
-			</section>
-			<!-- /.sidebar -->
+				
+			</section>	<!-- /.sidebar -->
+			
 		</aside>
 
-		<!-- Content Wrapper. Contains page content -->
+		
+		
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
+				
 				<h1>
 					<ui:insert name="title" /> <small><ui:insert name="description" /></small>
 				</h1>
 				
-				<!-- FIXME: hidden -->
-				<h:panelGroup rendered="true">
+				
 				<ol class="breadcrumb">
 					<ui:insert name="breadcrumb" />
 				</ol>
-				</h:panelGroup>
+				
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
+
 				<h:form id="globalMessages" >
 					<p:growl id="messages"   globalOnly="true" showSummary="true" showDetail="true" sticky="true" />
 				</h:form>
 				
 				<ui:insert name="body" />
 
-			</section>
-			<!-- /.content -->
-		</div>
-		<!-- /.content-wrapper -->
+			</section> 	<!-- /.content -->
+			
+		</div> 	<!-- /.content-wrapper -->
 
 		<!-- Main Footer -->
 		<footer class="main-footer">
-			<!-- To the right -->
-			<div class="pull-right hidden-xs"><h:outputLink value="https://www.google.com/webhp"><h:outputText value="42" /><f:param name="q" value="Answer+to+the+Ultimate+Question+of+Life%2C+the+Universe%2C+and+Everything" /></h:outputLink></div>
-			<!-- Default to the left -->
-			<strong>Copyright &#169; 2015 <a href="http://nemo.inf.ufes.br">Nemo/Ufes</a>.
-			</strong> All rights reserved.
+			<div style="text-align: center;">
+				<strong>Copyright &#169; 2016 <a href="http://nemo.inf.ufes.br">Nemo/Ufes</a>.
+				</strong> All rights reserved.
+			</div>
 		</footer>
 
 		<!-- Control Sidebar -->
@@ -362,7 +231,7 @@
 			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
 				<li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
 				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-			</ul>
+			</ul> 
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<!-- Home tab content -->
@@ -388,15 +257,12 @@
 									<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
 								</div>
 						</a></li>
-					</ul>
-					<!-- /.control-sidebar-menu -->
+					</ul> <!-- /.control-sidebar-menu -->
 
-				</div>
-				<!-- /.tab-pane -->
-				<!-- Stats tab content -->
-				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-				<!-- /.tab-pane -->
-				<!-- Settings tab content -->
+				</div> 	<!-- /.tab-pane --> <!-- Stats tab content -->
+				
+				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div> <!-- /.tab-pane --><!-- Settings tab content -->
+				
 				<div class="tab-pane" id="control-sidebar-settings-tab">
 					<form method="post">
 						<h3 class="control-sidebar-heading">General Settings</h3>
@@ -404,35 +270,30 @@
 							<label class="control-sidebar-subheading"> Report panel usage <input type="checkbox" class="pull-right" checked="checked" />
 							</label>
 							<p>Some information about this general settings option</p>
-						</div>
-						<!-- /.form-group -->
+						</div>	<!-- /.form-group -->
 					</form>
-				</div>
-				<!-- /.tab-pane -->
+				</div> <!-- /.tab-pane -->
 			</div>
-		</aside>
-		<!-- /.control-sidebar -->
-		<!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
+		</aside> <!-- /.control-sidebar -->
+		
+		
+		<!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>
-	</div>
-	<!-- ./wrapper -->
-
+	
+	</div><!-- ./wrapper -->
+	
+	
+	
+	
 	<!-- REQUIRED JS SCRIPTS -->
-
-	<!-- jQuery 2.1.4 -->
+	<!-- jQuery 2.1.4  -->
 	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	<!-- Bootstrap 3.3.5 -->
 	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/AdminLTE-2.3.0/dist/js/app.min.js"></script>
 
-	<!-- Optionally, you can add Slimscroll and FastClick plugins.
-         Both of these plugins are recommended to enhance the
-         user experience. Slimscroll is required when using the
-         fixed layout. -->
-         
+	
      
 </h:body>
 </html>
-
