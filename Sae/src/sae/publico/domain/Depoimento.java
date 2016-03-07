@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 import sae.core.domain.Curso;
+import sae.core.domain.CursoRealizado;
 import sae.core.domain.Egresso;
 
 @Entity
@@ -39,17 +40,27 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	
 	
 	
+	
 	/* NOME DO USUARIO */
+	@NotNull
+	@ManyToOne
+	private CursoRealizado cursoRealizado;
+	
+	
+	
+	
+	/* NOME DO USUARIO 
+
 	@NotNull
 	@ManyToOne
 	private Egresso autor;
 	
 	
-	/* NOME DO USUARIO */
+	/* NOME DO USUARIO 
 	@NotNull
 	@ManyToOne
 	private Curso curso;
-	
+	*/
 	
 	@NotNull
 	private StatusDepoimento_Enum status;
@@ -68,11 +79,11 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	public Date getData_envio() { return data_envio; }
 	public void setData_envio(Date data_envio) { this.data_envio = data_envio; }
 
-	public Egresso getAutor() { 	return autor; 	}
-	public void setAutor(Egresso autor) { 	this.autor = autor; }
+	//public Egresso getAutor() { 	return autor; 	}
+	//public void setAutor(Egresso autor) { 	this.autor = autor; }
 
-	public Curso getCurso() { return curso; }
-	public void setCurso(Curso curso) { this.curso = curso; }
+	//public Curso getCurso() { return curso; }
+	//public void setCurso(Curso curso) { this.curso = curso; }
 
 	public Boolean getAnonimo() { 	return anonimo; }
 	public void setAnonimo(Boolean anonimo) { this.anonimo = anonimo; }
@@ -80,6 +91,10 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	public StatusDepoimento_Enum getStatus() {return status;}
 	public void setStatus(StatusDepoimento_Enum status) {this.status = status;}
 	
+	
+	public CursoRealizado getCursoRealizado() { return cursoRealizado; 	}
+	public void setCursoRealizado(CursoRealizado cursoRealizado) { 	this.cursoRealizado = cursoRealizado; 	}
+
 	
 
 	@Override

@@ -71,9 +71,9 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
 	public void validateCreate(Depoimento entity) throws CrudException {
-		Egresso egresso = sessionService.getEgresso();
-		if(egresso != null)
-		entity.setAutor(egresso);
+		//Egresso egresso = sessionService.getEgresso();
+		//if(egresso != null)
+		//entity.setAutor(egresso);
 		entity.setStatus(StatusDepoimento_Enum.P);
 		
 	}

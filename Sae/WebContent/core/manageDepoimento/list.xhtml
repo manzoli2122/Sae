@@ -39,7 +39,7 @@
                         emptyMessage="#{manageDepoimentoControl.filtering ? msgs['manageDepoimento.text.noEntitiesFiltered'] : msgs['manageDepoimento.text.noEntities']}">
 												
                 <p:column headerText="#{msgs['crud.text.curso']}"  style="text-align: center;">
-                	<h:outputText  value="#{entity.curso.nome}" />
+                	<h:outputText  value="#{entity.cursoRealizado.curso.nome}" />
                 </p:column>
                 <p:column headerText="#{msgs['manageDepoimento.title.dataEnvio']}" style="text-align: center; width:32%;">
                 	<h:outputText  value="#{entity.data_envio}" >
