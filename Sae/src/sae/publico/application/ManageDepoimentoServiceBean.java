@@ -11,7 +11,6 @@ import br.ufes.inf.nemo.util.ejb3.application.CrudException;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.application.CrudServiceBean;
 import sae.core.application.SessionService;
-import sae.core.domain.Egresso;
 import sae.publico.domain.Depoimento;
 import sae.publico.domain.StatusDepoimento_Enum;
 import sae.publico.persistence.DepoimentoDAO;

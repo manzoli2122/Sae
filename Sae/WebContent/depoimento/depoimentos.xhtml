@@ -9,15 +9,15 @@
       	
       	 <div class="row">
       	
-		      	 <p:dataScroller value="#{publicoControl.getDepoimentos(consultaControl.curso)}" var="car" chunkSize="5">
+		      	 <p:dataScroller value="#{publicoControl.getDepoimentos(consultaControl.curso)}" var="depoimentos" chunkSize="5">
 			        
 					            <ui:decorate template="/resources/templates/default/form.xhtml">
-										<ui:param name="formName" value="#{car.anonimo ?  msgs['crud.text.anonimo'] : car.autor}" />
+										<ui:param name="formName" value="#{depoimentos.anonimo ?  msgs['crud.text.anonimo'] : depoimentos.cursoRealizado.egresso}" />
 										
-										<h3><h:outputText value="#{car.conteudo}"/>	</h3>
+										<h3><h:outputText value="#{depoimentos.conteudo}"/>	</h3>
 										
 										<div class="box-footer">
-											<h:outputText value="#{car.data_envio}">
+											<h:outputText value="#{depoimentos.data_envio}">
 												<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
                 							</h:outputText>	
 									    </div> 

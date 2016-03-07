@@ -22,7 +22,6 @@ import sae.core.domain.Egresso;
 import sae.publico.domain.Depoimento;
 import sae.publico.domain.Depoimento_;
 import sae.publico.domain.StatusDepoimento_Enum;
-import sae.publico.domain.Sugestao_;
 
 
 
@@ -97,11 +96,21 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		CriteriaQuery<Depoimento> cq = cb.createQuery(getDomainClass());
 		Root<Depoimento> root = cq.from(getDomainClass());
 		
-		cq.where(  
-					//	cb.equal(root.get(Depoimento_.curso), curso),
-						cb.equal(root.get(Depoimento_.status), StatusDepoimento_Enum.A)
-						
+		
+		Subquery<CursoRealizado> subqueryH = cq.subquery(CursoRealizado.class);
+		Root<CursoRealizado> subrootH = subqueryH.from(CursoRealizado.class);
+		subqueryH.where(
+							cb.equal(subrootH.get(CursoRealizado_.curso),curso)							
+					  );
+		
+		subqueryH.select(subrootH);
+		
+		
+		cq.where(
+					root.get(Depoimento_.cursoRealizado).in(subqueryH)	,	
+					cb.equal(root.get(Depoimento_.status), StatusDepoimento_Enum.A)
 				);
+		
 		
 		cq.select(root);
 
@@ -129,16 +138,22 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		Subquery<Curso> subqueryH = cq.subquery(Curso.class);
 		Root<Curso> subrootH = subqueryH.from(Curso.class);
 		subqueryH.where(
-							cb.equal(subrootH.get(Curso_.coordenador),admin)
-						//	cb.equal(subrootH,root.get(Depoimento_.curso))
-							
+							cb.equal(subrootH.get(Curso_.coordenador),admin)	
 					  );
 		subqueryH.select(subrootH);
 		
+		
+		// SUBQUERYCR
+		Subquery<CursoRealizado> subqueryCR = cq.subquery(CursoRealizado.class);
+		Root<CursoRealizado> subrootCR = subqueryCR.from(CursoRealizado.class);
+		subqueryCR.where(
+						subrootCR.get(CursoRealizado_.curso).in(subqueryH)	
+					  );
+		subqueryCR.select(subrootCR);
+		
 		cq.where(
 					cb.equal(root.get(Depoimento_.status), StatusDepoimento_Enum.P),
-					cb.exists(  subqueryH  )
-					
+					root.get(Depoimento_.cursoRealizado).in(subqueryCR)
 				);
 		
 		cq.select(root);
