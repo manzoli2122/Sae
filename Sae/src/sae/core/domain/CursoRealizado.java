@@ -40,6 +40,10 @@ public class CursoRealizado extends PersistentObjectSupport implements Comparabl
 	
 	
 	@Override
+	public String toString() { return "Curso : " + curso + ", Egresso : " + egresso ; }
+
+	
+	@Override
 	 public int compareTo(CursoRealizado o) {
 		if (matricula == null)	return 1;
 		if (o.matricula == null) return -1;
