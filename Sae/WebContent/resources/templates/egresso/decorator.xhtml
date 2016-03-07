@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/ionicons-2.0.1/css/ionicons.min.css" />
 	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/AdminLTE-2.3.0/dist/css/AdminLTE.min.css" />
 	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/AdminLTE-2.3.0/dist/css/skins/skin-blue.min.css" />
+	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/templates/default/stylesheets/sae.css" />
+	
 	<title><h:outputText value="SAE :: " /> <ui:insert name="title" /></title>
 	<ui:insert name="head" />
 </h:head>
@@ -287,7 +289,10 @@
 
 			<!-- Main content -->
 			<section class="content">
-
+				<h:form id="globalMessages" >
+					<p:growl id="messages"   globalOnly="true" showSummary="true" showDetail="true" sticky="true" />
+				</h:form>
+				
 				<ui:insert name="body" />
 
 			</section>

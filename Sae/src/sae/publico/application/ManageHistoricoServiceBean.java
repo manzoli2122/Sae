@@ -1,6 +1,9 @@
 package sae.publico.application;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
@@ -68,14 +71,64 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<HistoricoEgresso
 		Egresso egresso = sessionService.getEgresso();
 		if(egresso != null)
 		entity.setEgresso(egresso);
+	}
+	
+	
+	@Override
+	public void validateDelete(HistoricoEgresso entity) throws CrudException {
+		
+		if(!isAlteravel(entity)){
+			int x=3/0;
+		}
+		
 		
 	}
 	
+	
+	
+	@Override
+	public void validateUpdate(HistoricoEgresso entity) throws CrudException {
+		
+		CrudException crudException = null;
+		String crudExceptionMessage =  "this object cannot be updated due to validation errors.";
+
+		if(!isAlteravel(entity)){
+			crudException = addValidationError(crudException, crudExceptionMessage, null , "manageHistoricoControl.error.update", entity.getData_envio());
+		}
+		
+		if (crudException != null){
+			throw crudException;
+		}
+		
+	}
 	
 	
 	
 	@Override
 	public List<HistoricoEgresso>	retrieveAllMine() {
 		return historico_EgressoDAO.retrieveAllMine(sessionService.getEgresso());
+	}
+
+
+
+	@Override
+	public boolean isAlteravel(HistoricoEgresso historico) {
+		Date hoje = new Date();
+		if(historico!=null){
+			
+			Calendar dInicial = Calendar.getInstance(); 
+	        dInicial.setTime(historico.getData_envio());
+	        Calendar dFinal = Calendar.getInstance();
+	        dFinal.setTime( hoje);
+	        
+	        int MILLIS_IN_DAY = 86400000;
+	        int dif =  (int) ((dFinal.getTimeInMillis() - dInicial.getTimeInMillis()) / MILLIS_IN_DAY);
+	        
+	       
+			if(dif > 10){
+				return false;
+			}
+		}
+		return true;
 	}
 }

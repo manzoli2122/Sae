@@ -20,5 +20,7 @@ import sae.publico.domain.HistoricoEgresso;
 public interface ManageHistoricoService  extends CrudService<HistoricoEgresso>{
 
 	List<HistoricoEgresso> retrieveAllMine();
+	
+	boolean isAlteravel(HistoricoEgresso historico);
 
 }

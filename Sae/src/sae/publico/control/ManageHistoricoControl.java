@@ -1,12 +1,12 @@
 package sae.publico.control;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
@@ -97,7 +97,9 @@ public class ManageHistoricoControl  extends CrudController<HistoricoEgresso>{
 			return super.delete();
 		}
 		catch(Exception e){
-			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.delete", summarizeSelectedEntity());
+			cancelDeletion();
+			return null;
 		}
 	}
 	
@@ -110,7 +112,9 @@ public class ManageHistoricoControl  extends CrudController<HistoricoEgresso>{
 			return super.save();
 		}
 		catch(Exception e){
-			return getViewPath() + "error.xhtml?faces-redirect=" + getFacesRedirect();
+			logger.log(Level.INFO, "ERRO AO SALVAR    Historico_Egresso ......");
+			addGlobalI18nMessage(getBundleName(), FacesMessage.SEVERITY_ERROR, getBundlePrefix() + ".error.save" , summarizeSelectedEntity()  );
+			return null;
 		}
 	}
 	
@@ -118,24 +122,8 @@ public class ManageHistoricoControl  extends CrudController<HistoricoEgresso>{
 	
 	public boolean isAlteravel(){
 		
-		Date hoje = new Date();
-		if(selectedEntity!=null){
-			
-			Calendar dInicial = Calendar.getInstance(); 
-	        dInicial.setTime(selectedEntity.getData_envio());
-	        Calendar dFinal = Calendar.getInstance();
-	        dFinal.setTime( hoje);
-	        
-	        int MILLIS_IN_DAY = 86400000;
-	        int dif =  (int) ((dFinal.getTimeInMillis() - dInicial.getTimeInMillis()) / MILLIS_IN_DAY);
-	        
-	        logger.log(Level.INFO, "dias dif === {0}.....", dif);
-	        
-			if(dif > 10){
-				return false;
-			}
-		}
-		return true;
+		return manageHistoricoService.isAlteravel(selectedEntity);
+		
 	}
 	
 	
