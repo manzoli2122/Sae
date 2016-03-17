@@ -15,6 +15,11 @@
   </servlet-mapping>
   
   <error-page>
+    <error-code>500</error-code>
+    <location>/error-interno.html</location>
+  </error-page>
+  
+  <error-page>
     <error-code>403</error-code>
     <location>/forbidden.html</location>
   </error-page>
@@ -57,7 +62,7 @@
     <role-name>egresso</role-name>
   </security-role>
   <security-role>
-    <role-name>cliente</role-name>
+    <role-name>guest</role-name>
   </security-role>
   <security-role>
     <role-name>Admin</role-name>

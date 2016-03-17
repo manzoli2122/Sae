@@ -12,7 +12,8 @@
 	<ui:define name="userAcount">
 		<li class="dropdown user user-menu">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-				<h:outputText value="#{sessionControl.admin.nome} - Administrador"  />
+				<img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/blankAvatar.png" class="user-image" alt="User Image" /> 
+				<h:outputText value=" #{sessionControl.admin.shortName} - Administrador"  />
 				<span class="hidden-xs"></span>
 			</a>
 							

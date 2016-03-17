@@ -74,6 +74,11 @@
 						<p:commandLink action="#{manageHistoricoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageHistorico.title']}"  />
 					</li>
 					
+					
+					<li>
+			<p:commandLink action="#{manageCursoControl.create()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageCurso.title']}"  />
+		</li>
+					
 	
 	</ui:define>
 	

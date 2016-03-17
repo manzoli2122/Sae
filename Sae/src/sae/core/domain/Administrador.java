@@ -2,10 +2,12 @@ package sae.core.domain;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Set;
+import java.util.logging.Level;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -72,8 +74,19 @@ public class Administrador extends PersistentObjectSupport implements Comparable
 	private Set<Curso> cursosCoordenados;
 	
 	
+	@Transient
+	private String shortName;
 	
 	
+	
+	
+	public String getShortName(){
+		if ( (shortName == null) || (shortName.length() == 0)) {
+			int idx = nome.indexOf(" ");
+			shortName =(idx == -1) ? nome : nome.substring(0, idx).trim();	
+		}
+		return shortName;		
+	}
 	
 	
 

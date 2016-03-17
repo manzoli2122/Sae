@@ -34,7 +34,10 @@ public class ManageCursoServiceBean extends CrudServiceBean<Curso> implements Ma
 	
 	
 	
-	
+	@Override
+	public void authorize() {
+		super.authorize();
+	}
 	
 	
 	
