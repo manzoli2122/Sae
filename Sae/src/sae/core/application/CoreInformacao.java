@@ -43,6 +43,9 @@ public class CoreInformacao implements Serializable {
 	private static final String DEFAULT_SENHA_ADMIN = "adm123";
 	
 	
+	private static final String DEFAULT_SENHA_EGRESSO = "egresso123";
+	
+	
 	/** Indicates if the system is properly installed. */
 	private Boolean systemInstalled;
 
@@ -77,5 +80,11 @@ public class CoreInformacao implements Serializable {
 		return DEFAULT_SENHA_ADMIN;
 	}
 	
+	
+	
+	/** Getter for DefaultSenhaEgresso. */
+	public String getDefaultSenhaEgresso() {
+		return DEFAULT_SENHA_EGRESSO;
+	}
 	
 }

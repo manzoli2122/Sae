@@ -20,6 +20,11 @@ public class ManageSeminarioServiceBean  extends CrudServiceBean<Seminario> impl
 	public BaseDAO<Seminario> getDAO() {
 		return seminarioDAO;
 	}
+	
+	@Override
+	public void authorize() {
+		super.authorize();
+	}
 
 	@Override
 	protected Seminario createNewEntity() {

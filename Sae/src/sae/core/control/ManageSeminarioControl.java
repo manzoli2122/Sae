@@ -5,7 +5,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
-import br.ufes.inf.nemo.util.ejb3.application.filters.LikeFilter;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.core.application.ManageSeminarioService;
 import sae.core.domain.Seminario;
@@ -29,6 +28,7 @@ private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected CrudService<Seminario> getCrudService() {
+		manageSeminarioService.authorize();
 		return manageSeminarioService;
 	}
 
@@ -41,7 +41,6 @@ private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void initFilters() {
-		addFilter(new LikeFilter("manageEgresso.filter.byName", "nome", getI18nMessage(bundleName, "manageEgresso.text.filter.byName")));
 		
 	}
 }

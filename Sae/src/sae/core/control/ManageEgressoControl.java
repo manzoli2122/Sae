@@ -61,6 +61,7 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<Egresso> getCrudService() {
+		manageEgressoService.authorize();
 		return manageEgressoService;
 	}
 
@@ -70,7 +71,6 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 	@Override
 	protected Egresso createNewEntity() {
 		Egresso egresso = new Egresso();
-		egresso.setSenha("teste");
 		return egresso;
 	}
 
@@ -102,9 +102,6 @@ public class ManageEgressoControl extends CrudController<Egresso>{
 				if (selectedEntity.getId() == null) {
 					getCrudService().validateCreate(selectedEntity);
 					getCrudService().create(selectedEntity);
-					Egresso egresso = selectedEntity;
-					list();
-					selectedEntity = egresso;
 					return manageCursoRealizadoControl.create();
 				
 				}

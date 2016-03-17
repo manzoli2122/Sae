@@ -1,6 +1,5 @@
 package sae.core.application;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,7 +10,6 @@ import javax.ejb.Stateless;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
-import br.ufes.inf.nemo.util.TextUtils;
 import br.ufes.inf.nemo.util.ejb3.application.CrudException;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.domain.Egresso;
@@ -74,15 +72,16 @@ public class ManageEgressoServiceBean  extends CrudServiceBean<Egresso> implemen
 	}
 
 	
+	@Override
+	public void authorize() {
+		super.authorize();
+	}
+	
 	
 	/** @see sae.core.application.CrudServiceBean#validateCreate(Egresso entity)*/
 	@Override
 	public void validateCreate(Egresso entity) throws CrudException {
-		try {
-			entity.setSenha(TextUtils.produceMd5Hash(entity.getSenha()));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+		entity.setSenha(coreInformacao.getDefaultSenhaEgresso());
 	}
 	
 	
