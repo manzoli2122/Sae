@@ -70,11 +70,7 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
 	public void validateCreate(Depoimento entity) throws CrudException {
-		//Egresso egresso = sessionService.getEgresso();
-		//if(egresso != null)
-		//entity.setAutor(egresso);
 		entity.setStatus(StatusDepoimento_Enum.P);
-		
 	}
 	
 	
@@ -82,7 +78,6 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	@Override
 	public void validateUpdate(Depoimento entity) throws CrudException {
 		entity.setStatus(StatusDepoimento_Enum.P);
-		super.validateUpdate(entity);
 	}
 	
 	

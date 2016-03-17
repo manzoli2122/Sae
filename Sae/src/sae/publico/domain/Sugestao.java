@@ -30,28 +30,10 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	@NotNull
 	private Date data_envio;
 	
-	
-	
 	/* NOME DO USUARIO */
 	@NotNull
 	@ManyToOne
 	private CursoRealizado cursoRealizado;
-	
-	
-	
-	/* NOME DO USUARIO 
-	@NotNull
-	@ManyToOne
-	private Egresso autor;
-	
-	
-
-	/* NOME DO USUARIO 
-	@NotNull
-	@ManyToOne
-	private Curso curso;
-	
-	*/
 	
 	
 	
@@ -65,12 +47,6 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	public Date getData_envio() { return data_envio; }
 	public void setData_envio(Date data_envio) { this.data_envio = data_envio; }
 
-	//public Egresso getAutor() { return autor; 	}
-	//public void setAutor(Egresso autor) { this.autor = autor; }
-
-	//public Curso getCurso() { 	return curso; }
-	//public void setCurso(Curso curso) { this.curso = curso; }
-	
 	public CursoRealizado getCursoRealizado() { return cursoRealizado; 	}
 	public void setCursoRealizado(CursoRealizado cursoRealizado) { 	this.cursoRealizado = cursoRealizado; 	}
 
@@ -78,5 +54,5 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	public int compareTo(Sugestao  o) { return super.compareTo(o); }
 	
 	@Override
-	public String toString() { return conteudo; }
+	public String toString() { return cursoRealizado.getCurso().getNome() + " na data " +data_envio.toString(); }
 }

@@ -61,6 +61,7 @@ public class ManageSugestaoControl extends CrudController<Sugestao> {
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<Sugestao> getCrudService() {
+		manageSugestaoService.authorize();
 		return manageSugestaoService;
 	}
 
