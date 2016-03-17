@@ -33,6 +33,7 @@
     <auth-constraint>
       <description>funcionarios somente</description>
       <role-name>Admin</role-name>
+      <role-name>egresso</role-name>
     </auth-constraint>
   </security-constraint>
   

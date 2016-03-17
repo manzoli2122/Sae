@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.ejb.Local;
 
+import sae.core.domain.Administrador;
 import sae.core.domain.SaeConfiguracao;
 
 
@@ -16,5 +17,7 @@ import sae.core.domain.SaeConfiguracao;
 public interface InstallSystemService extends Serializable{
 
 	void installSystem(SaeConfiguracao config) throws Exception;
+
+	void saveAdmin(Administrador entity);
 
 }

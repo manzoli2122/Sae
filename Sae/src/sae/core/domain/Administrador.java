@@ -2,7 +2,6 @@ package sae.core.domain;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Set;
-import java.util.logging.Level;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

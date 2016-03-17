@@ -70,8 +70,7 @@ public class InstallSystemControl extends JSFController{
 	public String saveAdmin() {
 		try {
 			logger.log(Level.INFO, "SAVING THE ADMINISTRADOR..........");
-			manageAdministradorService.validateCreate(admin);
-			manageAdministradorService.create(admin);
+			installSystemService.saveAdmin(admin);
 		}
 		catch (Exception e) {
 			logger.log(Level.INFO, "ERROR IN SAVING THE ADMINISTRADOR..........");

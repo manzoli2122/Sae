@@ -5,7 +5,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+
+import sae.core.domain.Administrador;
 import sae.core.domain.SaeConfiguracao;
+import sae.core.persistence.AdministradorDAO;
 import sae.core.persistence.SaeConfiguracaoDAO;
 
 @Stateless
@@ -25,7 +28,22 @@ public class InstallSystemServiceBean implements InstallSystemService{
 	private SaeConfiguracaoDAO saeConfiguracaoDAO;
 	
 	
+	/** The DAO for Administrador objects. */
+	@EJB    	
+	private AdministradorDAO administradorDAO;
 	
+	
+	/** The information singleton for the core module. */
+	@EJB    	
+	private CoreInformacao coreInformacao;
+	
+	
+	
+	@Override
+	public void saveAdmin(Administrador entity){
+		entity.setSenha(coreInformacao.getDefaultSenhaAdmin());
+		administradorDAO.save(entity);
+	}
 	
 	
 	

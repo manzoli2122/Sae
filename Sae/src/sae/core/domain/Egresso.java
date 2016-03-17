@@ -1,18 +1,21 @@
 package sae.core.domain;
 
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.ufes.inf.nemo.util.TextUtils;
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 
 
@@ -90,6 +93,19 @@ public class Egresso extends PersistentObjectSupport implements Comparable<Egres
 	
 	
 	
+	@Transient
+	private String shortName;
+	
+	
+	
+	
+	public String getShortName(){
+		if ( (shortName == null) || (shortName.length() == 0)) {
+			int idx = nome.indexOf(" ");
+			shortName =(idx == -1) ? nome : nome.substring(0, idx).trim();	
+		}
+		return shortName;		
+	}
 	
 	
 	
@@ -126,7 +142,11 @@ public class Egresso extends PersistentObjectSupport implements Comparable<Egres
 	public void setEmail(String email) { this.email = email; }
 
 	public String getSenha() { return senha; }
-	public void setSenha(String senha) { this.senha = senha; }
+	public void setSenha(String senha) { 
+		try {
+			this.senha = TextUtils.produceMd5Hash(senha);
+		} catch (NoSuchAlgorithmException e) {	}
+	}
 
 	public String getCpf() { return cpf; }
 	public void setCpf(String cpf) { this.cpf = cpf; }

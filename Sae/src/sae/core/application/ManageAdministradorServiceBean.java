@@ -4,7 +4,6 @@ package sae.core.application;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -70,20 +69,15 @@ public class ManageAdministradorServiceBean extends CrudServiceBean<Administrado
 	
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
-	@PermitAll
 	public void validateCreate(Administrador entity) throws CrudException {
 		entity.setSenha(coreInformacao.getDefaultSenhaAdmin());
 	}
 	
-	
-	
-	/** @see sae.core.application.CrudServiceBean#create()  */
-	@PermitAll
+
 	@Override
-	public void create(Administrador entity) {
-		super.create(entity);
+	public void authorize() {
+		super.authorize();
 	}
-	
 		
 	
 	/** @see sae.core.application.ManageAdministradorService#sendEmailCadastro(Administrador entity) */
