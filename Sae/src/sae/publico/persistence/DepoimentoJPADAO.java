@@ -57,6 +57,9 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 
 	@Override
 	public List<Depoimento> retrieveAllMine(Egresso autor) {
+		if(autor==null)
+			return null;
+		
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Depoimento> cq = cb.createQuery(getDomainClass());
@@ -89,6 +92,9 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 	
 	@Override
 	public List<Depoimento> retrieveAllCurso(Curso curso) {
+		
+		if(curso==null)
+			return null;
 		
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -123,6 +129,9 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 	
 	@Override
 	public List<Depoimento> retrieveAllAnalisar(Administrador admin) {
+		
+		if(admin==null)
+			return null;
 		
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
