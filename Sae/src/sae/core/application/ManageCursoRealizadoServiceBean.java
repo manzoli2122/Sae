@@ -36,14 +36,21 @@ public class ManageCursoRealizadoServiceBean extends CrudServiceBean<CursoRealiz
 	
 	
 	
-	
-	
 	/** @see br.ufes.inf.nemo.util.ejb3.application.CrudService#getDAO() */
 	@Override
 	public BaseDAO<CursoRealizado> getDAO() {
 		return cursoRealizadoDAO;
 	}
 
+	
+	
+	
+	/** @see br.ufes.inf.nemo.util.ejb3.application.CrudService#authorize() */
+	@Override
+	public void authorize() {
+		super.authorize();
+	}
+	
 	
 	
 	

@@ -7,9 +7,6 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.inject.Named;
-
-import org.primefaces.context.RequestContext;
-
 import br.ufes.inf.nemo.util.ejb3.application.CrudService;
 import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import sae.core.application.ManageCursoService;
@@ -76,8 +73,6 @@ public class ManageCursoControl extends CrudController<Curso> {
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#initFilters() */
 	@Override
 	protected void initFilters() {
-		//logger.log(Level.FINER, "INITIALIZING FILTER TYPES ......");
-		//addFilter(new LikeFilter("manageCurso.filter.byName", "nome", getI18nMessage(bundleName, "manageCurso.text.filter.byName")));
 	}
 	
 	
