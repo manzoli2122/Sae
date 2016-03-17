@@ -56,6 +56,7 @@ public class ManageAssuntoInteresseControl extends CrudController<AssuntoInteres
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<AssuntoInteresse> getCrudService() {
+		manageAssuntoInteresseService.authorize();
 		return manageAssuntoInteresseService;
 	}
 
@@ -75,8 +76,6 @@ public class ManageAssuntoInteresseControl extends CrudController<AssuntoInteres
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#initFilters() */
 	@Override
 	protected void initFilters() {
-		//logger.log(Level.FINER, "INITIALIZING FILTER TYPES ......");
-		//addFilter(new LikeFilter("manageAssunto_Interesse.filter.byName", "nome", getI18nMessage(bundleName, "manageAssunto_Interesse.text.filter.byName")));
 	}
 	
 	

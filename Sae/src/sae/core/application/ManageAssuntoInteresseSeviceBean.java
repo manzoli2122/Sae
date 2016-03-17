@@ -46,6 +46,13 @@ public class ManageAssuntoInteresseSeviceBean  extends CrudServiceBean<AssuntoIn
 
 	
 	
+	/** @see sae.core.application.CrudServiceBean#authorize() */
+	@Override
+	public void authorize() {
+		super.authorize();
+	}
+	
+	
 	/** @see sae.core.application.CrudServiceBean#createNewEntity() */
 	@Override
 	protected AssuntoInteresse createNewEntity() {
