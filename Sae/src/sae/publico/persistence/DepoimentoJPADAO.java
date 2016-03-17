@@ -2,6 +2,7 @@ package sae.publico.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -17,7 +18,6 @@ import sae.core.domain.Administrador;
 import sae.core.domain.Curso;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.CursoRealizado_;
-import sae.core.domain.Curso_;
 import sae.core.domain.Egresso;
 import sae.publico.domain.Depoimento;
 import sae.publico.domain.Depoimento_;
@@ -70,7 +70,6 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		
 		subqueryH.select(subrootH);
 		
-		
 		cq.where(
 					root.get(Depoimento_.cursoRealizado).in(subqueryH)										
 				);
@@ -96,7 +95,6 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		CriteriaQuery<Depoimento> cq = cb.createQuery(getDomainClass());
 		Root<Depoimento> root = cq.from(getDomainClass());
 		
-		
 		Subquery<CursoRealizado> subqueryH = cq.subquery(CursoRealizado.class);
 		Root<CursoRealizado> subrootH = subqueryH.from(CursoRealizado.class);
 		subqueryH.where(
@@ -105,12 +103,10 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		
 		subqueryH.select(subrootH);
 		
-		
 		cq.where(
 					root.get(Depoimento_.cursoRealizado).in(subqueryH)	,	
 					cb.equal(root.get(Depoimento_.status), StatusDepoimento_Enum.A)
 				);
-		
 		
 		cq.select(root);
 
@@ -131,23 +127,17 @@ public class DepoimentoJPADAO extends BaseJPADAO<Depoimento> implements Depoimen
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		
+		Set<Curso> cursos=  admin.getCursosCoordenados();
+		
 		CriteriaQuery<Depoimento> cq = cb.createQuery(getDomainClass());
 		Root<Depoimento> root = cq.from(getDomainClass());
-		
-		// SUBQUERYH
-		Subquery<Curso> subqueryH = cq.subquery(Curso.class);
-		Root<Curso> subrootH = subqueryH.from(Curso.class);
-		subqueryH.where(
-							cb.equal(subrootH.get(Curso_.coordenador),admin)	
-					  );
-		subqueryH.select(subrootH);
-		
+			
 		
 		// SUBQUERYCR
 		Subquery<CursoRealizado> subqueryCR = cq.subquery(CursoRealizado.class);
 		Root<CursoRealizado> subrootCR = subqueryCR.from(CursoRealizado.class);
 		subqueryCR.where(
-						subrootCR.get(CursoRealizado_.curso).in(subqueryH)	
+						subrootCR.get(CursoRealizado_.curso).in(cursos)
 					  );
 		subqueryCR.select(subrootCR);
 		

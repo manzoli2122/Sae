@@ -8,9 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
-import sae.core.domain.Curso;
 import sae.core.domain.CursoRealizado;
-import sae.core.domain.Egresso;
 
 @Entity
 public class Depoimento extends PersistentObjectSupport implements Comparable<Depoimento> {
