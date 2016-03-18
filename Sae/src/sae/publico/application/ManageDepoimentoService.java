@@ -23,4 +23,8 @@ public interface ManageDepoimentoService extends CrudService<Depoimento> {
 
 	List<Depoimento> retrieveAllAnalisar();
 
+	void aprovar(Depoimento entity);
+
+	void desaprovar(Depoimento entity);
+
 }

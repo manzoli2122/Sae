@@ -19,7 +19,6 @@ import br.ufes.inf.nemo.util.ejb3.controller.CrudController;
 import br.ufes.inf.nemo.util.ejb3.controller.PrimefacesLazyEntityDataModel;
 import sae.publico.application.ManageDepoimentoService;
 import sae.publico.domain.Depoimento;
-import sae.publico.domain.StatusDepoimento_Enum;
 
 
 
@@ -38,6 +37,9 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	
 	/** Serialization id. */
 	private static final long serialVersionUID = 1L;
+	
+	
+	private final String VIEWPATHCORE = "/core/manageDepoimento/";
 	
 	
 	/** The logger. */
@@ -116,52 +118,37 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 		selectedEntity = null;
 		count();
 		retrievepedentesEntities();
-		return "/core/manageDepoimento/" + "list.xhtml?faces-redirect=" + getFacesRedirect();
+		return VIEWPATHCORE + "list.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
 	
 	
 	public String retrieveAnalisar() {
 		logger.log(Level.INFO, "Displaying form for entity retrieval");
-
-		// Sets the data as read-only.
 		readOnly = true;
-
-		// Retrieves the existing entity that was selected, if not already done by the JSF component.
 		if (selectedEntity == null) return null;
 		else {
 			// Asks the CRUD service to fetch any lazy collection that possibly exists.
 			selectedEntity = getCrudService().fetchLazy(selectedEntity);
 			checkSelectedEntity();
 		}
-
 		// Goes to the form.
-		return "/core/manageDepoimento/"  + "form.xhtml?faces-redirect=" + getFacesRedirect();
+		return VIEWPATHCORE  + "form.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
 	
 	
 	public String aprovar(){
-		selectedEntity.setStatus(StatusDepoimento_Enum.A);
-		getCrudService().update(selectedEntity);
+		manageDepoimentoService.aprovar(selectedEntity);;
 		return analisarDepoimento();
 	}
 
+	
+	
 	public String desaprovar(){
-		selectedEntity.setStatus(StatusDepoimento_Enum.D);
-		getCrudService().update(selectedEntity);
+		manageDepoimentoService.desaprovar(selectedEntity);
 		return analisarDepoimento();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -172,6 +159,7 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<Depoimento> getCrudService() {
+		manageDepoimentoService.authorize();
 		return manageDepoimentoService;
 	}
 

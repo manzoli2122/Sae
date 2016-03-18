@@ -84,6 +84,19 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	
 	
 	@Override
+	public void aprovar(Depoimento entity){
+		entity.setStatus(StatusDepoimento_Enum.A);
+		update(entity);
+	}
+
+	@Override
+	public void desaprovar(Depoimento entity){
+		entity.setStatus(StatusDepoimento_Enum.D);
+		update(entity);
+	}
+	
+	
+	@Override
 	public List<Depoimento>	retrieveAllMine() {
 		return depoimentoDAO.retrieveAllMine(sessionService.getEgresso());
 	}

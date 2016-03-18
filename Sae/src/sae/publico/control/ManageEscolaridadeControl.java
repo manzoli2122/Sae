@@ -55,6 +55,7 @@ public class ManageEscolaridadeControl extends CrudController<Escolaridade>{
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<Escolaridade> getCrudService() {
+		manageEscolaridadeService.authorize();
 		return manageEscolaridadeService;
 	}
 

@@ -28,7 +28,7 @@ import sae.publico.persistence.EscolaridadeDAO;
  */
 @Stateless
 @DeclareRoles({"Admin", "egresso"})
-@RolesAllowed({ "egresso", "Admin" })
+@RolesAllowed({ "egresso" })
 public class ManageEscolaridadeServiceBean extends CrudServiceBean<Escolaridade> implements ManageEscolaridadeService{
 
 	
@@ -68,6 +68,12 @@ public class ManageEscolaridadeServiceBean extends CrudServiceBean<Escolaridade>
 		return new Escolaridade();
 	}
 	
+	
+	
+	@Override
+	public void authorize() {
+		super.authorize();
+	}
 	
 	
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
