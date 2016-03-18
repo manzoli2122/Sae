@@ -28,7 +28,7 @@ import sae.publico.persistence.HistoricoEgressoDAO;
  */
 @Stateless
 @DeclareRoles({"Admin", "egresso", "guest"})
-@RolesAllowed({ "egresso", "Admin" })
+@RolesAllowed({ "egresso" })
 public class ManageHistoricoServiceBean extends CrudServiceBean<HistoricoEgresso> implements ManageHistoricoService{
 
 	
@@ -72,6 +72,14 @@ public class ManageHistoricoServiceBean extends CrudServiceBean<HistoricoEgresso
 		if(egresso != null)
 		entity.setEgresso(egresso);
 	}
+	
+	
+	
+	@Override
+	public void authorize() {
+		super.authorize();
+	}
+	
 	
 	
 	@Override

@@ -57,6 +57,7 @@ public class ManageHistoricoControl  extends CrudController<HistoricoEgresso>{
 	/** @see br.ufes.inf.nemo.util.ejb3.controller.CrudController#getCrudService() */
 	@Override
 	protected CrudService<HistoricoEgresso> getCrudService() {
+		manageHistoricoService.authorize();
 		return manageHistoricoService;
 	}
 
