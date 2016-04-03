@@ -50,7 +50,7 @@ public class ConsultaControl implements Serializable {
 	
 	/*   CONSTRUTOR DA CLASSE */
 	public ConsultaControl(){
-		 viewPath = "/consulta/";
+		 viewPath = "/public/consulta/";
 	     bundleName = "msgs";
 	}
 	
@@ -79,7 +79,7 @@ public class ConsultaControl implements Serializable {
 	
 	public String selectDepoimento(){
 		//historicos = consultaService.consultaHistoricos(curso);
-		return "/depoimento/" + "depoimentos.xhtml?faces-redirect=" + getFacesRedirect();
+		return getViewPath() + "depoimento/" + "depoimentos.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
 	

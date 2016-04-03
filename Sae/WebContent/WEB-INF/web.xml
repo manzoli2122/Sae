@@ -45,7 +45,7 @@
     <display-name>protegidas para funcionarios</display-name>
     <web-resource-collection>
       <web-resource-name>logica de negocio</web-resource-name>
-      <url-pattern>/public/*</url-pattern>
+      <url-pattern>/public/egresso/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <description>funcionarios somente</description>

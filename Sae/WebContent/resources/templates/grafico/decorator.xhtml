@@ -59,8 +59,11 @@
 				<ul class="sidebar-menu">
 					<li class="header"><h:outputText value="#{msgs['title.navigation']}" /></li>
 					
+					<li>
+						<p:commandLink  action="#{consultaControl.selectGrafico()}"  value="Voltar"  />
+					</li>
 					
-					<li><a href="#{facesContext.externalContext.requestContextPath}/consulta/curso.faces"><i class="fa fa-rotate-left"></i> Voltar</a></li>
+					<li><a href="#{consultaControl.selectGrafico()}"><i class="fa fa-rotate-left"></i> Voltar</a></li>
 					
 					
 					
