@@ -48,7 +48,7 @@ public class ManageHistoricoControl  extends CrudController<HistoricoEgresso>{
 	
 	/**   CONSTRUTOR DA CLASSE */
 	public ManageHistoricoControl(){
-		 viewPath = "/public/manageHistorico/";
+		 viewPath = "/public/egresso/manageHistorico/";
 	     bundleName = "msgs";
 	}
 	

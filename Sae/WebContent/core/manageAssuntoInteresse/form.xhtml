@@ -30,14 +30,14 @@
 	
 <ui:define name="body">
 				
-	<ui:decorate template="/resources/templates/default/form.xhtml">
+	<ui:decorate template="/resources/templates/administrador/form.xhtml">
 	
 		<ui:param name="formName" value="#{msgs['manageAssuntoInteresse.title.formulario']}" />
 			
 		<h:form id="form" pt:class="form-horizontal">
 		
 			<h:panelGroup id="nomeField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:nome" />
 					<ui:param name="label" value="#{msgs['crud.text.name']}" />
 					<p:inputText id="nome" pt:class="form-control" disabled="#{manageAssuntoInteresseControl.readOnly}" required="true"
@@ -48,7 +48,7 @@
 			</h:panelGroup>
 					
 					
-			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+			<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 				<div class="form-group">	
 	          			
 					<div class="col-sm-3"></div>

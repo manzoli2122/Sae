@@ -46,8 +46,8 @@ public class SessionServiceBean implements SessionService{
 	
 	
 	/** Indicates the decorator being used. */
+	private static final String ADMINISTRADOR_DECORATOR_NAME = "administrador";
 	private static final String DEFAULT_DECORATOR_NAME = "default";
-	private static final String NO_MENU_DECORATOR_NAME = "nomenu";
 	private static final String EGRESSO_DECORATOR_NAME = "egresso";
 
 	
@@ -141,12 +141,12 @@ public class SessionServiceBean implements SessionService{
 	/** @see sae.core.application.SessionService#getDecorator() */
 	@Override
 	public String getDecorator() {
-		if(decorator ==  null || decorator ==  NO_MENU_DECORATOR_NAME ){
+		if(decorator ==  null || decorator ==  DEFAULT_DECORATOR_NAME ){
 			getCurrentUser();
-			decorator =  NO_MENU_DECORATOR_NAME;
+			decorator =  DEFAULT_DECORATOR_NAME;
 		}
 		if(admin != null){
-			decorator = DEFAULT_DECORATOR_NAME;
+			decorator = ADMINISTRADOR_DECORATOR_NAME;
 		}
 		if(egresso != null){
 			decorator =  EGRESSO_DECORATOR_NAME;

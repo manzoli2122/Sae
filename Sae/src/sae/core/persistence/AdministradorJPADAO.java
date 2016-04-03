@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
@@ -52,14 +53,19 @@ public class AdministradorJPADAO extends BaseJPADAO<Administrador> implements Ad
 	
 	@Override
 	public List<Administrador> findByName(String param) {	
+		
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		
 		CriteriaQuery<Administrador> cq = cb.createQuery(Administrador.class);
+		
 		Root<Administrador> root = cq.from(Administrador.class);
 		
 		cq.where( cb.like(cb.lower(root.get(Administrador_.nome)), param.toLowerCase()+"%")) ;
-				  //cb.equal(root.get(Administrador_.ativo), true));
 		
-		List<Administrador> result = entityManager.createQuery(cq).getResultList();
+		TypedQuery<Administrador> query = entityManager.createQuery(cq);
+		
+		List<Administrador> result = query.getResultList();
+		
 		return result;
 	}
 	

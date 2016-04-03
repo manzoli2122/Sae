@@ -18,7 +18,7 @@
 <ui:define name="body">
                 
    	<!-- The listing form. -->
-    <ui:decorate template="/resources/templates/default/form.xhtml">
+    <ui:decorate template="/resources/templates/administrador/form.xhtml">
 		
 		<ui:param name="formName" value="#{msgs['manageDepoimento.title.box.list']}" />
            	
@@ -83,7 +83,7 @@
         		
         <!-- Buttons shown below the listing. -->
         <h:form id="buttonsForm">
-           	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+           	<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 	    		<div class="form-group">	
 	       			<div class="col-sm-3" style="margin-bottom: 15px">
 	       				<a class="btn btn-block btn-success btn-social" jsf:action="#{manageDepoimentoControl.create}"><i class="fa fa-user-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/></a>
@@ -107,7 +107,7 @@
        
     <!-- The trash panel: shows entities that have been selected for deletion. -->
 	<h:panelGroup id="teste" rendered="#{not empty manageDepoimentoControl.trashCan}" >
-		<ui:decorate template="/resources/templates/default/formDanger.xhtml"  >
+		<ui:decorate template="/resources/templates/administrador/formDanger.xhtml"  >
 			<ui:param name="formName" value="#{msgs['manageDepoimento.title.box.trash']}" />
 			<h:form id="trashForm" >
 				<h3><h:outputText  value="#{msgs['crud.text.trashHeader']}" /></h3>
@@ -117,7 +117,7 @@
                 		<f:convertDateTime type="date" pattern="#{msgs['format.date.java']}" locale="pt_BR" timeZone="America/Sao_Paulo"/>
                 	</h:outputText>
 				</p:dataList>
-			    <ui:decorate template="/resources/templates/default/formbutton.xhtml">
+			    <ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 			    	<div class="form-group">	
 			        	<div class="col-sm-3" style="margin-bottom: 15px">
 			            	<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageDepoimentoControl.cancelDeletion}" jsf:update=":trashForm :buttonsForm :listingForm"><i class="fa  fa-close"></i> <h:outputText value="#{msgs['crud.button.cancelDeletion']}"/></a>

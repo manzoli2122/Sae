@@ -11,7 +11,7 @@
       	
 		      	 <p:dataScroller value="#{publicoControl.getDepoimentos(consultaControl.curso)}" var="depoimentos" chunkSize="5">
 			        
-					            <ui:decorate template="/resources/templates/default/form.xhtml">
+					            <ui:decorate template="/resources/templates/administrador/form.xhtml">
 										<ui:param name="formName" value="#{depoimentos.anonimo ?  msgs['crud.text.anonimo'] : depoimentos.cursoRealizado.egresso}" />
 										
 										<h3><h:outputText value="#{depoimentos.conteudo}"/>	</h3>

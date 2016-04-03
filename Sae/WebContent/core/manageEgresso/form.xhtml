@@ -29,12 +29,12 @@
 </ui:define>	
 	
 <ui:define name="body">
-	<ui:decorate template="/resources/templates/default/form.xhtml">
+	<ui:decorate template="/resources/templates/administrador/form.xhtml">
 		<ui:param name="formName" value="#{msgs['manageEgresso.title.formulario']}" />
 		<h:form id="form" pt:class="form-horizontal">
 			
 			<h:panelGroup id="nomeField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:nome" />
 					<ui:param name="label" value="#{msgs['crud.text.name']}" />
 					<p:inputText id="nome" pt:class="form-control" disabled="#{manageEgressoControl.readOnly or (manageEgressoControl.selectedEntity.id != null)}" required="true"
@@ -45,7 +45,7 @@
 			</h:panelGroup>
 					
 			<h:panelGroup id="emailField"> 
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:email" />
 					<ui:param name="label" value="#{msgs['crud.text.email']}" />
 					<p:inputText id="email" pt:class="form-control" disabled="#{manageEgressoControl.readOnly}" pt:type="email" 
@@ -58,7 +58,7 @@
 					
 					
 			<h:panelGroup id="nascimentoField" rendered="false" >
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:nascimento" />
 					<ui:param name="label" value="#{msgs['crud.text.nascimento']}" />
 					<p:inputMask  id="nascimento" pt:type="date" pt:class="form-control" mask="#{msgs['format.date.primefaces']}" required="true" 
@@ -69,7 +69,7 @@
 			</h:panelGroup>
 			
 			<h:panelGroup id="nascimento1Field" >
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:nascimento1" />
 					<ui:param name="label" value="#{msgs['crud.text.nascimento']}" />
 					<input name="nascimento1" id="nascimento1" pt:class="form-control" type="date"   jsf:required="true" 
@@ -81,7 +81,7 @@
 			
 			
 			<h:panelGroup id="cpfField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:cpf" />
 						<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
 						<input id="cpf" name="cpf" class="form-control"  type="tel"  jsf:required="true"
@@ -93,7 +93,7 @@
 				
 			
 			<h:panelGroup id="cpf1Field" rendered="false">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:cpf1" />
 					<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
 					<p:inputMask id="cpf1"  pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
@@ -104,7 +104,7 @@
 					
 
    			<h:panelGroup id="identidadeField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:identidade" />
 					<ui:param name="label" value="#{msgs['crud.text.identidade']}" />
 					<p:inputText id="identidade" pt:class="form-control" pt:type="tel" disabled="#{manageEgressoControl.readOnly}" required="true"
@@ -117,7 +117,7 @@
 					
 			<!--  CAMPO DO GENERO DO  -->
 	        <h:panelGroup id="sexoField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:sexo" />
 					<ui:param name="label" value="#{msgs['manageEgresso.form.sexo']}" />
 					<h:selectOneMenu required="true" pt:class="form-control" id="sexo" value="#{manageEgressoControl.selectedEntity.sexo}" 
@@ -135,7 +135,7 @@
                     
                     
 			<h:panelGroup id="nacionalidadeField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:nacionalidade" />
 					<ui:param name="label" value="#{msgs['crud.text.nacionalidade']}" />
 					<p:inputText id="nacionalidade" pt:placeholder="#{msgs['crud.text.nacionalidade']}" pt:class="form-control"  
@@ -148,7 +148,7 @@
                       
                     
 			<h:panelGroup id="naturalidadeField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:naturalidade" />
 					<ui:param name="label" value="#{msgs['crud.text.naturalidade']}" />
 					<p:inputText id="naturalidade"  pt:placeholder="#{msgs['crud.text.naturalidade']}" pt:class="form-control"
@@ -161,7 +161,7 @@
                  
 					
 					
-			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+			<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 				<div class="form-group">	
 					<div class="col-sm-3"></div>
 	        		<div class="col-sm-3" style="margin-bottom: 15px">

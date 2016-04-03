@@ -46,7 +46,7 @@ public class ManageEscolaridadeControl extends CrudController<Escolaridade>{
 	
 	/**   CONSTRUTOR DA CLASSE */
 	public ManageEscolaridadeControl(){
-		 viewPath = "/public/manageEscolaridade/";
+		 viewPath = "/public/egresso/manageEscolaridade/";
 	     bundleName = "msgs";
 	}
 	

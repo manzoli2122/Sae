@@ -18,7 +18,7 @@
 <ui:define name="body">
                 
    	<!-- The listing form. -->
-    <ui:decorate template="/resources/templates/default/form.xhtml">
+    <ui:decorate template="/resources/templates/administrador/form.xhtml">
 		
 		<ui:param name="formName" value="#{msgs['manageDepoimento.title.box.list']}" />
            	
@@ -57,7 +57,7 @@
         		
         <!-- Buttons shown below the listing. -->
         <h:form id="buttonsForm">
-           	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+           	<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 	    		<div class="form-group">	
 	       			
 	                <div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageDepoimentoControl.selectedEntity != null}">

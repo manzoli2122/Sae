@@ -52,7 +52,7 @@ public class ManageSugestaoControl extends CrudController<Sugestao> {
 	
 	/**   CONSTRUTOR DA CLASSE */
 	public ManageSugestaoControl(){
-		 viewPath = "/public/manageSugestao/";
+		 viewPath = "/public/egresso/manageSugestao/";
 	     bundleName = "msgs";
 	}
 	

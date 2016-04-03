@@ -57,10 +57,9 @@ public class ManageDepoimentoControl extends CrudController<Depoimento>{
 	
 	/**   CONSTRUTOR DA CLASSE */
 	public ManageDepoimentoControl(){
-		 viewPath = "/public/manageDepoimento/";
+		 viewPath = "/public/egresso/manageDepoimento/";
 	     bundleName = "msgs";
 	}
-	
 	
 	
 	

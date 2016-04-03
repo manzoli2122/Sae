@@ -25,13 +25,13 @@
 
 	
 <ui:define name="body">
-	<ui:decorate template="/resources/templates/default/form.xhtml">
+	<ui:decorate template="/resources/templates/administrador/form.xhtml">
 		<ui:param name="formName" value="Atualizar senha" />
 		<h:form id="form" pt:class="form-horizontal">
 
 
 				<h:panelGroup id="passwordField" >
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:password" />
 						<ui:param name="label" value="#{msgs['crud.text.password']}" />
 						<p:password id="password" pt:class="form-control" pt:placeholder="#{msgs['crud.text.password']}" 
@@ -41,7 +41,7 @@
 				</h:panelGroup>
 					
 					
-				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-3"/>
             			<div class="col-sm-3">

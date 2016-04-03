@@ -12,14 +12,14 @@
       		<!-- Left col -->
             <section class="col-lg-6 connectedSortable">
               
-		              <ui:decorate template="/resources/templates/default/form.xhtml">
+		              <ui:decorate template="/resources/templates/administrador/form.xhtml">
 							<ui:param name="formName" value="Faixa Salarial" />
 							  	<p:chart  type="pie" model="#{consultaControl.grafico_FaixaSalarial}"  style="height:500px" responsive="true" />
 							<h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroEgreso}"/>	    
 					  </ui:decorate>
 					  
 					  
-					  <ui:decorate template="/resources/templates/default/form.xhtml">
+					  <ui:decorate template="/resources/templates/administrador/form.xhtml">
 							<ui:param name="formName" value="Faixa Salarial" />
 							  	<p:chart  type="pie" model="#{consultaControl.faixa_Professor}"  style="height:500px" responsive="true" />
 							<h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroFaixaProfessor}"/>	    
@@ -32,13 +32,13 @@
             <!-- right col -->
             <section class="col-lg-6 connectedSortable">
 
-				<ui:decorate template="/resources/templates/default/form.xhtml">
+				<ui:decorate template="/resources/templates/administrador/form.xhtml">
 					<ui:param name="formName" value="Faixa Salarial" />
 				    <p:chart type="pie" model="#{consultaControl.faixa_Resisdencia}"  style="height:500px" responsive="true" />
 					<h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroFaixaResidencial}"/>   
 			     </ui:decorate>
 			     
-			     <ui:decorate template="/resources/templates/default/form.xhtml">
+			     <ui:decorate template="/resources/templates/administrador/form.xhtml">
 					<ui:param name="formName" value="Faixa Salarial" />
 			      	<p:chart  type="pie" model="#{consultaControl.faixa_Empreendedor}"  style="height:500px" responsive="true" />
 				    <h:outputText value="Número de Egresso na pesquisa = #{consultaControl.numeroFaixaEmpreendedor}"/>

@@ -29,14 +29,14 @@
 	
 <ui:define name="body">
 				
-	<ui:decorate template="/resources/templates/default/form.xhtml">
+	<ui:decorate template="/resources/templates/administrador/form.xhtml">
 		
 		<ui:param name="formName" value="#{msgs['manageSeminario.title.formulario']}" />
 				
 		<h:form id="form" pt:class="form-horizontal">
 			
 			<h:panelGroup id="palestranteField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:palestrante" />
 					<ui:param name="label" value="#{msgs['crud.text.palestrante']}" />
 					<p:inputText  disabled="#{manageSeminarioControl.readOnly}" pt:placeholder="#{msgs['crud.text.palestrante']}"
@@ -47,7 +47,7 @@
 			</h:panelGroup>
 					
 			<h:panelGroup id="localField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:local" />
 					<ui:param name="label" value="#{msgs['crud.text.local']}" />
 					<p:inputText id="local" pt:class="form-control" disabled="#{manageSeminarioControl.readOnly}" 
@@ -58,7 +58,7 @@
 			</h:panelGroup>
 					
 			<h:panelGroup id="tituloField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:titulo" />
 					<ui:param name="label" value="#{msgs['crud.text.titulo']}" />
 					<p:inputText id="titulo" pt:class="form-control" disabled="#{manageSeminarioControl.readOnly}" 
@@ -69,7 +69,7 @@
 			</h:panelGroup>
 					
 			<h:panelGroup id="dataField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:data" />
 					<ui:param name="label" value="#{msgs['crud.text.data']}" />
 					<p:inputMask id="data" pt:class="form-control" value="#{manageSeminarioControl.selectedEntity.data_hora}"
@@ -82,7 +82,7 @@
 			</h:panelGroup>
 					
 			<h:panelGroup id="assuntoField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:assunto" />
 					<ui:param name="label" value="#{msgs['crud.text.assunto']}" />
 					<h:selectOneMenu pt:class="form-control"  id="assunto" value="#{manageSeminarioControl.selectedEntity.assunto_interesse}" 
@@ -97,7 +97,7 @@
 			</h:panelGroup>
 						
 					
-			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+			<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 				<div class="form-group">	
 					<div class="col-sm-3"/>
 	        		<div class="col-sm-3">

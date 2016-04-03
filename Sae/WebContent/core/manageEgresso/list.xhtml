@@ -17,7 +17,7 @@
 	
 <ui:define name="body">
     <!-- The listing form. -->
-    <ui:decorate template="/resources/templates/default/form.xhtml">
+    <ui:decorate template="/resources/templates/administrador/form.xhtml">
 		<ui:param name="formName" value="#{msgs['manageEgresso.title.box.list']}" />
         <h:form id="filterForm" pt:class="form-horizontal">
         	<h:panelGroup  id="filterBar" rendered="#{(not empty manageEgressoControl.filters)}">
@@ -94,7 +94,7 @@
         		
         <!-- Buttons shown below the listing. -->
         <h:form id="buttonsForm">
-           	<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+           	<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 	    		<div class="form-group">	
 	        		<div class="col-sm-3" style="margin-bottom: 15px">
 	        			<a class="btn btn-block btn-success btn-social" jsf:action="#{manageEgressoControl.create}">
@@ -129,14 +129,14 @@
        
     <!-- The trash panel: shows entities that have been selected for deletion. -->
 	<h:panelGroup id="teste" rendered="#{not empty manageEgressoControl.trashCan}" >
-		<ui:decorate template="/resources/templates/default/formDanger.xhtml"  >
+		<ui:decorate template="/resources/templates/administrador/formDanger.xhtml"  >
 			<ui:param name="formName" value="#{msgs['manageEgresso.title.box.trash']}" />
 		    <h:form id="trashForm" >
 			    <h3><h:outputText  value="#{msgs['crud.text.trashHeader']}" /></h3>
 			    <p:dataList value="#{manageEgressoControl.trashCan}" var="entity" type="ordered">
 			       	#{entity.nome} 
 			    </p:dataList>
-		        <ui:decorate template="/resources/templates/default/formbutton.xhtml">
+		        <ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 		        	<div class="form-group">	
 		            	<div class="col-sm-3" style="margin-bottom: 15px">
 		            		<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageEgressoControl.cancelDeletion}" 

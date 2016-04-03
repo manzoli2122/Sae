@@ -27,13 +27,13 @@
 	<h:panelGroup id="systemNotInstalled" rendered="#{! coreInfo.systemInstalled}">
 		<h4><h:outputText value="#{msgs['core.installSystem.text.instructions.smtp']}" /></h4>
 
-		<ui:decorate template="/resources/templates/default/form.xhtml">
+		<ui:decorate template="/resources/templates/administrador/form.xhtml">
 			<ui:param name="formName" value="#{msgs['core.installSystem.formulario.servidor']}" />
 			<h:form id="form" pt:class="form-horizontal">
 				<p:focus />
 					
 				<h:panelGroup id="smtpServerAddressField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:smtpServerAddress" />
 						<ui:param name="label" value="#{msgs['core.installSystem.field.smtpServerAddress']}" />
 						<p:inputText id="smtpServerAddress" pt:class="form-control" value="#{installSystemControl.config.smtpServerAddress}"
@@ -43,7 +43,7 @@
 				</h:panelGroup>
 					
 				<h:panelGroup id="smtpServerPortField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:smtpServerPort" />
 						<ui:param name="label" value="#{msgs['core.installSystem.field.smtpServerPort']}" />
 						<p:inputText id="smtpServerPort" pt:class="form-control"
@@ -55,7 +55,7 @@
 				</h:panelGroup>
 				
 				<h:panelGroup id="smtpUsernameField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:smtpUsername" />
 						<ui:param name="label" value="#{msgs['core.installSystem.field.smtpUsername']}" />
 						<p:inputText id="smtpUsername" pt:class="form-control" 
@@ -67,7 +67,7 @@
 				</h:panelGroup>
 				
 				<h:panelGroup id="smtpPasswordField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:smtpPassword" />
 						<ui:param name="label" pt:class="form-control" value="#{msgs['core.installSystem.field.smtpPassword']}" />
 						<p:password id="smtpPassword" pt:placeholder="#{msgs['core.installSystem.placeholder.smtpPassword']}" 
@@ -76,7 +76,7 @@
 				</h:panelGroup>
 					
 					
-				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-4"/>
             			<div class="col-sm-4">

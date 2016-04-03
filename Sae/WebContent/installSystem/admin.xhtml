@@ -26,13 +26,13 @@
 	<h:panelGroup id="systemNotInstalled" rendered="#{! coreInfo.systemInstalled}">
 			
 
-		<ui:decorate template="/resources/templates/default/form.xhtml">
+		<ui:decorate template="/resources/templates/administrador/form.xhtml">
 			<ui:param name="formName" value="#{msgs['core.installSystem.formulario.admin']}" />
 			<h:form id="form" pt:class="form-horizontal">
 				<p:focus />
 			
 				<h:panelGroup id="nomeField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:nome" />
 						<ui:param name="label" value="#{msgs['crud.text.name']}" />
 						<p:inputText id="nome" pt:class="form-control" pt:placeholder="#{msgs['manageAdministrador.placeholder.nome']}" 
@@ -43,7 +43,7 @@
 				</h:panelGroup>
 					
 				<h:panelGroup id="emailField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:email" />
 						<ui:param name="label" value="#{msgs['crud.text.email']}" />
 						<p:inputText id="email" pt:type="email" pt:placeholder="#{msgs['manageAdministrador.placeholder.email']}" 
@@ -54,7 +54,7 @@
 				</h:panelGroup>
 									
 				<h:panelGroup id="matriculaField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:matricula" />
 						<ui:param name="label" value="#{msgs['crud.text.matricula']}" />
 						<p:inputText id="matricula" pt:type="number" pt:placeholder="#{msgs['manageAdministrador.placeholder.matricula']}"  
@@ -67,7 +67,7 @@
 					
 					
 				<h:panelGroup id="cpfField">
-					<ui:decorate template="/resources/templates/default/formfield.xhtml">
+					<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 						<ui:param name="fieldName" value="form:cpf" />
 						<ui:param name="label" value="#{msgs['crud.text.cpf']}" />
 						<p:inputMask id="cpf" pt:class="form-control"  mask="#{msgs['format.taxCode.primefaces']}" 
@@ -76,7 +76,7 @@
 				</h:panelGroup>
 					
 					
-				<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-4"/>
             			<div class="col-sm-4">

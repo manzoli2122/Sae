@@ -29,7 +29,7 @@
 	
 <ui:define name="body">
 				
-	<ui:decorate template="/resources/templates/default/form.xhtml">
+	<ui:decorate template="/resources/templates/administrador/form.xhtml">
 		
 		<ui:param name="formName" value="#{msgs['manageCursoRealizado.title.formulario']}" />
 				
@@ -37,7 +37,7 @@
 			
 			
 			<h:panelGroup id="egressoField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:egresso" />
 					<ui:param name="label" value="#{msgs['crud.text.egresso']}" />
 					<h:selectOneMenu pt:class="form-control"  id="egresso" value="#{manageCursoRealizadoControl.selectedEntity.egresso}" 
@@ -53,7 +53,7 @@
 			
 			 
 			<h:panelGroup id="cursoField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:curso" />
 					<ui:param name="label" value="#{msgs['crud.text.curso']}" />
 					<h:selectOneMenu pt:class="form-control"  id="curso" value="#{manageCursoRealizadoControl.selectedEntity.curso}" 
@@ -68,7 +68,7 @@
 					
 					
 			<h:panelGroup id="matriculaField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:matricula" />
 					<ui:param name="label" value="#{msgs['crud.text.matricula']}" />
 					<p:inputText id="matricula" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly) or (manageCursoRealizadoControl.selectedEntity.id != null)}" 
@@ -81,7 +81,7 @@
 					
 					
 			<h:panelGroup id="inicioField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:inicio" />
 					<ui:param name="label" value="#{msgs['crud.text.inicio']}" />
 					<p:inputText id="inicio" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
@@ -94,7 +94,7 @@
 					
 					
 			<h:panelGroup id="fimField">
-				<ui:decorate template="/resources/templates/default/formfield.xhtml">
+				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:fim" />
 					<ui:param name="label" value="#{msgs['crud.text.fim']}" />
 					<p:inputText id="fim" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
@@ -106,7 +106,7 @@
 			</h:panelGroup>
 					
 					
-			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+			<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 				<div class="form-group">	
 	          			
 					<div class="col-sm-3"></div>

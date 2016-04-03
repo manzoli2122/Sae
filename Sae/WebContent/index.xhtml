@@ -18,7 +18,7 @@
     	
      <h:panelGroup rendered="#{coreInfo.systemInstalled}">
 	    
-	    <ui:decorate template="/resources/templates/default/form.xhtml">
+	    <ui:decorate template="/resources/templates/administrador/form.xhtml">
 			<ui:param name="formName" value="" />
 			<h:form id="form1" pt:class="form-horizontal">
     			
@@ -40,13 +40,13 @@
     	
     	
     <h:panelGroup rendered="#{not coreInfo.systemInstalled}">
-	    <ui:decorate template="/resources/templates/default/formDanger.xhtml">
+	    <ui:decorate template="/resources/templates/administrador/formDanger.xhtml">
 			<ui:param name="formName" value="#{msgs['core.installSystem.formulario.index']}" />
 			<h:form id="form" pt:class="form-horizontal">
     			<h3>
     				<h:outputText style="text-align:center;" value="#{msgs['core.installSystem.message']}"/>
     			</h3>
-    			<ui:decorate template="/resources/templates/default/formbutton.xhtml">
+    			<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 					<div class="form-group">	
 						<div class="col-sm-4"/>
             			<div class="col-sm-4">
