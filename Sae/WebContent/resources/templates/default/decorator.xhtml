@@ -15,11 +15,19 @@
 		
 		<li class="header"><h:outputText value="Area Restrita" /></li>
 					
-					<li><a href="#{facesContext.externalContext.requestContextPath}/core/index.faces"><i class="fa fa-home"></i> Login Administrador</a></li>
+		<li>
+			<p:commandLink styleClass="fa fa-user-plus"  action="#{coreControl.login()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['title.sae.menu.login.administrador']}"/>
+		</li>
+		
+		<li>
+			<p:commandLink styleClass="fa fa-user"  action="#{publicoControl.login()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['title.sae.menu.login.egresso']}"/>
+		</li>
 					
-					<li><a href="#{facesContext.externalContext.requestContextPath}/public/egresso/index.faces"><i class="fa fa-home"></i> Login egresso</a></li>
-						
-	
+		<!--  li><a href="#{facesContext.externalContext.requestContextPath}/core/index.faces"><i class="fa  fa-user-plus"></i> Login Administrador</a></li>
+					
+		<li><a href="#{facesContext.externalContext.requestContextPath}/public/egresso/index.faces"><i class="fa fa-user"></i> Login egresso</a></li>
+		-->			
+					
 	</ui:define>
 	
 	

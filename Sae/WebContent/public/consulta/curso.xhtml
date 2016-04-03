@@ -9,13 +9,16 @@
 
 
 <ui:define name="title">
-	<h:outputText value="Pesquisa"  />
+	<h:outputText value="#{msgs['title.sae.menu.consulta.grafico']}"  />
 </ui:define>
 
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
+		<li>
+			<p:commandLink styleClass="fa fa-search"  action="#{consultaControl.consulta()}"  value=" #{msgs['title.sae.menu.consulta']}"/>
+		</li>
 		<li class="active">
-			<h:outputText value="Pesquisa" />
+			<h:outputText value="#{msgs['title.sae.menu.consulta.grafico']}" />
 		</li>
 </ui:define>	
 	
@@ -24,17 +27,22 @@
 	
 	
 	<ui:decorate template="/resources/templates/administrador/form.xhtml">
-		<ui:param name="formName" value="Pequisa" />
+		
+		<!-- ui:param name="formName" value="Pequisa" />  -->
+		
 		<h:form id="form" pt:class="form-horizontal">
 		
-		
-			
+	
+				
 			<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 				<div class="form-group">	
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
-            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.consulta_faixa_salarial()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Faixa Salarial"/></a>
-			
+            			<a 	class="btn btn-block btn-info btn-social" 
+            				jsf:action="#{consultaControl.consulta_faixa_salarial()}">
+            				<i class="fa  fa-arrow-right"></i> 
+            				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.faixaSalarial']}"/>
+            			</a>
                		</div>
 				</div>
 			</ui:decorate>
@@ -46,7 +54,11 @@
 				<div class="form-group">	
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
-            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.consulta_Residencia()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Residencia"/></a>
+            			<a 	class="btn btn-block btn-info btn-social" 
+            				jsf:action="#{consultaControl.consulta_Residencia()}">
+            				<i class="fa  fa-arrow-right"></i> 
+            				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.residencia']}"/>
+            			</a>
                		</div>
 				</div>
 			</ui:decorate>
@@ -58,7 +70,11 @@
 				<div class="form-group">	
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
-            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.consulta_Area_Atuacao()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Area de atuação"/></a>
+            			<a 	class="btn btn-block btn-info btn-social" 
+            				jsf:action="#{consultaControl.consulta_Area_Atuacao()}">
+            				<i class="fa  fa-arrow-right"></i> 
+            				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.areaAtuacao']}"/>
+            			</a>
                		</div>
 				</div>
 			</ui:decorate>
@@ -70,7 +86,11 @@
 				<div class="form-group">	
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
-            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.consulta_Sexo()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Genero"/></a>
+            			<a 	class="btn btn-block btn-info btn-social" 
+            				jsf:action="#{consultaControl.consulta_Sexo()}">
+            				<i class="fa  fa-arrow-right"></i> 
+            				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.genero']}"/>
+            			</a>
                		</div>
 				</div>
 			</ui:decorate>
@@ -81,8 +101,12 @@
 				<div class="form-group">	
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
-            			<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.consulta_Area_Formacao()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="area formacao"/></a>
-               		</div>
+            			<a 	class="btn btn-block btn-info btn-social" 
+            				jsf:action="#{consultaControl.consulta_Area_Formacao()}">
+            				<i class="fa  fa-arrow-right"></i> 
+            				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.areaFormacao']}"/>
+            			</a>
+               		</div> 
 				</div>
 			</ui:decorate>
 			

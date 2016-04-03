@@ -12,22 +12,21 @@
 
 
 <ui:define name="title">
-	<h:outputText value="Pesquisa"  />
+	<h:outputText value="#{msgs['title.sae.menu.consulta']}"  />
 </ui:define>
 
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 		<li class="active">
-			<h:outputText value="Pesquisa" />
+			<i class="fa fa-search"></i><h:outputText value=" #{msgs['title.sae.menu.consulta']}" />
 		</li>
 </ui:define>	
 	
 <ui:define name="body">
 	
 	
-	
 	<ui:decorate template="/resources/templates/administrador/form.xhtml">
-		<ui:param name="formName" value="Pequisa" />
+		<!--  ui:param name="formName" value="#{msgs['title.sae.menu.consulta']}" /-->
 		<h:form id="form" pt:class="form-horizontal">
 		
 		
@@ -53,7 +52,7 @@
 				<div class="form-group">
 					<div class="col-sm-4"/>	
 					<div class="col-sm-3">
-						<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.selectGrafico()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="Prosseguir"/></a>
+						<a class="btn btn-block btn-info btn-social" jsf:action="#{consultaControl.selectGrafico()}" ><i class="fa  fa-arrow-right"></i> <h:outputText value="#{msgs['title.sae.button.consulta']}"/></a>
 					</div>
 				</div>
 			</ui:decorate>

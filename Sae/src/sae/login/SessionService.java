@@ -1,4 +1,4 @@
-package sae.core.application;
+package sae.login;
 
 import java.io.Serializable;
 import java.util.List;

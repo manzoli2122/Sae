@@ -38,6 +38,13 @@ public class publicoControl implements Serializable{
 	
 	
 	
+	public String login(){
+		return "/public/egresso/index.xhtml?faces-redirect=true" ;
+	}
+	
+	
+	
+	
 	public Faixa_Salarial_Enum[] getFaixa_Salarial() {
 		return Faixa_Salarial_Enum.values();
 	}

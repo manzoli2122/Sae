@@ -29,8 +29,8 @@
 		<header class="main-header">
 
 			<!-- Logo -->
-			<a href="#{facesContext.externalContext.requestContextPath}/index.html" class="logo"> <span class="logo-mini">[<b>S</b>]</span>
-				<span class="logo-lg"><b>SAE</b> @ Ufes</span>
+			<a href="#{facesContext.externalContext.requestContextPath}/index.html" class="logo"> <span class="logo-mini">[<b>#{msgs['title.sae.acronym']}</b>]</span>
+				<span class="logo-lg"><b>#{msgs['title.sae']}</b> #{msgs['title.sae.complement']}</span> 
 			</a>
 
 			<!-- Header Navbar -->
@@ -56,11 +56,23 @@
 		<aside class="main-sidebar">
 			<section class="sidebar">
 				<ul class="sidebar-menu">
-					<li class="header"><h:outputText value="#{msgs['title.navigation']}" /></li>
+					<li class="header"><h:outputText value="#{msgs['title.sae.menu.navigation']}" /></li>
 					
-					<li><a href="#{facesContext.externalContext.requestContextPath}/public/consulta/index.faces"><i class="fa fa-home"></i> Consulta</a></li>
+					<li>
+						<p:commandLink styleClass="fa fa-search"  action="#{consultaControl.consulta()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['title.sae.menu.consulta']}"/>
+					</li>
 					
-					<li><a href="#{facesContext.externalContext.requestContextPath}/public/consulta/depoimento/index.faces"><i class="fa fa-home"></i> Depoimento</a></li>
+					<li>
+						<p:commandLink styleClass="fa fa-list"  action="#{consultaControl.depoimento()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['title.sae.menu.depoimento']}"/>
+					</li>
+					
+					
+					
+					<!--  li><a href="#{facesContext.externalContext.requestContextPath}/public/consulta/index.faces"><i class="fa fa-search"></i>#{msgs['title.sae.menu.consulta']}</a></li>
+					
+					<li><a href="#{facesContext.externalContext.requestContextPath}/public/consulta/depoimento/index.faces"><i class="fa fa-list"></i>#{msgs['title.sae.menu.depoimento']}</a></li>
+					
+					 -->
 					
 					<ui:insert name="sidebarMenu" />
 					

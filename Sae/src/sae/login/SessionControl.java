@@ -1,11 +1,10 @@
-package sae.core.control;
+package sae.login;
 
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import br.ufes.inf.nemo.util.ejb3.controller.JSFController;
-import sae.core.application.SessionService;
 import sae.core.domain.Administrador;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.Egresso;

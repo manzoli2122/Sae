@@ -64,12 +64,34 @@ public class ConsultaControl implements Serializable {
 	
 	
 	
-	public String list() {
-		logger.log(Level.INFO, "LIST CONSULTA ");
+	public String consulta() {
 		return getViewPath() + "index.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
 
+	
+	public String depoimento(){
+		return getViewPath() +  "depoimento/" + "index.xhtml?faces-redirect=" + getFacesRedirect();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public String selectGrafico(){
 		historicos = consultaService.consultaHistoricos(curso);
@@ -81,6 +103,22 @@ public class ConsultaControl implements Serializable {
 		//historicos = consultaService.consultaHistoricos(curso);
 		return getViewPath() + "depoimento/" + "depoimentos.xhtml?faces-redirect=" + getFacesRedirect();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	// FUNCÕES DE FAIXA SALARIAL

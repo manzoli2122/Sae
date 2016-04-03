@@ -1,4 +1,4 @@
-package sae.core.application;
+package sae.login;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import br.ufes.inf.nemo.util.TextUtils;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.MultiplePersistentObjectsFoundException;
 import br.ufes.inf.nemo.util.ejb3.persistence.exceptions.PersistentObjectNotFoundException;
+import sae.core.application.CoreInformacao;
 import sae.core.domain.Administrador;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.Egresso;
@@ -30,7 +31,7 @@ import sae.core.persistence.EgressoDAO;
  * details.
  * 
  * @author Bruno Manzoli (manzoli2122@gmail.com)
- * @see sae.core.application.SessionService
+ * @see sae.login.SessionService
  */
 @SessionScoped
 @Stateful
@@ -85,7 +86,7 @@ public class SessionServiceBean implements SessionService{
 	
 	
 	
-	/** @see sae.core.application.SessionService#getCursoRealizado() */
+	/** @see sae.login.SessionService#getCursoRealizado() */
 	@Override
 	public List<CursoRealizado> getCursoRealizado() {
 		return cursoRealizadoDAO.retrieveMyCursos(egresso);
@@ -93,7 +94,7 @@ public class SessionServiceBean implements SessionService{
 	
 	
 	
-	/** @see sae.core.application.SessionService#getAdmin() */
+	/** @see sae.login.SessionService#getAdmin() */
 	@Override
 	public Administrador getAdmin() { 
 		if(admin == null)
@@ -118,7 +119,7 @@ public class SessionServiceBean implements SessionService{
 	
 	
 	
-	/** @see sae.core.application.SessionService#getEgresso() */
+	/** @see sae.login.SessionService#getEgresso() */
 	@Override
 	public Egresso getEgresso() {
 		if(egresso == null)
@@ -128,7 +129,7 @@ public class SessionServiceBean implements SessionService{
 	
 	
 	
-	/** @see sae.core.application.SessionService#isLoggedIn() */
+	/** @see sae.login.SessionService#isLoggedIn() */
 	@Override
 	public boolean isLoggedIn(){
 		if(admin != null || egresso != null)
@@ -138,7 +139,7 @@ public class SessionServiceBean implements SessionService{
 	
 	
 	
-	/** @see sae.core.application.SessionService#getDecorator() */
+	/** @see sae.login.SessionService#getDecorator() */
 	@Override
 	public String getDecorator() {
 		if(decorator ==  null || decorator ==  DEFAULT_DECORATOR_NAME ){
@@ -192,7 +193,7 @@ public class SessionServiceBean implements SessionService{
 	
 	
 
-	/** @see sae.core.application.SessionService#logout() */
+	/** @see sae.login.SessionService#logout() */
 	@Override
 	public void logout(){
 		logger.log(Level.INFO, "Invalidating a user session..... ");

@@ -69,6 +69,13 @@ public class CoreControl  implements Serializable {
 	
 	
 	
+	public String login(){
+		return "/core/index.xhtml?faces-redirect=true" ;
+	}
+	
+	
+	
+	
 	
 	/** JSF Converter for Administrador objects. */
 	private PersistentObjectConverterFromId<Administrador> administradorConverter;

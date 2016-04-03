@@ -12,8 +12,8 @@ import javax.ejb.Stateless;
 import br.ufes.inf.nemo.util.ejb3.application.CrudException;
 import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.application.CrudServiceBean;
-import sae.core.application.SessionService;
 import sae.core.domain.Egresso;
+import sae.login.SessionService;
 import sae.publico.domain.HistoricoEgresso;
 import sae.publico.persistence.HistoricoEgressoDAO;
 

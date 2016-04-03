@@ -8,10 +8,10 @@
                 xmlns:jsf="http://xmlns.jcp.org/jsf"
                 template="/resources/templates/#{sessionControl.decorator}/decorator.xhtml">
 
-<ui:define name="title"><h:outputText value="#{msgs['title.home']}" /></ui:define>
+<ui:define name="title"><h:outputText value="#{msgs['title.sae.home']}" /></ui:define>
     
 <ui:define name="breadcrumb">
-		<li class="active"><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
+		<li class="active"><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i>Home</a></li>
 </ui:define>
 	
 <ui:define name="body">
@@ -23,12 +23,12 @@
 			<h:form id="form1" pt:class="form-horizontal">
     			
     			<div class="col-sm-1"/>
-    			<h4><h:outputText pt:class="col-sm-10"  value="#{msgs['core.message.index']}"/></h4>
+    			<h4><h:outputText pt:class="col-sm-10"  value="#{msgs['message.sae.index.1']}"/></h4>
     			
     			<div class="form-group"/>
     			
     			<div class="col-sm-1"/>
-    			<h4><h:outputText pt:class="col-sm-10"   value="#{msgs['core.message.index1']}"/></h4>
+    			<h4><h:outputText pt:class="col-sm-10"   value="#{msgs['message.sae.index.2']}"/></h4>
     			
 			</h:form>
 		</ui:decorate>
