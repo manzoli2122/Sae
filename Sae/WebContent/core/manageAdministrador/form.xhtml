@@ -18,13 +18,14 @@
 
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-		<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageAdministrador.title']}" /></a> </li> 
+		<li><p:commandLink styleClass="fa fa-user-plus"  action="#{manageAdministradorControl.list()}"  value=" #{msgs['manageAdministrador.menu.title']}"/></li>
 		<li class="active">
-			<h:outputText value="#{msgs['manageAdministrador.title.create']}" 
+			<h:outputText styleClass="fa fa-user-plus" value=" #{msgs['manageAdministrador.title.create']}" 
 						  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id == null)}" />
-   			<h:outputText value="#{msgs['manageAdministrador.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageAdministrador.title.update']}" 
    						  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id != null)}" />
-       		<h:outputText value="#{msgs['manageAdministrador.title.retrieve']}" rendered="#{manageAdministradorControl.readOnly}" />
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageAdministrador.title.retrieve']}" 
+       					  rendered="#{manageAdministradorControl.readOnly}" />
 		</li>
 </ui:define>	
 	

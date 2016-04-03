@@ -18,13 +18,15 @@
 
 <ui:define name="breadcrumb">
 	<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-	<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageCurso.title']}" /></a> </li> 
+	<li><p:commandLink styleClass="fa fa-book"  action="#{manageCursoControl.list()}"  value=" #{msgs['manageCurso.menu.title']}"/></li>
+		
 	<li class="active">
-		<h:outputText value="#{msgs['manageCurso.title.create']}" 
+		<h:outputText styleClass="fa fa-user-plus" value=" #{msgs['manageCurso.title.create']}" 
 					  rendered="#{(! manageCursoControl.readOnly) and (manageCursoControl.selectedEntity.id == null)}" />
-		<h:outputText value="#{msgs['manageCurso.title.update']}" 
+		<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageCurso.title.update']}" 
 					  rendered="#{(! manageCursoControl.readOnly) and (manageCursoControl.selectedEntity.id != null)}" />
-   		<h:outputText value="#{msgs['manageCurso.title.retrieve']}" rendered="#{manageCursoControl.readOnly}" />
+   		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageCurso.title.retrieve']}" 
+   					  rendered="#{manageCursoControl.readOnly}" />
 	</li>
 </ui:define>	
 	

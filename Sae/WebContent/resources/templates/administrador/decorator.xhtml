@@ -13,7 +13,7 @@
 		<li class="dropdown user user-menu">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 				<img src="#{facesContext.externalContext.requestContextPath}/resources/templates/default/images/blankAvatar.png" class="user-image" alt="User Image" /> 
-				<h:outputText value=" #{sessionControl.admin.shortName} - Administrador"  />
+				<h:outputText value=" #{sessionControl.admin.shortName} - #{msgs['title.sae.user.administrador']}"  />
 				<span class="hidden-xs"></span>
 			</a>
 							
@@ -28,13 +28,17 @@
 				<li class="user-footer">
 					<div class="pull-left">
 						<h:form>
-				    		<p:commandButton pt:class="btn btn-info btn-flat"  action="#{sessionControl.formAtualizarSenha()}"  value="atualizar senha"  />
+				    		<p:commandButton 	pt:class="btn btn-info btn-flat"  
+				    							action="#{sessionControl.formAtualizarSenha()}" 
+												value="#{msgs['title.sae.user.atualizarSenha']}"  />
 						</h:form>
 					</div>
 					
 					<div class="pull-right">
 						<h:form>
-				    		<p:commandButton pt:class="btn btn-info btn-flat"  action="#{sessionControl.logout()}"  value="logout"  />
+				    		<p:commandButton pt:class="btn btn-info btn-flat" 
+											 action="#{sessionControl.logout()}"  
+											 value="#{msgs['title.sae.user.logout']}"  />
 						</h:form>
 					</div>
 				</li>
@@ -49,19 +53,19 @@
 
 	<ui:define name="sidebarMenu">
 		
-		<li class="header"><h:outputText value="Navegação administrador" /></li>
+		<li class="header"><h:outputText value="#{msgs['title.sae.menu.navigation.administrador']}" /></li>
 					
 		<li>
-			<p:commandLink  action="#{manageAdministradorControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageAdministrador.title']}"  />
+			<p:commandLink styleClass="fa fa-user-plus"  action="#{manageAdministradorControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageAdministrador.menu.title']}"  />
 		</li>
 		<li>
-			<p:commandLink action="#{manageCursoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageCurso.title']}"  />
+			<p:commandLink styleClass="fa fa-book" action="#{manageCursoControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageCurso.menu.title']}"  />
 		</li>
 		<li>
-			<p:commandLink  action="#{manageAssuntoInteresseControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageAssuntoInteresse.title']}"  />
+			<p:commandLink  action="#{manageAssuntoInteresseControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageAssuntoInteresse.menu.title']}"  />
 		</li>
 		<li>
-			<p:commandLink action="#{manageEgressoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageEgresso.title']}"  />
+			<p:commandLink styleClass="fa fa-users" action="#{manageEgressoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="  #{msgs['manageEgresso.menu.title']}"  />
 		</li>
 		<li>
 			<p:commandLink  action="#{manageCursoRealizadoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageCursoRealizado.title']}"  />
