@@ -59,22 +59,22 @@
 			<p:commandLink styleClass="fa fa-user-plus"  action="#{manageAdministradorControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageAdministrador.menu.title']}"  />
 		</li>
 		<li>
-			<p:commandLink styleClass="fa fa-book" action="#{manageCursoControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageCurso.menu.title']}"  />
+			<p:commandLink styleClass="fa fa-book"   action="#{manageCursoControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageCurso.menu.title']}"  />
 		</li>
 		<li>
-			<p:commandLink  action="#{manageAssuntoInteresseControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageAssuntoInteresse.menu.title']}"  />
+			<p:commandLink styleClass="fa fa-newspaper-o" action="#{manageAssuntoInteresseControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageAssuntoInteresse.menu.title']}"  />
 		</li>
 		<li>
 			<p:commandLink styleClass="fa fa-users" action="#{manageEgressoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="  #{msgs['manageEgresso.menu.title']}"  />
 		</li>
 		<li>
-			<p:commandLink  action="#{manageCursoRealizadoControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageCursoRealizado.title']}"  />
+			<p:commandLink styleClass="fa fa-mortar-board" action="#{manageCursoRealizadoControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageCursoRealizado.menu.title']}"  />
 		</li>
 		<li>
-			<p:commandLink  action="#{manageSeminarioControl.list()}" rendered="#{coreInfo.systemInstalled}" value="#{msgs['manageSeminario.title']}"  />
+			<p:commandLink styleClass="fa fa-file-powerpoint-o"   action="#{manageSeminarioControl.list()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageSeminario.menu.title']}"  />
 		</li>		
 		<li>
-			<p:commandLink  action="#{manageDepoimentoControl.analisarDepoimento()}" rendered="#{coreInfo.systemInstalled}" value="Analisar Depoimento Pendentes"  />
+			<p:commandLink styleClass="fa fa-question-circle"  action="#{manageDepoimentoControl.analisarDepoimento()}" rendered="#{coreInfo.systemInstalled}" value=" #{msgs['manageDepoimento.menu.title.analisar']}"  />
 		</li>
 	
 	</ui:define>

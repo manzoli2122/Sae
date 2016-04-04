@@ -21,7 +21,7 @@
 	<li><p:commandLink styleClass="fa fa-book"  action="#{manageCursoControl.list()}"  value=" #{msgs['manageCurso.menu.title']}"/></li>
 		
 	<li class="active">
-		<h:outputText styleClass="fa fa-user-plus" value=" #{msgs['manageCurso.title.create']}" 
+		<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageCurso.title.create']}" 
 					  rendered="#{(! manageCursoControl.readOnly) and (manageCursoControl.selectedEntity.id == null)}" />
 		<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageCurso.title.update']}" 
 					  rendered="#{(! manageCursoControl.readOnly) and (manageCursoControl.selectedEntity.id != null)}" />

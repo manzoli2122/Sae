@@ -81,16 +81,24 @@
           	<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 	    		<div class="form-group">	
 	       			<div class="col-sm-3" style="margin-bottom: 15px">
-	    				<a class="btn btn-block btn-success btn-social" jsf:action="#{manageCursoControl.create}"><i class="fa fa-user-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/></a>
+	    				<a class="btn btn-block btn-success btn-social" jsf:action="#{manageCursoControl.create}">
+	    					<i class="fa fa-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/>
+	    				</a>
 	           		</div>
 	           		<div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageCursoControl.selectedEntity != null}">
-	    				<a class="btn btn-block btn-info btn-social" jsf:action="#{manageCursoControl.retrieve}" jsf:disabled="#{manageCursoControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>
+	    				<a class="btn btn-block btn-info btn-social" jsf:action="#{manageCursoControl.retrieve}" jsf:disabled="#{manageCursoControl.selectedEntity == null}">
+	    					<i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/>
+	    				</a>
 	           		</div>
 	           		<div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageCursoControl.selectedEntity != null}">
-	    				<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageCursoControl.update}" jsf:disabled="#{manageCursoControl.selectedEntity == null}"><i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/></a>
+	    				<a class="btn btn-block btn-warning btn-social" jsf:action="#{manageCursoControl.update}" jsf:disabled="#{manageCursoControl.selectedEntity == null}">
+	    					<i class="fa  fa-refresh"></i> <h:outputText value="#{msgs['crud.button.update']}"/>
+	    				</a>
 	           		</div>
 	           		<div class="col-sm-3" jsf:rendered="#{manageCursoControl.selectedEntity != null}">
-	    				<a class="btn btn-block btn-danger btn-social" jsf:action="#{manageCursoControl.trash}" jsf:disabled="#{manageCursoControl.selectedEntity == null}" jsf:process="@this" jsf:update=":trashForm"><i class="fa  fa-trash-o"></i> <h:outputText value="#{msgs['crud.button.delete']}"/></a>
+	    				<a class="btn btn-block btn-danger btn-social" jsf:action="#{manageCursoControl.trash}" jsf:disabled="#{manageCursoControl.selectedEntity == null}" jsf:process="@this" jsf:update=":trashForm">
+	    					<i class="fa  fa-trash-o"></i> <h:outputText value="#{msgs['crud.button.delete']}"/>
+	    				</a>
 	           		</div>
 	           	</div>
 	    	</ui:decorate>

@@ -18,13 +18,13 @@
 
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-		<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageAssuntoInteresse.title']}" /></a> </li> 
+		<li><p:commandLink styleClass="fa fa-newspaper-o"  action="#{manageAssuntoInteresseControl.list()}"  value=" #{msgs['manageAssuntoInteresse.menu.title']}"/></li>
 		<li class="active">
-			<h:outputText value="#{msgs['manageAssuntoInteresse.title.create']}" 
+			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageAssuntoInteresse.title.create']}" 
 						  rendered="#{(! manageAssuntoInteresseControl.readOnly) and (manageAssuntoInteresseControl.selectedEntity.id == null)}" />
-   			<h:outputText value="#{msgs['manageAssuntoInteresse.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageAssuntoInteresse.title.update']}" 
    						  rendered="#{(! manageAssuntoInteresseControl.readOnly) and (manageAssuntoInteresseControl.selectedEntity.id != null)}" />
-       		<h:outputText value="#{msgs['manageAssuntoInteresse.title.retrieve']}" rendered="#{manageAssuntoInteresseControl.readOnly}"/>
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageAssuntoInteresse.title.retrieve']}" rendered="#{manageAssuntoInteresseControl.readOnly}"/>
 		</li>
 </ui:define>	
 	
