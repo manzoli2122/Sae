@@ -18,13 +18,13 @@
 
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-		<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageDepoimento.title']}" /></a> </li> 
+		<li><p:commandLink styleClass="fa fa-bullhorn"  action="#{manageDepoimentoControl.list()}"  value=" #{msgs['manageDepoimento.menu.title']}"/></li>
 		<li class="active">
-			<h:outputText value="#{msgs['manageDepoimento.title.create']}" 
+			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageDepoimento.title.create']}" 
 						  rendered="#{(! manageDepoimentoControl.readOnly) and (manageDepoimentoControl.selectedEntity.id == null)}" />
-   			<h:outputText value="#{msgs['manageDepoimento.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageDepoimento.title.update']}" 
    						  rendered="#{(! manageDepoimentoControl.readOnly) and (manageDepoimentoControl.selectedEntity.id != null)}" />
-       		<h:outputText value="#{msgs['manageDepoimento.title.retrieve']}" rendered="#{manageDepoimentoControl.readOnly}" />
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageDepoimento.title.retrieve']}" rendered="#{manageDepoimentoControl.readOnly}" />
 		</li>
 </ui:define>	
 	

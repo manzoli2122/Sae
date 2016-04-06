@@ -14,7 +14,7 @@
 
 <ui:define name="breadcrumb">
 	<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-	<li class="active"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageEscolaridade.title']}" /></li> 
+	<li class="active"><i class="fa fa-graduation-cap"></i><h:outputText value=" #{msgs['manageEscolaridade.menu.title']}" /></li> 
 </ui:define>
 	
 <ui:define name="body">
@@ -84,7 +84,7 @@
             	<ui:decorate template="/resources/templates/administrador/formbutton.xhtml">
 	        			<div class="form-group">	
 	            			<div class="col-sm-3" style="margin-bottom: 15px">
-	        					<a class="btn btn-block btn-success btn-social" jsf:action="#{manageEscolaridadeControl.create}"><i class="fa fa-user-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/></a>
+	        					<a class="btn btn-block btn-success btn-social" jsf:action="#{manageEscolaridadeControl.create}"><i class="fa fa-plus"></i> <h:outputText value="#{msgs['crud.button.create']}"/></a>
 	                		</div>
 	                		<div class="col-sm-3" style="margin-bottom: 15px" jsf:rendered="#{manageEscolaridadeControl.selectedEntity != null}">
 	        					<a class="btn btn-block btn-info btn-social" jsf:action="#{manageEscolaridadeControl.retrieve}" jsf:disabled="#{manageEscolaridadeControl.selectedEntity == null}"><i class="fa  fa-file-text"></i> <h:outputText value="#{msgs['crud.button.retrieve']}"/></a>

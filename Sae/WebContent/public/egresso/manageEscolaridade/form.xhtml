@@ -17,13 +17,13 @@
 
 <ui:define name="breadcrumb">
 	<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-	<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageEscolaridade.title']}" /></a> </li> 
+	<li><p:commandLink styleClass="fa fa-graduation-cap"  action="#{manageEscolaridadeControl.list()}"  value=" #{msgs['manageEscolaridade.menu.title']}"/></li>
 	<li class="active">
-		<h:outputText value="#{msgs['manageEscolaridade.title.create']}" 
+		<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageEscolaridade.title.create']}" 
 					  rendered="#{(! manageEscolaridadeControl.readOnly) and (manageEscolaridadeControl.selectedEntity.id == null)}" />
-		<h:outputText value="#{msgs['manageEscolaridade.title.update']}" 
+		<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageEscolaridade.title.update']}" 
 					  rendered="#{(! manageEscolaridadeControl.readOnly) and (manageEscolaridadeControl.selectedEntity.id != null)}" />
-   		<h:outputText value="#{msgs['manageEscolaridade.title.retrieve']}" rendered="#{manageEscolaridadeControl.readOnly}" />
+   		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageEscolaridade.title.retrieve']}" rendered="#{manageEscolaridadeControl.readOnly}" />
 	</li>
 </ui:define>	
 	
