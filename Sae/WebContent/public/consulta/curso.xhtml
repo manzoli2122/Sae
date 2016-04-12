@@ -15,7 +15,7 @@
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 		<li>
-			<p:commandLink styleClass="fa fa-search"  action="#{consultaControl.consulta()}"  value=" #{msgs['title.sae.menu.consulta']}"/>
+			<p:commandLink styleClass="fa fa-search"  action="#{consultaDadosEstatisticosControl.consulta()}"  value=" #{msgs['title.sae.menu.consulta']}"/>
 		</li>
 		<li class="active">
 			<h:outputText value="#{msgs['title.sae.menu.consulta.grafico']}" />
@@ -39,7 +39,7 @@
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
             			<a 	class="btn btn-block btn-info btn-social" 
-            				jsf:action="#{consultaControl.consulta_faixa_salarial()}">
+            				jsf:action="#{consultaDadosEstatisticosControl.consulta_faixa_salarial()}">
             				<i class="fa  fa-arrow-right"></i> 
             				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.faixaSalarial']}"/>
             			</a>
@@ -55,7 +55,7 @@
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
             			<a 	class="btn btn-block btn-info btn-social" 
-            				jsf:action="#{consultaControl.consulta_Residencia()}">
+            				jsf:action="#{consultaDadosEstatisticosControl.consulta_Residencia()}">
             				<i class="fa  fa-arrow-right"></i> 
             				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.residencia']}"/>
             			</a>
@@ -71,7 +71,7 @@
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
             			<a 	class="btn btn-block btn-info btn-social" 
-            				jsf:action="#{consultaControl.consulta_Area_Atuacao()}">
+            				jsf:action="#{consultaDadosEstatisticosControl.consulta_Area_Atuacao()}">
             				<i class="fa  fa-arrow-right"></i> 
             				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.areaAtuacao']}"/>
             			</a>
@@ -87,7 +87,7 @@
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
             			<a 	class="btn btn-block btn-info btn-social" 
-            				jsf:action="#{consultaControl.consulta_Sexo()}">
+            				jsf:action="#{consultaDadosEstatisticosControl.consulta_Sexo()}">
             				<i class="fa  fa-arrow-right"></i> 
             				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.genero']}"/>
             			</a>
@@ -102,7 +102,7 @@
 					<div class="col-sm-4"/>
             		<div class="col-sm-4">
             			<a 	class="btn btn-block btn-info btn-social" 
-            				jsf:action="#{consultaControl.consulta_Area_Formacao()}">
+            				jsf:action="#{consultaDadosEstatisticosControl.consulta_Area_Formacao()}">
             				<i class="fa  fa-arrow-right"></i> 
             				<h:outputText value="#{msgs['title.sae.button.consulta.grafico.areaFormacao']}"/>
             			</a>
