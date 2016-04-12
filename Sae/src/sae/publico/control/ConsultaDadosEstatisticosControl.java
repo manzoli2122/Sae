@@ -17,12 +17,12 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class ConsultaControl implements Serializable {
+public class ConsultaDadosEstatisticosControl implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 	
-	//private static final Logger logger = Logger.getLogger(ConsultaControl.class.getCanonicalName());
+	//private static final Logger logger = Logger.getLogger(ConsultaDadosEstatisticosControl.class.getCanonicalName());
 	
 	@EJB 
 	private ConsultaDadosEstatisticosService consultaService;
@@ -44,7 +44,7 @@ public class ConsultaControl implements Serializable {
 	
 	
 	/*   CONSTRUTOR DA CLASSE */
-	public ConsultaControl(){
+	public ConsultaDadosEstatisticosControl(){
 		 viewPath = "/public/consulta/";
 	     bundleName = "msgs";
 	}
