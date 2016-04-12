@@ -42,6 +42,7 @@ public class ConsultaDepoimentoControl implements Serializable{
 	
 	
 	public String depoimento(){
+		curso = null;
 		return getViewPath()  + "index.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	

@@ -11,9 +11,7 @@ import sae.publico.domain.HistoricoEgresso;
 @Local
 public interface ConsultaService {
 
-	long countFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso);
-
-	long countReside(Boolean mora, Curso curso);
+	
 
 	List<HistoricoEgresso> consultaHistoricos(Curso curso);
 

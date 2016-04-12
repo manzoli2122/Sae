@@ -5,6 +5,25 @@
                 xmlns:p="http://primefaces.org/ui"
                template="/resources/templates/#{sessionControl.decorator}/decorator.xhtml">
                 
+    
+<ui:define name="title">
+	<h:outputText value="#{msgs['title.sae.menu.depoimento']}"  />
+</ui:define>
+
+<ui:define name="breadcrumb">
+		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
+		
+		<li><p:commandLink styleClass="fa fa-quote-left"  action="#{consultaDepoimentoControl.depoimento()}"  value=" #{msgs['title.sae.menu.depoimento']}"/></li>
+		
+		<li class="active">
+			<i class="fa fa-book"></i><h:outputText value=" #{consultaDepoimentoControl.curso.nome}" />
+		</li>
+		
+		
+</ui:define>	
+    
+    
+    
     <ui:define name="body">
       	
       	 <div class="row">

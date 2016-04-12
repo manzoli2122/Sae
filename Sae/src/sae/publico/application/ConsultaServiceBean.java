@@ -18,13 +18,13 @@ public class ConsultaServiceBean implements ConsultaService{
 	private HistoricoEgressoDAO historico_EgressoDAO;
 	
 	
-	@Override
+	
 	public long countFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso){
 		return historico_EgressoDAO.contFaixaSalarial(faixa, curso);
 	}
 	
 	
-	@Override
+	
 	public long countReside(Boolean mora, Curso curso){
 		return historico_EgressoDAO.contReside(mora, curso);
 	}

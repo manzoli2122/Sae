@@ -43,9 +43,6 @@ public class ConsultaControl implements Serializable {
 	
 	
 	
-	
-	
-	
 	/*   CONSTRUTOR DA CLASSE */
 	public ConsultaControl(){
 		 viewPath = "/public/consulta/";
@@ -55,14 +52,12 @@ public class ConsultaControl implements Serializable {
 	
 	
 	public boolean getFacesRedirect() { return true; }
-	
-	
-	
 	public String getViewPath() {return viewPath;	}
 	
 	
 	
 	public String consulta() {
+		curso = null;
 		return getViewPath() + "index.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
@@ -73,26 +68,6 @@ public class ConsultaControl implements Serializable {
 		historicos = consultaService.consultaHistoricos(curso);
 		return getViewPath() + "curso.xhtml?faces-redirect=" + getFacesRedirect();
 	}
-	
-	
-	
-	
-	
-	/*
-	
-	public String visualizarDepoimentos(){
-		return getViewPath() + "depoimento/" + "depoimentos.xhtml?faces-redirect=" + getFacesRedirect();
-	}
-	
-	public String depoimento(){
-		return getViewPath() +  "depoimento/" + "index.xhtml?faces-redirect=" + getFacesRedirect();
-	}
-	
-	
-	*/
-	
-	
-	
 	
 	
 	
@@ -112,11 +87,9 @@ public class ConsultaControl implements Serializable {
 		Faixa_Salarial_Enum[] faixas = Faixa_Salarial_Enum.values();
 		
 		
-		
 		int[] valor = new int[faixas.length] ;
 		int[] valor_empreendedor = new int[faixas.length] ;
 		int[] valor_professor = new int[faixas.length] ;
-		
 		
 		
 		faixa_residencia = new PieChartModel();
@@ -124,11 +97,9 @@ public class ConsultaControl implements Serializable {
 		faixa_professor = new PieChartModel();
 		
 		
-		
 		numeroFaixaResidencial=0;
 		numeroFaixaEmpreendedor=0;
 		numeroFaixaProfessor=0;
-		
 		
 		
 		while(iterator.hasNext()){
@@ -166,10 +137,7 @@ public class ConsultaControl implements Serializable {
 						break;
 					}
 				}
-			}
-			
-			
-			
+			}	
 			
 		}
 		
@@ -185,7 +153,6 @@ public class ConsultaControl implements Serializable {
 		faixa_professor.setShowDataLabels(true);
 		faixa_professor.setSeriesColors("dd6542,E7982F,E4F20A,0AC9F2,7a86db,6a9660");
 	    faixa_professor.setDiameter(250);
-		
 		
 		
 		faixa_empreendedor.setTitle("Egressos Empreendedores");
