@@ -18,13 +18,13 @@
 
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
-		<li><a jsf:outcome="list"><i class="fa fa-user"></i><h:outputText value="#{msgs['manageSugestao.title']}" /></a> </li> 
+		<li><p:commandLink styleClass="fa fa-comments-o"  action="#{manageSugestaoControl.list()}"  value=" #{msgs['manageSugestao.menu.title']}"/></li>
 		<li class="active">
-			<h:outputText value="#{msgs['manageSugestao.title.create']}" 
+			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageSugestao.title.create']}" 
 						  rendered="#{(! manageSugestaoControl.readOnly) and (manageSugestaoControl.selectedEntity.id == null)}" />
-   			<h:outputText value="#{msgs['manageSugestao.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageSugestao.title.update']}" 
    						  rendered="#{(! manageSugestaoControl.readOnly) and (manageSugestaoControl.selectedEntity.id != null)}" />
-       		<h:outputText value="#{msgs['manageSugestao.title.retrieve']}" rendered="#{manageSugestaoControl.readOnly}" />
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageSugestao.title.retrieve']}" rendered="#{manageSugestaoControl.readOnly}" />
 		</li>
 </ui:define>	
 	

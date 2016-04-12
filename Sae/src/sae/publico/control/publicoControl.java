@@ -32,7 +32,7 @@ public class publicoControl implements Serializable{
 	private static final Logger logger = Logger.getLogger(publicoControl.class.getCanonicalName());
 	
 	
-	/** The DAO for Administrador objects. */
+	/** The DAO for Depoimento objects. */
 	@EJB    	
 	private DepoimentoDAO depoimentoDAO;
 	

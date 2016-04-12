@@ -20,11 +20,11 @@
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 		<li><p:commandLink styleClass="fa fa-user-plus"  action="#{manageAdministradorControl.list()}"  value=" #{msgs['manageAdministrador.menu.title']}"/></li>
 		<li class="active">
-			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageAdministrador.title.create']}" 
+			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageAdministrador.title.create.breadcrumb']}" 
 						  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id == null)}" />
-   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageAdministrador.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageAdministrador.title.update.breadcrumb']}" 
    						  rendered="#{(! manageAdministradorControl.readOnly) and (manageAdministradorControl.selectedEntity.id != null)}" />
-       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageAdministrador.title.retrieve']}" 
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageAdministrador.title.retrieve.breadcrumb']}" 
        					  rendered="#{manageAdministradorControl.readOnly}" />
 		</li>
 </ui:define>	

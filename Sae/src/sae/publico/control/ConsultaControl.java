@@ -14,8 +14,6 @@ import sae.publico.domain.HistoricoEgresso;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Named
 @SessionScoped
@@ -24,7 +22,7 @@ public class ConsultaControl implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger logger = Logger.getLogger(ConsultaControl.class.getCanonicalName());
+	//private static final Logger logger = Logger.getLogger(ConsultaControl.class.getCanonicalName());
 	
 	@EJB 
 	private ConsultaService consultaService;
@@ -70,28 +68,6 @@ public class ConsultaControl implements Serializable {
 	
 
 	
-	public String depoimento(){
-		return getViewPath() +  "depoimento/" + "index.xhtml?faces-redirect=" + getFacesRedirect();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public String selectGrafico(){
 		historicos = consultaService.consultaHistoricos(curso);
@@ -99,14 +75,21 @@ public class ConsultaControl implements Serializable {
 	}
 	
 	
-	public String selectDepoimento(){
-		//historicos = consultaService.consultaHistoricos(curso);
+	
+	
+	
+	/*
+	
+	public String visualizarDepoimentos(){
 		return getViewPath() + "depoimento/" + "depoimentos.xhtml?faces-redirect=" + getFacesRedirect();
 	}
 	
+	public String depoimento(){
+		return getViewPath() +  "depoimento/" + "index.xhtml?faces-redirect=" + getFacesRedirect();
+	}
 	
 	
-	
+	*/
 	
 	
 	
