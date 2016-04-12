@@ -5,7 +5,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.primefaces.model.chart.PieChartModel;
 import sae.core.domain.Curso;
-import sae.publico.application.ConsultaService;
+import sae.publico.application.ConsultaDadosEstatisticosService;
 import sae.publico.domain.Area_Atuacao_Enum;
 import sae.publico.domain.Area_Formacao_Enum;
 import sae.publico.domain.Faixa_Salarial_Enum;
@@ -25,7 +25,7 @@ public class ConsultaControl implements Serializable {
 	//private static final Logger logger = Logger.getLogger(ConsultaControl.class.getCanonicalName());
 	
 	@EJB 
-	private ConsultaService consultaService;
+	private ConsultaDadosEstatisticosService consultaService;
 
 	protected String viewPath;
 	

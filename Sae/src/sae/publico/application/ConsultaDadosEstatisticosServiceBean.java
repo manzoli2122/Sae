@@ -11,7 +11,7 @@ import sae.publico.domain.HistoricoEgresso;
 import sae.publico.persistence.HistoricoEgressoDAO;
 
 @Stateless
-public class ConsultaServiceBean implements ConsultaService{
+public class ConsultaDadosEstatisticosServiceBean implements ConsultaDadosEstatisticosService{
 
 	
 	@EJB

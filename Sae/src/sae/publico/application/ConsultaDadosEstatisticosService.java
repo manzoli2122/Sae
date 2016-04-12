@@ -9,7 +9,7 @@ import sae.publico.domain.Faixa_Salarial_Enum;
 import sae.publico.domain.HistoricoEgresso;
 
 @Local
-public interface ConsultaService {
+public interface ConsultaDadosEstatisticosService {
 
 	
 
