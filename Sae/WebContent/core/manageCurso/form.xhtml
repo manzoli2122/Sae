@@ -21,11 +21,11 @@
 	<li><p:commandLink styleClass="fa fa-book"  action="#{manageCursoControl.list()}"  value=" #{msgs['manageCurso.menu.title']}"/></li>
 		
 	<li class="active">
-		<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageCurso.title.create']}" 
+		<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageCurso.title.create.breadcrumb']}" 
 					  rendered="#{(! manageCursoControl.readOnly) and (manageCursoControl.selectedEntity.id == null)}" />
-		<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageCurso.title.update']}" 
+		<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageCurso.title.update.breadcrumb']}" 
 					  rendered="#{(! manageCursoControl.readOnly) and (manageCursoControl.selectedEntity.id != null)}" />
-   		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageCurso.title.retrieve']}" 
+   		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageCurso.title.retrieve.breadcrumb']}" 
    					  rendered="#{manageCursoControl.readOnly}" />
 	</li>
 </ui:define>	
