@@ -84,11 +84,20 @@
 				<ui:decorate template="/resources/templates/administrador/formfield.xhtml">
 					<ui:param name="fieldName" value="form:inicio" />
 					<ui:param name="label" value="#{msgs['crud.text.inicio']}" />
+					
+					<!--p:inputNumber id="inicio" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
+								 pt:placeholder="#{msgs['manageCursoRealizado.placeholder.inicio']}" 
+								 value="#{manageCursoRealizadoControl.selectedEntity.anoInicio}"  required="true">
+						
+						<p:ajax event="blur" update="inicioField" />
+					</p:inputNumber>  -->
+								
 					<p:inputText id="inicio" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
 								 pt:placeholder="#{msgs['manageCursoRealizado.placeholder.inicio']}" 
 								 value="#{manageCursoRealizadoControl.selectedEntity.anoInicio}"  required="true">
+						<f:convertNumber pattern="####"  maxIntegerDigits="4" minIntegerDigits="4"/>
 						<p:ajax event="blur" update="inicioField" />
-					</p:inputText>
+					</p:inputText>  
 				</ui:decorate>
 			</h:panelGroup>
 					
@@ -100,6 +109,7 @@
 					<p:inputText id="fim" pt:class="form-control" disabled="#{(manageCursoRealizadoControl.readOnly)}" pt:type="number" 
 								 pt:placeholder="#{msgs['manageCursoRealizado.placeholder.termino']}" value="#{manageCursoRealizadoControl.selectedEntity.anoTermino}" 
 								 required="true">
+							<f:convertNumber pattern="####" integerOnly="true" maxIntegerDigits="4" minIntegerDigits="4" />
 						<p:ajax event="blur" update="fimField" />
 					</p:inputText>
 				</ui:decorate>

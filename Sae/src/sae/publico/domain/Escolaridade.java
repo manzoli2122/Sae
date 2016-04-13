@@ -57,7 +57,7 @@ public class Escolaridade extends PersistentObjectSupport implements Comparable<
 	/** ANO DE TERMINO DO CURSO */
 	@NotNull
 	@Size(max = 4)
-	private String ano;
+	private Integer ano;
 	
 	
 	
@@ -103,8 +103,8 @@ public class Escolaridade extends PersistentObjectSupport implements Comparable<
 	public String getInstituicao() {  return instituicao; }
 	public void setInstituicao(String instituicao) {  this.instituicao = instituicao; }
 
-	public String getAno() { 	return ano; }
-	public void setAno(String ano) { 	this.ano = ano; }
+	public Integer getAno() { 	return ano; }
+	public void setAno(Integer ano) { 	this.ano = ano; }
 
 	public Titulo_Escolaridade_Enum getTitulo() { return titulo; }
 	public void setTitulo(Titulo_Escolaridade_Enum titulo) { this.titulo = titulo; }

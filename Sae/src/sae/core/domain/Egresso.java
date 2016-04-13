@@ -79,7 +79,7 @@ public class Egresso extends PersistentObjectSupport implements Comparable<Egres
 	
 	/** SEXO DO EGRESSO */
 	@NotNull 
-	private Character sexo;
+	private Sexo sexo;
 	
 	
 	/** NACIONALIDADE DO EGRESSO */
@@ -154,8 +154,8 @@ public class Egresso extends PersistentObjectSupport implements Comparable<Egres
 	public String getIdentidade() { return identidade; 	}
 	public void setIdentidade(String identidade) { this.identidade = identidade;}
 
-	public Character getSexo() { return sexo; }
-	public void setSexo(Character sexo) { this.sexo = sexo; }
+	public Sexo getSexo() { return sexo; }
+	public void setSexo(Sexo sexo) { this.sexo = sexo; }
 
 	public String getNaturalidade() { return naturalidade; }
 	public void setNaturalidade(String naturalidade) { 	this.naturalidade = naturalidade; }

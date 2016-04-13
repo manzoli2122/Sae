@@ -14,6 +14,7 @@ import sae.core.domain.AssuntoInteresse;
 import sae.core.domain.Curso;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.Egresso;
+import sae.core.domain.Sexo;
 import sae.core.persistence.AdministradorDAO;
 import sae.core.persistence.AssuntoInteresseDAO;
 import sae.core.persistence.CursoDAO;
@@ -109,6 +110,12 @@ public class CoreControl  implements Serializable {
 	
 	public List<Curso> getCursos(){
 		return cursoDAO.retrieveAll();
+	}
+	
+	
+	
+	public Sexo[] getSexo() {
+		return Sexo.values();
 	}
 	
 	

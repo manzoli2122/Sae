@@ -124,10 +124,9 @@
 					<h:selectOneMenu required="true" pt:class="form-control" id="sexo" value="#{manageEgressoControl.selectedEntity.sexo}" 
 									 disabled="#{manageEgressoControl.readOnly or (manageEgressoControl.selectedEntity.id != null)}" >
 						<f:selectItem itemLabel="#{msgs['manageEgresso.form.sexo.blankOption']}" itemValue="" />
-						<f:selectItem itemLabel="#{msgs['manageEgresso.form.sexo.female.label']}" 
-									  itemValue="#{msgs['manageEgresso.form.sexo.female.value']}" />
-						<f:selectItem  itemLabel="#{msgs['manageEgresso.form.sexo.male.label']}" 
-									   itemValue="#{msgs['manageEgresso.form.sexo.male.value']}" />
+						
+						<f:selectItems value="#{coreControl.sexo}" var="type" itemLabel="#{type.label}" itemValue="#{type}" />
+				
 						<p:ajax event="change" update="sexoField" />
 					</h:selectOneMenu>
 				</ui:decorate>

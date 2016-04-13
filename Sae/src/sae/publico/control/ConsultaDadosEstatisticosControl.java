@@ -5,6 +5,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.primefaces.model.chart.PieChartModel;
 import sae.core.domain.Curso;
+import sae.core.domain.Sexo;
 import sae.publico.application.ConsultaDadosEstatisticosService;
 import sae.publico.domain.Area_Atuacao_Enum;
 import sae.publico.domain.Area_Formacao_Enum;
@@ -310,8 +311,8 @@ public class ConsultaDadosEstatisticosControl implements Serializable {
 		int feminino = 0 ;
 		
 		while(iterator.hasNext()){
-			Character ss = iterator.next().getEgresso().getSexo();
-			if(  ss.equals('F')  ){
+			Sexo ss = iterator.next().getEgresso().getSexo();
+			if(  ss.equals(Sexo.Feminino)  ){
 				feminino++;
 			}
 			
