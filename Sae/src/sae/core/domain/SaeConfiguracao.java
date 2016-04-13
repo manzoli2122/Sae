@@ -40,9 +40,20 @@ public class SaeConfiguracao extends PersistentObjectSupport{
 	private Administrador administrador;
 
 	
+	/** DATA DA CRIAÇÃO  */
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date envioEmailAtualizacao;
+	
+	
+	
+	
+	
 	
 	
 	/** GETTERS AND SETTERS */
+	public Date getEnvioEmailAtualizacao() { return envioEmailAtualizacao; }
+	public void setEnvioEmailAtualizacao(Date envioEmailAtualizacao) { 	this.envioEmailAtualizacao = envioEmailAtualizacao;}
+	
 	public Date getCreationDate() { return creationDate; }
 	public void setCreationDate(Date creationDate) { this.creationDate = creationDate; }
 
