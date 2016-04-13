@@ -19,12 +19,12 @@
 <ui:define name="breadcrumb">
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 		<li><p:commandLink styleClass="fa fa-users"  action="#{manageEgressoControl.list()}"  value=" #{msgs['manageEgresso.menu.title']}"/></li>
-		<li class="active">
-			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageEgresso.title.create']}" 
+		<li class="active"> 
+			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageEgresso.title.create.breadcrumb']}" 
 						  rendered="#{(! manageEgressoControl.readOnly) and (manageEgressoControl.selectedEntity.id == null)}" />
-   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageEgresso.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageEgresso.title.update.breadcrumb']}" 
    						  rendered="#{(! manageEgressoControl.readOnly) and (manageEgressoControl.selectedEntity.id != null)}" />
-       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageEgresso.title.retrieve']}" 
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageEgresso.title.retrieve.breadcrumb']}" 
        					  rendered="#{manageEgressoControl.readOnly}" />
 		</li>
 </ui:define>	

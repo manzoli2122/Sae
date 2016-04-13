@@ -20,11 +20,11 @@
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 		<li><p:commandLink styleClass="fa fa-bullhorn"  action="#{manageDepoimentoControl.list()}"  value=" #{msgs['manageDepoimento.menu.title']}"/></li>
 		<li class="active">
-			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageDepoimento.title.create']}" 
+			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageDepoimento.title.create.breadcrumb']}" 
 						  rendered="#{(! manageDepoimentoControl.readOnly) and (manageDepoimentoControl.selectedEntity.id == null)}" />
-   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageDepoimento.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageDepoimento.title.update.breadcrumb']}" 
    						  rendered="#{(! manageDepoimentoControl.readOnly) and (manageDepoimentoControl.selectedEntity.id != null)}" />
-       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageDepoimento.title.retrieve']}" rendered="#{manageDepoimentoControl.readOnly}" />
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageDepoimento.title.retrieve.breadcrumb']}" rendered="#{manageDepoimentoControl.readOnly}" />
 		</li>
 </ui:define>	
 	

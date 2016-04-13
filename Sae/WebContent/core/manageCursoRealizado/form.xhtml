@@ -19,11 +19,11 @@
 	<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 	<li><p:commandLink styleClass="fa fa-mortar-board"  action="#{manageCursoRealizadoControl.list()}"  value=" #{msgs['manageCursoRealizado.menu.title']}"/></li>
 	<li class="active">
-		<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageCursoRealizado.title.create']}" 
+		<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageCursoRealizado.title.create.breadcrumb']}" 
 					  rendered="#{(! manageCursoRealizadoControl.readOnly) and (manageCursoRealizadoControl.selectedEntity.id == null)}" />
-		<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageCursoRealizado.title.update']}" 
+		<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageCursoRealizado.title.update.breadcrumb']}" 
 					  rendered="#{(! manageCursoRealizadoControl.readOnly) and (manageCursoRealizadoControl.selectedEntity.id != null)}" />
-   		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageCursoRealizado.title.retrieve']}" rendered="#{manageCursoRealizadoControl.readOnly}" />
+   		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageCursoRealizado.title.retrieve.breadcrumb']}" rendered="#{manageCursoRealizadoControl.readOnly}" />
 	</li>
 </ui:define>	
 	

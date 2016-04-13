@@ -20,11 +20,11 @@
 		<li><a href="#{facesContext.externalContext.requestContextPath}/index.faces"><i class="fa fa-home"></i> Home</a></li>
 		<li><p:commandLink styleClass="fa fa-database"  action="#{manageHistoricoControl.list()}"  value=" #{msgs['manageHistorico.menu.title']}"/></li>
 		<li class="active">
-			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageHistorico.title.create']}" 
+			<h:outputText styleClass="fa fa-plus" value=" #{msgs['manageHistorico.title.create.breadcrumb']}" 
 						  rendered="#{(! manageHistoricoControl.readOnly) and (manageHistoricoControl.selectedEntity.id == null)}" />
-   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageHistorico.title.update']}" 
+   			<h:outputText styleClass="fa fa-refresh" value=" #{msgs['manageHistorico.title.update.breadcrumb']}" 
    						  rendered="#{(! manageHistoricoControl.readOnly) and (manageHistoricoControl.selectedEntity.id != null)}" />
-       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageHistorico.title.retrieve']}" rendered="#{manageHistoricoControl.readOnly}" />
+       		<h:outputText styleClass="fa fa-file-text" value=" #{msgs['manageHistorico.title.retrieve.breadcrumb']}" rendered="#{manageHistoricoControl.readOnly}" />
 		</li>
 </ui:define>	
 	
