@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2016-02-28T15:23:45.677-0300")
+@Generated(value="Dali", date="2016-04-13T14:00:19.841-0300")
 @StaticMetamodel(Seminario.class)
 public class Seminario_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Seminario, String> palestrante;
@@ -14,4 +14,5 @@ public class Seminario_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Seminario, String> local;
 	public static volatile SingularAttribute<Seminario, String> titulo;
 	public static volatile SingularAttribute<Seminario, AssuntoInteresse> assunto_interesse;
+	public static volatile SingularAttribute<Seminario, Egresso> egresso_Palestrante;
 }

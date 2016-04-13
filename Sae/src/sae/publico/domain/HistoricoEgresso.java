@@ -45,11 +45,11 @@ public class HistoricoEgresso  extends PersistentObjectSupport implements Compar
 	
 	/** FAIXA SALARIAL DO EGREESO */
 	@NotNull
-	private Faixa_Salarial_Enum faixa_salarial;
+	private Faixa_Salarial faixa_salarial;
 	
 	
 	@NotNull
-	private Area_Atuacao_Enum  area_atuacao ;
+	private Area_Atuacao  area_atuacao ;
 	
 	
 	/** SE O EGREESO RESIDE NO ES */
@@ -64,7 +64,7 @@ public class HistoricoEgresso  extends PersistentObjectSupport implements Compar
 	
 	/** SE O EGREESO ATUA NA AREA DE INFORMATICA */
 	@NotNull
-	private Area_Formacao_Enum atua_na_area;
+	private Area_Formacao atua_na_area;
 	
 	
 	
@@ -100,17 +100,17 @@ public class HistoricoEgresso  extends PersistentObjectSupport implements Compar
 	public Date getData_envio() { return data_envio; }
 	public void setData_envio(Date data_envio) { this.data_envio = data_envio; }
 
-	public Area_Formacao_Enum getAtua_na_area() { return atua_na_area; }
-	public void setAtua_na_area(Area_Formacao_Enum atua_na_area) { this.atua_na_area = atua_na_area; }
+	public Area_Formacao getAtua_na_area() { return atua_na_area; }
+	public void setAtua_na_area(Area_Formacao atua_na_area) { this.atua_na_area = atua_na_area; }
 
 	public Boolean getReside_no_ES() { return reside_no_ES; }
 	public void setReside_no_ES(Boolean reside_no_ES) { this.reside_no_ES = reside_no_ES; }
 
-	public Faixa_Salarial_Enum getFaixa_salarial() { return faixa_salarial; }
-	public void setFaixa_salarial(Faixa_Salarial_Enum faixa_salarial) { this.faixa_salarial = faixa_salarial;}
+	public Faixa_Salarial getFaixa_salarial() { return faixa_salarial; }
+	public void setFaixa_salarial(Faixa_Salarial faixa_salarial) { this.faixa_salarial = faixa_salarial;}
 
-	public Area_Atuacao_Enum getArea_atuacao() { return area_atuacao; }
-	public void setArea_atuacao(Area_Atuacao_Enum area_atuacao) { this.area_atuacao = area_atuacao; }
+	public Area_Atuacao getArea_atuacao() { return area_atuacao; }
+	public void setArea_atuacao(Area_Atuacao area_atuacao) { this.area_atuacao = area_atuacao; }
 		
 	
 }

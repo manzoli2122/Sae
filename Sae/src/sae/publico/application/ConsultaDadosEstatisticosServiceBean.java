@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import sae.core.domain.Curso;
-import sae.publico.domain.Faixa_Salarial_Enum;
+import sae.publico.domain.Faixa_Salarial;
 import sae.publico.domain.HistoricoEgresso;
 import sae.publico.persistence.HistoricoEgressoDAO;
 
@@ -19,7 +19,7 @@ public class ConsultaDadosEstatisticosServiceBean implements ConsultaDadosEstati
 	
 	
 	
-	public long countFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso){
+	public long countFaixaSalarial(Faixa_Salarial faixa, Curso curso){
 		return historico_EgressoDAO.contFaixaSalarial(faixa, curso);
 	}
 	

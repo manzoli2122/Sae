@@ -1,6 +1,6 @@
 package sae.publico.domain;
 
-public enum Faixa_Salarial_Enum {
+public enum Faixa_Salarial {
 	
 	ATE_3_SM ("Até 3 salários mínimos"),
 	DE_3_A_5_SM("De 3 a 5 salários mínimos"),
@@ -11,7 +11,7 @@ public enum Faixa_Salarial_Enum {
 	
 	private final String label;
 
-	private Faixa_Salarial_Enum(String label) {
+	private Faixa_Salarial(String label) {
 		this.label = label;
 	}
 

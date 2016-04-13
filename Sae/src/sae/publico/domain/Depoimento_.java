@@ -14,5 +14,5 @@ public class Depoimento_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<Depoimento, String> conteudo;
 	public static volatile SingularAttribute<Depoimento, Boolean> anonimo;
 	public static volatile SingularAttribute<Depoimento, CursoRealizado> cursoRealizado;
-	public static volatile SingularAttribute<Depoimento, StatusDepoimento_Enum> status;
+	public static volatile SingularAttribute<Depoimento, StatusDepoimento> status;
 }

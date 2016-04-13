@@ -12,8 +12,8 @@ import sae.core.domain.Egresso;
 public class HistoricoEgresso_ extends PersistentObjectSupport_ {
 	public static volatile SingularAttribute<HistoricoEgresso, Egresso> egresso;
 	public static volatile SingularAttribute<HistoricoEgresso, Date> data_envio;
-	public static volatile SingularAttribute<HistoricoEgresso, Faixa_Salarial_Enum> faixa_salarial;
-	public static volatile SingularAttribute<HistoricoEgresso, Area_Atuacao_Enum> area_atuacao;
+	public static volatile SingularAttribute<HistoricoEgresso, Faixa_Salarial> faixa_salarial;
+	public static volatile SingularAttribute<HistoricoEgresso, Area_Atuacao> area_atuacao;
 	public static volatile SingularAttribute<HistoricoEgresso, Boolean> reside_no_ES;
-	public static volatile SingularAttribute<HistoricoEgresso, Area_Formacao_Enum> atua_na_area;
+	public static volatile SingularAttribute<HistoricoEgresso, Area_Formacao> atua_na_area;
 }

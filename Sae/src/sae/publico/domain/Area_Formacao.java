@@ -1,6 +1,6 @@
 package sae.publico.domain;
 
-public enum Area_Formacao_Enum {
+public enum Area_Formacao {
 
 	ATUA_NA_AREA("Atua na Área"),
 	ATUA_EM_AREA_CORRELATA("Atua em Área Correlata"),
@@ -9,7 +9,7 @@ public enum Area_Formacao_Enum {
 	
 	private final String label;
 
-	private Area_Formacao_Enum(String label) {
+	private Area_Formacao(String label) {
 		this.label = label;
 	}
 

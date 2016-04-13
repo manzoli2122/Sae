@@ -58,6 +58,8 @@ public class Seminario  extends PersistentObjectSupport implements Comparable<Se
 	private AssuntoInteresse assunto_interesse;
 	
 	
+	@ManyToOne
+	private Egresso egresso_Palestrante;
 	
 	
 	
@@ -65,6 +67,8 @@ public class Seminario  extends PersistentObjectSupport implements Comparable<Se
 	
 	
 	
+	
+
 	@Override
 	public int compareTo(Seminario  o) { return super.compareTo(o); }
 	
@@ -88,6 +92,12 @@ public class Seminario  extends PersistentObjectSupport implements Comparable<Se
 
 	public String getLocal() { 	return local; }
 	public void setLocal(String local) { this.local = local; }
+	
+	public Egresso getEgresso_Palestrante() { return egresso_Palestrante;  	}
+	public void setEgresso_Palestrante(Egresso egresso_Palestrante) { 
+		this.egresso_Palestrante = egresso_Palestrante;
+		this.palestrante = egresso_Palestrante.getNome();
+	}
 
 	
 }

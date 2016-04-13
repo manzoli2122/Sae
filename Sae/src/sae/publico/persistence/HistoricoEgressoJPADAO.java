@@ -18,7 +18,7 @@ import sae.core.domain.Curso;
 import sae.core.domain.CursoRealizado;
 import sae.core.domain.CursoRealizado_;
 import sae.core.domain.Egresso;
-import sae.publico.domain.Faixa_Salarial_Enum;
+import sae.publico.domain.Faixa_Salarial;
 import sae.publico.domain.HistoricoEgresso;
 import sae.publico.domain.HistoricoEgresso_;
 
@@ -60,7 +60,7 @@ public class HistoricoEgressoJPADAO  extends BaseJPADAO<HistoricoEgresso> implem
 	
 	
 	@Override
-	public long contFaixaSalarial(Faixa_Salarial_Enum faixa, Curso curso){
+	public long contFaixaSalarial(Faixa_Salarial faixa, Curso curso){
 		
 		
 		EntityManager em = getEntityManager();

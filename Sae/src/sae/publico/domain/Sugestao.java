@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -19,11 +20,13 @@ public class Sugestao extends PersistentObjectSupport implements Comparable<Suge
 	
 	/* NOME DO USUARIO */
 	@NotNull
-	@Column(length=1000)
+	//@Column(length=1000)
+	@Lob
 	private String conteudo;
 	
 	/* NOME DO USUARIO */
-	@Column(length=1000)
+	//@Column(length=1000)
+	@Lob
 	private String resposta;	
 	
 	/* NOME DO USUARIO */

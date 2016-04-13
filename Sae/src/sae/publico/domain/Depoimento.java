@@ -3,6 +3,7 @@ package sae.publico.domain;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
@@ -20,8 +21,9 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	
 	
 	/* NOME DO USUARIO */
+	// @Column(length=1000)
 	@NotNull
-	@Column(length=1000)
+	@Lob
 	private String conteudo;
 	
 	
@@ -37,7 +39,7 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	
 	
 	@NotNull
-	private StatusDepoimento_Enum status;
+	private StatusDepoimento status;
 	
 	
 	
@@ -51,8 +53,8 @@ public class Depoimento extends PersistentObjectSupport implements Comparable<De
 	public Boolean getAnonimo() { 	return anonimo; }
 	public void setAnonimo(Boolean anonimo) { this.anonimo = anonimo; }
 	
-	public StatusDepoimento_Enum getStatus() {return status;}
-	public void setStatus(StatusDepoimento_Enum status) {this.status = status;}
+	public StatusDepoimento getStatus() {return status;}
+	public void setStatus(StatusDepoimento status) {this.status = status;}
 	
 	
 	public CursoRealizado getCursoRealizado() { return cursoRealizado; 	}

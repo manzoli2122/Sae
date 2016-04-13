@@ -1,6 +1,6 @@
 package sae.publico.domain;
 
-public enum Area_Atuacao_Enum {
+public enum Area_Atuacao {
 	EMPREENDEDOR("Empreendedor"),
 	FUNCIONARIO_PUBLICO("Funcionário Público"),
 	FUNCIONARIO_PRIVADO("Funcionário Privado"),
@@ -10,7 +10,7 @@ public enum Area_Atuacao_Enum {
 	
 	private final String label;
 
-	private Area_Atuacao_Enum(String label) {
+	private Area_Atuacao(String label) {
 		this.label = label;
 	}
 

@@ -1,6 +1,6 @@
 package sae.publico.domain;
 
-public enum Titulo_Escolaridade_Enum {
+public enum Titulo_Escolaridade {
 
 	A_SUPERIOR("Superior"),
 	B_ESPECIALIZACAO("Especializacao"),
@@ -11,7 +11,7 @@ public enum Titulo_Escolaridade_Enum {
 	
 	private final String label;
 
-	private Titulo_Escolaridade_Enum(String label) {
+	private Titulo_Escolaridade(String label) {
 		this.label = label;
 	}
 

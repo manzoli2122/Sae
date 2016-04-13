@@ -12,7 +12,7 @@ import br.ufes.inf.nemo.util.ejb3.persistence.BaseDAO;
 import sae.core.application.CrudServiceBean;
 import sae.login.SessionService;
 import sae.publico.domain.Depoimento;
-import sae.publico.domain.StatusDepoimento_Enum;
+import sae.publico.domain.StatusDepoimento;
 import sae.publico.persistence.DepoimentoDAO;
 
 
@@ -70,14 +70,14 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	/** @see sae.core.application.CrudServiceBean#validateCreate(br.ufes.inf.nemo.util.ejb3.persistence.PersistentObject) */
 	@Override
 	public void validateCreate(Depoimento entity) throws CrudException {
-		entity.setStatus(StatusDepoimento_Enum.P);
+		entity.setStatus(StatusDepoimento.PENDENTE);
 	}
 	
 	
 	
 	@Override
 	public void validateUpdate(Depoimento entity) throws CrudException {
-		entity.setStatus(StatusDepoimento_Enum.P);
+		entity.setStatus(StatusDepoimento.PENDENTE);
 	}
 	
 	
@@ -85,13 +85,13 @@ public class ManageDepoimentoServiceBean extends CrudServiceBean<Depoimento> imp
 	
 	@Override
 	public void aprovar(Depoimento entity){
-		entity.setStatus(StatusDepoimento_Enum.A);
+		entity.setStatus(StatusDepoimento.APROVADO);
 		update(entity);
 	}
 
 	@Override
 	public void desaprovar(Depoimento entity){
-		entity.setStatus(StatusDepoimento_Enum.D);
+		entity.setStatus(StatusDepoimento.DESAPROVADO);
 		update(entity);
 	}
 	
