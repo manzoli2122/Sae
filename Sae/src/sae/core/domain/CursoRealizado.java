@@ -21,11 +21,9 @@ public class CursoRealizado extends PersistentObjectSupport implements Comparabl
 	
 	
 	@NotNull 
-	
 	private int anoInicio;
 	
 	@NotNull 
-	
 	private int anoTermino;
 	
 	@NotNull

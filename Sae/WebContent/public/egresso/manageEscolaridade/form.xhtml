@@ -93,6 +93,7 @@
 							<p:inputText id="ano1" pt:class="form-control" disabled="#{(manageEscolaridadeControl.readOnly)}" pt:type="number" 
 										 pt:placeholder="#{msgs['manageEscolaridade.placeholder.ano']}" 
 										 value="#{manageEscolaridadeControl.selectedEntity.ano}"  required="true">
+								<f:convertNumber pattern="####"  maxIntegerDigits="4" minIntegerDigits="4"/>
 								<p:ajax event="blur" update="ano1Field" />
 							</p:inputText>
 						</ui:decorate>
